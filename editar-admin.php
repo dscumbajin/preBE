@@ -1,6 +1,7 @@
 <?php
 include_once('funciones/sesiones.php');
-include_once('funciones/funciones.php');
+include_once('funciones/db.php');
+include_once('funciones/conexion.php');
 include_once('templates/header.php');
 $id = $_GET['id'];
 if (!filter_var($id, FILTER_VALIDATE_INT)) {
