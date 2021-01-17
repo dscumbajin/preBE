@@ -36,5 +36,6 @@
     <!-- Nuestra hoja de estilos -->
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/fontawesome-iconpicker.min.css">
+    <link href="css/styles.css" rel="stylesheet">
 
 </head>

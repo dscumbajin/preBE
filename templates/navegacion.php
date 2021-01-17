@@ -58,21 +58,15 @@
               <i class="nav-icon fas fa-tasks"></i>
 
               <p>
-                Proyectos
+                Vendedor
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="lista-proyecto.php" class="nav-link">
+                <a href="lista-vendedor.php" class="nav-link">
                   <i class="nav-icon fas fa-list-ul"></i>
                   <p>Ver Todos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="crear-proyecto.php" class="nav-link">
-                  <i class="nav-icon fas fa-plus-circle"></i>
-                  <p>Agregar</p>
                 </a>
               </li>
             </ul>
@@ -82,7 +76,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Programa
+                Linea
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -91,12 +85,6 @@
                 <a href="lista-programa.php" class="nav-link">
                   <i class="nav-icon fas fa-list-ul"></i>
                   <p>Ver Todos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="crear-programa.php" class="nav-link">
-                  <i class="nav-icon fas fa-plus-circle"></i>
-                  <p>Agregar</p>
                 </a>
               </li>
             </ul>
@@ -108,7 +96,7 @@
               <i class=" nav-icon fas fa-building"></i>
 
               <p>
-                Portafolio
+                Segmento
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -119,12 +107,6 @@
                   <p>Ver Todos</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="crear-portafolio.php" class="nav-link">
-                  <i class="nav-icon fas fa-plus-circle"></i>
-                  <p>Agregar</p>
-                </a>
-              </li>
             </ul>
           </li>
 
@@ -132,21 +114,15 @@
             <a href="#" class="nav-link">
               <i class=" nav-icon fas fa-file-invoice-dollar"></i>
               <p>
-                Presupuesto
+                Presupuestos
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="lista-cuenta.php" class="nav-link">
+                <a href="lista-presupuestos.php" class="nav-link">
                   <i class="nav-icon fas fa-list-ul"></i>
                   <p>Ver Todos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="crear-cuenta.php" class="nav-link">
-                  <i class="nav-icon fas fa-plus-circle"></i>
-                  <p>Agregar</p>
                 </a>
               </li>
             </ul>
@@ -168,12 +144,6 @@
                   <a href="lista-admin.php" class="nav-link">
                     <i class="nav-icon fas fa-list-ul"></i>
                     <p>Ver Todos</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="crear-admin.php" class="nav-link">
-                    <i class="nav-icon fas fa-plus-circle"></i>
-                    <p>Agregar</p>
                   </a>
                 </li>
               </ul>

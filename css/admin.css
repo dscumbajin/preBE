@@ -1,14 +1,57 @@
-        .nav-sidebar>.nav-header,
-        .sidebar-form {
-            text-transform: uppercase;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .login-page .main-footer {
-            display: none;
-        }
+.nav-sidebar>.nav-header,
+.sidebar-form {
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+}
 
+.login-page .main-footer {
+    display: none;
+}
 
+#registros {
+    font-size: 13px;
+}
 
-        
+#registos tr th a {
+    text-decoration: none;
+    margin-left: 0px;
+}
+
+table td {
+    padding-left: 3px !important;
+    padding-right: 0px !important;
+}
+
+#margen {
+    padding-left: 30px !important;
+}
+
+.editar {
+    font-size: 20px;
+    color: green;
+    margin-right: 10px;
+}
+
+.eliminar {
+    font-size: 20px;
+    color: red;
+}
+
+.ellipsis {
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: auto;
+    width: 100px;
+    margin: 0 auto;
+    text-align: justify
+}
+
+.ellipsis:hover {
+    text-overflow: initial;
+    white-space: initial;
+    overflow: visible;
+    cursor: pointer;
+}

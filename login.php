@@ -28,13 +28,18 @@ if ($login->isUserLoggedIn() == true) {
   // for demonstration purposes, we simply show the "you are not logged in" view.
   include_once('templates/header.php');
 ?>
+  <link href="css/styles.css" rel="stylesheet">
 
   <body class="hold-transition login-page">
     <div class="login-box">
-      <div class="login-logo">
-        <a href="http://www.bateriasecuador.com/">
-          <img src="img/logo-baterias.png" alt="Logo baterias" class="brand-image elevation-3" style="opacity: .8; width: 80%;">
-        </a>
+
+
+
+      <div class="login-logo center clearfix">
+        <!-- LOGO -->
+        <div id="logo">
+          <img src="img/logo-baterias.png" class="app-logo" alt="Logotipo" />
+        </div>
       </div>
       <!-- /.login-logo -->
       <div class="card">
