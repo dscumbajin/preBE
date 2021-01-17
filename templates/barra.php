@@ -18,20 +18,20 @@
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
 
-            <span class="dropdown-item dropdown-header"> <i class="far fa-user"></i> <?php echo $_SESSION['usuario'];?></span>
+            <span class="dropdown-item dropdown-header"> <i class="far fa-user"></i> <?php echo $_SESSION['user_name'];?></span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
             <div class="dropdown-divider"></div>
 
-            <?php if ($_SESSION['nivel'] == 1) : ?>
-            <a href="editar-admin.php?id=<?php echo $_SESSION['id'];?>" class="dropdown-item">
+            <?php if ($_SESSION['user_nivel'] == 2) : ?>
+            <a href="editar-admin.php?id=<?php echo $_SESSION['user_id'];?>" class="dropdown-item">
               <i class="fas fa-cogs"></i>
               <span class="float-right text-muted text-sm">Ajustes</span>
             </a>
             <?php endif; ?>
             <div class="dropdown-divider"></div>
-            <a href="login.php?cerrar_sesion=true" class="dropdown-item">
+            <a href="login.php?logout" class="dropdown-item">
               <i class="fas fa-users mr-2"></i>
               <span class="float-right text-muted text-sm">Cerrar Sesión</span>
             </a>

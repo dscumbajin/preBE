@@ -6,18 +6,21 @@
       <br>
     </a>
 
+
+
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         
         <div class="info" style="color: white;">
-          <a href="#" class="d-block"><?php echo $_SESSION['nombre']; ?></a>
+          <a href="#" class="d-block"><?php echo $_SESSION['user_name']; ?></a>
 
           <?php
-          if ($_SESSION['nivel'] == 1) {
+          if ($_SESSION['user_nivel'] == 2) {
 
-            echo 'Usuario: <span class="badge badge-success">Admin</span>';
+            
+            echo 'Usuario: <span class="badge badge-success">Administrador</span>';
           } else {
             echo 'Usuario: <span class="badge badge-primary">User</span>';
           }
@@ -150,7 +153,7 @@
           </li>
 
 
-          <?php if ($_SESSION['nivel'] == 1) : ?>
+          <?php if ($_SESSION['user_nivel'] == 2) : ?>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
 
