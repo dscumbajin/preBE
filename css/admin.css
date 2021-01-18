@@ -13,7 +13,8 @@
     font-size: 13px;
 }
 
-#registos tr th a {
+
+/* #registos tr th a {
     text-decoration: none;
     margin-left: 0px;
 }
@@ -26,6 +27,7 @@ table td {
 #margen {
     padding-left: 30px !important;
 }
+ */
 
 .editar {
     font-size: 20px;
