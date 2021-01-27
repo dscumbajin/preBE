@@ -66,9 +66,9 @@ include_once('templates/navegacion.php');
                         <?php
                         if ($vendedor['estadoVen'] == 1) {
                           
-                          echo '<span class="badge badge-primary">Activo</span>';
+                          echo '<h6><span class="badge badge-primary">Activo</span></h6>';
                         } else {
-                          echo '<span class="badge badge-danger">Inactivo</span>';
+                          echo '<h6><span class="badge badge-danger">Inactivo</span></h6>';
                         }
                         ?>
                       </td>

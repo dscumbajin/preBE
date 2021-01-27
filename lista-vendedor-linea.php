@@ -40,7 +40,7 @@ include_once('templates/navegacion.php');
 
                         <!-- /.card-header -->
                         <div class="card-body">
-                        
+
                             <table id="registros" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -56,7 +56,7 @@ include_once('templates/navegacion.php');
                                 <tbody>
                                     <?php
                   try {
-                    $sql = "SELECT vendedor.nomVen, anio, ventasU, promocionU, garantiaU, facturadoV ";
+                    $sql = "SELECT vendedor.nomVen, anio, ventasU, promocionU, garantiaU, facturadoV, historial_ventas.codVen, historial_ventas.codLinea ";
                     $sql .= " FROM historial_ventas ";
                     $sql .= " INNER JOIN vendedor ";
                     $sql .= " ON vendedor.codVen = historial_ventas.codVen ";
@@ -73,9 +73,13 @@ include_once('templates/navegacion.php');
                                         <td><?php echo $historial_ventas['ventasU']; ?></td>
                                         <td><?php echo $historial_ventas['promocionU']; ?></td>
                                         <td><?php echo $historial_ventas['garantiaU']; ?></td>
-                                        <td> <i class="fas fa-dollar-sign"></i> <?php echo $historial_ventas['facturadoV']; ?></td>
+                                        <td> <i class="fas fa-dollar-sign"></i>
+                                            <?php echo $historial_ventas['facturadoV']; ?></td>
 
                                         <td>
+                                            <a href="crea-pres-anio.php?codVen=<?php echo $historial_ventas['codVen']?>&codLinea=<?php echo $historial_ventas['codLinea']?>">
+                                            <button type="submit" data-toggle="modal" data-target="#formUsuario" class="btn btn-outline-secondary" > <i class="fas fa-plus-circle" ></i> Nuevo</button>  
+                                            </a>
 
                                         </td>
                                     </tr>
