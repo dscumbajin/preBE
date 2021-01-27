@@ -1,4 +1,6 @@
-$(function () {
+$(function() {
+
+
     $("#registros").DataTable({
         "responsive": true,
         "autoWidth": false,
@@ -16,12 +18,14 @@ $(function () {
             search: 'Buscar: ',
             lengthMenu: "Mostrar _MENU_ Entradas ",
             infoFiltered: " (Filtrado de un total de _MAX_  entradas)"
-        }
-    });
+        },
+        "buttons": ["excel"]
+    }).buttons().container().appendTo('#registros_wrapper .col-md-6:eq(0)');
+
 
     $('#crear_registro_admin').attr('disabled', true);
 
-    $('#repetir_password').on('input', function () {
+    $('#repetir_password').on('input', function() {
         var password_nuevo = $('#password').val();
         if ($(this).val() == password_nuevo) {
             $('#resultado_password').text('Passwords iguales');
@@ -35,9 +39,9 @@ $(function () {
         }
     });
 
-    
+
     // Validar input tipo date
-    $(".anio").focusout(function () {
+    $(".anio").focusout(function() {
         s = $(this).val();
         var bits = s.split('/');
         var d = new Date(bits[2] + '/' + bits[0] + '/' + bits[1]);
@@ -61,18 +65,18 @@ $(function () {
 
 
     // DESTALLE-PROYECTO
-    $("#myBtn").click(function () {
+    $("#myBtn").click(function() {
         $("#exampleModal").modal("hide");
     });
 
     // Supero presupuesto total vs presupuesto invertido
-    $("#boton01").click(function () {
+    $("#boton01").click(function() {
         var proyecto_id = $("#proyecto_id").val();
         var presupuesto_inversion = $("#presupuesto_inversion").text();
         var presupuesto_total = $("#presupuesto_total").text();
         if (parseInt(presupuesto_inversion) < parseInt(presupuesto_total)) {
 
-            setTimeout(function () {
+            setTimeout(function() {
                 window.location.href = `crear-cuenta.php?id=${parseInt(proyecto_id)}`;
 
             }, 500);
@@ -96,7 +100,7 @@ $(function () {
 
     // Clic Guardar cambios
 
-    $('#boton01').click(function () {
+    $('#boton01').click(function() {
         var detalle_cerrado = $('#detalle-cerrado').text();
         console.log(detalle_cerrado);
         if (detalle_cerrado == "Cerrado") {
@@ -111,7 +115,7 @@ $(function () {
     $('#Cabecera_1').datetimepicker({
         viewMode: 'years',
         format: 'YYYY',
-        onClose: function (theDate) {
+        onClose: function(theDate) {
             $('#valor-query').text = theDate;
         }
     });
@@ -132,25 +136,25 @@ $(function () {
 
 
     // Envio de parametro a url
-    $('#valor-query').on('input', function () {
-        var query = parseInt($(this).val());
+    $('#valor-query').on('input', function() {
+            var query = parseInt($(this).val());
 
-        if (location.search.indexOf('q=') < 0) {
+            if (location.search.indexOf('q=') < 0) {
 
-            crearCookie("query", query, 2);
-            setTimeout(() => {
-                location.reload();
-            }, 2000);
+                crearCookie("query", query, 2);
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            }
+
+
         }
-
-
-    }
 
     );
 
-    
 
-    $('#presupuesto').on('input', function () {
+
+    $('#presupuesto').on('input', function() {
         var presu = $("#presu").text();
         var presuTotal = $('#presuTotal').text();
         /* console.log(presu);
@@ -159,7 +163,7 @@ $(function () {
         if (parseInt(presuTotal) < parseInt(presu)) {
             var resto = parseInt(presu) - parseInt(presuTotal);
             $('#resultado_resto').text('La inversión puede ser menor o igual a: $ ' + resto);
-            $('#presupuesto').on('input', function () {
+            $('#presupuesto').on('input', function() {
                 var input = $('#presupuesto').val();
                 if (input > resto) {
                     $('#guardar-presu').attr("disabled", true);
@@ -190,7 +194,7 @@ $(function () {
 
     // Validacion fecha anterior
 
-    $('#input-fecha').on('input', function () {
+    $('#input-fecha').on('input', function() {
 
         var input_fecha = new Date($("#input-fecha").val());
         var hoy = new Date();
@@ -228,7 +232,7 @@ $(function () {
 
     $('#cuenta-div').hide();
 
-    $('#estado').on('change', function () {
+    $('#estado').on('change', function() {
 
         var estado = $("#estado option:selected").text();
         /* Elimino todos los espacios en blanco que tenga la cadena delante y detrás */
@@ -248,7 +252,7 @@ $(function () {
             console.log(number);
             // poner valor aleatorio tamaño de 8
             $('#cuenta').attr('readonly', true);
-            $("#estado_neural option[value=Activar]").attr("selected",true);  
+            $("#estado_neural option[value=Activar]").attr("selected", true);
         }
 
         if (value_without_space == "Aprobado" && input_cuenta.length < 7) {
@@ -260,13 +264,13 @@ $(function () {
             $('#cuenta').val('');
             $('#cuenta').attr('placeholder', 'formato: x.xx.xx.xx.xx');
             $('#cuenta')
-                .keypress(function (event) {
+                .keypress(function(event) {
                     if (this.value.length === 16) {
                         return false;
                     }
                 });
             $('#cuenta').attr("pattern", '([0-9]{1,2}\.[0-9]{1,2})*');
-            $("#estado_neural option[value=Activo]").attr("selected",true);  
+            $("#estado_neural option[value=Activo]").attr("selected", true);
 
 
         }
@@ -286,7 +290,7 @@ $(function () {
     });
 
 
-    $('#estado-editar').on('change', function () {
+    $('#estado-editar').on('change', function() {
 
         var estado = $("#estado-editar option:selected").text();
         /* Elimino todos los espacios en blanco que tenga la cadena delante y detrás */
@@ -302,13 +306,13 @@ $(function () {
             $('#cuenta').val('');
             $('#cuenta').attr('placeholder', 'formato: x.xx.xx.xx.xx');
             $('#cuenta')
-                .keypress(function (event) {
+                .keypress(function(event) {
                     if (this.value.length === 16) {
                         return false;
                     }
                 });
             $('#cuenta').attr("pattern", '([0-9]{1,2}\.[0-9]{1,2})*');
-            $("#estado_neural option[value=Activo]").attr("selected",true);  
+            $("#estado_neural option[value=Activo]").attr("selected", true);
 
         }
         if (value_without_space == "Aprobado" && input_cuenta.length > 8) {
@@ -318,7 +322,7 @@ $(function () {
             $('#cuenta').attr('readonly', true);
             $('#cuenta').val(input_cuenta);
             $('#cuenta').attr('placeholder', 'formato: x.xx.xx.xx.xx');
-            $("#estado_neural option[value=Activo]").attr("selected",true);  
+            $("#estado_neural option[value=Activo]").attr("selected", true);
 
         }
         if (value_without_space == "Proceso" && input_cuenta.length > 8) {
@@ -328,7 +332,7 @@ $(function () {
             $('#cuenta').attr('readonly', true);
             $('#cuenta').val(input_cuenta);
             $('#cuenta').attr('placeholder', 'formato: x.xx.xx.xx.xx');
-            $("#estado_neural option[value=Activo]").attr("selected",true);  
+            $("#estado_neural option[value=Activo]").attr("selected", true);
         }
 
         if (value_without_space == "Cerrado" && input_cuenta.length > 8) {
@@ -338,9 +342,9 @@ $(function () {
             $('#cuenta').attr('readonly', true);
             $('#cuenta').val(input_cuenta);
             $('#cuenta').attr('placeholder', 'formato: x.xx.xx.xx.xx');
-            $("#estado_neural option[value=Cerrado]").attr("selected",true);  
+            $("#estado_neural option[value=Cerrado]").attr("selected", true);
         }
-        
+
         if (value_without_space == "Cerrado") {
             // mostar en input
             $('#cuenta-div').hide();
@@ -348,10 +352,10 @@ $(function () {
             $('#cuenta').attr('readonly', true);
             $('#cuenta').val(input_cuenta);
             $('#cuenta').attr('placeholder', 'formato: x.xx.xx.xx.xx');
-            $("#estado_neural option[value=Cerrado]").attr("selected",true);  
+            $("#estado_neural option[value=Cerrado]").attr("selected", true);
         }
 
-        
+
     });
 
 

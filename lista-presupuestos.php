@@ -89,7 +89,7 @@ include_once('templates/navegacion.php');
                       <td><?php echo $presupuesto['cantPromoU']; ?></td>
                       <td><?php echo $presupuesto['cantGarantU']; ?></td>
                       <td><?php echo $presupuesto['cantTotalU']; ?></td>
-                      <td><?php echo $presupuesto['presMesV']; ?></td>
+                      <td> <i class="fas fa-dollar-sign"></i> <?php echo $presupuesto['presMesV']; ?></td>
                       <td><?php echo $presupuesto['nomLinea']; ?></td>
                       <td><?php echo $presupuesto['desSeg']; ?></td>
 

@@ -73,12 +73,7 @@ include_once('templates/navegacion.php');
                         ?>
                       </td>
                       <td>
-                        <a href="editar-vendedor.php?id=<?php echo $vendedor['idUsu']; ?>">
-                          <i class="fas fa-pen editar"></i>
-                        </a>
-                        <a href="#" data-id="<?php echo $vendedor['idUsu']; ?>" data-tipo="vendedor" class="borrar_registro">
-                          <i class="far fa-trash-alt eliminar"></i>
-                        </a>
+                       
                       </td>
                     </tr>
                   <?php } ?>
