@@ -5,8 +5,8 @@ include_once('templates/header.php');
 
 session_start();
 if (!isset($_SESSION['user_login_status']) and $_SESSION['user_login_status'] != 1) {
-  header("location: login.php");
-  exit;
+    header("location: login.php");
+    exit;
 }
 $codLinea = $_GET['codLinea'];
 $nomLinea = $_GET['nomLinea'];
@@ -23,7 +23,7 @@ include_once('templates/navegacion.php');
         <div class="container-fluid center">
             <div class="row mb-2">
                 <div class="col-sm-10">
-                    <h1>Vendedores - <?php echo $nomLinea;?></h1>
+                    <h1>Vendedores - <?php echo $nomLinea; ?></h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -32,73 +32,48 @@ include_once('templates/navegacion.php');
 
     <!-- Main content -->
     <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
 
-                    <div class="card">
+        <div class="card">
+            <div class="container">
+                <br>
+                <div class="panel panel-info">
 
-                        <!-- /.card-header -->
-                        <div class="card-body">
+                    <div class="panel-body">
 
-                            <table id="registros" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Vendedor</th>
-                                        <th>Año</th>
-                                        <th>Unidades Vendidas</th>
-                                        <th>Unidades Promociones</th>
-                                        <th>Unidades Garantía</th>
-                                        <th>Ventas</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                  try {
-                    $sql = "SELECT vendedor.nomVen, anio, ventasU, promocionU, garantiaU, facturadoV, historial_ventas.codVen, historial_ventas.codLinea ";
-                    $sql .= " FROM historial_ventas ";
-                    $sql .= " INNER JOIN vendedor ";
-                    $sql .= " ON vendedor.codVen = historial_ventas.codVen ";
-                    $sql .= " WHERE historial_ventas.codLinea = $codLinea ";     
-                    $resultado = $con->query($sql);
-                  } catch (Exception $e) {
-                    $error = $e->getMessage();
-                    echo $error;
-                  }
-                  while ($historial_ventas = $resultado->fetch_assoc()) { ?>
-                                    <tr>
-                                        <td><?php echo $historial_ventas['nomVen']; ?></td>
-                                        <td><?php echo $historial_ventas['anio']; ?></td>
-                                        <td><?php echo $historial_ventas['ventasU']; ?></td>
-                                        <td><?php echo $historial_ventas['promocionU']; ?></td>
-                                        <td><?php echo $historial_ventas['garantiaU']; ?></td>
-                                        <td> <i class="fas fa-dollar-sign"></i>
-                                            <?php echo $historial_ventas['facturadoV']; ?></td>
+                        <?php
+                        include("modal/vendedor-linea/registro_presupuesto_anio.php");
+                        include("modal/vendedor-linea/editar_presupuesto_anio.php");
+                        ?>
+                        <form class="form-horizontal" role="form" id="datos_cotizacion">
 
-                                        <td>
-                                            <a href="crea-pres-anio.php?codVen=<?php echo $historial_ventas['codVen']?>&codLinea=<?php echo $historial_ventas['codLinea']?>">
-                                            <button type="submit" data-toggle="modal" data-target="#formUsuario" class="btn btn-outline-secondary" > <i class="fas fa-plus-circle" ></i> Nuevo</button>  
-                                            </a>
+                            <div class="form-group row ">
+                                <label for="q" class="col-md-2 control-label">Vendedor Linea</label>
+                                <input type="hidden"  id="codLinea" value="<?php echo $codLinea?>">
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="q" placeholder="Código - Nombre" onkeyup='load(1);'>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <button type="button" class="btn btn-default" onclick='load(1);'>
+                                        <span><i class="fas fa-search"></i></span> Buscar</button>
+                                    <span id="loader"></span>
+                                </div>
 
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                            </div>
 
 
-                                </tbody>
 
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                        </form>
+                        <div id="resultados"></div><!-- Carga los datos ajax -->
+                        <div class='outer_div'></div><!-- Carga los datos ajax -->
+
                     </div>
-                    <!-- /.card -->
                 </div>
-                <!-- /.col -->
+
             </div>
-            <!-- /.row -->
+            <!-- /.card-header -->
+
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.card -->
     </section>
     <!-- /.content -->
 
@@ -110,3 +85,4 @@ include_once('templates/navegacion.php');
 
 include_once('templates/footer.php');
 ?>
+<script type="text/javascript" src="js/vendedor-linea/vendedor-linea.js"></script>

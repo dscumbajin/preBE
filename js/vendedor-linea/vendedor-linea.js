@@ -4,9 +4,11 @@
 
 		function load(page) {
 		    var q = $("#q").val();
+		    var codLinea = $("#codLinea").val();
+
 		    $("#loader").fadeIn('slow');
 		    $.ajax({
-		        url: './ajax/presupuesto/buscar_presupuesto_mes.php?action=ajax&page=' + page + '&q=' + q,
+		        url: './ajax/vendedor-linea/buscar_vendedor_linea.php?action=ajax&page=' + page + '&q=' + q + '&codLinea=' + codLinea,
 		        beforeSend: function(objeto) {
 		            $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 		        },
@@ -20,10 +22,11 @@
 
 		function eliminar(id) {
 		    var q = $("#q").val();
-		    if (confirm("Realmente deseas eliminar el usuario")) {
+
+		    if (confirm("Realmente deseas eliminar el vendedor")) {
 		        $.ajax({
 		            type: "GET",
-		            url: "./ajax/usuario/buscar_usuarios.php",
+		            url: "./ajax/vendedor-linea/buscar_vendedor_linea.php",
 		            data: "id=" + id,
 		            "q": q,
 		            beforeSend: function(objeto) {
@@ -37,13 +40,13 @@
 		    }
 		}
 
-		$("#guardar_usuario").submit(function(event) {
+		$("#guardar_vendedor").submit(function(event) {
 		    $('#guardar_datos').attr("disabled", true);
 
 		    var parametros = $(this).serialize();
 		    $.ajax({
 		        type: "POST",
-		        url: "ajax/usuario/nuevo_usuario.php",
+		        url: "ajax/vendedor/nuevo_vendedor.php",
 		        data: parametros,
 		        beforeSend: function(objeto) {
 		            $("#resultados_ajax").html("Mensaje: Cargando...");
@@ -57,13 +60,13 @@
 		    event.preventDefault();
 		})
 
-		$("#editar_usuario").submit(function(event) {
+		$("#editar_vendedor").submit(function(event) {
 		    $('#actualizar_datos').attr("disabled", true);
 
 		    var parametros = $(this).serialize();
 		    $.ajax({
 		        type: "POST",
-		        url: "ajax/usuario/editar_usuario.php",
+		        url: "ajax/vendedor/editar_vendedor.php",
 		        data: parametros,
 		        beforeSend: function(objeto) {
 		            $("#resultados_ajax2").html("Mensaje: Cargando...");
@@ -72,25 +75,28 @@
 		            $("#resultados_ajax2").html(datos);
 		            $('#actualizar_datos').attr("disabled", false);
 		            load(1);
-
 		        }
 		    });
-		    setTimeout(() => {
-		        location.reload();
-		    }, 200);
 		    event.preventDefault();
 		})
 
 		function obtener_datos(id) {
-		    var usuario_usuario = $("#usuario_usuario" + id).val();
-		    var nombre_usuario = $("#nombre_usuario" + id).val();
-		    var email_usuario = $("#email_usuario" + id).val();
-		    var perfil_usuario = $("#perfil_usuario" + id).val();
 
-		    $("#mod_usuario").val(usuario_usuario);
-		    $("#mod_nombre").val(nombre_usuario);
-		    $("#mod_email").val(email_usuario);
-		    $("#mod_perfil").val(perfil_usuario);
-		    $("#mod_id").val(id);
+		    var cod_vendedor = $("#cod_vendedor" + id).val();
+		    var cod_linea = $("#estado_vendedor" + id).val();
+		    var anio_historial = $("#anio_historial" + id).val();
+		    var vendidas_histroial = $("#vendidas_histroial" + id).val();
+		    var promocion_historial = $("#promocion_historial" + id).val();
+		    var garantia_historial = $("#garantia_historial" + id).val();
+		    var facturado_historial = $("#facturado_historial" + id).val();
+
+		    console.log(anio_historial);
+		    $("#codVen").val(cod_vendedor);
+		    $("#codLinea").val(cod_linea);
+		    $("#vendidas").val(vendidas_histroial);
+		    $("#promocion").val(promocion_historial);
+		    $("#garantia").val(garantia_historial);
+		    $("#facturado").val(facturado_historial);
+
 
 		}

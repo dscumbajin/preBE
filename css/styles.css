@@ -147,3 +147,76 @@ th {
     padding: 10px 20px !important;
     font-size: 14px !important;
 }
+
+.modal-title,
+td,
+th,
+tr,
+thead,
+tbody {
+    font-family: 'Roboto', sans-serif;
+}
+
+@media(max-width:770px) {
+    .modal {
+        padding: 0px !important;
+    }
+    .modal .modal-dialog {
+        margin: 10px !important;
+    }
+}
+
+@media(max-width:1000px) {
+    .modal .col-md-10 {
+        width: 100% !important;
+    }
+}
+
+@media(max-width:1000px) {
+    .modal .modal-body {
+        flex-wrap: wrap;
+    }
+    .modal .seccion1,
+    .modal .seccion2 {
+        flex: 0 1 100% !important;
+        height: 100%;
+    }
+    .modal #marca_general {
+        display: flex !important;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .modal #marca_general .principal-nav {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 30%;
+    }
+}
+
+@media(max-width:500px) {
+    .modal .modal-body {
+        flex-wrap: wrap;
+    }
+    .modal .seccion1,
+    .modal .seccion2 {
+        flex: 0 1 100% !important;
+    }
+    .modal #marca_general {
+        display: flex !important;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .modal #marca_general .principal-nav {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1 100%;
+    }
+    .modal .col-md-10 {
+        width: 100% !important;
+    }
+}
+
+.modal .modal-title {
+    font-size: 15px;
+    margin: auto;
+}

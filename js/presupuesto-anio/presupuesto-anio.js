@@ -6,7 +6,7 @@
 		    var q = $("#q").val();
 		    $("#loader").fadeIn('slow');
 		    $.ajax({
-		        url: './ajax/presupuesto/buscar_presupuesto_mes.php?action=ajax&page=' + page + '&q=' + q,
+		        url: './ajax/presupuesto-anio/buscar_presupuesto_anio.php?action=ajax&page=' + page + '&q=' + q,
 		        beforeSend: function(objeto) {
 		            $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 		        },
@@ -72,12 +72,8 @@
 		            $("#resultados_ajax2").html(datos);
 		            $('#actualizar_datos').attr("disabled", false);
 		            load(1);
-
 		        }
 		    });
-		    setTimeout(() => {
-		        location.reload();
-		    }, 200);
 		    event.preventDefault();
 		})
 

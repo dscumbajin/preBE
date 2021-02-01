@@ -128,17 +128,36 @@
                       </ul>
                   </li>
 
+
                   <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
                           <i class=" nav-icon fas fa-file-invoice-dollar"></i>
                           <p>
-                              Presupuestos
+                              Presupuestos por año
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="lista-presupuestos.php" class="nav-link">
+                              <a href="lista-presupuestos-anio.php" class="nav-link">
+                                  <i class="nav-icon fas fa-list-ul"></i>
+                                  <p>Ver Todos</p>
+                              </a>
+                          </li>
+                      </ul>
+                  </li>
+
+                  <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                          <i class=" nav-icon fas fa-file-invoice-dollar"></i>
+                          <p>
+                              Presupuestos por mes
+                              <i class="fas fa-angle-left right"></i>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="lista-presupuestos-mes.php" class="nav-link">
                                   <i class="nav-icon fas fa-list-ul"></i>
                                   <p>Ver Todos</p>
                               </a>
