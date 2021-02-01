@@ -5,8 +5,8 @@ include_once('templates/header.php');
 
 session_start();
 if (!isset($_SESSION['user_login_status']) and $_SESSION['user_login_status'] != 1) {
-  header("location: login.php");
-  exit;
+    header("location: login.php");
+    exit;
 }
 
 include_once('templates/barra.php');
@@ -19,13 +19,11 @@ include_once('templates/navegacion.php');
         <div class="container-fluid center">
             <div class="row mb-2">
                 <div class="col-sm-10">
-                    <h1>Lineas de negocio</h1>
+                    <h1>Segmento</h1>
                 </div>
-
-                <button type="submit" data-toggle="modal" data-target="#formUsuario" class="btn btn-dark float-right">
-                    <i class="fas fa-plus-circle"></i> Nuevo</button>
-
-                <?php include_once('modal/crear-usuario.php'); ?>
+                <div class="btn-group pull-right">
+                    <button type='button' class="btn btn-info" data-toggle="modal" data-target="#nuevoSegmento"><span><i class="fas fa-plus"></i></span> Nuevo</button>
+                </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -33,56 +31,47 @@ include_once('templates/navegacion.php');
 
     <!-- Main content -->
     <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
+        <div class="card">
+            <div class="container">
+                <br>
+                <div class="panel panel-info">
 
-                    <div class="card">
+                    <div class="panel-body">
 
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="registros" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Código</th>
-                                        <th>Segmento</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                  try {
-                    $sql = "SELECT * FROM segmento ";
-                    $resultado = $con->query($sql);
-                  } catch (Exception $e) {
-                    $error = $e->getMessage();
-                    echo $error;
-                  }
-                  while ($segmento = $resultado->fetch_assoc()) { ?>
-                                    <tr>
-                                        <td><?php echo $segmento['codSeg']; ?></td>
-                                        <td><?php echo $segmento['desSeg']; ?></td>
-                                      
-                                        <td>
+                        <?php
+                        include("modal/segmento/registro_segmentos.php");
+                        include("modal/segmento/editar_segmentos.php");
+                        ?>
+                        <form class="form-horizontal" role="form" id="datos_cotizacion">
 
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                            <div class="form-group row ">
+                                <label for="q" class="col-md-2 control-label">Segmentos</label>
+
+                                <div class="col-md-5">
+                                    <input type="text" class="form-control" id="q" placeholder="Código - Nombre" onkeyup='load(1);'>
+                                </div>
+                                <div class="col-md-3 ">
+                                    <button type="button" class="btn btn-default" onclick='load(1);'>
+                                        <span><i class="fas fa-search"></i></span> Buscar</button>
+                                    <span id="loader"></span>
+                                </div>
+
+                            </div>
 
 
-                                </tbody>
 
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                        </form>
+                        <div id="resultados"></div><!-- Carga los datos ajax -->
+                        <div class='outer_div'></div><!-- Carga los datos ajax -->
+
                     </div>
-                    <!-- /.card -->
                 </div>
-                <!-- /.col -->
+
             </div>
-            <!-- /.row -->
+            <!-- /.card-header -->
+
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.card -->
     </section>
     <!-- /.content -->
 
@@ -94,3 +83,4 @@ include_once('templates/navegacion.php');
 
 include_once('templates/footer.php');
 ?>
+<script type="text/javascript" src="js/segmento/segmentos.js"></script>

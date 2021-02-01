@@ -73,3 +73,77 @@
 .btn-success:hover {
     background: black;
 }
+
+
+/*paginacion*/
+
+.paginacion {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #495560;
+    border-color: #fff;
+}
+
+.panel-info {
+    border-color: #fff !important;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    z-index: 2;
+    color: #fff;
+    background-color: #495560;
+    border-color: #ddd;
+}
+
+a:focus,
+a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+a {
+    color: #495560;
+    text-decoration: none;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #495560;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #495560 !important;
+    color: #fff;
+    font-weight: 500 !important;
+    font-weight: bold;
+    text-align: center;
+    border-right: 1px solid #c8c8c8;
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+}

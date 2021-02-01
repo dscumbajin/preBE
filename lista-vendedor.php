@@ -21,10 +21,9 @@ include_once('templates/navegacion.php');
         <div class="col-sm-10">
           <h1>Vendedores</h1>
         </div>
-
-        <button type="submit" data-toggle="modal" data-target="#formUsuario" class="btn btn-dark float-right"> <i class="fas fa-plus-circle"></i> Nuevo</button>
-
-        <?php include_once('modal/crear-usuario.php'); ?>
+        <div class="btn-group pull-right">
+          <button type='button' class="btn btn-info" data-toggle="modal" data-target="#nuevoVendedor"><span><i class="fas fa-plus"></i></span> Nuevo Vendedor</button>
+        </div>
       </div>
     </div><!-- /.container-fluid -->
   </section>
@@ -32,66 +31,49 @@ include_once('templates/navegacion.php');
 
   <!-- Main content -->
   <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
 
-          <div class="card">
+    <div class="card">
+      <div class="container">
+        <br>
+        <div class="panel panel-info">
 
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="registros" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  try {
-                    $sql = "SELECT * FROM vendedor ";
-                    $resultado = $con->query($sql);
-                  } catch (Exception $e) {
-                    $error = $e->getMessage();
-                    echo $error;
-                  }
-                  while ($vendedor = $resultado->fetch_assoc()) { ?>
-                    <tr>
-                      <td><?php echo $vendedor['codVen']; ?></td>
-                      <td><?php echo $vendedor['nomVen']; ?></td>
-                      <td>
-                        <?php
-                        if ($vendedor['estadoVen'] == 1) {
-                          
-                          echo '<h6><span class="badge badge-primary">Activo</span></h6>';
-                        } else {
-                          echo '<h6><span class="badge badge-danger">Inactivo</span></h6>';
-                        }
-                        ?>
-                      </td>
-                      <td>
-                       
-                      </td>
-                    </tr>
-                  <?php } ?>
+          <div class="panel-body">
+
+            <?php
+            include("modal/vendedor/registro_vendedores.php");
+            include("modal/vendedor/editar_vendedores.php");
+            ?>
+            <form class="form-horizontal" role="form" id="datos_cotizacion">
+
+              <div class="form-group row ">
+                <label for="q" class="col-md-2 control-label">Vendedor</label>
+
+                <div class="col-md-5">
+                  <input type="text" class="form-control" id="q" placeholder="Código - Nombre" onkeyup='load(1);'>
+                </div>
+                <div class="col-md-3 ">
+                  <button type="button" class="btn btn-default" onclick='load(1);'>
+                    <span><i class="fas fa-search"></i></span> Buscar</button>
+                  <span id="loader"></span>
+                </div>
+
+              </div>
 
 
-                </tbody>
 
-              </table>
-            </div>
-            <!-- /.card-body -->
+            </form>
+            <div id="resultados"></div><!-- Carga los datos ajax -->
+            <div class='outer_div'></div><!-- Carga los datos ajax -->
+
           </div>
-          <!-- /.card -->
         </div>
-        <!-- /.col -->
+
       </div>
-      <!-- /.row -->
+      <!-- /.card-header -->
+
     </div>
-    <!-- /.container-fluid -->
+    <!-- /.card -->
+
   </section>
   <!-- /.content -->
 
@@ -103,3 +85,4 @@ include_once('templates/navegacion.php');
 
 include_once('templates/footer.php');
 ?>
+<script type="text/javascript" src="js/vendedor/vendedores.js"></script>

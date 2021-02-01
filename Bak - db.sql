@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Versión del servidor:         10.4.10-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             11.0.0.5919
+-- HeidiSQL Versión:             10.3.0.5771
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,13 +28,13 @@ CREATE TABLE IF NOT EXISTS `admins` (
   UNIQUE KEY `usuario` (`usuario`),
   KEY `FK_admins_perfil` (`idPerfil`),
   CONSTRAINT `FK_admins_perfil` FOREIGN KEY (`idPerfil`) REFERENCES `perfil` (`idPerfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla presupuestos_ventas.admins: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla presupuestos_ventas.admins: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
 INSERT INTO `admins` (`idUsu`, `usuario`, `nombreUsu`, `password`, `mail`, `idPerfil`) VALUES
 	(1, 'admin', 'Administrador', '$2y$10$MPVHzZ2ZPOWmtUUGCq3RXu31OTB.jo7M9LZ7PmPQYmgETSNn19ejO', 'sistemas2@bateriasecuador.com', 2),
-	(2, 'user', 'darwin cumbajin', '$2y$10$MPVHzZ2ZPOWmtUUGCq3RXu31OTB.jo7M9LZ7PmPQYmgETSNn19ejO', 'dscumbajin@uce.edu.ec', 1);
+	(3, 'prueba', 'Darwin', '$2y$10$MPVHzZ2ZPOWmtUUGCq3RXu31OTB.jo7M9LZ7PmPQYmgETSNn19ejO', 'darwincumbajin7@hotmail.com', 1);
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.historial_ventas
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `historial_ventas` (
   CONSTRAINT `FK_historialven_vendedor` FOREIGN KEY (`codVen`) REFERENCES `vendedor` (`codVen`)
 ) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla presupuestos_ventas.historial_ventas: ~230 rows (aproximadamente)
+-- Volcando datos para la tabla presupuestos_ventas.historial_ventas: ~246 rows (aproximadamente)
 /*!40000 ALTER TABLE `historial_ventas` DISABLE KEYS */;
 INSERT INTO `historial_ventas` (`idHisVen`, `anio`, `ventasU`, `promocionU`, `garantiaU`, `facturadoV`, `codVen`, `codLinea`) VALUES
 	(1, '2019', 659, 31, 23, 54533.84, '15', '201'),
@@ -316,6 +316,7 @@ CREATE TABLE IF NOT EXISTS `listalinea` (
 -- Volcando datos para la tabla presupuestos_ventas.listalinea: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `listalinea` DISABLE KEYS */;
 INSERT INTO `listalinea` (`codLinea`, `nomLinea`, `estadoLinea`) VALUES
+	('001', 'Prueba', _binary 0x30),
 	('108', 'TRITURADO', _binary 0x30),
 	('124', 'RECICLADORA REFINACION (exp)', _binary 0x30),
 	('201', 'BATERIAS ECUADOR', _binary 0x31),
@@ -3728,31 +3729,31 @@ INSERT INTO `presupuesto_mes` (`idPresMes`, `idPresAnio`, `mes`, `cantMesU`, `ca
 
 -- Volcando estructura para tabla presupuestos_ventas.segmento
 CREATE TABLE IF NOT EXISTS `segmento` (
-  `codSeg` varchar(50) NOT NULL DEFAULT '0',
+  `codSeg` int(11) NOT NULL AUTO_INCREMENT,
   `desSeg` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`codSeg`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla presupuestos_ventas.segmento: ~17 rows (aproximadamente)
 /*!40000 ALTER TABLE `segmento` DISABLE KEYS */;
 INSERT INTO `segmento` (`codSeg`, `desSeg`) VALUES
-	('0', 'ND'),
-	('1', 'CALL CENTER DISTRIBUIDORES'),
-	('10', 'COBERTURA SEG 3-4-5'),
-	('11', 'OTRAS VENTAS'),
-	('12', 'OTROS CANALES'),
-	('13', 'PUNTOS DE SERVICIO'),
-	('14', 'SEG 5'),
-	('15', 'SERVICIO DOMICILIO'),
-	('16', 'SUPERMERCADOS'),
-	('2', 'CALL CENTER INSTITUCIONAL'),
-	('3', 'COBERTURA SEG 0-1-2'),
-	('4', 'COBERTURA SEG 3-4-5'),
-	('5', 'COBERTURA SEG 0-1-3'),
-	('6', 'COBERTURA SEG 0-1-4'),
-	('7', 'COBERTURA SEG 0-1-5'),
-	('8', 'COBERTURA SEG 0-1-6'),
-	('9', 'COBERTURA SEG 0-1-7');
+	(1, 'CALL CENTER DISTRIBUIDORES'),
+	(2, 'CALL CENTER INSTITUCIONAL'),
+	(3, 'COBERTURA SEG 0-1-2'),
+	(4, 'COBERTURA SEG 3-4-5'),
+	(5, 'COBERTURA SEG 0-1-3'),
+	(6, 'COBERTURA SEG 0-1-4'),
+	(7, 'COBERTURA SEG 0-1-5'),
+	(8, 'COBERTURA SEG 0-1-6'),
+	(9, 'COBERTURA SEG 0-1-7'),
+	(10, 'COBERTURA SEG 3-4-5'),
+	(11, 'OTRAS VENTAS'),
+	(12, 'OTROS CANALES'),
+	(13, 'PUNTOS DE SERVICIO'),
+	(14, 'SEG 5'),
+	(15, 'SERVICIO DOMICILIO'),
+	(16, 'SUPERMERCADOS'),
+	(17, 'ND');
 /*!40000 ALTER TABLE `segmento` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.vendedor
@@ -3760,68 +3761,68 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
   `codVen` varchar(50) NOT NULL DEFAULT '0',
   `nomVen` varchar(200) NOT NULL,
   `estadoVen` binary(1) NOT NULL DEFAULT '1',
-  `codSeg` varchar(50) NOT NULL DEFAULT '0',
+  `codSeg` int(11) NOT NULL,
   PRIMARY KEY (`codVen`),
   KEY `FK_vendedor_segmento` (`codSeg`),
   CONSTRAINT `FK_vendedor_segmento` FOREIGN KEY (`codSeg`) REFERENCES `segmento` (`codSeg`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla presupuestos_ventas.vendedor: ~49 rows (aproximadamente)
+-- Volcando datos para la tabla presupuestos_ventas.vendedor: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `vendedor` DISABLE KEYS */;
 INSERT INTO `vendedor` (`codVen`, `nomVen`, `estadoVen`, `codSeg`) VALUES
-	('00', 'FACTURADOR PLANTA', _binary 0x31, '0'),
-	('100', 'FABRIBAT CIA LTDA', _binary 0x31, '12'),
-	('102', '200 FACTURACION QUINCHE', _binary 0x31, '13'),
-	('104', 'CALLCENTER DISTRIBUIDORES GYE', _binary 0x31, '1'),
-	('130', '280 FACTURACION MANTA', _binary 0x31, '13'),
-	('140', '230 FACTURACION LATACUNGA', _binary 0x31, '0'),
-	('15', '30 FACTURADORA CUENCA', _binary 0x31, '13'),
-	('150', 'VENTA DOMICILIO GUAYAQUIL', _binary 0x31, '15'),
-	('18', '10 FACTURADORA OCCIDENTAL', _binary 0x31, '13'),
-	('190', 'VENTA DIRECTA', _binary 0x31, '0'),
-	('210', 'SUPERMERCADOS', _binary 0x31, '16'),
-	('220', 'VENDEDOR GUAYAQUIL', _binary 0x31, '0'),
-	('221', 'FACTURADOR MATRIZ', _binary 0x31, '0'),
-	('225', '225 FACTURACION IBARRA 2', _binary 0x31, '0'),
-	('25', '20 FACTURADORA GUAYAQUIL', _binary 0x31, '13'),
-	('255', '255 FACTURACION STO DOMINGO 3', _binary 0x31, '0'),
-	('28', 'EMPLEADOS', _binary 0x31, '12'),
-	('310', '310  FACTURACION RIOBAMBA', _binary 0x31, '0'),
-	('36', '210 FACTURACION AMBATO', _binary 0x31, '13'),
-	('40', 'CUENTAS CLAVES NORTE', _binary 0x31, '4'),
-	('50', '100 FACTURACION SUR', _binary 0x31, '13'),
-	('51', '140 FACTURACION TUMBACO 1', _binary 0x31, '13'),
-	('52', '160 FACTURACION SAN RAFAEL 1', _binary 0x31, '13'),
-	('57', 'FACTURACION CUE SUR', _binary 0x31, '0'),
-	('58', '270 FACTURACION GYE CENTRO', _binary 0x31, '13'),
-	('59', 'VENDEDOR IBARRA TULCAN', _binary 0x31, '3'),
-	('62', '70 FACTURACION UIO NORTE', _binary 0x31, '13'),
-	('63', 'VENDEDOR STO DGO ESMERALDAS', _binary 0x31, '3'),
-	('65', 'VENDEDOR MANABI', _binary 0x31, '3'),
-	('66', 'CLIENTES SEG 5', _binary 0x31, '14'),
-	('67', '240 FACTURACION STO DOMINGO 1', _binary 0x31, '13'),
-	('68', '40 FACTURACION CARAPUNGO 1', _binary 0x31, '13'),
-	('70', '220 FACTURACION IBARRA', _binary 0x31, '13'),
-	('71', 'VENTA DOMICILIO OCCIDENTAL', _binary 0x31, '15'),
-	('75', 'VENDEDOR CUENCA', _binary 0x31, '3'),
-	('76', 'VENDEDOR ZONA CENTRAL ', _binary 0x31, '3'),
-	('79', 'CALLCENTER INSTITUCIONAL', _binary 0x31, '0'),
-	('80', 'CALLCENTER DISTRIBUIDORES', _binary 0x31, '1'),
-	('82', 'VENDEDOR COCA LAGO AGRIO', _binary 0x31, '3'),
-	('83', '150 FACTURACION TUMBACO 2', _binary 0x31, '13'),
-	('84', '170 FACTURACION SAN RAFAEL 2', _binary 0x31, '13'),
-	('85', '130 FACTURACION GUAMANI', _binary 0x31, '13'),
-	('87', 'MICHAEL HUFF', _binary 0x31, '11'),
-	('88', '60 FACTURACION OFELIA', _binary 0x31, '13'),
-	('89', '90 FACTURACION VILLAFLORA', _binary 0x31, '13'),
-	('90', '180 FACTURACION SANGOLQUI', _binary 0x31, '13'),
-	('91', '80 FACTURACION INCA', _binary 0x31, '13'),
-	('92', '260 FACTURACION ESMERALDAS', _binary 0x31, '13'),
-	('93', 'CUENTAS CLAVES SUR', _binary 0x31, '4'),
-	('94', '50 FACTURACION CARAPUNGO 2', _binary 0x31, '13'),
-	('95', '250 FACTURACION STO DOMINGO 2', _binary 0x31, '0'),
-	('97', '110 FACTURACION MARISCAL', _binary 0x31, '13'),
-	('98', '120 FACTURACION QUITUMBE', _binary 0x31, '0');
+	('00', 'FACTURADOR PLANTA', _binary 0x31, 17),
+	('100', 'FABRIBAT CIA LTDA', _binary 0x31, 12),
+	('102', '200 FACTURACION QUINCHE', _binary 0x31, 13),
+	('104', 'CALLCENTER DISTRIBUIDORES GYE', _binary 0x31, 1),
+	('130', '280 FACTURACION MANTA', _binary 0x31, 13),
+	('140', '230 FACTURACION LATACUNGA', _binary 0x31, 17),
+	('15', '30 FACTURADORA CUENCA', _binary 0x31, 13),
+	('150', 'VENTA DOMICILIO GUAYAQUIL', _binary 0x31, 15),
+	('18', '10 FACTURADORA OCCIDENTAL', _binary 0x31, 13),
+	('190', 'VENTA DIRECTA', _binary 0x31, 17),
+	('210', 'SUPERMERCADOS', _binary 0x31, 16),
+	('220', 'VENDEDOR GUAYAQUIL', _binary 0x31, 17),
+	('221', 'FACTURADOR MATRIZ', _binary 0x31, 17),
+	('225', '225 FACTURACION IBARRA 2', _binary 0x31, 17),
+	('25', '20 FACTURADORA GUAYAQUIL', _binary 0x31, 13),
+	('255', '255 FACTURACION STO DOMINGO 3', _binary 0x31, 17),
+	('28', 'EMPLEADOS', _binary 0x31, 12),
+	('310', '310  FACTURACION RIOBAMBA', _binary 0x31, 17),
+	('36', '210 FACTURACION AMBATO', _binary 0x31, 13),
+	('40', 'CUENTAS CLAVES NORTE', _binary 0x31, 4),
+	('50', '100 FACTURACION SUR', _binary 0x31, 13),
+	('51', '140 FACTURACION TUMBACO 1', _binary 0x31, 13),
+	('52', '160 FACTURACION SAN RAFAEL 1', _binary 0x31, 13),
+	('57', 'FACTURACION CUE SUR', _binary 0x31, 17),
+	('58', '270 FACTURACION GYE CENTRO', _binary 0x31, 13),
+	('59', 'VENDEDOR IBARRA TULCAN', _binary 0x31, 3),
+	('62', '70 FACTURACION UIO NORTE', _binary 0x31, 13),
+	('63', 'VENDEDOR STO DGO ESMERALDAS', _binary 0x31, 3),
+	('65', 'VENDEDOR MANABI', _binary 0x31, 3),
+	('66', 'CLIENTES SEG 5', _binary 0x31, 14),
+	('67', '240 FACTURACION STO DOMINGO 1', _binary 0x31, 13),
+	('68', '40 FACTURACION CARAPUNGO 1', _binary 0x31, 13),
+	('70', '220 FACTURACION IBARRA', _binary 0x31, 13),
+	('71', 'VENTA DOMICILIO OCCIDENTAL', _binary 0x31, 15),
+	('75', 'VENDEDOR CUENCA', _binary 0x31, 3),
+	('76', 'VENDEDOR ZONA CENTRAL ', _binary 0x31, 3),
+	('79', 'CALLCENTER INSTITUCIONAL', _binary 0x31, 17),
+	('80', 'CALLCENTER DISTRIBUIDORES', _binary 0x31, 1),
+	('82', 'VENDEDOR COCA LAGO AGRIO', _binary 0x31, 3),
+	('83', '150 FACTURACION TUMBACO 2', _binary 0x31, 13),
+	('84', '170 FACTURACION SAN RAFAEL 2', _binary 0x31, 13),
+	('85', '130 FACTURACION GUAMANI', _binary 0x31, 13),
+	('87', 'MICHAEL HUFF', _binary 0x31, 11),
+	('88', '60 FACTURACION OFELIA', _binary 0x31, 13),
+	('89', '90 FACTURACION VILLAFLORA', _binary 0x31, 13),
+	('90', '180 FACTURACION SANGOLQUI', _binary 0x31, 13),
+	('91', '80 FACTURACION INCA', _binary 0x31, 13),
+	('92', '260 FACTURACION ESMERALDAS', _binary 0x31, 13),
+	('93', 'CUENTAS CLAVES SUR', _binary 0x31, 4),
+	('94', '50 FACTURACION CARAPUNGO 2', _binary 0x31, 13),
+	('95', '250 FACTURACION STO DOMINGO 2', _binary 0x31, 17),
+	('97', '110 FACTURACION MARISCAL', _binary 0x31, 13),
+	('98', '120 FACTURACION QUITUMBE', _binary 0x31, 17);
 /*!40000 ALTER TABLE `vendedor` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
