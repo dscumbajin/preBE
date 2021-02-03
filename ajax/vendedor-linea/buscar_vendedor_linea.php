@@ -31,7 +31,6 @@ if ($action == 'ajax') {
 	// escaping, additionally removing everything that could be (html/javascript-) code
 	$q = mysqli_real_escape_string($con, (strip_tags($_REQUEST['q'], ENT_QUOTES)));
 	$codLinea = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codLinea'], ENT_QUOTES)));
-	$str = strval($codLinea);
 	$aColumns = array('historial_ventas.anio','vendedor.nomVen','historial_ventas.codVen'); //Columnas de busqueda
 	$sTable = "historial_ventas, vendedor";
 	$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen  
@@ -102,7 +101,7 @@ if ($action == 'ajax') {
 					<input type="hidden" value="<?php echo $garantia_historial; ?>" id="garantia_historial<?php echo $id_historial; ?>">
 					<input type="hidden" value="<?php echo $facturado_historial; ?>" id="facturado_historial<?php echo $id_historial; ?>">
 
-					<tr>
+					<tr id = "registro<?php echo $id_historial?>">
 
 						<td><?php echo $nombre_vendedor; ?></td>
 						<td><?php echo $anio_historial; ?></td>

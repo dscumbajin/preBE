@@ -41,24 +41,25 @@
 		    }
 		}
 
-		$("#guardar_vendedor").submit(function(event) {
+		$("#guardar_pres_anio").submit(function(event) {
 		    $('#guardar_datos').attr("disabled", true);
 
 		    var parametros = $(this).serialize();
-		    $.ajax({
-		        type: "POST",
-		        url: "ajax/vendedor/nuevo_vendedor.php",
-		        data: parametros,
-		        beforeSend: function(objeto) {
-		            $("#resultados_ajax").html("Mensaje: Cargando...");
-		        },
-		        success: function(datos) {
-		            $("#resultados_ajax").html(datos);
-		            $('#guardar_datos').attr("disabled", false);
-		            load(1);
-		        }
-		    });
+		    /* 	    $.ajax({
+		    	        type: "POST",
+		    	        url: "ajax/vendedor/nuevo_vendedor.php",
+		    	        data: parametros,
+		    	        beforeSend: function(objeto) {
+		    	            $("#resultados_ajax").html("Mensaje: Cargando...");
+		    	        },
+		    	        success: function(datos) {
+		    	            $("#resultados_ajax").html(datos);
+		    	            $('#guardar_datos').attr("disabled", false);
+		    	            load(1);
+		    	        }
+		    	    }); */
 		    event.preventDefault();
+		    $("#formMes").show();
 		})
 
 		$("#editar_vendedor").submit(function(event) {
@@ -81,6 +82,15 @@
 		    event.preventDefault();
 		})
 
+		/* Campos ocultos */
+		$("#total_anio").hide();
+		$("#formMes").hide();
+
+		$('#close').click(function() {
+		    $("#total_anio").hide();
+		    $("#formMes").hide();
+		});
+
 		function obtener_datos(id) {
 
 		    var cod_vendedor = $("#cod_vendedor" + id).val();
@@ -90,14 +100,48 @@
 		    var promocion_historial = $("#promocion_historial" + id).val();
 		    var garantia_historial = $("#garantia_historial" + id).val();
 		    var facturado_historial = $("#facturado_historial" + id).val();
-
-		    console.log(anio_historial);
+		    var nombre_vendedor = $("#nombre_vendedor" + id).val();
+		    var nameLinea = $("#nameLinea").text();
 		    $("#codVen").val(cod_vendedor);
 		    $("#codLinea").val(cod_linea);
 		    $("#vendidas").val(vendidas_histroial);
 		    $("#promocion").val(promocion_historial);
 		    $("#garantia").val(garantia_historial);
 		    $("#facturado").val(facturado_historial);
+		    $("#vendedor").text(nombre_vendedor + ' - ' + nameLinea);
 
+
+		    $('#calcularAnio').click(function() {
+		        var numeroVendidas = $("#vendidas").val();
+		        numeroVendidas = parseInt(numeroVendidas);
+		        var incremento_anio = $("#incremento_anio").val();
+		        incremento_anio = parseInt(incremento_anio);
+		        var porcentaje = incremento_anio / 100;
+
+		        // Presupuesto nuevo año vendidos
+		        var ventasNuevo = numeroVendidas * porcentaje;
+		        var total = numeroVendidas + ventasNuevo;
+		        total = total.toFixed();
+		        $("#vendidasNuevo").val(total);
+
+		        // Promociones sumar el numero porcentaje
+		        var promocionesNuevo = $("#promocion").val() * porcentaje;
+		        var enteroPromoNuevo = promocionesNuevo.toFixed();
+		        $("#promocionNuevo").val(enteroPromoNuevo);
+
+		        // Garantias restar numero porcentaje
+		        var garantiaNuevo = $("#garantia").val() * porcentaje;
+		        var enteroGaraNuevo = garantiaNuevo.toFixed();
+		        $("#garantiaNuevo").val(enteroGaraNuevo);
+
+		        // Total año presu + promo + garant
+
+		        var presupuesto_total_anio = total + enteroPromoNuevo + enteroGaraNuevo;
+		        $("#totalAnio").val(presupuesto_total_anio);
+
+		        $("#total_anio").show();
+
+		    });
 
 		}
+		// Guardar presupuesto año
