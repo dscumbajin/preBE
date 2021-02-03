@@ -31,7 +31,7 @@ if ($action == 'ajax') {
 	// escaping, additionally removing everything that could be (html/javascript-) code
 	// idUsu, usuario, nombreUsu, password, mail, idPerfil
 	$q = mysqli_real_escape_string($con, (strip_tags($_REQUEST['q'], ENT_QUOTES)));
-	$aColumns = array('anio','mes','nomVen','nomLinea'); //Columnas de busqueda
+	$aColumns = array('anio', 'mes', 'nomVen', 'nomLinea'); //Columnas de busqueda
 	$sTable = "presupuesto_mes, presupuesto_anio, vendedor, listalinea, segmento";
 	$sWhere = " WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio AND 
 	presupuesto_anio.codVen = vendedor.codVen AND presupuesto_anio.codLinea = listalinea.codLinea
@@ -129,8 +129,8 @@ if ($action == 'ajax') {
 
 						<td><span>
 								<a href="#" title='Editar presupuesto' onclick="obtener_datos('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuesto"><i class="fas fa-pen editar"></i></a>
-								
-								
+
+
 								<!-- <a  href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"><i class="far fa-trash-alt eliminar"></i></a> -->
 							</span>
 						</td>

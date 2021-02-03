@@ -5,7 +5,7 @@
 		function load(page) {
 		    var q = $("#q").val();
 		    var codLinea = $("#codLinea").val();
-
+		    console.log(codLinea);
 		    $("#loader").fadeIn('slow');
 		    $.ajax({
 		        url: './ajax/vendedor-linea/buscar_vendedor_linea.php?action=ajax&page=' + page + '&q=' + q + '&codLinea=' + codLinea,
@@ -22,13 +22,14 @@
 
 		function eliminar(id) {
 		    var q = $("#q").val();
-
+		    var codLinea = $("#codLinea").val();
 		    if (confirm("Realmente deseas eliminar el vendedor")) {
 		        $.ajax({
 		            type: "GET",
 		            url: "./ajax/vendedor-linea/buscar_vendedor_linea.php",
 		            data: "id=" + id,
 		            "q": q,
+		            "codLinea": codLinea,
 		            beforeSend: function(objeto) {
 		                $("#resultados").html("Mensaje: Cargando...");
 		            },

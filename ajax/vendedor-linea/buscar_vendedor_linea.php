@@ -29,12 +29,12 @@ if (isset($_GET['id'])) {
 
 if ($action == 'ajax') {
 	// escaping, additionally removing everything that could be (html/javascript-) code
-	// idUsu, vendedor, nombreUsu, password, mail, idestado
 	$q = mysqli_real_escape_string($con, (strip_tags($_REQUEST['q'], ENT_QUOTES)));
 	$codLinea = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codLinea'], ENT_QUOTES)));
-	$aColumns = array('codVen', 'nomVen'); //Columnas de busqueda
+	$str = strval($codLinea);
+	$aColumns = array('historial_ventas.anio','vendedor.nomVen','historial_ventas.codVen'); //Columnas de busqueda
 	$sTable = "historial_ventas, vendedor";
-	$sWhere = "WHERE  historial_ventas.codVen = vendedor.codVen  
+	$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen  
 	AND historial_ventas.codLinea = $codLinea ";
 	if ($_GET['q'] != "") {
 		$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen 
@@ -45,7 +45,8 @@ if ($action == 'ajax') {
 		$sWhere = substr_replace($sWhere, "", -3);
 		$sWhere .= ')';
 	}
-	$sWhere .= " order by nomVen";
+	$sWhere .= "";
+
 	include '../pagination.php'; //include pagination file
 	//pagination variables
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page'])) ? $_REQUEST['page'] : 1;
