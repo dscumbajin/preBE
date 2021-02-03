@@ -31,7 +31,7 @@ if ($action == 'ajax') {
 	// escaping, additionally removing everything that could be (html/javascript-) code
 	$q = mysqli_real_escape_string($con, (strip_tags($_REQUEST['q'], ENT_QUOTES)));
 	$codLinea = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codLinea'], ENT_QUOTES)));
-	$aColumns = array('historial_ventas.anio','vendedor.nomVen','historial_ventas.codVen'); //Columnas de busqueda
+	$aColumns = array('historial_ventas.anio','vendedor.nomVen','historial_ventas.codVen', 'ventasU'); //Columnas de busqueda
 	$sTable = "historial_ventas, vendedor";
 	$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen  
 	AND historial_ventas.codLinea = $codLinea ";
@@ -44,7 +44,7 @@ if ($action == 'ajax') {
 		$sWhere = substr_replace($sWhere, "", -3);
 		$sWhere .= ')';
 	}
-	$sWhere .= "";
+	$sWhere .= " order by ventasU DESC ";
 
 	include '../pagination.php'; //include pagination file
 	//pagination variables

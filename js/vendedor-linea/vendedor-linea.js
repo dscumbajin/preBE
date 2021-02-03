@@ -43,6 +43,8 @@
 
 		$("#guardar_pres_anio").submit(function(event) {
 		    $('#guardar_datos').attr("disabled", true);
+		    $('#calcularAnio').attr("disabled", true);
+		    $("#incremento_anio").attr("disabled", true);
 
 		    var parametros = $(this).serialize();
 		    /* 	    $.ajax({
@@ -90,6 +92,8 @@
 		    $("#total_anio").hide();
 		    $("#formMes").hide();
 		    $('#guardar_datos').attr("disabled", false);
+		    $('#calcularAnio').attr("disabled", false);
+		    $("#incremento_anio").attr("disabled", false);
 		});
 
 		function obtener_datos(id) {
@@ -111,7 +115,9 @@
 		    $("#facturado").val(facturado_historial);
 		    $("#vendedor").text(nombre_vendedor + ' - ' + nameLinea);
 
-
+		    // si escribe en el campo habilitar el calcular
+		    // si esta habilitado calcular, habilitar guaradar
+		    // si no esta habilitado calcular desabilitar guardar
 		    $('#calcularAnio').click(function() {
 
 		        var numeroVendidas = $("#vendidas").val();
@@ -156,3 +162,19 @@
 
 		}
 		// Guardar presupuesto año
+
+
+
+
+		$(function() {
+		    // Clona la fila oculta que tiene los campos base, y la agrega al final de la tabla
+		    $("#adicional").on('click', function() {
+		        $("#tabla tbody tr:eq(0)").clone().removeClass('fila-fija').appendTo("#tabla");
+		    });
+
+		    // Evento que selecciona la fila y la elimina 
+		    $(document).on("click", ".eliminar", function() {
+		        var parent = $(this).parents().get(0);
+		        $(parent).remove();
+		    });
+		});

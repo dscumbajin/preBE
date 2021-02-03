@@ -1,31 +1,6 @@
 	<?php
 	if (isset($con)) {
 	?>
-	<!-- Modal -->
-	<!-- <div class="modal fade" id="nuevoPresupuestoAnio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Crear presupuesto año</h4>
-					</div>
-					<div class="modal-body">
-						<form class="form-horizontal" method="post" id="guardar_vendedor" name="guardar_vendedor">
-							<div id="resultados_ajax"></div>
-
-
-							
-
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-						<button type="submit" class="btn btn-primary" id="guardar_datos">Guardar datos</button>
-					</div>
-					</form>
-				</div>
-			</div>
-		</div> -->
-
 
 	<div class="modal fade" id="nuevoPresupuestoAnio">
 	    <div class="modal-dialog modal-xl">
@@ -44,10 +19,11 @@
 	                            <label for="incremento_anio" class="col-sm-3 col-form-label">Porcentaje de incremento
 	                                año</label>
 	                            <div class="col-sm-6">
-	                                <input type="int" class="form-control" id="incremento_anio" placeholder="Porcentaje" required>
-									<input type="hidden" name="vendidas" id="vendidas">
-									<input type="hidden" name="promocion" id="promocion">
-									<input type="hidden" name="garantia" id="garantia">
+	                                <input type="int" class="form-control" id="incremento_anio" placeholder="Porcentaje"
+	                                    required>
+	                                <input type="hidden" name="vendidas" id="vendidas">
+	                                <input type="hidden" name="promocion" id="promocion">
+	                                <input type="hidden" name="garantia" id="garantia">
 	                            </div>
 	                            <div class="col-sm-3">
 	                                <button type="button" class="btn btn-dark" id="calcularAnio">Calcular</button>
@@ -62,46 +38,290 @@
 	                            </div>
 	                            <div class="col-sm-3">
 	                                <span>Promociones</span>
-	                                <input type="text" class="form-control" id="promocionNuevo"disabled >
+	                                <input type="text" class="form-control" id="promocionNuevo" disabled>
 	                            </div>
 	                            <div class="col-sm-3">
 	                                <span>Garantias</span>
 	                                <input type="text" class="form-control" id="garantiaNuevo" disabled>
 	                            </div>
 	                            <div class="col-sm-3">
-	                                <span>Presupuesto +  Promos + Garantias</span>
+	                                <span>Presupuesto + Promos + Garantias</span>
 	                                <input type="text" class="form-control" id="totalAnio" disabled>
 	                            </div>
 	                        </div>
 	                    </div>
 	                    <!-- /.card-body -->
 	                    <div class="card-footer">
-	                        <button type="submit" class="btn btn-default float-right" id="guardar_datos">Guardar</button>
+	                        <button type="submit" class="btn btn-success float-right" id="guardar_datos">Guardar</button>
 	                    </div>
 	                    <!-- /.card-footer -->
 	                </form>
 
 	                <hr>
-					<form id="formMes" class="form-horizontal">
+	                <form id="formMes" class="form-horizontal">
 	                    <div class="card-body">
-	                        <div class="form-group row">
-	                            <label for="incremento_anio" class="col-sm-3 col-form-label">Mensual</label>
-	                     
-	                            <div class="col-sm-3">
-	                                <button type="button" class="btn btn-dark" id="calcularAnio">Calcular</button>
-	                            </div>
-	                        </div>
-	                        <hr>
 
-	                        <div class="form-group row" >
-	                          
+	                        <div class="form-group row">
+
+	                            <form method="post">
+	                                <h3 class="">Agregar presupuesto Mes</h3>
+	                                <table class="table" id="tabla">
+	                                    <th>Mes</th>
+	                                    <th>% </th>
+	                                    <th>Unidades Vendidas</th>
+	                                    <th>Unidades Promociones</th>
+	                                    <th>Unidades Garantía</th>
+	                                    <th>Total</th>
+
+
+	                                    <tr class="fila-fija">
+	                                        <td><span>Enero</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        <input type="hidden" required name="idPresAnio[]" />
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Febrero</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Marzo</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Abril</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Mayo</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Junio</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Julio</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Agosto</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Septiembre</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Octubre</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Noviembre</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                    <tr class="fila-fija">
+	                                        <td><span>Diciembre</span></td>
+	                                        <td><input class="form-control" required placeholder="%" /></td>
+	                                        
+											
+											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        </td>
+	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        </td>
+	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+	                                    </tr>
+	                                </table>
+
+	                                <div>
+	                                    <input type="submit" name="insertar" value="Guardar" class="btn btn-dark" />
+	                                    <!--  <button id="adicional" name="adicional" type="button" class="btn btn-warning"> Más
+	                                        + </button> -->
+
+	                                </div>
+	                            </form>
+	                            <?php
+
+												//////////////////////// PRESIONAR EL BOTÓN //////////////////////////
+												if(isset($_POST['insertar']))
+
+												{
+
+
+												$items1 = ($_POST['ventasMes']);
+												$items2 = ($_POST['promosMes']);
+												$items3 = ($_POST['']);
+												$items4 = ($_POST['grupo']);
+												
+												///////////// SEPARAR VALORES DE ARRAYS, EN ESTE CASO SON 4 ARRAYS UNO POR CADA INPUT (ID, promosMes,  Y GRUPO////////////////////)
+												while(true) {
+
+													//// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
+													$item1 = current($items1);
+													$item2 = current($items2);
+													$item3 = current($items3);
+													$item4 = current($items4);
+													
+													////// ASIGNARLOS A VARIABLES ///////////////////
+													$id=(( $item1 !== false) ? $item1 : ", &nbsp;");
+													$nom=(( $item2 !== false) ? $item2 : ", &nbsp;");
+													$carr=(( $item3 !== false) ? $item3 : ", &nbsp;");
+													$gru=(( $item4 !== false) ? $item4 : ", &nbsp;");
+
+													//// CONCATENAR LOS VALORES EN ORDEN PARA SU FUTURA INSERCIÓN ////////
+													$valores='('.$id.',"'.$nom.'","'.$carr.'","'.$gru.'"),';
+
+													//////// YA QUE TERMINA CON COMA CADA FILA, SE RESTA CON LA FUNCIÓN SUBSTR EN LA ULTIMA FILA /////////////////////
+													$valoresQ= substr($valores, 0, -1);
+													
+													///////// QUERY DE INSERCIÓN ////////////////////////////
+													$sql = "INSERT INTO alumnos (id_alumno, promosMes, , grupo) 
+													VALUES $valoresQ";
+
+													
+													$sqlRes=$conexion->query($sql) or mysql_error();
+
+													
+													// Up! Next Value
+													$item1 = next( $items1 );
+													$item2 = next( $items2 );
+													$item3 = next( $items3 );
+													$item4 = next( $items4 );
+													
+													// Check terminator
+													if($item1 === false && $item2 === false && $item3 === false && $item4 === false) break;
+									
+												}
+										
+												}
+
+											?>
+
 	                        </div>
 	                    </div>
-	                    <!-- /.card-body -->
-	                    <div class="card-footer">
-	                        <button type="submit" class="btn btn-default float-right">Guardar</button>
-	                    </div>
-	                    <!-- /.card-footer -->
 	                </form>
 
 
