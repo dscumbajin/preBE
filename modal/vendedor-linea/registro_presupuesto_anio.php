@@ -58,19 +58,19 @@
 	                        <div class="form-group row" id="total_anio">
 	                            <div class="col-sm-3">
 	                                <span>Ventas</span>
-	                                <input type="text" class="form-control" id="vendidasNuevo" >
+	                                <input type="text" class="form-control" id="vendidasNuevo" disabled>
 	                            </div>
 	                            <div class="col-sm-3">
 	                                <span>Promociones</span>
-	                                <input type="text" class="form-control" id="promocionNuevo" >
+	                                <input type="text" class="form-control" id="promocionNuevo"disabled >
 	                            </div>
 	                            <div class="col-sm-3">
 	                                <span>Garantias</span>
-	                                <input type="text" class="form-control" id="garantiaNuevo" >
+	                                <input type="text" class="form-control" id="garantiaNuevo" disabled>
 	                            </div>
 	                            <div class="col-sm-3">
 	                                <span>Presupuesto +  Promos + Garantias</span>
-	                                <input type="text" class="form-control" id="totalAnio" >
+	                                <input type="text" class="form-control" id="totalAnio" disabled>
 	                            </div>
 	                        </div>
 	                    </div>

@@ -89,6 +89,7 @@
 		$('#close').click(function() {
 		    $("#total_anio").hide();
 		    $("#formMes").hide();
+		    $('#guardar_datos').attr("disabled", false);
 		});
 
 		function obtener_datos(id) {
@@ -112,31 +113,41 @@
 
 
 		    $('#calcularAnio').click(function() {
+
 		        var numeroVendidas = $("#vendidas").val();
 		        numeroVendidas = parseInt(numeroVendidas);
+
+		        var numeroPromocion = $("#promocion").val();
+		        numeroPromocion = parseInt(numeroPromocion);
+
+		        var numeroGarantia = $("#garantia").val();
+		        numeroGarantia = parseInt(numeroGarantia);
+
 		        var incremento_anio = $("#incremento_anio").val();
 		        incremento_anio = parseInt(incremento_anio);
 		        var porcentaje = incremento_anio / 100;
 
 		        // Presupuesto nuevo año vendidos
 		        var ventasNuevo = numeroVendidas * porcentaje;
-		        var total = numeroVendidas + ventasNuevo;
-		        total = total.toFixed();
-		        $("#vendidasNuevo").val(total);
+		        var total_vendidas = numeroVendidas + ventasNuevo;
+		        total_vendidas = Math.round(total_vendidas);
+		        $("#vendidasNuevo").val(total_vendidas);
 
 		        // Promociones sumar el numero porcentaje
-		        var promocionesNuevo = $("#promocion").val() * porcentaje;
-		        var enteroPromoNuevo = promocionesNuevo.toFixed();
-		        $("#promocionNuevo").val(enteroPromoNuevo);
+		        var promocionesNuevo = numeroPromocion * porcentaje;
+		        var total_promos = numeroPromocion + promocionesNuevo;
+		        total_promos = Math.round(total_promos);
+		        $("#promocionNuevo").val(total_promos);
 
 		        // Garantias restar numero porcentaje
-		        var garantiaNuevo = $("#garantia").val() * porcentaje;
-		        var enteroGaraNuevo = garantiaNuevo.toFixed();
-		        $("#garantiaNuevo").val(enteroGaraNuevo);
+		        var garantiaNuevo = numeroGarantia * porcentaje;
+		        var total_garantia = numeroGarantia - garantiaNuevo;
+		        total_garantia = Math.round(total_garantia);
+		        $("#garantiaNuevo").val(total_garantia);
 
 		        // Total año presu + promo + garant
 
-		        var presupuesto_total_anio = total + enteroPromoNuevo + enteroGaraNuevo;
+		        var presupuesto_total_anio = total_vendidas + total_promos + total_garantia;
 		        $("#totalAnio").val(presupuesto_total_anio);
 
 		        $("#total_anio").show();
