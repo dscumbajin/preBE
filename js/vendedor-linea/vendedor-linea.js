@@ -60,9 +60,34 @@
 		    });
 		    event.preventDefault();
 		    $("#formMes").show();
+		});
+
+
+		$("#guardar_pres_mes").submit(function(event) {
+		    $('#guardar_datos_mes').attr("disabled", true);
+		    /*  $('#calcularAnio').attr("disabled", true);
+		    $("#incremento_anio").attr("disabled", true);
+ */
+		    var parametros = $(this).serialize();
+
+		    console.log(parametros);
+		    /*  $.ajax({
+		         type: "POST",
+		         url: "ajax/vendedor-linea/nuevo_presupuesto_anio.php",
+		         data: parametros,
+		         beforeSend: function(objeto) {
+		             $("#resultados_ajax").html("Mensaje: Cargando...");
+		         },
+		         success: function(datos) {
+		             $("#resultados_ajax").html(datos);
+		             load(1);
+		         }
+		     }); */
+		    event.preventDefault();
+		    $("#formMes").show();
 		})
 
-		$("#editar_vendedor").submit(function(event) {
+		/* 	$("#editar_vendedor").submit(function(event) {
 		    $('#actualizar_datos').attr("disabled", true);
 
 		    var parametros = $(this).serialize();
@@ -81,7 +106,7 @@
 		    });
 		    event.preventDefault();
 		})
-
+ */
 		/* Campos ocultos */
 		$("#total_anio").hide();
 		$("#formMes").hide();

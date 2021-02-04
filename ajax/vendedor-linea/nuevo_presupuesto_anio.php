@@ -32,6 +32,8 @@ elseif (empty($_POST['codVenHist'])) {
 		$generado = 1;
 		$sql = "UPDATE historial_ventas SET generado='" . $generado . "' WHERE codVen='" . $codVenPre . "' AND codLinea='" . $codLineaPre . "'";
 		$query_update = mysqli_query($con, $sql);
+
+		
 	/* 	if ($query_update) {
 		$messages[] = "Actualizado.";
 		} else {
