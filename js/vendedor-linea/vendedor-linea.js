@@ -46,19 +46,18 @@
 		    $("#incremento_anio").attr("disabled", true);
 
 		    var parametros = $(this).serialize();
-		    /* 	    $.ajax({
-		    	        type: "POST",
-		    	        url: "ajax/vendedor/nuevo_vendedor.php",
-		    	        data: parametros,
-		    	        beforeSend: function(objeto) {
-		    	            $("#resultados_ajax").html("Mensaje: Cargando...");
-		    	        },
-		    	        success: function(datos) {
-		    	            $("#resultados_ajax").html(datos);
-		    	            $('#guardar_datos').attr("disabled", false);
-		    	            load(1);
-		    	        }
-		    	    }); */
+		    $.ajax({
+		        type: "POST",
+		        url: "ajax/vendedor-linea/nuevo_presupuesto_anio.php",
+		        data: parametros,
+		        beforeSend: function(objeto) {
+		            $("#resultados_ajax").html("Mensaje: Cargando...");
+		        },
+		        success: function(datos) {
+		            $("#resultados_ajax").html(datos);
+		            load(1);
+		        }
+		    });
 		    event.preventDefault();
 		    $("#formMes").show();
 		})
@@ -86,19 +85,23 @@
 		/* Campos ocultos */
 		$("#total_anio").hide();
 		$("#formMes").hide();
+		$('#guardar_datos').attr("disabled", true);
 
 		$('#close').click(function() {
 		    $("#total_anio").hide();
 		    $("#formMes").hide();
+		    $("#resultados_ajax").hide();
 		    $('#guardar_datos').attr("disabled", false);
 		    $('#calcularAnio').attr("disabled", false);
+		    $("#incremento_anio").val("");
 		    $("#incremento_anio").attr("disabled", false);
+		    $('#guardar_datos').attr("disabled", true);
 		});
 
 		function obtener_datos(id) {
 
 		    var cod_vendedor = $("#cod_vendedor" + id).val();
-		    var cod_linea = $("#estado_vendedor" + id).val();
+		    var cod_linea = $("#cod_linea" + id).val();
 		    var anio_historial = $("#anio_historial" + id).val();
 		    var vendidas_histroial = $("#vendidas_histroial" + id).val();
 		    var promocion_historial = $("#promocion_historial" + id).val();
@@ -106,8 +109,13 @@
 		    var facturado_historial = $("#facturado_historial" + id).val();
 		    var nombre_vendedor = $("#nombre_vendedor" + id).val();
 		    var nameLinea = $("#nameLinea").text();
-		    $("#codVen").val(cod_vendedor);
-		    $("#codLinea").val(cod_linea);
+
+		    // Tasformar año a numero
+		    anio_historial = parseInt(anio_historial);
+
+		    $("#anioHist").val(anio_historial + 1);
+		    $("#codVenHist").val(cod_vendedor);
+		    $("#codLineaHist").val(cod_linea);
 		    $("#vendidas").val(vendidas_histroial);
 		    $("#promocion").val(promocion_historial);
 		    $("#garantia").val(garantia_historial);
@@ -117,7 +125,15 @@
 		    // si escribe en el campo habilitar el calcular
 		    // si esta habilitado calcular, habilitar guaradar
 		    // si no esta habilitado calcular desabilitar guardar
-		    $('#calcularAnio').click(function() {
+		    $('#calcularAnio').hide(); // Oculto el boton
+		    $("#incremento_anio").on('input', function() {
+		        // $('#calcularAnio').click(function() {
+
+		        if ($("#incremento_anio").length < 0) {
+		            $("#incremento_anio").attr("required", "true");
+		        }
+		        $("#resultados_ajax").show();
+		        $('#guardar_datos').attr("disabled", false);
 
 		        var numeroVendidas = $("#vendidas").val();
 		        numeroVendidas = parseInt(numeroVendidas);
@@ -160,8 +176,26 @@
 		    });
 
 		}
-		// Guardar presupuesto año
+
 		$("#tituloPor").text(100);
+
+		function tituloPreAnio(total, valor) {
+
+
+		    console.log("Inicio");
+		    console.log(total);
+		    console.log(valor);
+		    total = total - valor;
+
+		    console.log("Despues");
+		    console.log(total);
+		    console.log(valor);
+
+
+		    $("#tituloPor").text(total);
+		}
+
+		// Guardar presupuesto año
 		$("#venEnero").attr("disabled", true);
 		$("#proEnero").attr("disabled", true);
 		$("#garaEnero").attr("disabled", true);
@@ -247,6 +281,18 @@
 		    $("#proEnero").val(totalProAnio);
 		    $("#garaEnero").val(totalGarAnio);
 		    $("#totEnero").val(totalVenAnio + totalProAnio + totalGarAnio);
+
+
+		    if (porEnero > 0) {
+
+		        var vTitulo = $("#tituloPor").text();
+		        vTitulo = parseFloat(vTitulo);
+
+		    } else {
+		        vTitulo = 100;
+		        porEnero = 0;
+		    }
+		    tituloPreAnio(vTitulo, porEnero);
 		});
 
 		$("#porFebrero").on("input", function() {
@@ -274,7 +320,16 @@
 		    $("#proFebrero").val(totalProAnio);
 		    $("#garaFebrero").val(totalGarAnio);
 		    $("#totFebrero").val(totalVenAnio + totalProAnio + totalGarAnio);
+		    if (porFebrero > 0) {
 
+		        var vTitulo = $("#tituloPor").text();
+		        vTitulo = parseFloat(vTitulo);
+
+		    } else {
+		        vTitulo = $("#tituloPor").text();
+		        porFebrero = 0;
+		    }
+		    tituloPreAnio(vTitulo, porFebrero);
 		});
 
 		$("#porMarzo").on("input", function() {
