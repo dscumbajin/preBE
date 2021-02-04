@@ -61,36 +61,42 @@
 	                    </div>
 	                    <!-- /.card-body -->
 	                    <div class="card-footer">
-	                        <button type="submit"  class="btn btn-success float-right" id="guardar_datos">Guardar</button>
+	                        <button type="submit" class="btn btn-success float-right" id="guardar_datos">Guardar</button>
 	                    </div>
 	                    <!-- /.card-footer -->
 	                </form>
 
 	                <hr>
-	                <div class="card-body">
+	                <div id="formMes" class="card-body">
 
 	                    <div class="form-group row">
 
 	                        <form class="form-horizontal" method="post" id="guardar_pres_mes" name="guardar_pres_mes">
 	                            <h3 class="">Agregar presupuesto Mes - <span id="tituloPor"></span> % por asignar</h3>
+
+
+	                            <input type="hidden" name="codVenAnio" id="codVenAnio">
+	                            <input type="hidden" name="codLineaAnio" id="codLineaAnio">
+
 	                            <div class="table-responsive">
-	                                <table id="tabla" class="table table-bordered table-striped">
-	                                    <th>Mes</th>
-	                                    <th>% </th>
-	                                    <th>Unidades Vendidas</th>
-	                                    <th>Unidades Promociones</th>
-	                                    <th>Unidades Garantía</th>
-	                                    <th>Total</th>
+	                                <table class="table table-bordered table-striped">
+	                                    <tr class="info">
+	                                        <th>Mes</th>
+	                                        <th>% </th>
+	                                        <th>Unidades Vendidas</th>
+	                                        <th>Unidades Promociones</th>
+	                                        <th>Unidades Garantía</th>
+	                                        <th>Total</th>
+	                                    </tr>
 
+	                                    <tr >
 
-	                                    <tr class="fila-fija">
-
-	                                       <!--  <input type="hidden" required name="idPresAnio[]" /> -->
+	                                        <!--  <input type="hidden" required name="idPresAnio[]" /> -->
 
 	                                        <td><span>Enero</span></td>
 	                                        <td><input id="porEnero" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesEnero" name="mes[]" />
 	                                        <td><input id="venEnero" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -105,11 +111,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Febrero</span></td>
 	                                        <td><input id="porFebrero" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesFebrero" name="mes[]" />
 	                                        <td><input id="venFebrero" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -124,11 +130,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Marzo</span></td>
 	                                        <td><input id="porMarzo" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesMarzo" name="mes[]" />
 	                                        <td><input id="venMarzo" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -143,11 +149,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Abril</span></td>
 	                                        <td><input id="porAbril" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesAbril" name="mes[]" />
 	                                        <td><input id="venAbril" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -162,11 +168,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Mayo</span></td>
 	                                        <td><input id="porMayo" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesMayo" name="mes[]" />
 	                                        <td><input id="venMayo" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -181,11 +187,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Junio</span></td>
 	                                        <td><input id="porJunio" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesJunio" name="mes[]" />
 	                                        <td><input id="venJunio" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -200,11 +206,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Julio</span></td>
 	                                        <td><input id="porJulio" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesJulio" name="mes[]" />
 	                                        <td><input id="venJulio" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -219,11 +225,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Agosto</span></td>
 	                                        <td><input id="porAgosto" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesAgosto" name="mes[]" />
 	                                        <td><input id="venAgosto" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -238,11 +244,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Septiembre</span></td>
 	                                        <td><input id="porSeptiembre" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesSeptiembre" name="mes[]" />
 	                                        <td><input id="venSeptiembre" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -257,11 +263,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Octubre</span></td>
 	                                        <td><input id="porOctubre" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesOctubre" name="mes[]" />
 	                                        <td><input id="venOctubre" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -276,11 +282,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Noviembre</span></td>
 	                                        <td><input id="porNoviembre" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesNoviembre" name="mes[]" />
 	                                        <td><input id="venNoviembre" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -295,11 +301,11 @@
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
-	                                    <tr class="fila-fija">
+	                                    <tr >
 	                                        <td><span>Diciembre</span></td>
 	                                        <td><input id="porDiciembre" class="form-control" required placeholder="%" />
 	                                        </td>
-
+											<input type="hidden" id="mesDiciembre" name="mes[]" />
 	                                        <td><input id="venDiciembre" class="form-control" required name="ventasMes[]"
 	                                                placeholder="" />
 	                                        </td>
@@ -326,7 +332,7 @@
 
 	                            </div>
 	                        </form>
-	                       
+
 
 	                    </div>
 	                </div>
