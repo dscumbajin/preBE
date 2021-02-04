@@ -64,7 +64,7 @@
 	                        <div class="form-group row">
 
 	                            <form method="post">
-	                                <h3 class="">Agregar presupuesto Mes</h3>
+	                                <h3 class="">Agregar presupuesto Mes  - <span id="tituloPor"></span> % por asignar</h3>
 	                                <table class="table" id="tabla">
 	                                    <th>Mes</th>
 	                                    <th>% </th>
@@ -75,182 +75,173 @@
 
 
 	                                    <tr class="fila-fija">
-	                                        <td><span>Enero</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
+
 	                                        <input type="hidden" required name="idPresAnio[]" />
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+
+	                                        <td><span>Enero</span></td>
+	                                        <td><input id= "porEnero" class="form-control" required placeholder="%" /></td>
+	                                        
+											<td><input id= "venEnero" class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proEnero" class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaEnero" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totEnero" class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Febrero</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porFebrero"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venFebrero"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proFebrero"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaFebrero" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totFebrero"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Marzo</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porMarzo"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venMarzo"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proMarzo"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaMarzo" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totMarzo"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Abril</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porAbril"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venAbril"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proAbril"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaAbril" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totAbril"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Mayo</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porMayo"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venMayo"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proMayo"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaMayo" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totMayo"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Junio</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porJunio"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venJunio"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proJunio"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaJunio" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totJunio"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Julio</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porJulio"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venJulio"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proJulio"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaJulio" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totJulio"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Agosto</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porAgosto"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venAgosto"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proAgosto"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaAgosto" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totAgosto"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Septiembre</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porSeptiembre"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venSeptiembre"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proSeptiembre"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaSeptiembre" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totSeptiembre"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Octubre</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porOctubre"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venOctubre"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proOctubre"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaOctubre" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totOctubre"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Noviembre</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porNoviembre"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venNoviembre"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proNoviembre"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaNoviembre" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totNoviembre"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
 	                                    <tr class="fila-fija">
 	                                        <td><span>Diciembre</span></td>
-	                                        <td><input class="form-control" required placeholder="%" /></td>
-	                                        
-											
-											<td><input class="form-control" required name="ventasMes[]" placeholder="" />
+	                                        <td><input id= "porDiciembre"  class="form-control" required placeholder="%" /></td>
+
+	                                        <td><input id= "venDiciembre"  class="form-control" required name="ventasMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="promosMes[]" placeholder="" />
+	                                        <td><input id= "proDiciembre"  class="form-control" required name="promosMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="garantiaMes[]" placeholder="" />
+	                                        <td><input id= "garaDiciembre" class="form-control" required name="garantiaMes[]" placeholder="" />
 	                                        </td>
-	                                        <td><input class="form-control" required name="totalMes[]" placeholder="" />
+	                                        <td><input id= "totDiciembre"  class="form-control" required name="totalMes[]" placeholder="" />
 	                                        </td>
 	                                        <!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 	                                    </tr>
@@ -273,8 +264,8 @@
 
 												$items1 = ($_POST['ventasMes']);
 												$items2 = ($_POST['promosMes']);
-												$items3 = ($_POST['']);
-												$items4 = ($_POST['grupo']);
+												$items3 = ($_POST['garantiaMes']);
+												$items4 = ($_POST['totalMes']);
 												
 												///////////// SEPARAR VALORES DE ARRAYS, EN ESTE CASO SON 4 ARRAYS UNO POR CADA INPUT (ID, promosMes,  Y GRUPO////////////////////)
 												while(true) {
