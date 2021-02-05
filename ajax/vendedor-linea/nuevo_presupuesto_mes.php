@@ -3,10 +3,8 @@ include('../is_logged.php'); //Archivo verifica que el usario que intenta accede
 /*Inicia validacion del lado del servidor*/
 if (empty($_POST['codVenAnio'])) {
 	$errors[] = "Código vendedor vacio";
-}
-elseif (empty($_POST['codLineaAnio'])) {
+} elseif (empty($_POST['codLineaAnio'])) {
 	$errors[] = "Código linea vacío";
-
 } else if (!empty($_POST['codVenAnio']) && !empty($_POST['codLineaAnio'])) {
 	/* Connect To Database*/
 	require_once("../../funciones/db.php"); //Contiene las variables de funcionesuracion para conectar a la base de datos
@@ -14,7 +12,6 @@ elseif (empty($_POST['codLineaAnio'])) {
 	// escaping, additionally removing everything that could be (html/javascript-) code
 
 	//Buscar el Id del presupuesto del anio
-	$codigoPresAnio;
 	$venPreAnio =  mysqli_real_escape_string($con, (strip_tags($_POST["codVenAnio"], ENT_QUOTES)));
 	$linPreAnio =  mysqli_real_escape_string($con, (strip_tags($_POST["codLineaAnio"], ENT_QUOTES)));
 	$sqlAnio = "SELECT * FROM presupuesto_anio WHERE codVen = $venPreAnio AND codLinea = $linPreAnio ";
@@ -22,57 +19,92 @@ elseif (empty($_POST['codLineaAnio'])) {
 	while ($row = mysqli_fetch_array($queryAnio)) {
 		$codigoPresAnio = $row['idPresAnio'];
 	}
-	echo $codigoPresAnio;
 
-	/* $anioPre =  mysqli_real_escape_string($con, (strip_tags($_POST["anioHist"], ENT_QUOTES)));
-	$codVenPre = mysqli_real_escape_string($con, (strip_tags($_POST["codVenHist"], ENT_QUOTES)));
-	$codLineaPre = mysqli_real_escape_string($con, (strip_tags($_POST["codLineaHist"], ENT_QUOTES)));
-	$vendidasPre = intval($_POST["vendidasNuevo"]);
-	$promocionPre = intval($_POST["promocionNuevo"]);
-	$garantiaPre = intval($_POST["garantiaNuevo"]);
-	$totalPre = intval($_POST["totalAnio"]);
 
-	$sql = "INSERT INTO presupuesto_anio (anio , ventasPresU, promoPresU, garantPresU, totalPresU, codVen, codLinea ) VALUES ('$anioPre','$vendidasPre','$promocionPre','$garantiaPre', '$totalPre', '$codVenPre', '$codLineaPre')";
-	$query_new_insert = mysqli_query($con, $sql);
-	if ($query_new_insert) {
-		$messages[] = "Presupuesto anual ingresado satisfactoriamente.";
-		$generado = 1;
-		$sql = "UPDATE historial_ventas SET generado='" . $generado . "' WHERE codVen='" . $codVenPre . "' AND codLinea='" . $codLineaPre . "'";
-		$query_update = mysqli_query($con, $sql);
-	} else {
-		$errors[] = "Lo siento algo ha salido mal intenta nuevamente." . mysqli_error($con);
+	$items1 = ($_POST['mes']);
+	$items2 = ($_POST['ventasMes']);
+	$items3 = ($_POST['promosMes']);
+	$items4 = ($_POST['garantiaMes']);
+	$items5 = ($_POST['totalMes']);
+
+	///////////// SEPARAR VALORES DE ARRAYS, EN ESTE CASO SON 4 ARRAYS UNO POR CADA INPUT (ID, NOMBRE, CARRERA Y GRUPO////////////////////)
+	while (true) {
+
+		//// RECUPERAR LOS VALORES DE LOS ARREGLOS ////////
+		$item1 = current($items1);
+		$item2 = current($items2);
+		$item3 = current($items3);
+		$item4 = current($items4);
+		$item5 = current($items5);
+
+		////// ASIGNARLOS A VARIABLES ///////////////////
+		$mes = (($item1 !== false) ? $item1 : ", &nbsp;");
+		$ventasMes = (($item2 !== false) ? $item2 : ", &nbsp;");
+		$promosMes = (($item3 !== false) ? $item3 : ", &nbsp;");
+		$garantiaMes = (($item4 !== false) ? $item4 : ", &nbsp;");
+		$totalMes = (($item5 !== false) ? $item5 : ", &nbsp;");
+
+		//// CONCATENAR LOS VALORES EN ORDEN PARA SU FUTURA INSERCIÓN ////////
+		$valores = '(' . $codigoPresAnio . ',"' . $mes . '",' . $ventasMes . ',' . $promosMes . ',' . $garantiaMes . ',' . $totalMes . '),';
+
+		//////// YA QUE TERMINA CON COMA CADA FILA, SE RESTA CON LA FUNCIÓN SUBSTR EN LA ULTIMA FILA /////////////////////
+		$valoresQ = substr($valores, 0, -1);
+
+		///////// QUERY DE INSERCIÓN ////////////////////////////
+		$sql = "INSERT INTO presupuesto_mes (idPresAnio, mes, cantMesU, cantPromoU, cantGarantU, cantTotalU) 
+					VALUES $valoresQ";
+
+		$sqlRes = $con->query($sql);
+
+
+		// Up! Next Value
+		$item1 = next($items1);
+		$item2 = next($items2);
+		$item3 = next($items3);
+		$item4 = next($items4);
+		$item5 = next($items5);
+
+		// Check terminator
+		if ($item1 === false && $item2 === false && $item3 === false && $item4 === false && $item5 === false) break;
+
+		if ($sqlRes) {
+			$messages[] = "Presupuesto mensual ingresado satisfactoriamente.";
+		} else {
+			$errors[] = "Lo siento algo ha salido mal intenta nuevamente." . mysqli_error($con);
+		}
 	}
 } else {
 	$errors[] = "Error desconocido.";
-} */
-/* 
+}
+
+
 if (isset($errors)) {
 
 ?>
-<div class="alert alert-danger" role="alert">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Error!</strong>
-    <?php
+	<div class="alert alert-danger" role="alert">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>Error!</strong>
+		<?php
 		foreach ($errors as $error) {
 			echo $error;
 		}
 		?>
-</div>
+	</div>
 <?php
 }
 if (isset($messages)) {
 
 ?>
-<div class="alert alert-success" role="alert">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>¡Bien hecho!</strong>
-    <?php
+	<div class="alert alert-success" role="alert">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<strong>¡Bien hecho!</strong>
+		<?php
 		foreach ($messages as $message) {
 			echo $message;
 		}
 		?>
-</div>
+	</div>
 <?php
-} */
+}
 
 ?>
