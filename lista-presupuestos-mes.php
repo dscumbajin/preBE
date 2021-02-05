@@ -19,7 +19,7 @@ include_once('templates/navegacion.php');
     <div class="container-fluid center">
       <div class="row mb-2">
         <div class="col-sm-10">
-          <h1>Presupuestos</h1>
+          <h1>Presupuestos por mes</h1>
         </div>
       </div>
     </div><!-- /.container-fluid -->
