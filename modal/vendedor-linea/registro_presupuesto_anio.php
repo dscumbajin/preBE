@@ -21,7 +21,7 @@
 									<label for="incremento_anio" class="col-sm-3 col-form-label">Porcentaje de incremento
 										año</label>
 									<div class="col-sm-6">
-										<input type="number" class="form-control" id="incremento_anio" placeholder="Porcentaje" min="0" max="100" required>
+										<input  class="form-control decimales" id="incremento_anio" placeholder="Porcentaje" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
 										<!--Pra registro en la base de datos-->
 										<input type="hidden" name="anioHist" id="anioHist">
 										<input type="hidden" name="codVenHist" id="codVenHist">
@@ -71,14 +71,14 @@
 							<div class="form-group row">
 								<div id="resultados_ajaxmes"></div>
 								<form class="form-horizontal" method="post" id="guardar_pres_mes" name="guardar_pres_mes">
-									<h3 class="">Agregar presupuesto Mes
-										<!-- - <span id="tituloPor"></span> % por asignar -->
-									</h3>
-
-
+							
+									<span>Agregar presupuesto Mes</span><span id="tituloPor"></span> % Asignado
+							
 									<input type="hidden" name="codVenAnio" id="codVenAnio">
 									<input type="hidden" name="codLineaAnio" id="codLineaAnio">
-
+									<br>
+									<input  class="form-control decimales" id="precioMeta" placeholder="PRECIO POR META" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
+									<br>
 									<div >
 										<table class="table-responsive table-bordered table-striped">
 											<tr class="info">
@@ -92,7 +92,7 @@
 
 											<tr>
 												<td><span>Enero</span></td>
-												<td><input id="porEnero" class="form-control" required placeholder="%" />
+												<td><input id="porEnero" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesEnero" name="mes[]" />
 												<td><input id="venEnero" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -107,7 +107,7 @@
 											</tr>
 											<tr>
 												<td><span>Febrero</span></td>
-												<td><input id="porFebrero" class="form-control" required placeholder="%" />
+												<td><input id="porFebrero" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesFebrero" name="mes[]" />
 												<td><input id="venFebrero" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -122,7 +122,7 @@
 											</tr>
 											<tr>
 												<td><span>Marzo</span></td>
-												<td><input id="porMarzo" class="form-control" required placeholder="%" />
+												<td><input id="porMarzo" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesMarzo" name="mes[]" />
 												<td><input id="venMarzo" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -137,7 +137,7 @@
 											</tr>
 											<tr>
 												<td><span>Abril</span></td>
-												<td><input id="porAbril" class="form-control" required placeholder="%" />
+												<td><input id="porAbril" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesAbril" name="mes[]" />
 												<td><input id="venAbril" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -152,7 +152,7 @@
 											</tr>
 											<tr>
 												<td><span>Mayo</span></td>
-												<td><input id="porMayo" class="form-control" required placeholder="%" />
+												<td><input id="porMayo" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesMayo" name="mes[]" />
 												<td><input id="venMayo" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -167,7 +167,7 @@
 											</tr>
 											<tr>
 												<td><span>Junio</span></td>
-												<td><input id="porJunio" class="form-control" required placeholder="%" />
+												<td><input id="porJunio" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesJunio" name="mes[]" />
 												<td><input id="venJunio" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -182,7 +182,7 @@
 											</tr>
 											<tr>
 												<td><span>Julio</span></td>
-												<td><input id="porJulio" class="form-control" required placeholder="%" />
+												<td><input id="porJulio" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesJulio" name="mes[]" />
 												<td><input id="venJulio" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -197,7 +197,7 @@
 											</tr>
 											<tr>
 												<td><span>Agosto</span></td>
-												<td><input id="porAgosto" class="form-control" required placeholder="%" />
+												<td><input id="porAgosto" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesAgosto" name="mes[]" />
 												<td><input id="venAgosto" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -212,7 +212,7 @@
 											</tr>
 											<tr>
 												<td><span>Septiembre</span></td>
-												<td><input id="porSeptiembre" class="form-control" required placeholder="%" />
+												<td><input id="porSeptiembre" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesSeptiembre" name="mes[]" />
 												<td><input id="venSeptiembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -227,7 +227,7 @@
 											</tr>
 											<tr>
 												<td><span>Octubre</span></td>
-												<td><input id="porOctubre" class="form-control" required placeholder="%" />
+												<td><input id="porOctubre" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesOctubre" name="mes[]" />
 												<td><input id="venOctubre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -242,7 +242,7 @@
 											</tr>
 											<tr>
 												<td><span>Noviembre</span></td>
-												<td><input id="porNoviembre" class="form-control" required placeholder="%" />
+												<td><input id="porNoviembre" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesNoviembre" name="mes[]" />
 												<td><input id="venNoviembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
@@ -257,7 +257,7 @@
 											</tr>
 											<tr>
 												<td><span>Diciembre</span></td>
-												<td><input id="porDiciembre" class="form-control" required placeholder="%" />
+												<td><input id="porDiciembre" class="form-control decimales" required placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$"	/>
 												</td>
 												<input type="hidden" id="mesDiciembre" name="mes[]" />
 												<td><input id="venDiciembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />

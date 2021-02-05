@@ -42,6 +42,10 @@ function eliminar(id) {
     }
 }
 
+// VALIDACIONES
+$('.decimales').on('input', function() {
+    this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
+});
 // Guardar valores en la tabla de presupuestos anuales
 $("#guardar_pres_anio").submit(function(event) {
     $('#guardar_datos').attr("disabled", true);
@@ -399,6 +403,8 @@ $("#guardar_pres_anio").submit(function(event) {
         $("#totDiciembre").val(totalVenAnio + totalProAnio + totalGarAnio);
     }
 
+    tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
 });
 
 
@@ -608,20 +614,11 @@ function obtener_datos(id) {
 
 /* $("#tituloPor").text(100);
  */
-function tituloPreAnio(total, valor) {
+function tituloPreAnio(enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre) {
 
+    var totalTitulo = enero + febrero + marzo + abril + mayo + junio + julio + agosto + septiembre + octubre + noviembre + diciembre;
 
-    console.log("Inicio");
-    console.log(total);
-    console.log(valor);
-    total = total - valor;
-
-    console.log("Despues");
-    console.log(total);
-    console.log(valor);
-
-
-    $("#tituloPor").text(total);
+    $("#tituloPor").text(totalTitulo);
 }
 
 
@@ -652,17 +649,6 @@ $("#porEnero").on("input", function() {
     $("#garaEnero").val(totalGarAnio);
     $("#totEnero").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-
-    /*   if (porEnero > 0) {
-
-          var vTitulo = $("#tituloPor").text();
-          vTitulo = parseFloat(vTitulo);
-
-      } else {
-          vTitulo = 100;
-          porEnero = 0;
-      }
-      tituloPreAnio(vTitulo, porEnero); */
 });
 
 $("#porFebrero").on("input", function() {
