@@ -42,19 +42,19 @@
 								<div class="form-group row" id="total_anio">
 									<div class="col-sm-3">
 										<span>Ventas</span>
-										<input type="text" class="form-control" name="vendidasNuevo" id="vendidasNuevo">
+										<input type="text" class="form-control" name="vendidasNuevo" id="vendidasNuevo" readonly="readonly" > 
 									</div>
 									<div class="col-sm-3">
 										<span>Promociones</span>
-										<input type="text" class="form-control" name="promocionNuevo" id="promocionNuevo">
+										<input type="text" class="form-control" name="promocionNuevo" id="promocionNuevo" readonly="readonly">
 									</div>
 									<div class="col-sm-3">
 										<span>Garantias</span>
-										<input type="text" class="form-control" name="garantiaNuevo" id="garantiaNuevo">
+										<input type="text" class="form-control" name="garantiaNuevo" id="garantiaNuevo" readonly="readonly">
 									</div>
 									<div class="col-sm-3">
 										<span>Presupuesto + Promos + Garantias</span>
-										<input type="text" class="form-control" name="totalAnio" id="totalAnio">
+										<input type="text" class="form-control" name="totalAnio" id="totalAnio" readonly="readonly">
 									</div>
 								</div>
 							</div>
@@ -95,13 +95,13 @@
 												<td><input id="porEnero" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesEnero" name="mes[]" />
-												<td><input id="venEnero" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venEnero" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proEnero" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proEnero" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaEnero" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaEnero" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totEnero" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totEnero" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -110,13 +110,13 @@
 												<td><input id="porFebrero" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesFebrero" name="mes[]" />
-												<td><input id="venFebrero" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venFebrero" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proFebrero" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proFebrero" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaFebrero" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaFebrero" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totFebrero" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totFebrero" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -125,13 +125,13 @@
 												<td><input id="porMarzo" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesMarzo" name="mes[]" />
-												<td><input id="venMarzo" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venMarzo" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proMarzo" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proMarzo" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaMarzo" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaMarzo" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totMarzo" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totMarzo" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -140,13 +140,13 @@
 												<td><input id="porAbril" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesAbril" name="mes[]" />
-												<td><input id="venAbril" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venAbril" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proAbril" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proAbril" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaAbril" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaAbril" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totAbril" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totAbril" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -155,13 +155,13 @@
 												<td><input id="porMayo" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesMayo" name="mes[]" />
-												<td><input id="venMayo" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venMayo" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proMayo" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proMayo" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaMayo" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaMayo" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totMayo" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totMayo" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -170,13 +170,13 @@
 												<td><input id="porJunio" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesJunio" name="mes[]" />
-												<td><input id="venJunio" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venJunio" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proJunio" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proJunio" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaJunio" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaJunio" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totJunio" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totJunio" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -185,13 +185,13 @@
 												<td><input id="porJulio" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesJulio" name="mes[]" />
-												<td><input id="venJulio" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venJulio" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proJulio" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proJulio" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaJulio" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaJulio" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totJulio" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totJulio" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -200,13 +200,13 @@
 												<td><input id="porAgosto" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesAgosto" name="mes[]" />
-												<td><input id="venAgosto" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venAgosto" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proAgosto" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proAgosto" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaAgosto" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaAgosto" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totAgosto" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totAgosto" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -215,13 +215,13 @@
 												<td><input id="porSeptiembre" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesSeptiembre" name="mes[]" />
-												<td><input id="venSeptiembre" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venSeptiembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proSeptiembre" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proSeptiembre" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaSeptiembre" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaSeptiembre" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totSeptiembre" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totSeptiembre" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -230,13 +230,13 @@
 												<td><input id="porOctubre" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesOctubre" name="mes[]" />
-												<td><input id="venOctubre" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venOctubre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proOctubre" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proOctubre" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaOctubre" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaOctubre" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totOctubre" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totOctubre" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -245,13 +245,13 @@
 												<td><input id="porNoviembre" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesNoviembre" name="mes[]" />
-												<td><input id="venNoviembre" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venNoviembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proNoviembre" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proNoviembre" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaNoviembre" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaNoviembre" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totNoviembre" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totNoviembre" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>
@@ -260,13 +260,13 @@
 												<td><input id="porDiciembre" class="form-control" required placeholder="%" />
 												</td>
 												<input type="hidden" id="mesDiciembre" name="mes[]" />
-												<td><input id="venDiciembre" class="form-control" required name="ventasMes[]" placeholder="" />
+												<td><input id="venDiciembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="proDiciembre" class="form-control" required name="promosMes[]" placeholder="" />
+												<td><input id="proDiciembre" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="garaDiciembre" class="form-control" required name="garantiaMes[]" placeholder="" />
+												<td><input id="garaDiciembre" class="form-control" required name="garantiaMes[]" placeholder="" readonly="readonly" />
 												</td>
-												<td><input id="totDiciembre" class="form-control" required name="totalMes[]" placeholder="" />
+												<td><input id="totDiciembre" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 												</td>
 												<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
 											</tr>

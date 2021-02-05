@@ -46,7 +46,9 @@ if ($action == 'ajax') {
 		$sWhere = substr_replace($sWhere, "", -3);
 		$sWhere .= ')';
 	}
-	$sWhere .= " ORDER BY idPresMes DESC ";
+	$sWhere .= " ORDER BY  idPresMes DESC, mes DESC";
+
+	// mes ASC , nomVen  ASC,
 	include '../pagination.php'; //include pagination file
 	//pagination variables
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page'])) ? $_REQUEST['page'] : 1;
@@ -115,7 +117,12 @@ if ($action == 'ajax') {
 
 					<tr>
 						<td><?php echo $anio_presupuesto; ?></td>
-						<td><?php echo $fecha_presupuesto; ?></td>
+						<td style="text-transform: uppercase;"><?php
+							setlocale(LC_TIME, "spanish");
+							$date = new DateTime($fecha_presupuesto);
+							$fecha = strftime("%B", $date->getTimestamp());
+							echo $fecha;
+							?></td>
 						<td><?php echo $vendedor_presupuesto; ?></td>
 						<td><?php echo $status; ?></td>
 						<td><?php echo $cantidad_mes_presupuesto; ?></td>

@@ -1,7 +1,7 @@
 $(document).ready(function() {
     load(1);
 });
-
+// Cargar informacion pagina principal
 function load(page) {
     var q = $("#q").val();
     var codLinea = $("#codLinea").val();
@@ -18,6 +18,8 @@ function load(page) {
         }
     })
 }
+
+// eliminar registro
 
 function eliminar(id) {
     var q = $("#q").val();
@@ -40,6 +42,7 @@ function eliminar(id) {
     }
 }
 
+// Guardar valores en la tabla de presupuestos anuales
 $("#guardar_pres_anio").submit(function(event) {
     $('#guardar_datos').attr("disabled", true);
     $('#calcularAnio').attr("disabled", true);
@@ -59,12 +62,347 @@ $("#guardar_pres_anio").submit(function(event) {
         }
     });
     event.preventDefault();
-    $("#formMes").show();
+
     $("#resultados_ajax").show();
     $('#guardar_datos_mes').attr("disabled", false);
+
+    $("#formMes").show();
+
+    // Inicialización porcentaje por mes
+    var totalPorsentaje = 100 / 12;
+    totalPorsentaje = totalPorsentaje.toFixed(4);
+
+    $("#porEnero").val(totalPorsentaje);
+    $("#porFebrero").val(totalPorsentaje);
+    $("#porMarzo").val(totalPorsentaje);
+    $("#porAbril").val(totalPorsentaje);
+    $("#porMayo").val(totalPorsentaje);
+    $("#porJunio").val(totalPorsentaje);
+    $("#porJulio").val(totalPorsentaje);
+    $("#porAgosto").val(totalPorsentaje);
+    $("#porSeptiembre").val(totalPorsentaje);
+    $("#porOctubre").val(totalPorsentaje);
+    $("#porNoviembre").val(totalPorsentaje);
+    $("#porDiciembre").val(totalPorsentaje);
+
+    if ($("#porEnero").val().length > 0) {
+        $("#mesEnero").val($("#anioHist").val() + '-01' + '-01');
+        var porEnero = $("#porEnero").val();
+        porEnero = parseFloat(porEnero);
+        var porcentajeEnero = porEnero / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeEnero;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeEnero;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeEnero;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venEnero").val(totalVenAnio);
+        $("#proEnero").val(totalProAnio);
+        $("#garaEnero").val(totalGarAnio);
+        $("#totEnero").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porFebrero").val().length > 0) {
+        $("#mesFebrero").val($("#anioHist").val() + '-02' + '-01');
+        var porFebrero = $("#porFebrero").val();
+        porFebrero = parseFloat(porFebrero);
+        var porcentajeFebrero = porFebrero / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeFebrero;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeFebrero;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeFebrero;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venFebrero").val(totalVenAnio);
+        $("#proFebrero").val(totalProAnio);
+        $("#garaFebrero").val(totalGarAnio);
+        $("#totFebrero").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porMarzo").val().length > 0) {
+        $("#mesMarzo").val($("#anioHist").val() + '-03' + '-01');
+        var porMarzo = $("#porMarzo").val();
+        porMarzo = parseFloat(porMarzo);
+        var porcentajeMarzo = porMarzo / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeMarzo;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeMarzo;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeMarzo;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venMarzo").val(totalVenAnio);
+        $("#proMarzo").val(totalProAnio);
+        $("#garaMarzo").val(totalGarAnio);
+        $("#totMarzo").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porAbril").val().length > 0) {
+        $("#mesAbril").val($("#anioHist").val() + '-04' + '-01');
+        var porAbril = $("#porAbril").val();
+        porAbril = parseFloat(porAbril);
+        var porcentajeAbril = porAbril / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeAbril;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeAbril;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeAbril;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venAbril").val(totalVenAnio);
+        $("#proAbril").val(totalProAnio);
+        $("#garaAbril").val(totalGarAnio);
+        $("#totAbril").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porMayo").val().length > 0) {
+        $("#mesMayo").val($("#anioHist").val() + '-05' + '-01');
+        var porMayo = $("#porMayo").val();
+        porMayo = parseFloat(porMayo);
+        var porcentajeMayo = porMayo / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeMayo;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeMayo;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeMayo;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venMayo").val(totalVenAnio);
+        $("#proMayo").val(totalProAnio);
+        $("#garaMayo").val(totalGarAnio);
+        $("#totMayo").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porJunio").val().length > 0) {
+        $("#mesJunio").val($("#anioHist").val() + '-06' + '-01');
+        var porJunio = $("#porJunio").val();
+        porJunio = parseFloat(porJunio);
+        var porcentajeJunio = porJunio / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeJunio;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeJunio;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeJunio;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venJunio").val(totalVenAnio);
+        $("#proJunio").val(totalProAnio);
+        $("#garaJunio").val(totalGarAnio);
+        $("#totJunio").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porJulio").val().length > 0) {
+        $("#mesJulio").val($("#anioHist").val() + '-07' + '-01');
+        var porJulio = $("#porJulio").val();
+        porJulio = parseFloat(porJulio);
+        var porcentajeJulio = porJulio / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeJulio;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeJulio;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeJulio;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venJulio").val(totalVenAnio);
+        $("#proJulio").val(totalProAnio);
+        $("#garaJulio").val(totalGarAnio);
+        $("#totJulio").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porAgosto").val().length > 0) {
+        $("#mesAgosto").val($("#anioHist").val() + '-08' + '-01');
+        var porAgosto = $("#porAgosto").val();
+        porAgosto = parseFloat(porAgosto);
+        var porcentajeAgosto = porAgosto / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeAgosto;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeAgosto;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeAgosto;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venAgosto").val(totalVenAnio);
+        $("#proAgosto").val(totalProAnio);
+        $("#garaAgosto").val(totalGarAnio);
+        $("#totAgosto").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porSeptiembre").val().length > 0) {
+        $("#mesSeptiembre").val($("#anioHist").val() + '-09' + '-01');
+        var porSeptiembre = $("#porSeptiembre").val();
+        porSeptiembre = parseFloat(porSeptiembre);
+        var porcentajeSeptiembre = porSeptiembre / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeSeptiembre;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeSeptiembre;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeSeptiembre;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venSeptiembre").val(totalVenAnio);
+        $("#proSeptiembre").val(totalProAnio);
+        $("#garaSeptiembre").val(totalGarAnio);
+        $("#totSeptiembre").val(totalVenAnio + totalProAnio + totalGarAnio);
+
+    }
+    if ($("#porOctubre").val().length > 0) {
+        $("#mesOctubre").val($("#anioHist").val() + '-10' + '-01');
+        var porOctubre = $("#porOctubre").val();
+        porOctubre = parseFloat(porOctubre);
+        var porcentajeOctubre = porOctubre / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeOctubre;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeOctubre;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeOctubre;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venOctubre").val(totalVenAnio);
+        $("#proOctubre").val(totalProAnio);
+        $("#garaOctubre").val(totalGarAnio);
+        $("#totOctubre").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porNoviembre").val().length > 0) {
+        $("#mesNoviembre").val($("#anioHist").val() + '-11' + '-01');
+        var porNoviembre = $("#porNoviembre").val();
+        porNoviembre = parseFloat(porNoviembre);
+        var porcentajeNoviembre = porNoviembre / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeNoviembre;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeNoviembre;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeNoviembre;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venNoviembre").val(totalVenAnio);
+        $("#proNoviembre").val(totalProAnio);
+        $("#garaNoviembre").val(totalGarAnio);
+        $("#totNoviembre").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+    if ($("#porDiciembre").val().length > 0) {
+        $("#mesDiciembre").val($("#anioHist").val() + '-12' + '-01');
+        var porDiciembre = $("#porDiciembre").val();
+        porDiciembre = parseFloat(porDiciembre);
+        var porcentajeDiciembre = porDiciembre / 100;
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeDiciembre;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeDiciembre;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeDiciembre;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        $("#venDiciembre").val(totalVenAnio);
+        $("#proDiciembre").val(totalProAnio);
+        $("#garaDiciembre").val(totalGarAnio);
+        $("#totDiciembre").val(totalVenAnio + totalProAnio + totalGarAnio);
+    }
+
 });
 
 
+// Guardar valores en la tabla de presupuestos mesnsuales
 $("#guardar_pres_mes").submit(function(event) {
     $('#guardar_datos_mes').attr("disabled", true);
 
@@ -88,32 +426,15 @@ $("#guardar_pres_mes").submit(function(event) {
 
 })
 
-/* 	$("#editar_vendedor").submit(function(event) {
-    $('#actualizar_datos').attr("disabled", true);
 
-    var parametros = $(this).serialize();
-    $.ajax({
-        type: "POST",
-        url: "ajax/vendedor/editar_vendedor.php",
-        data: parametros,
-        beforeSend: function(objeto) {
-            $("#resultados_ajax2").html("Mensaje: Cargando...");
-        },
-        success: function(datos) {
-            $("#resultados_ajax2").html(datos);
-            $('#actualizar_datos').attr("disabled", false);
-            load(1);
-        }
-    });
-    event.preventDefault();
-})
-*/
 /* Campos ocultos */
 $("#total_anio").hide();
 $("#formMes").hide();
 $('#guardar_datos').attr("disabled", true);
 
 $('#close').click(function() {
+
+    alert("Esta seguro de salir del formulario !!!");
 
     $("#incremento_anio").attr("disabled", false);
     $('#guardar_datos').attr("disabled", true);
@@ -229,7 +550,7 @@ function obtener_datos(id) {
     $("#promocion").val(promocion_historial);
     $("#garantia").val(garantia_historial);
     $("#facturado").val(facturado_historial);
-    $("#vendedor").text(nombre_vendedor + ' - ' + nameLinea);
+    $("#vendedor").text('LINEA: ' + nameLinea + ' - ' + 'EJECUTIVO: ' + nombre_vendedor);
 
 
     $('#calcularAnio').hide(); // Oculto el boton
@@ -303,67 +624,6 @@ function tituloPreAnio(total, valor) {
     $("#tituloPor").text(total);
 }
 
-// Guardar presupuesto año
-/* 	$("#venEnero").attr("disabled", true);
-    $("#proEnero").attr("disabled", true);
-    $("#garaEnero").attr("disabled", true);
-    $("#totEnero").attr("disabled", true); 
-
-    $("#venFebrero").attr("disabled", true);
-    $("#proFebrero").attr("disabled", true);
-    $("#garaFebrero").attr("disabled", true);
-    $("#totFebrero").attr("disabled", true);
-
-    $("#venMarzo").attr("disabled", true);
-    $("#proMarzo").attr("disabled", true);
-    $("#garaMarzo").attr("disabled", true);
-    $("#totMarzo").attr("disabled", true);
-
-    $("#venAbril").attr("disabled", true);
-    $("#proAbril").attr("disabled", true);
-    $("#garaAbril").attr("disabled", true);
-    $("#totAbril").attr("disabled", true);
-
-    $("#venMayo").attr("disabled", true);
-    $("#proMayo").attr("disabled", true);
-    $("#garaMayo").attr("disabled", true);
-    $("#totMayo").attr("disabled", true);
-
-    $("#venJunio").attr("disabled", true);
-    $("#proJunio").attr("disabled", true);
-    $("#garaJunio").attr("disabled", true);
-    $("#totJunio").attr("disabled", true);
-
-    $("#venJulio").attr("disabled", true);
-    $("#proJulio").attr("disabled", true);
-    $("#garaJulio").attr("disabled", true);
-    $("#totJulio").attr("disabled", true);
-
-    $("#venAgosto").attr("disabled", true);
-    $("#proAgosto").attr("disabled", true);
-    $("#garaAgosto").attr("disabled", true);
-    $("#totAgosto").attr("disabled", true);
-
-    $("#venSeptiembre").attr("disabled", true);
-    $("#proSeptiembre").attr("disabled", true);
-    $("#garaSeptiembre").attr("disabled", true);
-    $("#totSeptiembre").attr("disabled", true);
-
-    $("#venOctubre").attr("disabled", true);
-    $("#proOctubre").attr("disabled", true);
-    $("#garaOctubre").attr("disabled", true);
-    $("#totOctubre").attr("disabled", true);
-
-    $("#venNoviembre").attr("disabled", true);
-    $("#proNoviembre").attr("disabled", true);
-    $("#garaNoviembre").attr("disabled", true);
-    $("#totNoviembre").attr("disabled", true);
-
-    $("#venDiciembre").attr("disabled", true);
-    $("#proDiciembre").attr("disabled", true);
-    $("#garaDiciembre").attr("disabled", true);
-    $("#totDiciembre").attr("disabled", true);
-    */
 
 $("#porEnero").on("input", function() {
 
