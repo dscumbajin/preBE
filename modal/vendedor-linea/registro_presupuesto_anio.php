@@ -69,16 +69,18 @@
 						<div id="formMes" class="card-body">
 
 							<div class="form-group row">
-								<div id="resultados_ajax"></div>
+								<div id="resultados_ajaxmes"></div>
 								<form class="form-horizontal" method="post" id="guardar_pres_mes" name="guardar_pres_mes">
-									<h3 class="">Agregar presupuesto Mes - <span id="tituloPor"></span> % por asignar</h3>
+									<h3 class="">Agregar presupuesto Mes
+										<!-- - <span id="tituloPor"></span> % por asignar -->
+									</h3>
 
 
 									<input type="hidden" name="codVenAnio" id="codVenAnio">
 									<input type="hidden" name="codLineaAnio" id="codLineaAnio">
 
-									<div class="table-responsive">
-										<table class="table table-bordered table-striped">
+									<div >
+										<table class="table-responsive table-bordered table-striped">
 											<tr class="info">
 												<th>Mes</th>
 												<th>% </th>
@@ -89,9 +91,6 @@
 											</tr>
 
 											<tr>
-
-												<!--  <input type="hidden" required name="idPresAnio[]" /> -->
-
 												<td><span>Enero</span></td>
 												<td><input id="porEnero" class="form-control" required placeholder="%" />
 												</td>
@@ -273,13 +272,12 @@
 											</tr>
 										</table>
 									</div>
+
 									<div>
 										<!--   <input type="submit" name="insertar" value="Guardar" class="btn btn-dark" /> -->
 										<!--  <button id="adicional" name="adicional" type="button" class="btn btn-warning"> Más
 	                                        + </button> -->
 										<button type="submit" class="btn btn-success float-right" id="guardar_datos_mes">Guardar</button>
-
-
 									</div>
 								</form>
 

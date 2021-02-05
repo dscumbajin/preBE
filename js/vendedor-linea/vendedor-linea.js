@@ -60,6 +60,8 @@ $("#guardar_pres_anio").submit(function(event) {
     });
     event.preventDefault();
     $("#formMes").show();
+    $("#resultados_ajax").show();
+    $('#guardar_datos_mes').attr("disabled", false);
 });
 
 
@@ -74,35 +76,36 @@ $("#guardar_pres_mes").submit(function(event) {
         url: "ajax/vendedor-linea/nuevo_presupuesto_mes.php",
         data: parametros,
         beforeSend: function(objeto) {
-            $("#resultados_ajax").html("Mensaje: Cargando...");
+            $("#resultados_ajaxmes").html("Mensaje: Cargando...");
         },
         success: function(datos) {
-            $("#resultados_ajax").html(datos);
+            $("#resultados_ajaxmes").html(datos);
             load(1);
         }
     });
     event.preventDefault();
+    $("#resultados_ajaxmes").show();
 
 })
 
 /* 	$("#editar_vendedor").submit(function(event) {
-	$('#actualizar_datos').attr("disabled", true);
+    $('#actualizar_datos').attr("disabled", true);
 
-	var parametros = $(this).serialize();
-	$.ajax({
-		type: "POST",
-		url: "ajax/vendedor/editar_vendedor.php",
-		data: parametros,
-		beforeSend: function(objeto) {
-			$("#resultados_ajax2").html("Mensaje: Cargando...");
-		},
-		success: function(datos) {
-			$("#resultados_ajax2").html(datos);
-			$('#actualizar_datos').attr("disabled", false);
-			load(1);
-		}
-	});
-	event.preventDefault();
+    var parametros = $(this).serialize();
+    $.ajax({
+        type: "POST",
+        url: "ajax/vendedor/editar_vendedor.php",
+        data: parametros,
+        beforeSend: function(objeto) {
+            $("#resultados_ajax2").html("Mensaje: Cargando...");
+        },
+        success: function(datos) {
+            $("#resultados_ajax2").html(datos);
+            $('#actualizar_datos').attr("disabled", false);
+            load(1);
+        }
+    });
+    event.preventDefault();
 })
 */
 /* Campos ocultos */
@@ -114,13 +117,14 @@ $('#close').click(function() {
 
     $("#incremento_anio").attr("disabled", false);
     $('#guardar_datos').attr("disabled", true);
-    $('#guardar_datos_mes').attr("disabled", false);
-    $('#guardar_datos').attr("disabled", false);
+    $('#guardar_datos_mes').attr("disabled", true);
     $('#calcularAnio').attr("disabled", false);
 
     $("#total_anio").hide();
     $("#formMes").hide();
     $("#resultados_ajax").hide();
+    $("#resultados_ajaxmes").hide();
+
     $("#incremento_anio").val("");
 
     $("#porEnero").val('');
@@ -227,17 +231,16 @@ function obtener_datos(id) {
     $("#facturado").val(facturado_historial);
     $("#vendedor").text(nombre_vendedor + ' - ' + nameLinea);
 
-    // si escribe en el campo habilitar el calcular
-    // si esta habilitado calcular, habilitar guaradar
-    // si no esta habilitado calcular desabilitar guardar
+
     $('#calcularAnio').hide(); // Oculto el boton
+
     $("#incremento_anio").on('input', function() {
         // $('#calcularAnio').click(function() {
 
         if ($("#incremento_anio").length < 0) {
             $("#incremento_anio").attr("required", "true");
         }
-        $("#resultados_ajax").show();
+        $("#resultados_ajax").hide();
         $('#guardar_datos').attr("disabled", false);
 
         var numeroVendidas = $("#vendidas").val();
@@ -282,8 +285,8 @@ function obtener_datos(id) {
 
 }
 
-$("#tituloPor").text(100);
-
+/* $("#tituloPor").text(100);
+ */
 function tituloPreAnio(total, valor) {
 
 
@@ -302,65 +305,65 @@ function tituloPreAnio(total, valor) {
 
 // Guardar presupuesto año
 /* 	$("#venEnero").attr("disabled", true);
-	$("#proEnero").attr("disabled", true);
-	$("#garaEnero").attr("disabled", true);
-	$("#totEnero").attr("disabled", true); 
+    $("#proEnero").attr("disabled", true);
+    $("#garaEnero").attr("disabled", true);
+    $("#totEnero").attr("disabled", true); 
 
-	$("#venFebrero").attr("disabled", true);
-	$("#proFebrero").attr("disabled", true);
-	$("#garaFebrero").attr("disabled", true);
-	$("#totFebrero").attr("disabled", true);
+    $("#venFebrero").attr("disabled", true);
+    $("#proFebrero").attr("disabled", true);
+    $("#garaFebrero").attr("disabled", true);
+    $("#totFebrero").attr("disabled", true);
 
-	$("#venMarzo").attr("disabled", true);
-	$("#proMarzo").attr("disabled", true);
-	$("#garaMarzo").attr("disabled", true);
-	$("#totMarzo").attr("disabled", true);
+    $("#venMarzo").attr("disabled", true);
+    $("#proMarzo").attr("disabled", true);
+    $("#garaMarzo").attr("disabled", true);
+    $("#totMarzo").attr("disabled", true);
 
-	$("#venAbril").attr("disabled", true);
-	$("#proAbril").attr("disabled", true);
-	$("#garaAbril").attr("disabled", true);
-	$("#totAbril").attr("disabled", true);
+    $("#venAbril").attr("disabled", true);
+    $("#proAbril").attr("disabled", true);
+    $("#garaAbril").attr("disabled", true);
+    $("#totAbril").attr("disabled", true);
 
-	$("#venMayo").attr("disabled", true);
-	$("#proMayo").attr("disabled", true);
-	$("#garaMayo").attr("disabled", true);
-	$("#totMayo").attr("disabled", true);
+    $("#venMayo").attr("disabled", true);
+    $("#proMayo").attr("disabled", true);
+    $("#garaMayo").attr("disabled", true);
+    $("#totMayo").attr("disabled", true);
 
-	$("#venJunio").attr("disabled", true);
-	$("#proJunio").attr("disabled", true);
-	$("#garaJunio").attr("disabled", true);
-	$("#totJunio").attr("disabled", true);
+    $("#venJunio").attr("disabled", true);
+    $("#proJunio").attr("disabled", true);
+    $("#garaJunio").attr("disabled", true);
+    $("#totJunio").attr("disabled", true);
 
-	$("#venJulio").attr("disabled", true);
-	$("#proJulio").attr("disabled", true);
-	$("#garaJulio").attr("disabled", true);
-	$("#totJulio").attr("disabled", true);
+    $("#venJulio").attr("disabled", true);
+    $("#proJulio").attr("disabled", true);
+    $("#garaJulio").attr("disabled", true);
+    $("#totJulio").attr("disabled", true);
 
-	$("#venAgosto").attr("disabled", true);
-	$("#proAgosto").attr("disabled", true);
-	$("#garaAgosto").attr("disabled", true);
-	$("#totAgosto").attr("disabled", true);
+    $("#venAgosto").attr("disabled", true);
+    $("#proAgosto").attr("disabled", true);
+    $("#garaAgosto").attr("disabled", true);
+    $("#totAgosto").attr("disabled", true);
 
-	$("#venSeptiembre").attr("disabled", true);
-	$("#proSeptiembre").attr("disabled", true);
-	$("#garaSeptiembre").attr("disabled", true);
-	$("#totSeptiembre").attr("disabled", true);
+    $("#venSeptiembre").attr("disabled", true);
+    $("#proSeptiembre").attr("disabled", true);
+    $("#garaSeptiembre").attr("disabled", true);
+    $("#totSeptiembre").attr("disabled", true);
 
-	$("#venOctubre").attr("disabled", true);
-	$("#proOctubre").attr("disabled", true);
-	$("#garaOctubre").attr("disabled", true);
-	$("#totOctubre").attr("disabled", true);
+    $("#venOctubre").attr("disabled", true);
+    $("#proOctubre").attr("disabled", true);
+    $("#garaOctubre").attr("disabled", true);
+    $("#totOctubre").attr("disabled", true);
 
-	$("#venNoviembre").attr("disabled", true);
-	$("#proNoviembre").attr("disabled", true);
-	$("#garaNoviembre").attr("disabled", true);
-	$("#totNoviembre").attr("disabled", true);
+    $("#venNoviembre").attr("disabled", true);
+    $("#proNoviembre").attr("disabled", true);
+    $("#garaNoviembre").attr("disabled", true);
+    $("#totNoviembre").attr("disabled", true);
 
-	$("#venDiciembre").attr("disabled", true);
-	$("#proDiciembre").attr("disabled", true);
-	$("#garaDiciembre").attr("disabled", true);
-	$("#totDiciembre").attr("disabled", true);
-	*/
+    $("#venDiciembre").attr("disabled", true);
+    $("#proDiciembre").attr("disabled", true);
+    $("#garaDiciembre").attr("disabled", true);
+    $("#totDiciembre").attr("disabled", true);
+    */
 
 $("#porEnero").on("input", function() {
 
@@ -390,16 +393,16 @@ $("#porEnero").on("input", function() {
     $("#totEnero").val(totalVenAnio + totalProAnio + totalGarAnio);
 
 
-    if (porEnero > 0) {
+    /*   if (porEnero > 0) {
 
-        var vTitulo = $("#tituloPor").text();
-        vTitulo = parseFloat(vTitulo);
+          var vTitulo = $("#tituloPor").text();
+          vTitulo = parseFloat(vTitulo);
 
-    } else {
-        vTitulo = 100;
-        porEnero = 0;
-    }
-    tituloPreAnio(vTitulo, porEnero);
+      } else {
+          vTitulo = 100;
+          porEnero = 0;
+      }
+      tituloPreAnio(vTitulo, porEnero); */
 });
 
 $("#porFebrero").on("input", function() {
@@ -427,7 +430,7 @@ $("#porFebrero").on("input", function() {
     $("#proFebrero").val(totalProAnio);
     $("#garaFebrero").val(totalGarAnio);
     $("#totFebrero").val(totalVenAnio + totalProAnio + totalGarAnio);
-    if (porFebrero > 0) {
+    /* if (porFebrero > 0) {
 
         var vTitulo = $("#tituloPor").text();
         vTitulo = parseFloat(vTitulo);
@@ -436,7 +439,7 @@ $("#porFebrero").on("input", function() {
         vTitulo = $("#tituloPor").text();
         porFebrero = 0;
     }
-    tituloPreAnio(vTitulo, porFebrero);
+    tituloPreAnio(vTitulo, porFebrero); */
 });
 
 $("#porMarzo").on("input", function() {
@@ -465,16 +468,16 @@ $("#porMarzo").on("input", function() {
     $("#garaMarzo").val(totalGarAnio);
     $("#totMarzo").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-    if (porMarzo > 0) {
+    /*   if (porMarzo > 0) {
 
-        var vTitulo = $("#tituloPor").text();
-        vTitulo = parseFloat(vTitulo);
+          var vTitulo = $("#tituloPor").text();
+          vTitulo = parseFloat(vTitulo);
 
-    } else {
-        vTitulo = 100;
-        porMarzo = 0;
-    }
-    tituloPreAnio(vTitulo, porMarzo);
+      } else {
+          vTitulo = 100;
+          porMarzo = 0;
+      }
+      tituloPreAnio(vTitulo, porMarzo); */
 
 });
 
@@ -504,16 +507,16 @@ $("#porAbril").on("input", function() {
     $("#garaAbril").val(totalGarAnio);
     $("#totAbril").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-    if (porAbril > 0) {
+    /*   if (porAbril > 0) {
 
-        var vTitulo = $("#tituloPor").text();
-        vTitulo = parseFloat(vTitulo);
+          var vTitulo = $("#tituloPor").text();
+          vTitulo = parseFloat(vTitulo);
 
-    } else {
-        vTitulo = 100;
-        porAbril = 0;
-    }
-    tituloPreAnio(vTitulo, porAbril);
+      } else {
+          vTitulo = 100;
+          porAbril = 0;
+      }
+      tituloPreAnio(vTitulo, porAbril); */
 
 });
 
@@ -543,16 +546,16 @@ $("#porMayo").on("input", function() {
     $("#garaMayo").val(totalGarAnio);
     $("#totMayo").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-    if (porMayo > 0) {
+    /*  if (porMayo > 0) {
 
-        var vTitulo = $("#tituloPor").text();
-        vTitulo = parseFloat(vTitulo);
+         var vTitulo = $("#tituloPor").text();
+         vTitulo = parseFloat(vTitulo);
 
-    } else {
-        vTitulo = 100;
-        porMayo = 0;
-    }
-    tituloPreAnio(vTitulo, porMayo);
+     } else {
+         vTitulo = 100;
+         porMayo = 0;
+     }
+     tituloPreAnio(vTitulo, porMayo); */
 
 });
 
@@ -582,16 +585,16 @@ $("#porJunio").on("input", function() {
     $("#garaJunio").val(totalGarAnio);
     $("#totJunio").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-    if (porJunio > 0) {
+    /*  if (porJunio > 0) {
 
-        var vTitulo = $("#tituloPor").text();
-        vTitulo = parseFloat(vTitulo);
+         var vTitulo = $("#tituloPor").text();
+         vTitulo = parseFloat(vTitulo);
 
-    } else {
-        vTitulo = 100;
-        porJunio = 0;
-    }
-    tituloPreAnio(vTitulo, porJunio);
+     } else {
+         vTitulo = 100;
+         porJunio = 0;
+     }
+     tituloPreAnio(vTitulo, porJunio); */
 
 });
 
@@ -620,17 +623,17 @@ $("#porJulio").on("input", function() {
     $("#proJulio").val(totalProAnio);
     $("#garaJulio").val(totalGarAnio);
     $("#totJulio").val(totalVenAnio + totalProAnio + totalGarAnio);
+    /* 
+        if (porJulio > 0) {
 
-    if (porJulio > 0) {
+            var vTitulo = $("#tituloPor").text();
+            vTitulo = parseFloat(vTitulo);
 
-        var vTitulo = $("#tituloPor").text();
-        vTitulo = parseFloat(vTitulo);
-
-    } else {
-        vTitulo = 100;
-        porJulio = 0;
-    }
-    tituloPreAnio(vTitulo, porJulio);
+        } else {
+            vTitulo = 100;
+            porJulio = 0;
+        }
+        tituloPreAnio(vTitulo, porJulio); */
 
 });
 
@@ -660,7 +663,7 @@ $("#porAgosto").on("input", function() {
     $("#garaAgosto").val(totalGarAnio);
     $("#totAgosto").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-    if (porAgosto > 0) {
+    /*  if (porAgosto > 0) {
 
         var vTitulo = $("#tituloPor").text();
         vTitulo = parseFloat(vTitulo);
@@ -670,7 +673,7 @@ $("#porAgosto").on("input", function() {
         porAgosto = 0;
     }
     tituloPreAnio(vTitulo, porAgosto);
-
+ */
 });
 
 $("#porSeptiembre").on("input", function() {
@@ -699,7 +702,7 @@ $("#porSeptiembre").on("input", function() {
     $("#garaSeptiembre").val(totalGarAnio);
     $("#totSeptiembre").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-    if (porSeptiembre > 0) {
+    /*   if (porSeptiembre > 0) {
 
         var vTitulo = $("#tituloPor").text();
         vTitulo = parseFloat(vTitulo);
@@ -709,7 +712,7 @@ $("#porSeptiembre").on("input", function() {
         porSeptiembre = 0;
     }
     tituloPreAnio(vTitulo, porSeptiembre);
-
+ */
 });
 
 $("#porOctubre").on("input", function() {
@@ -738,16 +741,16 @@ $("#porOctubre").on("input", function() {
     $("#garaOctubre").val(totalGarAnio);
     $("#totOctubre").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-    if (porOctubre > 0) {
+    /*   if (porOctubre > 0) {
 
-        var vTitulo = $("#tituloPor").text();
-        vTitulo = parseFloat(vTitulo);
+          var vTitulo = $("#tituloPor").text();
+          vTitulo = parseFloat(vTitulo);
 
-    } else {
-        vTitulo = 100;
-        porOctubre = 0;
-    }
-    tituloPreAnio(vTitulo, porOctubre);
+      } else {
+          vTitulo = 100;
+          porOctubre = 0;
+      }
+      tituloPreAnio(vTitulo, porOctubre); */
 
 });
 
@@ -776,18 +779,18 @@ $("#porNoviembre").on("input", function() {
     $("#proNoviembre").val(totalProAnio);
     $("#garaNoviembre").val(totalGarAnio);
     $("#totNoviembre").val(totalVenAnio + totalProAnio + totalGarAnio);
+    /* 
+        if (porNoviembre > 0) {
 
-    if (porNoviembre > 0) {
+            var vTitulo = $("#tituloPor").text();
+            vTitulo = parseFloat(vTitulo);
 
-        var vTitulo = $("#tituloPor").text();
-        vTitulo = parseFloat(vTitulo);
-
-    } else {
-        vTitulo = 100;
-        porNoviembre = 0;
-    }
-    tituloPreAnio(vTitulo, porNoviembre);
-
+        } else {
+            vTitulo = 100;
+            porNoviembre = 0;
+        }
+        tituloPreAnio(vTitulo, porNoviembre);
+     */
 });
 
 $("#porDiciembre").on("input", function() {
@@ -816,7 +819,7 @@ $("#porDiciembre").on("input", function() {
     $("#garaDiciembre").val(totalGarAnio);
     $("#totDiciembre").val(totalVenAnio + totalProAnio + totalGarAnio);
 
-    if (porDiciembre > 0) {
+    /* if (porDiciembre > 0) {
 
         var vTitulo = $("#tituloPor").text();
         vTitulo = parseFloat(vTitulo);
@@ -826,7 +829,7 @@ $("#porDiciembre").on("input", function() {
         porDiciembre = 0;
     }
     tituloPreAnio(vTitulo, porDiciembre);
-
+ */
 });
 
 
