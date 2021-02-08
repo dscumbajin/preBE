@@ -86,7 +86,7 @@
 											<label for="precioMeta">PRECIO POR META</label>
 										</div>
 									</div>
-									<br>
+								
 									<div class="col-sm-8 col-md-8 col-lg-12">
 										<div class="table-responsive ">
 											<table class="table-bordered table-striped ">

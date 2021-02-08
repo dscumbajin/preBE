@@ -221,3 +221,7 @@ tbody {
     font-size: 15px;
     margin: auto;
 }
+
+.filledInputs {
+    background-color: red;
+}

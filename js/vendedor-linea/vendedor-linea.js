@@ -704,37 +704,114 @@ function tituloPreAnio(enero, febrero, marzo, abril, mayo, junio, julio, agosto,
 
 
 $("#porEnero").on("input", function() {
-
     // Iicializacion de variables
     $("#mesEnero").val($("#anioHist").val() + '-01' + '-01');
     var porEnero = $("#porEnero").val();
     porEnero = parseFloat(porEnero);
     var porcentajeEnero = porEnero / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
-    var totalVenAnio = vendidasAnio * porcentajeEnero;
-    totalVenAnio = Math.round(totalVenAnio);
-    var totalProAnio = promoAnio * porcentajeEnero;
-    totalProAnio = Math.round(totalProAnio);
-    var totalGarAnio = garantAnio * porcentajeEnero;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
 
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    // Presentamos valores en la panatalla
-    $("#venEnero").val(totalVenAnio);
-    $("#proEnero").val(totalProAnio);
-    $("#garaEnero").val(totalGarAnio);
-    $("#totEnero").val(sumaVenProGar);
+    if (isNaN(porcentajeEnero)) {
 
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presEnero").val(presFacturacion);
+        var subPorcentajes = porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
+        // Sumo todos los porcentajes
+        $("#porEnero").on("input", function() {
+            var porEnero = $("#porEnero").val();
+            porEnero = parseFloat(porEnero);
+            if (porEnero <= comparacion) {
+                porcentajeEnero = porEnero / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
+
+            }
+        });
+
+        return;
+
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+        var totalVenAnio = vendidasAnio * porcentajeEnero;
+        totalVenAnio = Math.round(totalVenAnio);
+        var totalProAnio = promoAnio * porcentajeEnero;
+        totalProAnio = Math.round(totalProAnio);
+        var totalGarAnio = garantAnio * porcentajeEnero;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        // Presentamos valores en la panatalla
+        $("#venEnero").val(totalVenAnio);
+        $("#proEnero").val(totalProAnio);
+        $("#garaEnero").val(totalGarAnio);
+        $("#totEnero").val(sumaVenProGar);
+
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presEnero").val(presFacturacion);
+    }
 });
 
 
@@ -743,29 +820,106 @@ $("#porFebrero").on("input", function() {
     var porFebrero = $("#porFebrero").val();
     porFebrero = parseFloat(porFebrero);
     var porcentajeFebrero = porFebrero / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
-    var totalVenAnio = vendidasAnio * porcentajeFebrero;
-    totalVenAnio = Math.round(totalVenAnio);
-    var totalProAnio = promoAnio * porcentajeFebrero;
-    totalProAnio = Math.round(totalProAnio);
-    var totalGarAnio = garantAnio * porcentajeFebrero;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
 
-    $("#venFebrero").val(totalVenAnio);
-    $("#proFebrero").val(totalProAnio);
-    $("#garaFebrero").val(totalGarAnio);
-    $("#totFebrero").val(sumaVenProGar);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presFebrero").val(presFacturacion);
+    if (isNaN(porcentajeFebrero)) {
+        var subPorcentajes = porEnero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+
+        $("#porEnero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
+
+        $("#porFebrero").on("input", function() {
+            var porFebrero = $("#porFebrero").val();
+            porFebrero = parseFloat(porFebrero);
+            if (porFebrero <= comparacion) {
+                porcentajeFebrero = porFebrero / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+                $("#porEnero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
+            }
+        });
+
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+        var totalVenAnio = vendidasAnio * porcentajeFebrero;
+        totalVenAnio = Math.round(totalVenAnio);
+        var totalProAnio = promoAnio * porcentajeFebrero;
+        totalProAnio = Math.round(totalProAnio);
+        var totalGarAnio = garantAnio * porcentajeFebrero;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venFebrero").val(totalVenAnio);
+        $("#proFebrero").val(totalProAnio);
+        $("#garaFebrero").val(totalGarAnio);
+        $("#totFebrero").val(sumaVenProGar);
+
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presFebrero").val(presFacturacion);
+    }
 });
 
 $("#porMarzo").on("input", function() {
@@ -773,30 +927,73 @@ $("#porMarzo").on("input", function() {
     var porMarzo = $("#porMarzo").val();
     porMarzo = parseFloat(porMarzo);
     var porcentajeMarzo = porMarzo / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
-    var totalVenAnio = vendidasAnio * porcentajeMarzo;
-    totalVenAnio = Math.round(totalVenAnio);
-    var totalProAnio = promoAnio * porcentajeMarzo;
-    totalProAnio = Math.round(totalProAnio);
-    var totalGarAnio = garantAnio * porcentajeMarzo;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
 
-    $("#venMarzo").val(totalVenAnio);
-    $("#proMarzo").val(totalProAnio);
-    $("#garaMarzo").val(totalGarAnio);
-    $("#totMarzo").val(sumaVenProGar);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presMarzo").val(presFacturacion);
+    if (isNaN(porcentajeMarzo)) {
+        var subPorcentajes = porEnero + porFebrero + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
+        // Sumo todos los porcentajes
+
+        $("#porMarzo").on("input", function() {
+            var porMarzo = $("#porMarzo").val();
+            porMarzo = parseFloat(porMarzo);
+            if (porMarzo <= comparacion) {
+                porcentajeMarzo = porMarzo / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
+        });
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+        var totalVenAnio = vendidasAnio * porcentajeMarzo;
+        totalVenAnio = Math.round(totalVenAnio);
+        var totalProAnio = promoAnio * porcentajeMarzo;
+        totalProAnio = Math.round(totalProAnio);
+        var totalGarAnio = garantAnio * porcentajeMarzo;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venMarzo").val(totalVenAnio);
+        $("#proMarzo").val(totalProAnio);
+        $("#garaMarzo").val(totalGarAnio);
+        $("#totMarzo").val(sumaVenProGar);
+
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presMarzo").val(presFacturacion);
+    }
 });
 
 $("#porAbril").on("input", function() {
@@ -804,31 +1001,76 @@ $("#porAbril").on("input", function() {
     var porAbril = $("#porAbril").val();
     porAbril = parseFloat(porAbril);
     var porcentajeAbril = porAbril / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeAbril;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var totalProAnio = promoAnio * porcentajeAbril;
-    totalProAnio = Math.round(totalProAnio);
+    if (isNaN(porcentajeAbril)) {
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    var totalGarAnio = garantAnio * porcentajeAbril;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+        // Sumo todos los porcentajes
 
-    $("#venAbril").val(totalVenAnio);
-    $("#proAbril").val(totalProAnio);
-    $("#garaAbril").val(totalGarAnio);
-    $("#totAbril").val(sumaVenProGar);
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presAbril").val(presFacturacion);
+        $("#porAbril").on("input", function() {
+            var porAbril = $("#porAbril").val();
+            porAbril = parseFloat(porAbril);
+            if (porAbril <= comparacion) {
+                porcentajeAbril = porAbril / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+
+            }
+        });
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeAbril;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeAbril;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeAbril;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venAbril").val(totalVenAnio);
+        $("#proAbril").val(totalProAnio);
+        $("#garaAbril").val(totalGarAnio);
+        $("#totAbril").val(sumaVenProGar);
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presAbril").val(presFacturacion);
+    }
 
 });
 
@@ -837,31 +1079,77 @@ $("#porMayo").on("input", function() {
     var porMayo = $("#porMayo").val();
     porMayo = parseFloat(porMayo);
     var porcentajeMayo = porMayo / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeMayo;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var totalProAnio = promoAnio * porcentajeMayo;
-    totalProAnio = Math.round(totalProAnio);
+    if (isNaN(porcentajeMayo)) {
 
-    var totalGarAnio = garantAnio * porcentajeMayo;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    $("#venMayo").val(totalVenAnio);
-    $("#proMayo").val(totalProAnio);
-    $("#garaMayo").val(totalGarAnio);
-    $("#totMayo").val(sumaVenProGar);
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presMayo").val(presFacturacion);
+        // Sumo todos los porcentajes
+
+        $("#porMayo").on("input", function() {
+            var porMayo = $("#porMayo").val();
+            porMayo = parseFloat(porMayo);
+            if (porMayo <= comparacion) {
+                porcentajeMayo = porMayo / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+
+            }
+        });
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeMayo;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeMayo;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeMayo;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venMayo").val(totalVenAnio);
+        $("#proMayo").val(totalProAnio);
+        $("#garaMayo").val(totalGarAnio);
+        $("#totMayo").val(sumaVenProGar);
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presMayo").val(presFacturacion);
+    }
 });
 
 $("#porJunio").on("input", function() {
@@ -869,32 +1157,78 @@ $("#porJunio").on("input", function() {
     var porJunio = $("#porJunio").val();
     porJunio = parseFloat(porJunio);
     var porcentajeJunio = porJunio / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeJunio;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var totalProAnio = promoAnio * porcentajeJunio;
-    totalProAnio = Math.round(totalProAnio);
+    if (isNaN(porcentajeJinio)) {
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    var totalGarAnio = garantAnio * porcentajeJunio;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+        // Sumo todos los porcentajes
 
-    $("#venJunio").val(totalVenAnio);
-    $("#proJunio").val(totalProAnio);
-    $("#garaJunio").val(totalGarAnio);
-    $("#totJunio").val(sumaVenProGar);
+        $("#porJunio").on("input", function() {
+            var porJunio = $("#porJunio").val();
+            porJunio = parseFloat(porJunio);
+            if (porJunio <= comparacion) {
+                porcentajeJunio = porEnero / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
 
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presJunio").val(presFacturacion);
+            }
+        });
+
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeJunio;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeJunio;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeJunio;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venJunio").val(totalVenAnio);
+        $("#proJunio").val(totalProAnio);
+        $("#garaJunio").val(totalGarAnio);
+        $("#totJunio").val(sumaVenProGar);
+
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presJunio").val(presFacturacion);
+    }
 
 });
 
@@ -903,32 +1237,76 @@ $("#porJulio").on("input", function() {
     var porJulio = $("#porJulio").val();
     porJulio = parseFloat(porJulio);
     var porcentajeJulio = porJulio / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeJulio;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var totalProAnio = promoAnio * porcentajeJulio;
-    totalProAnio = Math.round(totalProAnio);
+    if (isNaN(porcentajeJulio)) {
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    var totalGarAnio = garantAnio * porcentajeJulio;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+        // Sumo todos los porcentajes
 
-    $("#venJulio").val(totalVenAnio);
-    $("#proJulio").val(totalProAnio);
-    $("#garaJulio").val(totalGarAnio);
-    $("#totJulio").val(sumaVenProGar);
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presJulio").val(presFacturacion);
+        $("#porJulio").on("input", function() {
+            var porJulio = $("#porJulio").val();
+            porJulio = parseFloat(porJulio);
+            if (porJulio <= comparacion) {
+                porcentajeJulio = porJulio / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
 
+            }
+        });
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeJulio;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeJulio;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeJulio;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venJulio").val(totalVenAnio);
+        $("#proJulio").val(totalProAnio);
+        $("#garaJulio").val(totalGarAnio);
+        $("#totJulio").val(sumaVenProGar);
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presJulio").val(presFacturacion);
+    }
 });
 
 $("#porAgosto").on("input", function() {
@@ -936,32 +1314,77 @@ $("#porAgosto").on("input", function() {
     var porAgosto = $("#porAgosto").val();
     porAgosto = parseFloat(porAgosto);
     var porcentajeAgosto = porAgosto / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeAgosto;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var totalProAnio = promoAnio * porcentajeAgosto;
-    totalProAnio = Math.round(totalProAnio);
+    if (isNaN(porcentajeAgosto)) {
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    var totalGarAnio = garantAnio * porcentajeAgosto;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+        // Sumo todos los porcentajes
 
-    $("#venAgosto").val(totalVenAnio);
-    $("#proAgosto").val(totalProAnio);
-    $("#garaAgosto").val(totalGarAnio);
-    $("#totAgosto").val(sumaVenProGar);
+        $("#porAgosto").on("input", function() {
+            var porAgosto = $("#porAgosto").val();
+            porAgosto = parseFloat(porAgosto);
+            if (porAgosto <= comparacion) {
+                porcentajeAgosto = porAgosto / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
 
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presAgosto").val(presFacturacion);
+            }
+        });
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeAgosto;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeAgosto;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeAgosto;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venAgosto").val(totalVenAnio);
+        $("#proAgosto").val(totalProAnio);
+        $("#garaAgosto").val(totalGarAnio);
+        $("#totAgosto").val(sumaVenProGar);
+
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presAgosto").val(presFacturacion);
+    }
 });
 
 $("#porSeptiembre").on("input", function() {
@@ -969,33 +1392,79 @@ $("#porSeptiembre").on("input", function() {
     var porSeptiembre = $("#porSeptiembre").val();
     porSeptiembre = parseFloat(porSeptiembre);
     var porcentajeSeptiembre = porSeptiembre / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeSeptiembre;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var totalProAnio = promoAnio * porcentajeSeptiembre;
-    totalProAnio = Math.round(totalProAnio);
 
-    var totalGarAnio = garantAnio * porcentajeSeptiembre;
-    totalGarAnio = Math.round(totalGarAnio);
+    if (isNaN(porcentajeSeptiembre)) {
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porOctubre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+        // Sumo todos los porcentajes
 
-    $("#venSeptiembre").val(totalVenAnio);
-    $("#proSeptiembre").val(totalProAnio);
-    $("#garaSeptiembre").val(totalGarAnio);
-    $("#totSeptiembre").val(sumaVenProGar);
+        $("#porSeptiembre").on("input", function() {
+            var porSeptiembre = $("#porSeptiembre").val();
+            porSeptiembre = parseFloat(porSeptiembre);
+            if (porSeptiembre <= comparacion) {
+                porcentajeSeptiembre = porSeptiembre / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
 
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presSeptiembre").val(presFacturacion);
+            }
+        });
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeSeptiembre;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeSeptiembre;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeSeptiembre;
+        totalGarAnio = Math.round(totalGarAnio);
+
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venSeptiembre").val(totalVenAnio);
+        $("#proSeptiembre").val(totalProAnio);
+        $("#garaSeptiembre").val(totalGarAnio);
+        $("#totSeptiembre").val(sumaVenProGar);
+
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presSeptiembre").val(presFacturacion);
+    }
 });
 
 $("#porOctubre").on("input", function() {
@@ -1003,32 +1472,78 @@ $("#porOctubre").on("input", function() {
     var porOctubre = $("#porOctubre").val();
     porOctubre = parseFloat(porOctubre);
     var porcentajeOctubre = porOctubre / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeOctubre;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var totalProAnio = promoAnio * porcentajeOctubre;
-    totalProAnio = Math.round(totalProAnio);
+    if (isNaN(porcentajeOctubre)) {
+        var subPorcentajes = porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porNoviembre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    var totalGarAnio = garantAnio * porcentajeOctubre;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+        // Sumo todos los porcentajes
 
-    $("#venOctubre").val(totalVenAnio);
-    $("#proOctubre").val(totalProAnio);
-    $("#garaOctubre").val(totalGarAnio);
-    $("#totOctubre").val(sumaVenProGar);
+        $("#porOctubre").on("input", function() {
+            var porOctubre = $("#porOctubre").val();
+            porOctubre = parseFloat(porOctubre);
+            if (porOctubre <= comparacion) {
+                porcentajeOctubre = porOctubre / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
 
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presOctubre").val(presFacturacion);
+            }
+        });
+
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeOctubre;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeOctubre;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeOctubre;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venOctubre").val(totalVenAnio);
+        $("#proOctubre").val(totalProAnio);
+        $("#garaOctubre").val(totalGarAnio);
+        $("#totOctubre").val(sumaVenProGar);
+
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presOctubre").val(presFacturacion);
+    }
 
 });
 
@@ -1037,31 +1552,76 @@ $("#porNoviembre").on("input", function() {
     var porNoviembre = $("#porNoviembre").val();
     porNoviembre = parseFloat(porNoviembre);
     var porcentajeNoviembre = porNoviembre / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeNoviembre;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porDiciembre = $("#porDiciembre").val();
+    porDiciembre = parseFloat(porDiciembre);
 
-    var totalProAnio = promoAnio * porcentajeNoviembre;
-    totalProAnio = Math.round(totalProAnio);
+    if (isNaN(porcentajeNoviembre)) {
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porDiciembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    var totalGarAnio = garantAnio * porcentajeNoviembre;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+        // Sumo todos los porcentajes
 
-    $("#venNoviembre").val(totalVenAnio);
-    $("#proNoviembre").val(totalProAnio);
-    $("#garaNoviembre").val(totalGarAnio);
-    $("#totNoviembre").val(sumaVenProGar);
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presNoviembre").val(presFacturacion);
+        $("#porNoviembre").on("input", function() {
+            var porNoviembre = $("#porNoviembre").val();
+            porNoviembre = parseFloat(porNoviembre);
+            if (porNoviembre <= comparacion) {
+                porcentajeNoviembre = porNoviembre / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+
+            }
+        });
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeNoviembre;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeNoviembre;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeNoviembre;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venNoviembre").val(totalVenAnio);
+        $("#proNoviembre").val(totalProAnio);
+        $("#garaNoviembre").val(totalGarAnio);
+        $("#totNoviembre").val(sumaVenProGar);
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presNoviembre").val(presFacturacion);
+    }
 });
 
 $("#porDiciembre").on("input", function() {
@@ -1069,110 +1629,164 @@ $("#porDiciembre").on("input", function() {
     var porDiciembre = $("#porDiciembre").val();
     porDiciembre = parseFloat(porDiciembre);
     var porcentajeDiciembre = porDiciembre / 100;
-    var vendidasAnio = $("#vendidasNuevo").val();
-    vendidasAnio = parseInt(vendidasAnio);
-    var promoAnio = $("#promocionNuevo").val();
-    promoAnio = parseInt(promoAnio);
-    var garantAnio = $("#garantiaNuevo").val();
-    garantAnio = parseInt(garantAnio);
 
-    var totalVenAnio = vendidasAnio * porcentajeDiciembre;
-    totalVenAnio = Math.round(totalVenAnio);
+    var porEnero = $("#porEnero").val();
+    porEnero = parseFloat(porEnero);
+    var porFebrero = $("#porFebrero").val();
+    porFebrero = parseFloat(porFebrero);
+    var porMarzo = $("#porMarzo").val();
+    porMarzo = parseFloat(porMarzo);
+    var porAbril = $("#porAbril").val();
+    porAbril = parseFloat(porAbril);
+    var porMayo = $("#porMayo").val();
+    porMayo = parseFloat(porMayo);
+    var porJunio = $("#porJunio").val();
+    porJunio = parseFloat(porJunio);
+    var porJulio = $("#porJulio").val();
+    porJulio = parseFloat(porJulio);
+    var porAgosto = $("#porAgosto").val();
+    porAgosto = parseFloat(porAgosto);
+    var porSeptiembre = $("#porSeptiembre").val();
+    porSeptiembre = parseFloat(porSeptiembre);
+    var porOctubre = $("#porOctubre").val();
+    porOctubre = parseFloat(porOctubre);
+    var porNoviembre = $("#porNoviembre").val();
+    porNoviembre = parseFloat(porNoviembre);
 
-    var totalProAnio = promoAnio * porcentajeDiciembre;
-    totalProAnio = Math.round(totalProAnio);
 
-    var totalGarAnio = garantAnio * porcentajeDiciembre;
-    totalGarAnio = Math.round(totalGarAnio);
-    var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+    if (isNaN(porcentajeDiciembre)) {
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre;
+        var comparacion = 100 - subPorcentajes;
+        alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
-    $("#venDiciembre").val(totalVenAnio);
-    $("#proDiciembre").val(totalProAnio);
-    $("#garaDiciembre").val(totalGarAnio);
-    $("#totDiciembre").val(sumaVenProGar);
+        // Sumo todos los porcentajes
 
-    var precioPromedio = $("#precioMeta").val();
-    precioPromedio = parseFloat(precioPromedio);
-    var presFacturacion = precioPromedio * sumaVenProGar;
-    $("#presDiciembre").val(presFacturacion);
+        $("#porDiciembre").on("input", function() {
+            var porDiciembre = $("#porDiciembre").val();
+            porDiciembre = parseFloat(porDiciembre);
+            if (porDiciembre <= comparacion) {
+                porcentajeDiciembre = porDiciembre / 100;
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+
+            }
+        });
+        return;
+    } else {
+        var vendidasAnio = $("#vendidasNuevo").val();
+        vendidasAnio = parseInt(vendidasAnio);
+        var promoAnio = $("#promocionNuevo").val();
+        promoAnio = parseInt(promoAnio);
+        var garantAnio = $("#garantiaNuevo").val();
+        garantAnio = parseInt(garantAnio);
+
+        var totalVenAnio = vendidasAnio * porcentajeDiciembre;
+        totalVenAnio = Math.round(totalVenAnio);
+
+        var totalProAnio = promoAnio * porcentajeDiciembre;
+        totalProAnio = Math.round(totalProAnio);
+
+        var totalGarAnio = garantAnio * porcentajeDiciembre;
+        totalGarAnio = Math.round(totalGarAnio);
+        var sumaVenProGar = totalVenAnio + totalProAnio + totalGarAnio;
+
+        $("#venDiciembre").val(totalVenAnio);
+        $("#proDiciembre").val(totalProAnio);
+        $("#garaDiciembre").val(totalGarAnio);
+        $("#totDiciembre").val(sumaVenProGar);
+
+        var precioPromedio = $("#precioMeta").val();
+        precioPromedio = parseFloat(precioPromedio);
+        var presFacturacion = precioPromedio * sumaVenProGar;
+        $("#presDiciembre").val(presFacturacion);
+    }
 });
 
 // Modificacion del input precio por meta
 $("#precioMeta").on("input", function() {
-    var precioMeta = $("#precioMeta").val();
-    precioMeta = parseFloat(precioMeta);
-    //Enero
-    var presEneroV = $("#totEnero").val();
-    presEneroV = parseInt(presEneroV);
-    var facEnero = precioMeta * presEneroV;
-    $("#presEnero").val(facEnero);
-    //Febrero
-    var presFebreroV = $("#totFebrero").val();
-    presFebreroV = parseInt(presFebreroV);
-    var facFebrero = precioMeta * presFebreroV;
-    $("#presFebrero").val(facFebrero);
-    //Marzo
-    var presMarzoV = $("#totMarzo").val();
-    presMarzoV = parseInt(presMarzoV);
-    var facMarzo = precioMeta * presMarzoV;
-    $("#presMarzo").val(facMarzo);
-    //Abril
-    var presAbrilV = $("#totAbril").val();
-    presAbrilV = parseInt(presAbrilV);
-    var facAbril = precioMeta * presAbrilV;
-    $("#presAbril").val(facAbril);
-    //Mayo
-    var presMayoV = $("#totMayo").val();
-    presMayoV = parseInt(presMayoV);
-    var facMayo = precioMeta * presMayoV;
-    $("#presMayo").val(facMayo);
-    //Junio
-    var presJunioV = $("#totJunio").val();
-    presJunioV = parseInt(presJunioV);
-    var facJunio = precioMeta * presJunioV;
-    $("#presJunio").val(facJunio);
-    //Julio
-    var presJulioV = $("#totJulio").val();
-    presJulioV = parseInt(presJulioV);
-    var facJulio = precioMeta * presJulioV;
-    $("#presJulio").val(facJulio);
-    //Agosto
-    var presAgostoV = $("#totAgosto").val();
-    presAgostoV = parseInt(presAgostoV);
-    var facAgosto = precioMeta * presAgostoV;
-    $("#presAgosto").val(facAgosto);
-    //Septiembre
-    var presSeptiembreV = $("#totSeptiembre").val();
-    presSeptiembreV = parseInt(presSeptiembreV);
-    var facSeptiembre = precioMeta * presSeptiembreV;
-    $("#presSeptiembre").val(facSeptiembre);
-    //Octubre
-    var presOctubreV = $("#totOctubre").val();
-    presOctubreV = parseInt(presOctubreV);
-    var facOctubre = precioMeta * presOctubreV;
-    $("#presOctubre").val(facOctubre);
-    //Noviembre
-    var presNoviembreV = $("#totNoviembre").val();
-    presNoviembreV = parseInt(presNoviembreV);
-    var facNoviembre = precioMeta * presNoviembreV;
-    $("#presNoviembre").val(facNoviembre);
-    //Diciembre
-    var presDiciembreV = $("#totDiciembre").val();
-    presDiciembreV = parseInt(presDiciembreV);
-    var facDiciembre = precioMeta * presDiciembreV;
-    $("#presDiciembre").val(facDiciembre);
+
+
+    if (isNaN($("#precioMeta").val())) {
+        alert("Debes ingresar el precio por meta");
+        return;
+    } else {
+        var precioMeta = $("#precioMeta").val();
+        precioMeta = parseFloat(precioMeta);
+        //Enero
+        var presEneroV = $("#totEnero").val();
+        presEneroV = parseInt(presEneroV);
+        var facEnero = precioMeta * presEneroV;
+        $("#presEnero").val(facEnero);
+        //Febrero
+        var presFebreroV = $("#totFebrero").val();
+        presFebreroV = parseInt(presFebreroV);
+        var facFebrero = precioMeta * presFebreroV;
+        $("#presFebrero").val(facFebrero);
+        //Marzo
+        var presMarzoV = $("#totMarzo").val();
+        presMarzoV = parseInt(presMarzoV);
+        var facMarzo = precioMeta * presMarzoV;
+        $("#presMarzo").val(facMarzo);
+        //Abril
+        var presAbrilV = $("#totAbril").val();
+        presAbrilV = parseInt(presAbrilV);
+        var facAbril = precioMeta * presAbrilV;
+        $("#presAbril").val(facAbril);
+        //Mayo
+        var presMayoV = $("#totMayo").val();
+        presMayoV = parseInt(presMayoV);
+        var facMayo = precioMeta * presMayoV;
+        $("#presMayo").val(facMayo);
+        //Junio
+        var presJunioV = $("#totJunio").val();
+        presJunioV = parseInt(presJunioV);
+        var facJunio = precioMeta * presJunioV;
+        $("#presJunio").val(facJunio);
+        //Julio
+        var presJulioV = $("#totJulio").val();
+        presJulioV = parseInt(presJulioV);
+        var facJulio = precioMeta * presJulioV;
+        $("#presJulio").val(facJulio);
+        //Agosto
+        var presAgostoV = $("#totAgosto").val();
+        presAgostoV = parseInt(presAgostoV);
+        var facAgosto = precioMeta * presAgostoV;
+        $("#presAgosto").val(facAgosto);
+        //Septiembre
+        var presSeptiembreV = $("#totSeptiembre").val();
+        presSeptiembreV = parseInt(presSeptiembreV);
+        var facSeptiembre = precioMeta * presSeptiembreV;
+        $("#presSeptiembre").val(facSeptiembre);
+        //Octubre
+        var presOctubreV = $("#totOctubre").val();
+        presOctubreV = parseInt(presOctubreV);
+        var facOctubre = precioMeta * presOctubreV;
+        $("#presOctubre").val(facOctubre);
+        //Noviembre
+        var presNoviembreV = $("#totNoviembre").val();
+        presNoviembreV = parseInt(presNoviembreV);
+        var facNoviembre = precioMeta * presNoviembreV;
+        $("#presNoviembre").val(facNoviembre);
+        //Diciembre
+        var presDiciembreV = $("#totDiciembre").val();
+        presDiciembreV = parseInt(presDiciembreV);
+        var facDiciembre = precioMeta * presDiciembreV;
+        $("#presDiciembre").val(facDiciembre);
+    }
 });
 
 
-$(function() {
-    // Clona la fila oculta que tiene los campos base, y la agrega al final de la tabla
-    $("#adicional").on('click', function() {
-        $("#tabla tbody tr:eq(0)").clone().removeClass('fila-fija').appendTo("#tabla");
-    });
 
-    // Evento que selecciona la fila y la elimina 
-    $(document).on("click", ".eliminar", function() {
-        var parent = $(this).parents().get(0);
-        $(parent).remove();
-    });
-});
+// Cambiar color de input
+/* $(function() {
+    $('#guardar_pres_mes :input')
+        .change(function() {
+            var $input = $(this);
+            if ($input.val() === '') {
+                $input.removeClass('filledInputs');
+            } else {
+                $input.addClass('filledInputs');
+            }
+        });
+}); */
