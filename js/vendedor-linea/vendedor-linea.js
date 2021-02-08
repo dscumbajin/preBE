@@ -520,8 +520,6 @@ $('#guardar_datos').attr("disabled", true);
 
 $('#close').click(function() {
 
-    alert("Esta seguro de salir del formulario !!!");
-
     $("#incremento_anio").attr("disabled", false);
     $('#guardar_datos').attr("disabled", true);
     $('#guardar_datos_mes').attr("disabled", true);
@@ -1097,6 +1095,72 @@ $("#porDiciembre").on("input", function() {
     precioPromedio = parseFloat(precioPromedio);
     var presFacturacion = precioPromedio * sumaVenProGar;
     $("#presDiciembre").val(presFacturacion);
+});
+
+// Modificacion del input precio por meta
+$("#precioMeta").on("input", function() {
+    var precioMeta = $("#precioMeta").val();
+    precioMeta = parseFloat(precioMeta);
+    //Enero
+    var presEneroV = $("#totEnero").val();
+    presEneroV = parseInt(presEneroV);
+    var facEnero = precioMeta * presEneroV;
+    $("#presEnero").val(facEnero);
+    //Febrero
+    var presFebreroV = $("#totFebrero").val();
+    presFebreroV = parseInt(presFebreroV);
+    var facFebrero = precioMeta * presFebreroV;
+    $("#presFebrero").val(facFebrero);
+    //Marzo
+    var presMarzoV = $("#totMarzo").val();
+    presMarzoV = parseInt(presMarzoV);
+    var facMarzo = precioMeta * presMarzoV;
+    $("#presMarzo").val(facMarzo);
+    //Abril
+    var presAbrilV = $("#totAbril").val();
+    presAbrilV = parseInt(presAbrilV);
+    var facAbril = precioMeta * presAbrilV;
+    $("#presAbril").val(facAbril);
+    //Mayo
+    var presMayoV = $("#totMayo").val();
+    presMayoV = parseInt(presMayoV);
+    var facMayo = precioMeta * presMayoV;
+    $("#presMayo").val(facMayo);
+    //Junio
+    var presJunioV = $("#totJunio").val();
+    presJunioV = parseInt(presJunioV);
+    var facJunio = precioMeta * presJunioV;
+    $("#presJunio").val(facJunio);
+    //Julio
+    var presJulioV = $("#totJulio").val();
+    presJulioV = parseInt(presJulioV);
+    var facJulio = precioMeta * presJulioV;
+    $("#presJulio").val(facJulio);
+    //Agosto
+    var presAgostoV = $("#totAgosto").val();
+    presAgostoV = parseInt(presAgostoV);
+    var facAgosto = precioMeta * presAgostoV;
+    $("#presAgosto").val(facAgosto);
+    //Septiembre
+    var presSeptiembreV = $("#totSeptiembre").val();
+    presSeptiembreV = parseInt(presSeptiembreV);
+    var facSeptiembre = precioMeta * presSeptiembreV;
+    $("#presSeptiembre").val(facSeptiembre);
+    //Octubre
+    var presOctubreV = $("#totOctubre").val();
+    presOctubreV = parseInt(presOctubreV);
+    var facOctubre = precioMeta * presOctubreV;
+    $("#presOctubre").val(facOctubre);
+    //Noviembre
+    var presNoviembreV = $("#totNoviembre").val();
+    presNoviembreV = parseInt(presNoviembreV);
+    var facNoviembre = precioMeta * presNoviembreV;
+    $("#presNoviembre").val(facNoviembre);
+    //Diciembre
+    var presDiciembreV = $("#totDiciembre").val();
+    presDiciembreV = parseInt(presDiciembreV);
+    var facDiciembre = precioMeta * presDiciembreV;
+    $("#presDiciembre").val(facDiciembre);
 });
 
 
