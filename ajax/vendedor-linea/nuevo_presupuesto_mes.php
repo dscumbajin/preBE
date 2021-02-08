@@ -26,6 +26,7 @@ if (empty($_POST['codVenAnio'])) {
 	$items3 = ($_POST['promosMes']);
 	$items4 = ($_POST['garantiaMes']);
 	$items5 = ($_POST['totalMes']);
+	$items6 = ($_POST['presMes']);
 
 	///////////// SEPARAR VALORES DE ARRAYS, EN ESTE CASO SON 4 ARRAYS UNO POR CADA INPUT (ID, NOMBRE, CARRERA Y GRUPO////////////////////)
 	while (true) {
@@ -36,6 +37,7 @@ if (empty($_POST['codVenAnio'])) {
 		$item3 = current($items3);
 		$item4 = current($items4);
 		$item5 = current($items5);
+		$item6 = current($items6);
 
 		////// ASIGNARLOS A VARIABLES ///////////////////
 		$mes = (($item1 !== false) ? $item1 : ", &nbsp;");
@@ -43,15 +45,15 @@ if (empty($_POST['codVenAnio'])) {
 		$promosMes = (($item3 !== false) ? $item3 : ", &nbsp;");
 		$garantiaMes = (($item4 !== false) ? $item4 : ", &nbsp;");
 		$totalMes = (($item5 !== false) ? $item5 : ", &nbsp;");
-
+		$presMes = (($item6 !== false) ? $item6 : ", &nbsp;");
 		//// CONCATENAR LOS VALORES EN ORDEN PARA SU FUTURA INSERCIÓN ////////
-		$valores = '(' . $codigoPresAnio . ',"' . $mes . '",' . $ventasMes . ',' . $promosMes . ',' . $garantiaMes . ',' . $totalMes . '),';
+		$valores = '(' . $codigoPresAnio . ',"' . $mes . '",' . $ventasMes . ',' . $promosMes . ',' . $garantiaMes . ',' . $totalMes . ',' . $presMes . '),';
 
 		//////// YA QUE TERMINA CON COMA CADA FILA, SE RESTA CON LA FUNCIÓN SUBSTR EN LA ULTIMA FILA /////////////////////
 		$valoresQ = substr($valores, 0, -1);
 
 		///////// QUERY DE INSERCIÓN ////////////////////////////
-		$sql = "INSERT INTO presupuesto_mes (idPresAnio, mes, cantMesU, cantPromoU, cantGarantU, cantTotalU) 
+		$sql = "INSERT INTO presupuesto_mes (idPresAnio, mes, cantMesU, cantPromoU, cantGarantU, cantTotalU, presMesV) 
 					VALUES $valoresQ";
 
 		$sqlRes = $con->query($sql);
@@ -63,9 +65,10 @@ if (empty($_POST['codVenAnio'])) {
 		$item3 = next($items3);
 		$item4 = next($items4);
 		$item5 = next($items5);
+		$item6 = next($items6);
 
 		// Check terminator
-		if ($item1 === false && $item2 === false && $item3 === false && $item4 === false && $item5 === false) break;
+		if ($item1 === false && $item2 === false && $item3 === false && $item4 === false && $item5 === false && $item6 === false) break;
 
 		if ($sqlRes) {
 			$messages[] = "Presupuesto mensual ingresado satisfactoriamente.";
