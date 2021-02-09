@@ -491,7 +491,19 @@ $("#guardar_pres_anio").submit(function(event) {
 // Guardar valores en la tabla de presupuestos mesnsuales
 $("#guardar_pres_mes").submit(function(event) {
     $('#guardar_datos_mes').attr("disabled", true);
-
+    $("#precioMeta").attr("readonly", true);
+    $("#porEnero").attr("readonly", true);
+    $("#porFebrero").attr("readonly", true);
+    $("#porMarzo").attr("readonly", true);
+    $("#porAbril").attr("readonly", true);
+    $("#porMayo").attr("readonly", true);
+    $("#porJunio").attr("readonly", true);
+    $("#porJulio").attr("readonly", true);
+    $("#porAgosto").attr("readonly", true);
+    $("#porSeptiembre").attr("readonly", true);
+    $("#porOctubre").attr("readonly", true);
+    $("#porNoviembre").attr("readonly", true);
+    $("#porDiciembre").attr("readonly", true);
     var parametros = $(this).serialize();
 
     console.log(parametros);
@@ -519,19 +531,31 @@ $("#formMes").hide();
 $('#guardar_datos').attr("disabled", true);
 
 $('#close').click(function() {
-
+    // Desabilitar
     $("#incremento_anio").attr("disabled", false);
     $('#guardar_datos').attr("disabled", true);
     $('#guardar_datos_mes').attr("disabled", true);
     $('#calcularAnio').attr("disabled", false);
-
+    $("#precioMeta").attr("readonly", false);
+    $("#porEnero").attr("readonly", false);
+    $("#porFebrero").attr("readonly", false);
+    $("#porMarzo").attr("readonly", false);
+    $("#porAbril").attr("readonly", false);
+    $("#porMayo").attr("readonly", false);
+    $("#porJunio").attr("readonly", false);
+    $("#porJulio").attr("readonly", false);
+    $("#porAgosto").attr("readonly", false);
+    $("#porSeptiembre").attr("readonly", false);
+    $("#porOctubre").attr("readonly", false);
+    $("#porNoviembre").attr("readonly", false);
+    $("#porDiciembre").attr("readonly", false);
+    //Ocultar
     $("#total_anio").hide();
     $("#formMes").hide();
     $("#resultados_ajax").hide();
     $("#resultados_ajaxmes").hide();
-
+    //Encerar
     $("#incremento_anio").val("");
-
     $("#porEnero").val('');
     $("#porFebrero").val('');
     $("#porMarzo").val('');
@@ -693,8 +717,6 @@ function obtener_datos(id) {
 
 }
 
-/* $("#tituloPor").text(100);
- */
 function tituloPreAnio(enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre) {
 
     var totalTitulo = enero + febrero + marzo + abril + mayo + junio + julio + agosto + septiembre + octubre + noviembre + diciembre;

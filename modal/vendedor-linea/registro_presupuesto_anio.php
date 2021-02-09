@@ -73,23 +73,26 @@
 								<div id="resultados_ajaxmes"></div>
 								<form class="form-horizontal" method="post" id="guardar_pres_mes" name="guardar_pres_mes">
 
-									<span>Agregar presupuesto Mes </span><span id="tituloPor"></span> % Asignado
+									<span>Presupuesto mensual</span>
 									<hr>
 									<input type="hidden" name="codVenAnio" id="codVenAnio">
 									<input type="hidden" name="codLineaAnio" id="codLineaAnio">
 									<input type="hidden" id="precioPromedio">
 									<div class="form-group row">
-										<div class="col-sm-6">
+										<div class="col-sm-4">
 											<input class="form-control decimales" id="precioMeta" placeholder="PRECIO POR META" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-4">
 											<label for="precioMeta">PRECIO POR META</label>
 										</div>
+										<div class="col-sm-4">
+											Porcentaje asignado: <span id="tituloPor"></span> %
+										</div>
 									</div>
-								
+
 									<div class="col-sm-8 col-md-8 col-lg-12">
 										<div class="table-responsive ">
-											<table class="table-bordered table-striped ">
+											<table class="table-bordered  ">
 												<tr class="info">
 													<th>Mes</th>
 													<th>% </th>
@@ -297,7 +300,7 @@
 											</table>
 										</div>
 
-										<div>
+										<div class="card-footer">
 											<!--   <input type="submit" name="insertar" value="Guardar" class="btn btn-dark" /> -->
 											<!--  <button id="adicional" name="adicional" type="button" class="btn btn-warning"> Más
 	                                        + </button> -->
