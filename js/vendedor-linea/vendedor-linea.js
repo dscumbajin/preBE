@@ -2160,18 +2160,3 @@ $("#precioMeta").on("input", function() {
         $("#presDiciembre").val(facDiciembre);
     }
 });
-
-
-
-// Cambiar color de input
-/* $(function() {
-    $('#guardar_pres_mes :input')
-        .change(function() {
-            var $input = $(this);
-            if ($input.val() === '') {
-                $input.removeClass('filledInputs');
-            } else {
-                $input.addClass('filledInputs');
-            }
-        });
-}); */

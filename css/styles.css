@@ -149,6 +149,10 @@ th {
     font-size: 14px !important;
 }
 
+td {
+    text-align: center;
+}
+
 .modal-title,
 td,
 th,
