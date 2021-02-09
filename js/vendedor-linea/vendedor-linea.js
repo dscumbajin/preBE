@@ -94,6 +94,12 @@ $("#guardar_pres_anio").submit(function(event) {
     $("#porNoviembre").val(totalPorsentaje);
     $("#porDiciembre").val(totalPorsentaje);
 
+    var precioMeta = $("#precioMeta").val();
+    precioMeta = parseFloat(precioMeta);
+    if (isNaN(precioMeta)) {
+        $("#precioMeta").val('0');
+    }
+
     if ($("#porEnero").val().length > 0) {
         $("#mesEnero").val($("#anioHist").val() + '-01' + '-01');
         var porEnero = $("#porEnero").val();
@@ -484,6 +490,7 @@ $("#guardar_pres_anio").submit(function(event) {
     }
 
     tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
 
 });
 
@@ -2090,13 +2097,13 @@ $("#porDiciembre").on("input", function() {
 
 // Modificacion del input precio por meta
 $("#precioMeta").on("input", function() {
-
-
-    if (isNaN($("#precioMeta").val())) {
+    var precioMeta = $("#precioMeta").val();
+    precioMeta = parseFloat(precioMeta);
+    if (isNaN(precioMeta)) {
         alert("Debes ingresar el precio por meta");
+        precioMeta = 0;
         return;
     } else {
-        var precioMeta = $("#precioMeta").val();
         precioMeta = parseFloat(precioMeta);
         //Enero
         var presEneroV = $("#totEnero").val();

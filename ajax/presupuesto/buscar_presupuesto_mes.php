@@ -74,7 +74,7 @@ if ($action == 'ajax') {
 					<th>Año</th>
 					<th>Mes</th>
 					<th>Vendedor</th>
-					<th>Estado</th>
+					<!-- <th>Estado</th> -->
 					<th>Cantidad Mes</th>
 					<th>Cantidad Promos</th>
 					<th>Cantidad Garantía</th>
@@ -124,7 +124,7 @@ if ($action == 'ajax') {
 							echo $fecha;
 							?></td>
 						<td><?php echo $vendedor_presupuesto; ?></td>
-						<td><?php echo $status; ?></td>
+						<!-- <td><?php echo $status; ?></td> -->
 						<td><?php echo $cantidad_mes_presupuesto; ?></td>
 						<td><?php echo $cantidad_promos_presupuesto; ?></td>
 						<td><?php echo $cantidad_garantia_presupuesto; ?></td>
