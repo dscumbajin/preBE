@@ -138,6 +138,27 @@ a {
     border: 1px solid #ddd;
 }
 
+
+/*tabla*/
+
+.table-responsive>.table>tbody>tr>td,
+.table-responsive>.table>tbody>tr>th,
+.table-responsive>.table>tfoot>tr>td,
+.table-responsive>.table>tfoot>tr>th,
+.table-responsive>.table>thead>tr>td,
+.table-responsive>.table>thead>tr>th {
+    white-space: initial;
+}
+
+tbody tr td,
+tbody tr th,
+tfoot tr td,
+tfoot tr th,
+thead tr td,
+thead tr th {
+    white-space: initial;
+}
+
 th {
     background: #495560 !important;
     color: #fff;
@@ -150,7 +171,12 @@ th {
 }
 
 td {
+    font-family: 'Roboto', sans-serif;
+    color: #495560;
+    font-weight: normal;
     text-align: center;
+    padding: 10px 10px !important;
+    font-size: 14px !important;
 }
 
 .modal-title,
@@ -228,4 +254,11 @@ tbody {
 
 .filledInputs {
     background-color: red;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
