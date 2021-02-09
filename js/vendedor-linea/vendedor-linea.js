@@ -699,6 +699,16 @@ function tituloPreAnio(enero, febrero, marzo, abril, mayo, junio, julio, agosto,
 
     var totalTitulo = enero + febrero + marzo + abril + mayo + junio + julio + agosto + septiembre + octubre + noviembre + diciembre;
 
+    totalTitulo = parseFloat(totalTitulo);
+    totalTitulo = Math.round(totalTitulo);
+    if (totalTitulo <= 100) {
+        $('#guardar_datos_mes').attr("disabled", false);
+        $('#tituloPor').removeClass('filledInputs');
+
+    } else {
+        $('#guardar_datos_mes').attr("disabled", true);
+        $('#tituloPor').addClass('filledInputs');
+    }
     $("#tituloPor").text(totalTitulo);
 }
 
@@ -782,6 +792,9 @@ $("#porEnero").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
 
             }
+
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
 
         return;
@@ -811,6 +824,7 @@ $("#porEnero").on("input", function() {
         precioPromedio = parseFloat(precioPromedio);
         var presFacturacion = precioPromedio * sumaVenProGar;
         $("#presEnero").val(presFacturacion);
+
     }
 });
 
@@ -892,6 +906,9 @@ $("#porFebrero").on("input", function() {
                 $("#porNoviembre").attr("readonly", true);
                 $("#porDiciembre").attr("readonly", true);
             }
+
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
 
         return;
@@ -957,16 +974,50 @@ $("#porMarzo").on("input", function() {
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
         // Sumo todos los porcentajes
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
 
         $("#porMarzo").on("input", function() {
             var porMarzo = $("#porMarzo").val();
             porMarzo = parseFloat(porMarzo);
             if (porMarzo <= comparacion) {
                 porcentajeMarzo = porMarzo / 100;
-                $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
         return;
     } else {
@@ -1029,6 +1080,17 @@ $("#porAbril").on("input", function() {
         var subPorcentajes = porEnero + porFebrero + porMarzo + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
 
         // Sumo todos los porcentajes
 
@@ -1038,10 +1100,33 @@ $("#porAbril").on("input", function() {
             if (porAbril <= comparacion) {
                 porcentajeAbril = porAbril / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
         return;
     } else {
@@ -1108,6 +1193,18 @@ $("#porMayo").on("input", function() {
         var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
+
 
         // Sumo todos los porcentajes
 
@@ -1117,10 +1214,33 @@ $("#porMayo").on("input", function() {
             if (porMayo <= comparacion) {
                 porcentajeMayo = porMayo / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
         return;
     } else {
@@ -1185,6 +1305,17 @@ $("#porJunio").on("input", function() {
         var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
 
         // Sumo todos los porcentajes
 
@@ -1194,10 +1325,33 @@ $("#porJunio").on("input", function() {
             if (porJunio <= comparacion) {
                 porcentajeJunio = porEnero / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
 
         return;
@@ -1265,6 +1419,17 @@ $("#porJulio").on("input", function() {
         var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
 
         // Sumo todos los porcentajes
 
@@ -1274,10 +1439,33 @@ $("#porJulio").on("input", function() {
             if (porJulio <= comparacion) {
                 porcentajeJulio = porJulio / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
         return;
     } else {
@@ -1343,6 +1531,18 @@ $("#porAgosto").on("input", function() {
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
+
         // Sumo todos los porcentajes
 
         $("#porAgosto").on("input", function() {
@@ -1351,10 +1551,33 @@ $("#porAgosto").on("input", function() {
             if (porAgosto <= comparacion) {
                 porcentajeAgosto = porAgosto / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
         return;
     } else {
@@ -1421,6 +1644,17 @@ $("#porSeptiembre").on("input", function() {
         var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porOctubre + porNoviembre + porDiciembre;
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
 
         // Sumo todos los porcentajes
 
@@ -1430,10 +1664,33 @@ $("#porSeptiembre").on("input", function() {
             if (porSeptiembre <= comparacion) {
                 porcentajeSeptiembre = porSeptiembre / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
         return;
     } else {
@@ -1500,6 +1757,17 @@ $("#porOctubre").on("input", function() {
         var subPorcentajes = porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porNoviembre + porDiciembre;
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
 
         // Sumo todos los porcentajes
 
@@ -1509,10 +1777,33 @@ $("#porOctubre").on("input", function() {
             if (porOctubre <= comparacion) {
                 porcentajeOctubre = porOctubre / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
 
         return;
@@ -1581,6 +1872,18 @@ $("#porNoviembre").on("input", function() {
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porDiciembre").attr("readonly", true);
+
         // Sumo todos los porcentajes
 
         $("#porNoviembre").on("input", function() {
@@ -1589,10 +1892,34 @@ $("#porNoviembre").on("input", function() {
             if (porNoviembre <= comparacion) {
                 porcentajeNoviembre = porNoviembre / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+
+                $("#porDiciembre").attr("readonly", false);
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porDiciembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
         return;
     } else {
@@ -1659,6 +1986,18 @@ $("#porDiciembre").on("input", function() {
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
 
+        $("#porEnero").attr("readonly", true);
+        $("#porFebrero").attr("readonly", true);
+        $("#porMarzo").attr("readonly", true);
+        $("#porAbril").attr("readonly", true);
+        $("#porMayo").attr("readonly", true);
+        $("#porJunio").attr("readonly", true);
+        $("#porJulio").attr("readonly", true);
+        $("#porAgosto").attr("readonly", true);
+        $("#porSeptiembre").attr("readonly", true);
+        $("#porOctubre").attr("readonly", true);
+        $("#porNoviembre").attr("readonly", true);
+
         // Sumo todos los porcentajes
 
         $("#porDiciembre").on("input", function() {
@@ -1667,10 +2006,34 @@ $("#porDiciembre").on("input", function() {
             if (porDiciembre <= comparacion) {
                 porcentajeDiciembre = porDiciembre / 100;
                 $('#guardar_datos_mes').attr("disabled", false);
+                $("#porEnero").attr("readonly", false);
+                $("#porFebrero").attr("readonly", false);
+                $("#porMarzo").attr("readonly", false);
+                $("#porAbril").attr("readonly", false);
+                $("#porMayo").attr("readonly", false);
+                $("#porJunio").attr("readonly", false);
+                $("#porJulio").attr("readonly", false);
+                $("#porAgosto").attr("readonly", false);
+                $("#porSeptiembre").attr("readonly", false);
+                $("#porOctubre").attr("readonly", false);
+                $("#porNoviembre").attr("readonly", false);
+
             } else {
                 $('#guardar_datos_mes').attr("disabled", true);
-
+                $("#porEnero").attr("readonly", true);
+                $("#porFebrero").attr("readonly", true);
+                $("#porMarzo").attr("readonly", true);
+                $("#porAbril").attr("readonly", true);
+                $("#porMayo").attr("readonly", true);
+                $("#porJunio").attr("readonly", true);
+                $("#porJulio").attr("readonly", true);
+                $("#porAgosto").attr("readonly", true);
+                $("#porSeptiembre").attr("readonly", true);
+                $("#porOctubre").attr("readonly", true);
+                $("#porNoviembre").attr("readonly", true);
             }
+            tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+
         });
         return;
     } else {

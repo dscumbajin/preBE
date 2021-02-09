@@ -8,7 +8,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title"> <span id="vendedor"></span></h4>
-						<button type="button" id="close" class="close" data-dismiss="modal" aria-label="Close">
+						<button type="button" id="close" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -73,7 +73,7 @@
 								<div id="resultados_ajaxmes"></div>
 								<form class="form-horizontal" method="post" id="guardar_pres_mes" name="guardar_pres_mes">
 
-									<span>Agregar presupuesto Mes</span><span id="tituloPor"></span> % Asignado
+									<span>Agregar presupuesto Mes </span><span id="tituloPor"></span> % Asignado
 									<hr>
 									<input type="hidden" name="codVenAnio" id="codVenAnio">
 									<input type="hidden" name="codLineaAnio" id="codLineaAnio">
