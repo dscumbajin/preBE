@@ -98,7 +98,9 @@ if ($action == 'ajax') {
 						<td><?php echo $segemento_vendedor; ?></td>
 						<td><span>
 								<a href="#" title='Editar vendedor' onclick="obtener_datos('<?php echo $id_vendedor; ?>');" data-toggle="modal" data-target="#modVendedor"><i class="fas fa-pen editar"></i></a>
+								<?php if ($_SESSION['user_nivel'] == 2) : ?>
 								<a href="#" title='Borrar vendedor' onclick="eliminar('<?php echo $id_vendedor; ?>')"> <i class="far fa-trash-alt eliminar"></i></a>
+								<?php endif; ?>
 							</span>
 						</td>
 

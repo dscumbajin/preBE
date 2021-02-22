@@ -76,17 +76,19 @@ if ($action == 'ajax') {
 
 					$id_segmento = $row['codSeg'];
 					$des_segmento = $row['desSeg'];
-					
+
 				?>
 
 					<input type="hidden" value="<?php echo $des_segmento; ?>" id="des_segmento<?php echo $id_segmento; ?>">
-					
+
 					<tr>
 						<td><?php echo $id_segmento; ?></td>
 						<td><?php echo $des_segmento; ?></td>
 						<td><span>
 								<a href="#" title='Editar vendedor' onclick="obtener_datos('<?php echo $id_segmento; ?>');" data-toggle="modal" data-target="#modSegmento"><i class="fas fa-pen editar"></i></a>
-								<a href="#" title='Borrar vendedor' onclick="eliminar('<?php echo $id_segmento; ?>')"> <i class="far fa-trash-alt eliminar"></i></a>
+								<?php if ($_SESSION['user_nivel'] == 2) : ?>
+									<a href="#" title='Borrar vendedor' onclick="eliminar('<?php echo $id_segmento; ?>')"> <i class="far fa-trash-alt eliminar"></i></a>
+								<?php endif; ?>
 							</span>
 						</td>
 

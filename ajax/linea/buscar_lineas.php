@@ -93,10 +93,11 @@ if ($action == 'ajax') {
 						<td><?php echo $estado; ?></td>
 						<td><span>
 								<a href="#" title='Editar linea' onclick="obtener_datos('<?php echo $id_linea; ?>');" data-toggle="modal" data-target="#modLinea"><i class="fas fa-pen editar"></i></a>
-								<a href="#" title='Borrar linea' onclick="eliminar('<?php echo $id_linea; ?>')"> <i class="far fa-trash-alt eliminar"></i></a>
+								<?php if ($_SESSION['user_nivel'] == 2) : ?>
+									<a href="#" title='Borrar linea' onclick="eliminar('<?php echo $id_linea; ?>')"> <i class="far fa-trash-alt eliminar"></i></a>
+								<?php endif; ?>
 							</span>
 						</td>
-
 					</tr>
 				<?php
 				}
