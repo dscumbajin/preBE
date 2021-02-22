@@ -18,7 +18,7 @@ include_once('templates/navegacion.php');
   <section class="content-header">
     <div class="container-fluid center">
       <div class="row mb-2">
-        <div class="col-sm-10">
+        <div class="col-sm-8">
           <h1>Vendedores</h1>
         </div>
         <div class="btn-group pull-right">

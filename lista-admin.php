@@ -12,6 +12,8 @@ if (!isset($_SESSION['user_login_status']) and $_SESSION['user_login_status'] !=
 include_once('templates/barra.php');
 include_once('templates/navegacion.php');
 ?>
+
+<title>Usuarios | Presupuestos </title>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->

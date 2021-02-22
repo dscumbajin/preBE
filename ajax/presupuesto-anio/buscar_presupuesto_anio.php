@@ -66,61 +66,65 @@ if ($action == 'ajax') {
 	?>
 		<div class="table-responsive">
 			<table id="registros" class="table table-bordered table-striped ">
-				<tr class="info">
-					<th>Año</th>
-					<th>Vendedor</th>
-					<th>Linea</th>
-					<th>Cantidad Año</th>
-					<th>Cantidad Promos</th>
-					<th>Cantidad Garantía</th>
-					<th>Cantidad Total</th>
-					<th>Acciones</th>
-
-				</tr>
-				<?php
-				while ($row = mysqli_fetch_array($query)) {
-					// idUsu, usuario, nombreUsu, password, mail, idPerfil
-					$id_presupuesto = $row['idPresAnio'];
-					$anio_presupuesto = $row['anio'];
-					$vendedor_presupuesto = $row['nomVen'];
-					$linea_presupuesto = $row['nomLinea'];
-					$cantidad_ventas_presupuesto = $row['ventasPresU'];
-					$cantidad_promos_presupuesto = $row['promoPresU'];
-					$cantidad_garantia_presupuesto = $row['garantPresU'];
-					$cantidad_total_presupuesto = $row['totalPresU'];
-
-
-				?>
-
-					<input type="hidden" value="<?php echo $anio_presupuesto; ?>" id="anio_presupuesto<?php echo $id_presupuesto; ?>">
-					<input type="hidden" value="<?php echo $vendedor_presupuesto; ?>" id="vendedor_presupuesto<?php echo $id_presupuesto; ?>">
-					<input type="hidden" value="<?php echo $cantidad_ventas_presupuesto; ?>" id="cantidad_ventas_presupuesto<?php echo $id_presupuesto; ?>">
-					<input type="hidden" value="<?php echo $cantidad_promos_presupuesto; ?>" id="cantidad_promos_presupuesto<?php echo $id_presupuesto; ?>">
-					<input type="hidden" value="<?php echo $cantidad_garantia_presupuesto; ?>" id="cantidad_garantia_presupuesto<?php echo $id_presupuesto; ?>">
-					<input type="hidden" value="<?php echo $cantidad_total_presupuesto; ?>" id="cantidad_total_presupuesto<?php echo $id_presupuesto; ?>">
-					<input type="hidden" value="<?php echo $linea_presupuesto; ?>" id="linea_presupuesto<?php echo $id_presupuesto; ?>">
-
-					<tr>
-						<td><?php echo $anio_presupuesto; ?></td>
-						<td><?php echo $vendedor_presupuesto; ?></td>
-						<td><?php echo $linea_presupuesto; ?></td>
-						<td><?php echo $cantidad_ventas_presupuesto; ?></td>
-						<td><?php echo $cantidad_promos_presupuesto; ?></td>
-						<td><?php echo $cantidad_garantia_presupuesto; ?></td>
-						<td><?php echo $cantidad_total_presupuesto; ?></td>
-						<td><span>
-								<a href="#" title='Editar presupuesto' onclick="obtener_datos('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuesto"><i class="fas fa-pen editar"></i></a>
-								<?php if ($_SESSION['user_nivel'] == 2) : ?>
-								<a href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"><i class="far fa-trash-alt eliminar"></i></a>
-								<?php endif; ?>
-							</span>
-						</td>
+				<thead>
+					<tr class="info">
+						<th>Año</th>
+						<th>Vendedor</th>
+						<th>Linea</th>
+						<th>Cantidad Año</th>
+						<th>Cantidad Promos</th>
+						<th>Cantidad Garantía</th>
+						<th>Cantidad Total</th>
+						<th>Acciones</th>
 
 					</tr>
-				<?php
-				}
-				?>
+				</thead>
+				<tbody>
+					<?php
+					while ($row = mysqli_fetch_array($query)) {
+						// idUsu, usuario, nombreUsu, password, mail, idPerfil
+						$id_presupuesto = $row['idPresAnio'];
+						$anio_presupuesto = $row['anio'];
+						$vendedor_presupuesto = $row['nomVen'];
+						$linea_presupuesto = $row['nomLinea'];
+						$cantidad_ventas_presupuesto = $row['ventasPresU'];
+						$cantidad_promos_presupuesto = $row['promoPresU'];
+						$cantidad_garantia_presupuesto = $row['garantPresU'];
+						$cantidad_total_presupuesto = $row['totalPresU'];
 
+
+					?>
+
+						<input type="hidden" value="<?php echo $anio_presupuesto; ?>" id="anio_presupuesto<?php echo $id_presupuesto; ?>">
+						<input type="hidden" value="<?php echo $vendedor_presupuesto; ?>" id="vendedor_presupuesto<?php echo $id_presupuesto; ?>">
+						<input type="hidden" value="<?php echo $cantidad_ventas_presupuesto; ?>" id="cantidad_ventas_presupuesto<?php echo $id_presupuesto; ?>">
+						<input type="hidden" value="<?php echo $cantidad_promos_presupuesto; ?>" id="cantidad_promos_presupuesto<?php echo $id_presupuesto; ?>">
+						<input type="hidden" value="<?php echo $cantidad_garantia_presupuesto; ?>" id="cantidad_garantia_presupuesto<?php echo $id_presupuesto; ?>">
+						<input type="hidden" value="<?php echo $cantidad_total_presupuesto; ?>" id="cantidad_total_presupuesto<?php echo $id_presupuesto; ?>">
+						<input type="hidden" value="<?php echo $linea_presupuesto; ?>" id="linea_presupuesto<?php echo $id_presupuesto; ?>">
+
+						<tr>
+							<td><?php echo $anio_presupuesto; ?></td>
+							<td><?php echo $vendedor_presupuesto; ?></td>
+							<td><?php echo $linea_presupuesto; ?></td>
+							<td><?php echo $cantidad_ventas_presupuesto; ?></td>
+							<td><?php echo $cantidad_promos_presupuesto; ?></td>
+							<td><?php echo $cantidad_garantia_presupuesto; ?></td>
+							<td><?php echo $cantidad_total_presupuesto; ?></td>
+							<td><span>
+									<a href="#" title='Editar presupuesto' onclick="obtener_datos('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuesto"><i class="fas fa-pen editar"></i></a>
+									<?php if ($_SESSION['user_nivel'] == 2) : ?>
+										<a href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"><i class="far fa-trash-alt eliminar"></i></a>
+									<?php endif; ?>
+								</span>
+							</td>
+
+						</tr>
+
+					<?php
+					}
+					?>
+				</tbody>
 			</table>
 			<div class="paginacion">
 

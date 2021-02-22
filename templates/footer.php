@@ -2,7 +2,7 @@
     <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 1998-2020 <a href="">Baterias<span>Ecuador</span></a>.</strong> Todos los derechos reservados
+    <strong>Copyright &copy; <?php echo date('Y');?> <a href="">Baterias<span>Ecuador</span></a>.</strong> Todos los derechos reservados
 </footer>
 </div>
 <!-- ./wrapper -->
@@ -37,6 +37,7 @@
 <script src="js/buttons.html5.min.js"></script>
 <script src="js/buttons.print.min.js"></script>
 <script src="js/buttons.colVis.min.js"></script>
+<!-- AdminLTE for demo purposes -->
 <!-- AdminLTE App -->
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
