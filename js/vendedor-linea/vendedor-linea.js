@@ -494,7 +494,6 @@ $("#guardar_pres_anio").submit(function(event) {
 
 });
 
-
 // Guardar valores en la tabla de presupuestos mesnsuales
 $("#guardar_pres_mes").submit(function(event) {
     $('#guardar_datos_mes').attr("disabled", true);
@@ -513,7 +512,7 @@ $("#guardar_pres_mes").submit(function(event) {
     $("#porDiciembre").attr("readonly", true);
     var parametros = $(this).serialize();
 
-    console.log(parametros);
+    //console.log(parametros);
     $.ajax({
         type: "POST",
         url: "ajax/vendedor-linea/nuevo_presupuesto_mes.php",
@@ -530,7 +529,6 @@ $("#guardar_pres_mes").submit(function(event) {
     $("#resultados_ajaxmes").show();
 
 })
-
 
 /* Campos ocultos */
 $("#total_anio").hide();
@@ -823,7 +821,13 @@ $("#porEnero").on("input", function() {
             }
 
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
 
         return;
@@ -856,7 +860,6 @@ $("#porEnero").on("input", function() {
 
     }
 });
-
 
 $("#porFebrero").on("input", function() {
     $("#mesFebrero").val($("#anioHist").val() + '-02' + '-01');
@@ -937,7 +940,13 @@ $("#porFebrero").on("input", function() {
             }
 
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
 
         return;
@@ -1046,7 +1055,13 @@ $("#porMarzo").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
         return;
     } else {
@@ -1155,7 +1170,13 @@ $("#porAbril").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
         return;
     } else {
@@ -1269,7 +1290,13 @@ $("#porMayo").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
         return;
     } else {
@@ -1380,7 +1407,13 @@ $("#porJunio").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
 
         return;
@@ -1494,7 +1527,13 @@ $("#porJulio").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
         return;
     } else {
@@ -1606,7 +1645,13 @@ $("#porAgosto").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
         return;
     } else {
@@ -1719,7 +1764,13 @@ $("#porSeptiembre").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
         return;
     } else {
@@ -1783,7 +1834,7 @@ $("#porOctubre").on("input", function() {
     porDiciembre = parseFloat(porDiciembre);
 
     if (isNaN(porcentajeOctubre)) {
-        var subPorcentajes = porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porNoviembre + porDiciembre;
+        var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porNoviembre + porDiciembre;
         var comparacion = 100 - subPorcentajes;
         alert(`Debes ingresar un valor menor o igual a: ${comparacion}`);
         $("#porEnero").attr("readonly", true);
@@ -1832,7 +1883,13 @@ $("#porOctubre").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
 
         return;
@@ -1948,7 +2005,13 @@ $("#porNoviembre").on("input", function() {
                 $("#porDiciembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
         return;
     } else {
@@ -2062,7 +2125,13 @@ $("#porDiciembre").on("input", function() {
                 $("#porNoviembre").attr("readonly", true);
             }
             tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
-
+            var tituloPor = $("#tituloPor").text();
+            tituloPor = parseInt(tituloPor);
+            if (tituloPor == 100) {
+                $('#guardar_datos_mes').attr("disabled", false);
+            } else {
+                $('#guardar_datos_mes').attr("disabled", true);
+            }
         });
         return;
     } else {

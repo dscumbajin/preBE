@@ -99,7 +99,7 @@ if ($action == 'ajax') {
 					<input type="hidden" value="<?php echo $cantidad_garantia_presupuesto; ?>" id="cantidad_garantia_presupuesto<?php echo $id_presupuesto; ?>">
 					<input type="hidden" value="<?php echo $cantidad_total_presupuesto; ?>" id="cantidad_total_presupuesto<?php echo $id_presupuesto; ?>">
 					<input type="hidden" value="<?php echo $linea_presupuesto; ?>" id="linea_presupuesto<?php echo $id_presupuesto; ?>">
-				
+
 					<tr>
 						<td><?php echo $anio_presupuesto; ?></td>
 						<td><?php echo $vendedor_presupuesto; ?></td>
@@ -108,14 +108,8 @@ if ($action == 'ajax') {
 						<td><?php echo $cantidad_promos_presupuesto; ?></td>
 						<td><?php echo $cantidad_garantia_presupuesto; ?></td>
 						<td><?php echo $cantidad_total_presupuesto; ?></td>
-				
-
-
-
 						<td><span>
 								<a href="#" title='Editar presupuesto' onclick="obtener_datos('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuesto"><i class="fas fa-pen editar"></i></a>
-
-
 								<!-- <a  href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"><i class="far fa-trash-alt eliminar"></i></a> -->
 							</span>
 						</td>
