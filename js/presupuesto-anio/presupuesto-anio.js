@@ -37,26 +37,6 @@
 		    }
 		}
 
-		$("#guardar_usuario").submit(function(event) {
-		    $('#guardar_datos').attr("disabled", true);
-
-		    var parametros = $(this).serialize();
-		    $.ajax({
-		        type: "POST",
-		        url: "ajax/usuario/nuevo_usuario.php",
-		        data: parametros,
-		        beforeSend: function(objeto) {
-		            $("#resultados_ajax").html("Mensaje: Cargando...");
-		        },
-		        success: function(datos) {
-		            $("#resultados_ajax").html(datos);
-		            $('#guardar_datos').attr("disabled", false);
-		            load(1);
-		        }
-		    });
-		    event.preventDefault();
-		})
-
 		$("#editar_usuario").submit(function(event) {
 		    $('#actualizar_datos').attr("disabled", true);
 
@@ -78,15 +58,19 @@
 		})
 
 		function obtener_datos(id) {
-		    var usuario_usuario = $("#usuario_usuario" + id).val();
-		    var nombre_usuario = $("#nombre_usuario" + id).val();
-		    var email_usuario = $("#email_usuario" + id).val();
-		    var perfil_usuario = $("#perfil_usuario" + id).val();
 
-		    $("#mod_usuario").val(usuario_usuario);
-		    $("#mod_nombre").val(nombre_usuario);
-		    $("#mod_email").val(email_usuario);
-		    $("#mod_perfil").val(perfil_usuario);
+		    const vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
+		    const linea_presupuesto = $("#linea_presupuesto" + id).val();
+		    $("#vendedor-linea").text(vendedor_presupuesto + ' - ' + linea_presupuesto);
+		    var cantidad_ventas_presupuesto = $("#cantidad_ventas_presupuesto" + id).val();
+		    var cantidad_promos_presupuesto = $("#cantidad_promos_presupuesto" + id).val();
+		    var cantidad_garantia_presupuesto = $("#cantidad_garantia_presupuesto" + id).val();
+		    var cantidad_total_presupuesto = $("#cantidad_total_presupuesto" + id).val();
+
+		    $("#mod_ventas_presupuesto").val(cantidad_ventas_presupuesto);
+		    $("#mod_promos_presupuesto").val(cantidad_promos_presupuesto);
+		    $("#mod_garantia_presupuesto").val(cantidad_garantia_presupuesto);
+		    $("#mod_total_presupuesto").val(cantidad_total_presupuesto);
 		    $("#mod_id").val(id);
 
 		}

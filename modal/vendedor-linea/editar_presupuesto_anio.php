@@ -5,7 +5,7 @@
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title"> <span id="vendedor"></span></h4>
+						<h4 class="modal-title"> <span id="vendedor-linea"></span></h4>
 						<button type="button" id="close" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -15,45 +15,25 @@
 						<form class="form-horizontal" method="post" id="guardar_pres_anio" name="guardar_pres_anio">
 							<div id="resultados_ajax"></div>
 							<div class="card-body">
-								<div class="form-group row">
-									<label for="incremento_anio" class="col-sm-3 col-form-label">Porcentaje de incremento
-										año</label>
-									<div class="col-sm-6">
-										<input class="form-control decimales" id="incremento_anio" placeholder="Porcentaje" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
-										<!--Pra registro en la base de datos-->
-										<input type="hidden" name="anioHist" id="anioHist">
-										<input type="hidden" name="codVenHist" id="codVenHist">
-										<input type="hidden" name="codLineaHist" id="codLineaHist">
-
-										<!-- Para calculo del presupuesto del año siguiente-->
-										<input type="hidden" name="vendidas" id="vendidas">
-										<input type="hidden" name="promocion" id="promocion">
-										<input type="hidden" name="garantia" id="garantia">
-										<input type="hidden" name="facturado" id="facturado">
-
-									</div>
-									<div class="col-sm-3">
-										<button type="button" class="btn btn-dark" id="calcularAnio">Calcular</button>
-									</div>
-								</div>
-								<hr>
-								<!-- Resultados del calculo de presupuestos por año-->
+							
+								
+								<!-- Datos presupuestos por año-->
 								<div class="form-group row" id="total_anio">
 									<div class="col-sm-3">
 										<span>Ventas</span>
-										<input type="text" class="form-control" name="vendidasNuevo" id="vendidasNuevo" readonly="readonly">
+										<input type="text" class="form-control" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" >
 									</div>
 									<div class="col-sm-3">
 										<span>Promociones</span>
-										<input type="text" class="form-control" name="promocionNuevo" id="promocionNuevo" readonly="readonly">
+										<input type="text" class="form-control" name="mod_promos_presupuesto" id="mod_promos_presupuesto" >
 									</div>
 									<div class="col-sm-3">
 										<span>Garantias</span>
-										<input type="text" class="form-control" name="garantiaNuevo" id="garantiaNuevo" readonly="readonly">
+										<input type="text" class="form-control" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" >
 									</div>
 									<div class="col-sm-3">
 										<span>Presupuesto + Promos + Garantias</span>
-										<input type="text" class="form-control" name="totalAnio" id="totalAnio" readonly="readonly">
+										<input type="text" class="form-control" name="mod_total_presupuesto" id="mod_total_presupuesto" >
 									</div>
 								</div>
 							</div>
@@ -65,7 +45,7 @@
 						</form>
 
 						<hr>
-						<div id="formMes" class="card-body">
+						<!-- <div id="formMes" class="card-body">
 
 							<div class="form-group row">
 								<div id="resultados_ajaxmes"></div>
@@ -116,7 +96,7 @@
 													</td>
 													<td><input id="presEnero" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
 													</td>
-													<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+													
 												</tr>
 												<tr>
 													<td><span>Febrero</span></td>
@@ -133,7 +113,7 @@
 													</td>
 													<td><input id="presFebrero" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
 
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Marzo</span></td>
@@ -149,7 +129,7 @@
 													<td><input id="totMarzo" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presMarzo" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Abril</span></td>
@@ -165,7 +145,7 @@
 													<td><input id="totAbril" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presAbril" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Mayo</span></td>
@@ -181,7 +161,7 @@
 													<td><input id="totMayo" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presMayo" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Junio</span></td>
@@ -197,7 +177,7 @@
 													<td><input id="totJunio" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presJunio" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Julio</span></td>
@@ -213,7 +193,7 @@
 													<td><input id="totJulio" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presJulio" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Agosto</span></td>
@@ -229,7 +209,7 @@
 													<td><input id="totAgosto" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presAgosto" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Septiembre</span></td>
@@ -245,7 +225,7 @@
 													<td><input id="totSeptiembre" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presSeptiembre" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Octubre</span></td>
@@ -261,7 +241,7 @@
 													<td><input id="totOctubre" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presOctubre" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Noviembre</span></td>
@@ -277,7 +257,7 @@
 													<td><input id="totNoviembre" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presNoviembre" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 												<tr>
 													<td><span>Diciembre</span></td>
@@ -293,15 +273,13 @@
 													<td><input id="totDiciembre" class="form-control" required name="totalMes[]" placeholder="" readonly="readonly" />
 													</td>
 													<td><input id="presDiciembre" class="form-control" required name="presMes[]" placeholder="" readonly="readonly" />
-														<!-- <td class="eliminar"><input type="button" value="Menos -" /></td> -->
+														
 												</tr>
 											</table>
 										</div>
 
 										<div class="card-footer">
-											<!--   <input type="submit" name="insertar" value="Guardar" class="btn btn-dark" /> -->
-											<!--  <button id="adicional" name="adicional" type="button" class="btn btn-warning"> Más
-	                                        + </button> -->
+										
 											<button type="submit" class="btn btn-success float-right" id="guardar_datos_mes">Guardar</button>
 										</div>
 									</div>
@@ -309,7 +287,7 @@
 
 							</div>
 						</div>
-
+ -->
 					</div>
 					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button -->
 				</div>
