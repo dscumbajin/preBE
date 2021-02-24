@@ -20,19 +20,19 @@
 								<div class="form-group row" id="total_anio">
 									<div class="col-sm-3">
 										<span style="font-weight: bold;">Ventas</span>
-										<input type="text" class="form-control" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" required >
+										<input type="text" class="form-control numero" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto"  pattern="^[0-9]+(.[0-9]+)?$" required >
 									</div>
 									<div class="col-sm-3">
 										<span style="font-weight: bold;">Promociones</span>
-										<input type="text" class="form-control" name="mod_promos_presupuesto" id="mod_promos_presupuesto" required >
+										<input type="text" class="form-control numero" name="mod_promos_presupuesto" id="mod_promos_presupuesto"  pattern="^[0-9]+(.[0-9]+)?$" required >
 									</div>
 									<div class="col-sm-3">
 										<span style="font-weight: bold;">Garantias</span>
-										<input type="text" class="form-control" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" required >
+										<input type="text" class="form-control numero" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto"  pattern="^[0-9]+(.[0-9]+)?$" required >
 									</div>
 									<div class="col-sm-3">
 										<span style="font-weight: bold;">Presupuesto + Promos + Garantias</span>
-										<input type="text" class="form-control" name="mod_total_presupuesto" id="mod_total_presupuesto" required >
+										<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto"  pattern="^[0-9]+(.[0-9]+)?$" required >
 									</div>
 								</div>
 							</div>

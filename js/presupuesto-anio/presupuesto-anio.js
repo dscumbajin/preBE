@@ -38,25 +38,31 @@
 		}
 
 		$("#editar_presupuesto_anio").submit(function(event) {
-		    $('#actualizar_datos').attr("disabled", true);
+		        $('#actualizar_datos').attr("disabled", true);
 
-		    var parametros = $(this).serialize();
-		    console.log(parametros);
-		    $.ajax({
-		        type: "POST",
-		        url: "ajax/presupuesto-anio/editar_presupuesto_anio.php",
-		        data: parametros,
-		        beforeSend: function(objeto) {
-		            $("#resultados_ajax2").html("Mensaje: Cargando...");
-		        },
-		        success: function(datos) {
-		            $("#resultados_ajax2").html(datos);
-		            $('#actualizar_datos').attr("disabled", false);
-		            load(1);
-		        }
-		    });
-		    event.preventDefault();
-		})
+		        var parametros = $(this).serialize();
+		        console.log(parametros);
+		        $.ajax({
+		            type: "POST",
+		            url: "ajax/presupuesto-anio/editar_presupuesto_anio.php",
+		            data: parametros,
+		            beforeSend: function(objeto) {
+		                $("#resultados_ajax2").html("Mensaje: Cargando...");
+		            },
+		            success: function(datos) {
+		                $("#resultados_ajax2").html(datos);
+		                $('#actualizar_datos').attr("disabled", false);
+		                load(1);
+		            }
+		        });
+		        event.preventDefault();
+		    })
+		    //VALIDACIONES
+
+		// VALIDACIONES
+		$('.numero').on('input', function() {
+		    this.value = this.value.replace(/[^0-9]/g, '');
+		});
 
 		function obtener_datos(id) {
 
@@ -75,7 +81,6 @@
 		    $("#mod_garantia_presupuesto").val(cantidad_garantia_presupuesto);
 		    $("#mod_total_presupuesto").val(cantidad_total_presupuesto);
 		    $("#mod_id").val(id);
-
 
 		    //Bloqueo campo total
 		    $("#mod_total_presupuesto").attr("readonly", true);
