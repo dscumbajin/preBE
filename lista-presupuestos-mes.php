@@ -51,8 +51,6 @@ include_once('templates/navegacion.php');
 
               </div>
 
-
-
             </form>
             <div id="resultados"></div><!-- Carga los datos ajax -->
             <div class='outer_div'></div><!-- Carga los datos ajax -->
@@ -76,4 +74,4 @@ include_once('templates/navegacion.php');
 include_once('templates/footer.php');
 ?>
 
-<script type="text/javascript" src="js/presupuesto/presupuesto-mes.js"></script>
+<script type="text/javascript" src="js/presupuesto-mes/presupuesto-mes.js"></script>

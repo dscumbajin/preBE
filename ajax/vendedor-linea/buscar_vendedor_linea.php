@@ -31,7 +31,7 @@ if ($action == 'ajax') {
 	// escaping, additionally removing everything that could be (html/javascript-) code
 	$q = mysqli_real_escape_string($con, (strip_tags($_REQUEST['q'], ENT_QUOTES)));
 	$codLinea = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codLinea'], ENT_QUOTES)));
-	$aColumns = array('historial_ventas.anio','vendedor.nomVen','historial_ventas.codVen', 'ventasU'); //Columnas de busqueda
+	$aColumns = array('historial_ventas.anio', 'vendedor.nomVen', 'historial_ventas.codVen', 'ventasU'); //Columnas de busqueda
 	$sTable = "historial_ventas, vendedor";
 	$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen AND historial_ventas.generado != 1
 	AND historial_ventas.codLinea = $codLinea ";
@@ -101,7 +101,7 @@ if ($action == 'ajax') {
 					<input type="hidden" value="<?php echo $garantia_historial; ?>" id="garantia_historial<?php echo $id_historial; ?>">
 					<input type="hidden" value="<?php echo $facturado_historial; ?>" id="facturado_historial<?php echo $id_historial; ?>">
 
-					<tr id = "registro<?php echo $id_historial?>">
+					<tr id="registro<?php echo $id_historial ?>">
 
 						<td><?php echo $nombre_vendedor; ?></td>
 						<td><?php echo $anio_historial; ?></td>
@@ -128,9 +128,10 @@ if ($action == 'ajax') {
 
 			</div>
 		</div>
-		<?php
-	} else {
-		if ($_GET['q'] != "") {
+	<?php
+	} else { ?>
+
+		<?php if ($_GET['q'] != "") {
 		?>
 			<div class="alert alert-danger text-center" role="alert">
 				No existe un Histroial de ventas filtrados con el dato: <?php echo $_GET['q']; ?>

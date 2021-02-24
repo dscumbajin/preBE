@@ -35,7 +35,9 @@ include_once('templates/navegacion.php');
           <br>
           <div class="panel-body">
 
-
+            <?php
+            include("modal/vendedor-linea/editar_presupuesto_anio.php");
+            ?>
             <form class="form-horizontal" role="form" id="datos_cotizacion">
 
               <div class="form-group row">
