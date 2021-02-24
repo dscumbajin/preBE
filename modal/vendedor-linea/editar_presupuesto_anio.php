@@ -5,41 +5,40 @@
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title"> <span id="vendedor-linea"></span></h4>
+						<h4 class="modal-title"> <span style="font-weight: bold;" id="vendedor-linea"></span></h4>
 						<button type="button" id="close" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
 
-						<form class="form-horizontal" method="post" id="guardar_pres_anio" name="guardar_pres_anio">
+						<form class="form-horizontal" method="post" id="editar_presupuesto_anio" name="editar_presupuesto_anio">
 							<div id="resultados_ajax"></div>
 							<div class="card-body">
-							
 								
 								<!-- Datos presupuestos por año-->
 								<div class="form-group row" id="total_anio">
 									<div class="col-sm-3">
-										<span>Ventas</span>
-										<input type="text" class="form-control" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" >
+										<span style="font-weight: bold;">Ventas</span>
+										<input type="text" class="form-control" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" required >
 									</div>
 									<div class="col-sm-3">
-										<span>Promociones</span>
-										<input type="text" class="form-control" name="mod_promos_presupuesto" id="mod_promos_presupuesto" >
+										<span style="font-weight: bold;">Promociones</span>
+										<input type="text" class="form-control" name="mod_promos_presupuesto" id="mod_promos_presupuesto" required >
 									</div>
 									<div class="col-sm-3">
-										<span>Garantias</span>
-										<input type="text" class="form-control" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" >
+										<span style="font-weight: bold;">Garantias</span>
+										<input type="text" class="form-control" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" required >
 									</div>
 									<div class="col-sm-3">
-										<span>Presupuesto + Promos + Garantias</span>
-										<input type="text" class="form-control" name="mod_total_presupuesto" id="mod_total_presupuesto" >
+										<span style="font-weight: bold;">Presupuesto + Promos + Garantias</span>
+										<input type="text" class="form-control" name="mod_total_presupuesto" id="mod_total_presupuesto" required >
 									</div>
 								</div>
 							</div>
 							<!-- /.card-body -->
 							<div class="card-footer">
-								<button type="submit" class="btn btn-success float-right" id="guardar_datos">Guardar</button>
+								<button type="submit" class="btn btn-success float-right" id="actualizar_datos">Actualizar</button>
 							</div>
 							<!-- /.card-footer -->
 						</form>
