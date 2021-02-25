@@ -12,61 +12,45 @@
 					</div>
 					<div class="modal-body">
 
-						<form class="form-horizontal" method="post" id="editar_presupuesto_anio" name="editar_presupuesto_anio">
-							<div id="resultados_ajax"></div>
-							<div class="card-body">
-								
-								<!-- Datos presupuestos por año-->
-								<div class="form-group row" id="total_anio">
-									<div class="col-sm-3">
-										<span style="font-weight: bold;">Ventas</span>
-										<input type="text" class="form-control numero" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto"  pattern="^[0-9]+(.[0-9]+)?$" required >
-									</div>
-									<div class="col-sm-3">
-										<span style="font-weight: bold;">Promociones</span>
-										<input type="text" class="form-control numero" name="mod_promos_presupuesto" id="mod_promos_presupuesto"  pattern="^[0-9]+(.[0-9]+)?$" required >
-									</div>
-									<div class="col-sm-3">
-										<span style="font-weight: bold;">Garantias</span>
-										<input type="text" class="form-control numero" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto"  pattern="^[0-9]+(.[0-9]+)?$" required >
-									</div>
-									<div class="col-sm-3">
-										<span style="font-weight: bold;">Presupuesto + Promos + Garantias</span>
-										<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto"  pattern="^[0-9]+(.[0-9]+)?$" required >
-									</div>
+
+						<div class="card-body">
+
+							<div class="form-group row" id="total_anio">
+								<div class="col-sm-3">
+									<span style="font-weight: bold;">Ventas</span>
+									<input type="text" class="form-control numero" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+								</div>
+								<div class="col-sm-3">
+									<span style="font-weight: bold;">Promociones</span>
+									<input type="text" class="form-control numero" name="mod_promos_presupuesto" id="mod_promos_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+								</div>
+								<div class="col-sm-3">
+									<span style="font-weight: bold;">Garantias</span>
+									<input type="text" class="form-control numero" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+								</div>
+								<div class="col-sm-3">
+									<span style="font-weight: bold;">Presupuesto + Promos + Garantias</span>
+									<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
 								</div>
 							</div>
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<button type="submit" class="btn btn-success float-right" id="actualizar_datos">Actualizar</button>
-							</div>
-							<!-- /.card-footer -->
-						</form>
+						</div>
 
 						<hr>
-						<!-- <div id="formMes" class="card-body">
+
+						<section id="tabla_resultados">
+
+						</section>
+						<!-- 	<div id="formMes" class="card-body">
 
 							<div class="form-group row">
 								<div id="resultados_ajaxmes"></div>
-								<form class="form-horizontal" method="post" id="guardar_pres_mes" name="guardar_pres_mes">
+								<form class="form-horizontal" method="post" id="actualizar_pres_mes" name="actualizar_pres_mes">
 
-									<span>Presupuesto mensual</span>
+									<span style="font-weight: bold;">Presupuesto mensual</span>
 									<hr>
 									<input type="hidden" name="codVenAnio" id="codVenAnio">
 									<input type="hidden" name="codLineaAnio" id="codLineaAnio">
-									<input type="hidden" id="precioPromedio">
-									<div class="form-group row">
-										<div class="col-sm-4">
-											<input class="form-control decimales" id="precioMeta" placeholder="PRECIO POR META" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
-										</div>
-										<div class="col-sm-4">
-											<label for="precioMeta">PRECIO POR META</label>
-										</div>
-										<div class="col-sm-4">
-											Porcentaje asignado: <span id="tituloPor"></span> %
-										</div>
-									</div>
-
+					
 									<div class="col-sm-8 col-md-8 col-lg-12">
 										<div class="table-responsive ">
 											<table class="table-bordered  ">
@@ -286,7 +270,7 @@
 
 							</div>
 						</div>
- -->
+  -->
 					</div>
 					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button -->
 				</div>

@@ -82,7 +82,6 @@ if ($action == 'ajax') {
 				<tbody>
 					<?php
 					while ($row = mysqli_fetch_array($query)) {
-						// idUsu, usuario, nombreUsu, password, mail, idPerfil
 						$id_presupuesto = $row['idPresAnio'];
 						$anio_presupuesto = $row['anio'];
 						$vendedor_presupuesto = $row['nomVen'];
@@ -91,10 +90,10 @@ if ($action == 'ajax') {
 						$cantidad_promos_presupuesto = $row['promoPresU'];
 						$cantidad_garantia_presupuesto = $row['garantPresU'];
 						$cantidad_total_presupuesto = $row['totalPresU'];
-
+						
 
 					?>
-
+					
 						<input type="hidden" value="<?php echo $anio_presupuesto; ?>" id="anio_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $vendedor_presupuesto; ?>" id="vendedor_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $cantidad_ventas_presupuesto; ?>" id="cantidad_ventas_presupuesto<?php echo $id_presupuesto; ?>">
@@ -102,7 +101,8 @@ if ($action == 'ajax') {
 						<input type="hidden" value="<?php echo $cantidad_garantia_presupuesto; ?>" id="cantidad_garantia_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $cantidad_total_presupuesto; ?>" id="cantidad_total_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $linea_presupuesto; ?>" id="linea_presupuesto<?php echo $id_presupuesto; ?>">
-
+						
+					
 						<tr>
 							<td><?php echo $anio_presupuesto; ?></td>
 							<td><?php echo $vendedor_presupuesto; ?></td>
@@ -112,7 +112,7 @@ if ($action == 'ajax') {
 							<td><?php echo $cantidad_garantia_presupuesto; ?></td>
 							<td><?php echo $cantidad_total_presupuesto; ?></td>
 							<td><span>
-									<a href="#" title='Editar presupuesto' onclick="obtener_datos('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuestoAnio"><i class="fas fa-pen editar"></i></a>
+									<a href="#" title='Editar presupuesto' onclick="buscar_datos_mes('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuestoAnio"><i class="fas fa-pen editar"></i></a>
 									<?php if ($_SESSION['user_nivel'] == 2) : ?>
 										<a href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"><i class="far fa-trash-alt eliminar"></i></a>
 									<?php endif; ?>
