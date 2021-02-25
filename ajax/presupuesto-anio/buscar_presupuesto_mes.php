@@ -8,46 +8,56 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 // Ejecutamos la consulta de busqueda
 ?>
 <div class="table-responsive">
-    <table id="registros" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Mes</th>
-                <th>Porcentaje</th>
-                <th>Cantidad Mes</th>
-                <th>Cantidad Promos</th>
-                <th>Cantidad Garantía</th>
-                <th>Cantidad Total</th>
-                <th>$ Presupuesto</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            try {
-                $sql = " SELECT * FROM presupuesto_mes WHERE idPresAnio = $idPresAnio";
-
-                $resultado = $con->query($sql);
-            } catch (Exception $e) {
-                $error = $e->getMessage();
-                echo $error;
-            }
-            while ($presMes = $resultado->fetch_assoc()) { ?>
+    <form method="POST">
+        <table id="registros" class="table table-bordered table-striped">
+            <thead>
                 <tr>
-                    <td><?php echo $presMes['mes']; ?></td>
-                    <td><?php echo $presMes['porcentaje']; ?></td>
-                    <td><?php echo $presMes['cantMesU']; ?></td>
-                    <td><?php echo $presMes['cantPromoU']; ?></td>
-                    <td><?php echo $presMes['cantGarantU']; ?></td>
-                    <td><?php echo $presMes['cantTotalU']; ?></td>
-                    <td><?php echo $presMes['presMesV']; ?></td>
+                    <th>Mes</th>
+                    <th>Porcentaje</th>
+                    <th>Cantidad Mes</th>
+                    <th>Cantidad Promos</th>
+                    <th>Cantidad Garantía</th>
+                    <th>Cantidad Total</th>
+                    <th>$ Presupuesto</th>
 
                 </tr>
-            <?php } ?>
-        </tbody>
+            </thead>
+            <tbody>
+                <?php
+                try {
+                    $sql = " SELECT * FROM presupuesto_mes WHERE idPresAnio = $idPresAnio";
 
-    </table>
+                    $resultado = $con->query($sql);
+                } catch (Exception $e) {
+                    $error = $e->getMessage();
+                    echo $error;
+                }
+                while ($presMes = $resultado->fetch_assoc()) { ?>
+                    <tr>
+
+                        <td hidden><input name="idPresMes[]" value="<?php echo $presMes['idPresMes'] ?>" /></td>
+                        <td><input id="mes<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="mes[<?php echo $presMes['idPresMes'] ?>]" value="<?php
+                                                                                                                                                                        setlocale(LC_TIME, "spanish");
+                                                                                                                                                                        $date = new DateTime($presMes['mes']);
+                                                                                                                                                                        $fecha = strftime("%B", $date->getTimestamp());
+                                                                                                                                                                        echo $fecha;
+                                                                                                                                                                        ?>"></td>
+                        <td><input id="porcentaje<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="porcentaje[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['porcentaje']; ?>"></td>
+                        <td><input id="cantMesU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantMesU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantMesU']; ?>"></td>
+                        <td><input id="cantPromoU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantPromoU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantPromoU']; ?>"></td>
+                        <td><input id="cantGarantU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantGarantU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantGarantU']; ?>"></td>
+                        <td><input id="cantTotalU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantTotalU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantTotalU']; ?>"></td>
+                        <td><input id="presMesV<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="presMesV[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['presMesV']; ?>"></td>
+
+                    </tr>
+                <?php } ?>
+            </tbody>
+
+        </table>
+        <input type="submit" name="actualizar" value="Actualizar Registros" class="btn btn-info col-md-offset-9 float-right" />
+    </form>
 </div>
-<script>
+<!-- <script>
     $(function() {
 
         $("#registros").DataTable({
@@ -68,7 +78,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
                 lengthMenu: "Mostrar _MENU_ Entradas ",
                 infoFiltered: " (Filtrado de un total de _MAX_  entradas)"
             }
-            
+
         });
     });
-</script>
+</script> -->

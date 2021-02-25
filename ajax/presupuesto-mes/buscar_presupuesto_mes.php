@@ -82,7 +82,7 @@ if ($action == 'ajax') {
 					<th>Presupuesto</th>
 					<th>Linea</th>
 					<th>Segmento</th>
-					<th>Acciones</th>
+					<!-- <th>Acciones</th> -->
 
 				</tr>
 				<?php
@@ -133,14 +133,11 @@ if ($action == 'ajax') {
 						<td><?php echo $linea_presupuesto; ?></td>
 						<td><?php echo $segmento_presupuesto; ?></td>
 
-
-						<td><span>
+						<!-- <td><span>
 								<a href="#" title='Editar presupuesto' onclick="obtener_datos('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuesto"><i class="fas fa-pen editar"></i></a>
-
-
-								<!-- <a  href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"><i class="far fa-trash-alt eliminar"></i></a> -->
+								 <a  href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"><i class="far fa-trash-alt eliminar"></i></a> 
 							</span>
-						</td>
+						</td> -->
 
 					</tr>
 				<?php
