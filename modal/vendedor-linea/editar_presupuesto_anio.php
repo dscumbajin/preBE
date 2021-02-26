@@ -36,7 +36,8 @@
 						</div>
 
 						<hr>
-
+						<span id="porAs">Porcentaje asignado</span>
+						<hr>
 						<section id="tabla_resultados">
 
 						</section>

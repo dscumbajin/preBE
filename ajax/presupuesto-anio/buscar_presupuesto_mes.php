@@ -12,6 +12,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         <table id="registros" class="table table-bordered table-striped">
             <thead>
                 <tr>
+
                     <th>Mes</th>
                     <th>Porcentaje</th>
                     <th>Cantidad Mes</th>
@@ -24,43 +25,45 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             </thead>
             <tbody>
                 <?php
+                /* $fechaActual = date('Y-m-d');
+                AND mes >= '$fechaActual' */
                 try {
-                    $sql = " SELECT * FROM presupuesto_mes WHERE idPresAnio = $idPresAnio";
+                    $sql = " SELECT * FROM presupuesto_mes WHERE idPresAnio = $idPresAnio ";
 
                     $resultado = $con->query($sql);
                 } catch (Exception $e) {
                     $error = $e->getMessage();
                     echo $error;
                 }
-                while ($presMes = $resultado->fetch_assoc()) { ?>
+                while ($presMes = $resultado->fetch_assoc()) { $idMes=$presMes['idPresMes'] ?>
+                
                     <tr>
 
-                        <td hidden><input name="idPresMes[]" value="<?php echo $presMes['idPresMes'] ?>" /></td>
-                        <td><input id="mes<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="mes[<?php echo $presMes['idPresMes'] ?>]" value="<?php
-                                                                                                                                                                        setlocale(LC_TIME, "spanish");
+                        <td hidden><input class="idMes" name="idPresMes[]" value="<?php echo $presMes['idPresMes'] ?>" /></td>
+                        <td><input class="bloquear" id="mes<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="mes[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['mes']
+                                                                                                                                                                                            /* setlocale(LC_TIME, "spanish");
                                                                                                                                                                         $date = new DateTime($presMes['mes']);
                                                                                                                                                                         $fecha = strftime("%B", $date->getTimestamp());
-                                                                                                                                                                        echo $fecha;
-                                                                                                                                                                        ?>"></td>
-                        <td><input id="porcentaje<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="porcentaje[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['porcentaje']; ?>"></td>
-                        <td><input id="cantMesU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantMesU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantMesU']; ?>"></td>
-                        <td><input id="cantPromoU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantPromoU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantPromoU']; ?>"></td>
-                        <td><input id="cantGarantU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantGarantU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantGarantU']; ?>"></td>
-                        <td><input id="cantTotalU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantTotalU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantTotalU']; ?>"></td>
-                        <td><input id="presMesV<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="presMesV[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['presMesV']; ?>"></td>
-
+                                                                                                                                                                        echo $fecha; */
+                                                                                                                                                                                            ?>"></td>
+                        <td><input class="decimales" onclick="enter(<?php echo $idMes?>)" id="porcentaje<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="porcentaje[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['porcentaje']; ?>"></td>
+                        <td><input class="bloquear" id="cantMesU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantMesU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantMesU']; ?>"></td>
+                        <td><input class="bloquear" id="cantPromoU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantPromoU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantPromoU']; ?>"></td>
+                        <td><input class="bloquear" id="cantGarantU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantGarantU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantGarantU']; ?>"></td>
+                        <td><input class="bloquear" id="cantTotalU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantTotalU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantTotalU']; ?>"></td>
+                        <td><input class="bloquear" id="presMesV<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="presMesV[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['presMesV']; ?>"></td>
                     </tr>
-                <?php } ?>
+                <?php  } ?>
             </tbody>
 
         </table>
-        <input type="submit" name="actualizar" value="Actualizar Registros" class="btn btn-info col-md-offset-9 float-right" />
+        <input type="submit" name="actualizar" value="Actualizar Registros" class="btn btn-info float-right" />
     </form>
 </div>
-<!-- <script>
+<script>
     $(function() {
 
-        $("#registros").DataTable({
+        /* $("#registros").DataTable({
             "responsive": false,
             "autoWidth": false,
             "pageLength": 12,
@@ -80,5 +83,24 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             }
 
         });
+ */
+        // VALIDACIONES
+        $('.decimales').on('input', function() {
+            this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
+        });
+
+        
+
+        
     });
-</script> -->
+
+    function enter (id){
+        //desabilitar todo
+        //cuando haga clic habilitar
+        
+            $('#porcentaje'+id).on('input', function() {
+            var porcentajeEnero = $('#porcentaje'+id).val();
+            console.log(porcentajeEnero);
+        });
+        }
+</script>
