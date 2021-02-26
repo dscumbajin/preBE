@@ -109,14 +109,15 @@
 .pagination>li>span:focus,
 .pagination>li>span:hover {
     z-index: 2;
-    color: #fff;
+    color: #fff !important;
     background-color: #495560;
     border-color: #ddd;
 }
 
 a:focus,
 a:hover {
-    color: #fff;
+    font-weight: bold;
+    color: #000;
     text-decoration: underline;
 }
 

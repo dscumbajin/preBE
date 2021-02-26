@@ -1,0 +1,4 @@
+reasignacion de valores cuando se elimine una linea de negocio
+suma de los presupuestos por linea de negocio y por las lineas
+edicion de valores
+Tablero

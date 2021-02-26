@@ -42,6 +42,7 @@ include_once('templates/navegacion.php');
             <?php
             include("modal/vendedor/registro_vendedores.php");
             include("modal/vendedor/editar_vendedores.php");
+            include("modal/vendedor/detalle_vendedor.php");
             ?>
             <form class="form-horizontal" role="form" id="datos_cotizacion">
 

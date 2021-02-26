@@ -93,7 +93,7 @@ if ($action == 'ajax') {
 					<input type="hidden" value="<?php echo $codigo_segmento; ?>" id="segmento_vendedor<?php echo $id_vendedor; ?>">
 					<tr>
 						<td><?php echo $id_vendedor; ?></td>
-						<td><?php echo $nombre_vendedor; ?></td>
+						<td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>');" data-toggle="modal" data-target="#detallePresupuesto"> <?php echo $nombre_vendedor; ?></a></td>
 						<td><?php echo $estado; ?></td>
 						<td><?php echo $segemento_vendedor; ?></td>
 						<td><span>

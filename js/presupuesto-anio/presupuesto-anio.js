@@ -19,8 +19,10 @@
 		}
 
 		function eliminar(id) {
+		    var vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
+		    var linea_presupuesto = $("#linea_presupuesto" + id).val();
 		    var q = $("#q").val();
-		    if (confirm("Realmente deseas eliminar el usuario")) {
+		    if (confirm(`Realmente deseas eliminar el presupuesto del Vendedor: ${vendedor_presupuesto} con Linea de negocio: ${linea_presupuesto}`)) {
 		        $.ajax({
 		            type: "GET",
 		            url: "./ajax/usuario/buscar_usuarios.php",

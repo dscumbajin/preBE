@@ -53,41 +53,42 @@
                   </li>
 
                   <li class="nav-item has-treeview">
-                      <a href="#" class="nav-link">
-                          <i class="nav-icon fas fa-tasks"></i>
+                      <a href="lista-vendedor.php" class="nav-link">
+                          <i class="nav-icon fas fa-universal-access"></i>
 
                           <p>
-                              Vendedor
+                              Vendedores
                               <i class="fas fa-angle-left right"></i>
                           </p>
+                          
                       </a>
-                      <ul class="nav nav-treeview">
+                      <!-- <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="lista-vendedor.php" class="nav-link">
                                   <i class="nav-icon fas fa-list-ul"></i>
                                   <p>Ver Todos</p>
                               </a>
                           </li>
-                      </ul>
+                      </ul> -->
                   </li>
 
                   <li class="nav-item has-treeview">
-                      <a href="#" class="nav-link">
+                      <a href="lista-segmento.php" class="nav-link">
                           <i class=" nav-icon fas fa-building"></i>
 
                           <p>
-                              Segmento
+                              Segmentos
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
+                      <!-- <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="lista-segmento.php" class="nav-link">
                                   <i class="nav-icon fas fa-list-ul"></i>
                                   <p>Ver Todos</p>
                               </a>
                           </li>
-                      </ul>
+                      </ul> -->
                   </li>
 
                   <li class="nav-item has-treeview">
@@ -102,7 +103,7 @@
                           <li class="nav-item">
                               <a href="lista-linea.php" class="nav-link">
                                   <i class="nav-icon fas fa-list-ul"></i>
-                                  <p>Ver Todos</p>
+                                  <p>Administrar</p>
                               </a>
                           </li>
 
@@ -126,39 +127,39 @@
                   </li>
 
                   <li class="nav-item has-treeview">
-                      <a href="#" class="nav-link">
+                      <a href="lista-presupuestos-anio.php" class="nav-link">
                           <i class=" nav-icon fas fa-file-invoice-dollar"></i>
                           <p>
                               Presupuestos por año
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
+                     <!--  <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="lista-presupuestos-anio.php" class="nav-link">
                                   <i class="nav-icon fas fa-list-ul"></i>
                                   <p>Ver Todos</p>
                               </a>
                           </li>
-                      </ul>
+                      </ul> -->
                   </li>
 
                   <li class="nav-item has-treeview">
-                      <a href="#" class="nav-link">
+                      <a href="lista-presupuestos-mes.php" class="nav-link">
                           <i class=" nav-icon fas fa-file-invoice-dollar"></i>
                           <p>
                               Presupuestos por mes
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
+                      <!-- <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="lista-presupuestos-mes.php" class="nav-link">
                                   <i class="nav-icon fas fa-list-ul"></i>
                                   <p>Ver Todos</p>
                               </a>
                           </li>
-                      </ul>
+                      </ul> -->
                   </li>
 
                   <?php if ($_SESSION['user_nivel'] == 2) : ?>
