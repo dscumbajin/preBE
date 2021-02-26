@@ -8,7 +8,96 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
 
 // Ejecutamos la consulta de busqueda
 ?>
-<div class="table-responsive">
+
+<div class="card-body">
+    <table id="registros" class="table-responsive table table-bordered table-striped">
+        <tr>
+            <th rowspan="2" style="text-align: center;">
+                <span class="badge badge-pill badge-dark" style="font-size: 15px;"></span>
+            </th>
+        </tr>
+        <tr id="Cabecera_2">
+            <th>Enero</th>
+            <th>Febrero</th>
+            <th>Marzo</th>
+            <th>Abril</th>
+            <th>Mayo</th>
+            <th>Jinio</th>
+            <th>Julio</th>
+            <th>Agosto</th>
+            <th>Septiembre</th>
+            <th>Octubre</th>
+            <th>Noviembre</th>
+            <th>Diciembre</th>
+        </tr>
+        <tr >
+
+            <td>Total</td>
+            <?php
+            $i = 1;
+            while ($i <= 12) : ?>
+
+                <td> 
+                    <?php
+                    $sql = " SELECT SUM(cantTotalU) AS total, COUNT(codLinea) AS num, AVG(precioMeta) AS meta,(SUM(cantTotalU)*AVG(precioMeta)) AS calculo, mes, vendedor.codVen, vendedor.nomVen ";
+                    $sql .= " FROM presupuesto_mes, presupuesto_anio, vendedor ";
+                    $sql .= " WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio";
+                    $sql .= " AND presupuesto_anio.codVen = vendedor.codVen";
+                    $sql .= " AND vendedor.codVen = '$codVen' GROUP BY codVen, mes";
+                    $resultado = $con->query($sql);
+                    $registrados = $resultado->fetch_assoc();
+
+                    if ($registrados['total'] == null) {
+
+                        echo 'ND';
+                    } else {
+                        echo  $registrados['total'];
+                    }
+                    $i++;
+                    ?>
+                </td>
+
+
+            <?php endwhile; ?>
+
+        </tr>
+        <tr >
+
+            <td>Presupuesto</td>
+            <?php
+            $i = 1;
+            while ($i <= 12) : ?>
+
+                <td> <i class="fas fa-dollar-sign"></i>
+                    <?php
+                    $sql = " SELECT SUM(cantTotalU) AS total, COUNT(codLinea) AS num, AVG(precioMeta) AS meta,(SUM(cantTotalU)*AVG(precioMeta)) AS calculo, mes, vendedor.codVen, vendedor.nomVen ";
+                    $sql .= " FROM presupuesto_mes, presupuesto_anio, vendedor ";
+                    $sql .= " WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio";
+                    $sql .= " AND presupuesto_anio.codVen = vendedor.codVen";
+                    $sql .= " AND vendedor.codVen = '$codVen' GROUP BY codVen, mes";
+                    $resultado = $con->query($sql);
+                    $registrados = $resultado->fetch_assoc();
+                    $format_number = number_format($registrados['calculo'], 2);
+
+                    if ($format_number == null) {
+
+                        echo 'ND';
+                    } else {
+                        echo  $format_number;
+                    }
+                    $i++;
+                    ?>
+                </td>
+
+
+            <?php endwhile; ?>
+
+        </tr>
+    </table>
+</div>
+
+
+<!-- <div class="table-responsive">
     <div id="resultados_ajax2"></div>
     <table id="registros" class="table table-bordered table-striped">
         <thead>
@@ -44,7 +133,7 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
 
     </table>
 
-</div>
+</div> -->
 
 <script>
     $(function() {
@@ -70,7 +159,5 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
 
         });
 
-        
-       
     });
 </script>
