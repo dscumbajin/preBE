@@ -12,6 +12,7 @@ if (empty($_POST['codVenAnio'])) {
 	// escaping, additionally removing everything that could be (html/javascript-) code
 
 	//Buscar el Id del presupuesto del anio
+	$precioMeta = floatval($_POST["precioMeta"]);
 	$venPreAnio =  mysqli_real_escape_string($con, (strip_tags($_POST["codVenAnio"], ENT_QUOTES)));
 	$linPreAnio =  mysqli_real_escape_string($con, (strip_tags($_POST["codLineaAnio"], ENT_QUOTES)));
 	$sqlAnio = "SELECT * FROM presupuesto_anio WHERE codVen = $venPreAnio AND codLinea = $linPreAnio ";
@@ -76,6 +77,9 @@ if (empty($_POST['codVenAnio'])) {
 
 		if ($sqlRes) {
 			$messages[] = "Presupuesto mensual ingresado satisfactoriamente.";
+			//Actualizar la meta en la tabla presupuesto_anio
+			$sql = "UPDATE presupuesto_anio SET precioMeta='" . $precioMeta . "' WHERE idPresAnio='" . $codigoPresAnio . "'";
+			$query_update = mysqli_query($con, $sql);
 		} else {
 			$errors[] = "Lo siento algo ha salido mal intenta nuevamente." . mysqli_error($con);
 		}

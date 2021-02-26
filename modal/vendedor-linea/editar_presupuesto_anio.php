@@ -32,6 +32,7 @@
 									<span style="font-weight: bold;">Presupuesto + Promos + Garantias</span>
 									<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
 								</div>
+								<input type="hidden" name="mod_precioMeta" id="mod_precioMeta">
 							</div>
 						</div>
 

@@ -90,6 +90,7 @@ if ($action == 'ajax') {
 						$cantidad_promos_presupuesto = $row['promoPresU'];
 						$cantidad_garantia_presupuesto = $row['garantPresU'];
 						$cantidad_total_presupuesto = $row['totalPresU'];
+						$precioMeta = $row['precioMeta'];
 						
 
 					?>
@@ -101,7 +102,8 @@ if ($action == 'ajax') {
 						<input type="hidden" value="<?php echo $cantidad_garantia_presupuesto; ?>" id="cantidad_garantia_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $cantidad_total_presupuesto; ?>" id="cantidad_total_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $linea_presupuesto; ?>" id="linea_presupuesto<?php echo $id_presupuesto; ?>">
-						
+						<input type="hidden" value="<?php echo $precioMeta; ?>" id="precioMeta<?php echo $id_presupuesto; ?>">
+
 					
 						<tr>
 							<td><?php echo $anio_presupuesto; ?></td>

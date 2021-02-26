@@ -80,7 +80,7 @@
 									<input type="hidden" id="precioPromedio">
 									<div class="form-group row">
 										<div class="col-sm-4">
-											<input class="form-control decimales" id="precioMeta" placeholder="PRECIO POR META" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
+											<input class="form-control decimales" name="precioMeta" id="precioMeta" placeholder="PRECIO POR META" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
 										</div>
 										<div class="col-sm-4">
 											<label for="precioMeta">PRECIO POR META</label>
