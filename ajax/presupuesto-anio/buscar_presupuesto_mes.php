@@ -89,7 +89,8 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
         });
 
-        
+        //BLOQUEAR
+        $('.bloquear').attr("readonly", true);
 
         
     });
