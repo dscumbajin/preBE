@@ -32,24 +32,26 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
                     $sql = " SELECT * FROM presupuesto_mes WHERE idPresAnio = $idPresAnio ";
 
                     $resultado = $con->query($sql);
+                    $i =0;
                 } catch (Exception $e) {
                     $error = $e->getMessage();
                     echo $error;
                 }
                 while ($presMes = $resultado->fetch_assoc()) {
-                    $idMes = $presMes['idPresMes'] ?>
-                    <tr>
+                    $idMes = $presMes['idPresMes'] ;
+                    ?>
+                    <tr id = "tr<?php echo $i?>">
 
                         <td hidden><input name="idPresMes[]" value="<?php echo $presMes['idPresMes'] ?>" /></td>
                         <td><input class="bloquear" id="mes<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="mes[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['mes'] ?>" required></td>
-                        <td><input class="decimales" onclick="enter(<?php echo $idMes ?>)" id="porcentaje<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="porcentaje[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['porcentaje']; ?>" required></td>
+                        <td><input class="bloquear decimales" onclick="enter(<?php echo $idMes ?>)" id="porcentaje<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="porcentaje[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['porcentaje']; ?>" required></td>
                         <td><input class="bloquear" id="cantMesU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantMesU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantMesU']; ?>" required></td>
                         <td><input class="bloquear" id="cantPromoU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantPromoU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantPromoU']; ?>" required></td>
                         <td><input class="bloquear" id="cantGarantU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantGarantU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantGarantU']; ?>" required></td>
                         <td><input class="bloquear" id="cantTotalU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantTotalU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantTotalU']; ?>" required></td>
                         <td><input class="bloquear" id="presMesV<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="presMesV[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['presMesV']; ?>" required></td>
                     </tr>
-                <?php  } ?>
+                <?php $i++; } ?>
             </tbody>
 
         </table>
@@ -60,7 +62,68 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
 
 </div>
+<style>
+    .blue{
+        color: blue;
+    }
+</style>
 <script>
+
+
+
+    //Bloquear tr
+    $('#tr0').on('click', function(){
+/*         alert( "Handler for .click() called." ); */
+        //Habilitar input %
+
+        var valor = $( "#tr0" ).find( "input" ).eq( 2 ).val();
+        console.log(valor);
+        
+    });
+
+
+    function enter(id) {
+        //desabilitar todo
+        //cuando haga clic habilitar
+        console.log(id);
+
+        $('#porcentaje' + id).on('input', function() {
+
+            //VALORES DE PRESUPUESTO AÑO
+            var cantidad_ventas_presupuesto = $("#mod_ventas_presupuesto").val();
+            cantidad_ventas_presupuesto = parseInt(cantidad_ventas_presupuesto);
+            var cantidad_promos_presupuesto = $("#mod_promos_presupuesto").val();
+            cantidad_promos_presupuesto = parseInt(cantidad_promos_presupuesto);
+            var cantidad_garantia_presupuesto = $("#mod_garantia_presupuesto").val();
+            cantidad_garantia_presupuesto = parseInt(cantidad_garantia_presupuesto);
+
+            var precioMeta = $("#mod_precioMeta").val();
+            precioMeta = parseFloat(precioMeta);
+            
+            //VALOR DEL PORCENTAJE
+            var porcentajeInput = $('#porcentaje' + id).val();
+            porcentajeInput = parseFloat(porcentajeInput);
+            var porcentaje = porcentajeInput / 100;
+
+            //VALORES DE PRESUPUESTO MES
+            var cantMesU = Math.round(cantidad_ventas_presupuesto * porcentaje);
+            var cantPromoU = Math.round(cantidad_promos_presupuesto * porcentaje);
+            var cantGarantU = Math.round(cantidad_garantia_presupuesto * porcentaje);
+            var cantTotalU = Math.round(cantMesU + cantPromoU +cantGarantU);
+            var presMesV = precioMeta * cantTotalU;
+
+            $('#cantMesU' + id).val(cantMesU);
+            $('#cantPromoU' + id).val(cantPromoU);
+            $('#cantGarantU' + id).val(cantGarantU);
+            $('#cantTotalU' + id).val(cantTotalU);
+            $('#presMesV' + id).val(presMesV);
+
+        });
+    }
+
+
+
+
     $(function() {
 
         /* $("#registros").DataTable({
@@ -117,41 +180,5 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
     });
 
-    function enter(id) {
-        //desabilitar todo
-        //cuando haga clic habilitar
 
-        $('#porcentaje' + id).on('input', function() {
-
-            //VALORES DE PRESUPUESTO AÑO
-            var cantidad_ventas_presupuesto = $("#mod_ventas_presupuesto").val();
-            cantidad_ventas_presupuesto = parseInt(cantidad_ventas_presupuesto);
-            var cantidad_promos_presupuesto = $("#mod_promos_presupuesto").val();
-            cantidad_promos_presupuesto = parseInt(cantidad_promos_presupuesto);
-            var cantidad_garantia_presupuesto = $("#mod_garantia_presupuesto").val();
-            cantidad_garantia_presupuesto = parseInt(cantidad_garantia_presupuesto);
-
-            var precioMeta = $("#mod_precioMeta").val();
-            precioMeta = parseFloat(precioMeta);
-            
-            //VALOR DEL PORCENTAJE
-            var porcentajeInput = $('#porcentaje' + id).val();
-            porcentajeInput = parseFloat(porcentajeInput);
-            var porcentaje = porcentajeInput / 100;
-
-            //VALORES DE PRESUPUESTO MES
-            var cantMesU = Math.round(cantidad_ventas_presupuesto * porcentaje);
-            var cantPromoU = Math.round(cantidad_promos_presupuesto * porcentaje);
-            var cantGarantU = Math.round(cantidad_garantia_presupuesto * porcentaje);
-            var cantTotalU = Math.round(cantMesU + cantPromoU +cantGarantU);
-            var presMesV = precioMeta * cantTotalU;
-
-            $('#cantMesU' + id).val(cantMesU);
-            $('#cantPromoU' + id).val(cantPromoU);
-            $('#cantGarantU' + id).val(cantGarantU);
-            $('#cantTotalU' + id).val(cantTotalU);
-            $('#presMesV' + id).val(presMesV);
-
-        });
-    }
 </script>
