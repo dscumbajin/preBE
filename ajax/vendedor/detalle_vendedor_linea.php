@@ -8,106 +8,24 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
 
 // Ejecutamos la consulta de busqueda
 ?>
+<style>
+.trT { display: block; float: left; width: 83px; }
+.thT, .tdT { display: block;width: 83px; }
 
-<div class="card-body">
-    <table id="registros" class="table-responsive table table-bordered table-striped">
-        <tr>
-            <th rowspan="2" style="text-align: center;">
-                <span class="badge badge-pill badge-dark" style="font-size: 15px;"></span>
-            </th>
-        </tr>
-        <tr id="Cabecera_2">
-            <th>Enero</th>
-            <th>Febrero</th>
-            <th>Marzo</th>
-            <th>Abril</th>
-            <th>Mayo</th>
-            <th>Jinio</th>
-            <th>Julio</th>
-            <th>Agosto</th>
-            <th>Septiembre</th>
-            <th>Octubre</th>
-            <th>Noviembre</th>
-            <th>Diciembre</th>
-        </tr>
-        <tr >
-
-            <td>Total</td>
-            <?php
-            $i = 1;
-            while ($i <= 12) : ?>
-
-                <td> 
-                    <?php
-                    $sql = " SELECT SUM(cantTotalU) AS total, COUNT(codLinea) AS num, AVG(precioMeta) AS meta,(SUM(cantTotalU)*AVG(precioMeta)) AS calculo, mes, vendedor.codVen, vendedor.nomVen ";
-                    $sql .= " FROM presupuesto_mes, presupuesto_anio, vendedor ";
-                    $sql .= " WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio";
-                    $sql .= " AND presupuesto_anio.codVen = vendedor.codVen";
-                    $sql .= " AND vendedor.codVen = '$codVen' GROUP BY codVen, mes";
-                    $resultado = $con->query($sql);
-                    $registrados = $resultado->fetch_assoc();
-
-                    if ($registrados['total'] == null) {
-
-                        echo 'ND';
-                    } else {
-                        echo  $registrados['total'];
-                    }
-                    $i++;
-                    ?>
-                </td>
+</style>
 
 
-            <?php endwhile; ?>
-
-        </tr>
-        <tr >
-
-            <td>Presupuesto</td>
-            <?php
-            $i = 1;
-            while ($i <= 12) : ?>
-
-                <td> <i class="fas fa-dollar-sign"></i>
-                    <?php
-                    $sql = " SELECT SUM(cantTotalU) AS total, COUNT(codLinea) AS num, AVG(precioMeta) AS meta,(SUM(cantTotalU)*AVG(precioMeta)) AS calculo, mes, vendedor.codVen, vendedor.nomVen ";
-                    $sql .= " FROM presupuesto_mes, presupuesto_anio, vendedor ";
-                    $sql .= " WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio";
-                    $sql .= " AND presupuesto_anio.codVen = vendedor.codVen";
-                    $sql .= " AND vendedor.codVen = '$codVen' GROUP BY codVen, mes";
-                    $resultado = $con->query($sql);
-                    $registrados = $resultado->fetch_assoc();
-                    $format_number = number_format($registrados['calculo'], 2);
-
-                    if ($format_number == null) {
-
-                        echo 'ND';
-                    } else {
-                        echo  $format_number;
-                    }
-                    $i++;
-                    ?>
-                </td>
-
-
-            <?php endwhile; ?>
-
-        </tr>
-    </table>
-</div>
-
-
-<!-- <div class="table-responsive">
+<div class="table-responsive" >
     <div id="resultados_ajax2"></div>
     <table id="registros" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Mes</th>
-                <th>Total</th>
-                <th>Presupuesto</th>
+       
+            <tr class="trT">
+                <th class="thT">Mes</th>
+                <th class="thT">Total</th>
+                <th class="thT">Presupuesto</th>
             </tr>
-        </thead>
-        <tbody>
+      
+       
             <?php
 
             try {
@@ -122,20 +40,23 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
                 echo $error;
             }
             while ($detalle = $resultado->fetch_assoc()) { ?>
-                <tr>
+                <tr class="trT">
                     <input type="hidden" id="numLineas" value="<?php echo $detalle['num'] ?>">
-                    <td><?php echo $detalle['mes'] ?></td>
-                    <td><?php echo $detalle['total'] ?></td>
-                    <td><i class="fas fa-dollar-sign"></i> <?php echo $detalle['calculo'] ?></td>
+                    <td style="text-transform: uppercase;" class="tdT"><?php setlocale(LC_TIME, "spanish");
+							$date = new DateTime($detalle['mes']);
+							$fecha = strftime("%b", $date->getTimestamp());
+							echo $fecha;?></td>
+                    <td  class="tdT"><?php echo $detalle['total'] ?></td>
+                    <td  class="tdT"><i class="fas fa-dollar-sign"></i> <?php echo  $format_number = number_format($detalle['calculo'], 2); ?></td>
                 </tr>
             <?php  } ?>
-        </tbody>
+        
 
     </table>
 
-</div> -->
+</div>
 
-<script>
+<!-- <script>
     $(function() {
 
         $("#registros").DataTable({
@@ -149,6 +70,7 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
                     last: 'Último',
                     firts: 'Primero'
                 },
+                zeroRecords: "No se encontraron registros coincidentes",
                 info: 'Mostrando _START_ a _END_ de _TOTAL_ resultados',
                 emptyTable: 'No hay registros',
                 infoEmpty: 'Mostrando 0 to 0 of 0 Entradas',
@@ -160,4 +82,4 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
         });
 
     });
-</script>
+</script> -->

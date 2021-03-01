@@ -39,6 +39,23 @@
 		    }
 		}
 
+		function detalle_presupuesto(id, id_pre) {
+		    var vendedor_presupuesto = $("#vendedor_presupuesto" + id_pre).val();
+		    $('#titulo_detalle').text(vendedor_presupuesto);
+		    console.log(id);
+		    //LLAMADO A AJAX
+		    var url = './ajax/vendedor/detalle_vendedor_linea.php';
+		    $.ajax({
+		        tyoe: 'POST',
+		        url: url,
+		        data: 'codVen=' + id,
+		        success: function(datos) {
+		            $('#tabla_resultados').html('');
+		            $('#tabla_resultados').html(datos);
+		        }
+		    });
+
+		}
 
 		// VALIDACIONES
 		$('.numero').on('input', function() {

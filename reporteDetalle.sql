@@ -3,3 +3,10 @@ FROM presupuesto_mes, presupuesto_anio, vendedor
 WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio
 AND presupuesto_anio.codVen = vendedor.codVen
 AND vendedor.codVen = '82' GROUP BY codVen, mes
+
+
+
+SELECT nomVen FROM vendedor
+INNER JOIN presupuesto_anio
+ON presupuesto_anio.codVen = vendedor.codVen
+GROUP BY nomVen

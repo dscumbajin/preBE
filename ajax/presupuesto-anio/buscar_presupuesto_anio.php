@@ -84,6 +84,7 @@ if ($action == 'ajax') {
 					while ($row = mysqli_fetch_array($query)) {
 						$id_presupuesto = $row['idPresAnio'];
 						$anio_presupuesto = $row['anio'];
+						$id_vendedor = $row['codVen'];
 						$vendedor_presupuesto = $row['nomVen'];
 						$linea_presupuesto = $row['nomLinea'];
 						$cantidad_ventas_presupuesto = $row['ventasPresU'];
@@ -107,7 +108,7 @@ if ($action == 'ajax') {
 					
 						<tr>
 							<td><?php echo $anio_presupuesto; ?></td>
-							<td><?php echo $vendedor_presupuesto; ?></td>
+							<td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>', '<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#detallePresupuesto"><?php echo $vendedor_presupuesto; ?> </a</td>
 							<td><?php echo $linea_presupuesto; ?></td>
 							<td><?php echo $cantidad_ventas_presupuesto; ?></td>
 							<td><?php echo $cantidad_promos_presupuesto; ?></td>
