@@ -101,8 +101,8 @@
 		        url: url,
 		        data: 'codVen=' + id,
 		        success: function(datos) {
-		            $('#tabla_resultados').html('');
-		            $('#tabla_resultados').html(datos);
+		            $('#tabla_resultados_detalle').html('');
+		            $('#tabla_resultados_detalle').html(datos);
 		        }
 		    });
 

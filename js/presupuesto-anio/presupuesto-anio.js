@@ -50,8 +50,8 @@
 		        url: url,
 		        data: 'codVen=' + id,
 		        success: function(datos) {
-		            $('#tabla_resultados').html('');
-		            $('#tabla_resultados').html(datos);
+		            $('#tabla_resultados_detalle').html('');
+		            $('#tabla_resultados_detalle').html(datos);
 		        }
 		    });
 
@@ -64,6 +64,7 @@
 
 
 		function buscar_datos_mes(id) {
+
 		    var anio_presupuesto = $("#anio_presupuesto" + id).val();
 		    var vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
 		    var linea_presupuesto = $("#linea_presupuesto" + id).val();

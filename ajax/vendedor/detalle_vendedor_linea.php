@@ -25,7 +25,6 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
                 <th class="thT">Presupuesto</th>
             </tr>
       
-       
             <?php
 
             try {

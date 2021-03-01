@@ -12,7 +12,7 @@
 					</div>
 					<div class="modal-body">
 
-						<section id="tabla_resultados">
+						<section id="tabla_resultados_detalle">
 
 						</section>
 
