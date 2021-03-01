@@ -32,26 +32,27 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
                     $sql = " SELECT * FROM presupuesto_mes WHERE idPresAnio = $idPresAnio ";
 
                     $resultado = $con->query($sql);
-                    $i =0;
+                    $i = 0;
                 } catch (Exception $e) {
                     $error = $e->getMessage();
                     echo $error;
                 }
                 while ($presMes = $resultado->fetch_assoc()) {
-                    $idMes = $presMes['idPresMes'] ;
-                    ?>
-                    <tr id = "tr<?php echo $i?>">
+                    $idMes = $presMes['idPresMes'];
+                ?>
+                    <tr id="tr<?php echo $i ?>">
 
                         <td hidden><input name="idPresMes[]" value="<?php echo $presMes['idPresMes'] ?>" /></td>
-                        <td><input  id="mes<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="mes[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['mes'] ?>" required disabled></td>
-                        <td><input class="decimales" onclick="enter(<?php echo $idMes ?>)" id="porcentaje<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="porcentaje[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['porcentaje']; ?>" required disabled></td>
-                        <td><input  id="cantMesU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantMesU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantMesU']; ?>" required disabled></td>
-                        <td><input  id="cantPromoU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantPromoU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantPromoU']; ?>" required disabled></td>
-                        <td><input  id="cantGarantU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantGarantU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantGarantU']; ?>" required disabled></td>
-                        <td><input  id="cantTotalU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantTotalU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantTotalU']; ?>" required disabled></td>
-                        <td><input  id="presMesV<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="presMesV[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['presMesV']; ?>" required disabled></td>
+                        <td><input class="bloquear" id="mes<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="mes[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['mes'] ?>" required></td>
+                        <td><input class="bloquear decimales" onclick="enter(<?php echo $idMes ?>)" id="porcentaje<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="porcentaje[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['porcentaje']; ?>" required></td>
+                        <td><input class="bloquear" id="cantMesU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantMesU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantMesU']; ?>" required></td>
+                        <td><input class="bloquear" id="cantPromoU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantPromoU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantPromoU']; ?>" required></td>
+                        <td><input class="bloquear" id="cantGarantU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantGarantU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantGarantU']; ?>" required></td>
+                        <td><input class="bloquear" id="cantTotalU<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="cantTotalU[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['cantTotalU']; ?>" required></td>
+                        <td><input class="bloquear" id="presMesV<?php echo $presMes['idPresMes'] ?>" style="width: 100px;" type="text" name="presMesV[<?php echo $presMes['idPresMes'] ?>]" value="<?php echo $presMes['presMesV']; ?>" required></td>
                     </tr>
-                <?php $i++; } ?>
+                <?php $i++;
+                } ?>
             </tbody>
 
         </table>
@@ -63,23 +64,527 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
 </div>
 <style>
-    .blue{
+    .red {
+        color: red;
+    }
+
+    .blue {
         color: blue;
     }
 </style>
 <script>
+    //Porcentje asignado
+    function tituloPreAnio(enero) {
 
+        var totalTitulo = enero;
 
+        totalTitulo = parseFloat(totalTitulo);
+        totalTitulo = Math.round(totalTitulo);
+        if (totalTitulo <= 100) {
+            $('#actualizar_datos_mes').attr("disabled", false);
+            $('#porAs').removeClass('filledInputs');
+
+        } else {
+            $('#actualizar_datos_mes').attr("disabled", true);
+            $('#porAs').addClass('filledInputs');
+        }
+        $("#porAs").text(totalTitulo);
+    }
+    //BLOQUEAR
+    $('.bloquear').attr("readonly", true);
 
     //Bloquear tr
-    $('#tr0').on('click', function(){
-/*         alert( "Handler for .click() called." ); */
-        //Habilitar input %
-        $( "#tr0" ).find( "input" ).eq( 2 ).attr("disabled", false);
-        var valor = $( "#tr0" ).find( "input" ).eq( 2 ).val();
-        console.log(valor);
-        
+    $('#tr0').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr0").find("input").eq(1).val());
+
+        if (input_fecha > fecha_actual) {
+
+            //Habilitar input %
+            $("#tr0").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr0").find("input").eq(2).val();
+            valor = parseFloat(valor);
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).addClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
     });
+
+    //Bloquear tr
+    $('#tr1').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr1").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            //Habilitar input %
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr1").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).addClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+
+    //Bloquear tr
+    $('#tr2').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr2").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+
+            $("#tr2").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr2").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).addClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+    //Bloquear tr
+    $('#tr3').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr3").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr3").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr3").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).addClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+
+    //Bloquear tr
+    $('#tr4').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr4").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr4").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr4").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).addClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+
+    //Bloquear tr
+    $('#tr5').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr5").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr5").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr5").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).addClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+
+    //Bloquear tr
+    $('#tr6').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr6").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr6").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr6").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).addClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+    //Bloquear tr
+    $('#tr7').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr7").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr7").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr7").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).addClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+    //Bloquear tr
+    $('#tr8').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr8").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr8").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr8").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).addClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+    //Bloquear tr
+    $('#tr9').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr9").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr9").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr9").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).addClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+
+    //Bloquear tr
+    $('#tr10').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr10").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr10").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr10").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).romoveClass("red");
+            $("#tr10").find("input").eq(2).addClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+        }
+
+    });
+    //Bloquear tr
+    $('#tr11').on('click', function() {
+        // Fecha actual del sistema
+        var hoy = new Date();
+        var tras = hoy.toLocaleDateString('en-US');
+        var fecha_actual = new Date(tras);
+        // Fecha del input
+        var input_fecha = new Date($("#tr11").find("input").eq(1).val());
+        if (input_fecha > fecha_actual) {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).removeClass("red");
+            //Habilitar input %
+            $("#tr11").find("input").eq(2).attr("readonly", false);
+            var valor = $("#tr11").find("input").eq(2).val();
+            console.log(valor);
+        } else {
+            $("#tr0").find("input").eq(2).removeClass("red");
+            $("#tr1").find("input").eq(2).removeClass("red");
+            $("#tr2").find("input").eq(2).removeClass("red");
+            $("#tr3").find("input").eq(2).removeClass("red");
+            $("#tr4").find("input").eq(2).removeClass("red");
+            $("#tr5").find("input").eq(2).removeClass("red");
+            $("#tr6").find("input").eq(2).removeClass("red");
+            $("#tr7").find("input").eq(2).removeClass("red");
+            $("#tr8").find("input").eq(2).removeClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
+            $("#tr10").find("input").eq(2).removeClass("red");
+            $("#tr11").find("input").eq(2).addClass("red");
+        }
+
+    });
+
+
 
 
     function enter(id) {
@@ -99,7 +604,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
             var precioMeta = $("#mod_precioMeta").val();
             precioMeta = parseFloat(precioMeta);
-            
+
             //VALOR DEL PORCENTAJE
             var porcentajeInput = $('#porcentaje' + id).val();
             porcentajeInput = parseFloat(porcentajeInput);
@@ -109,7 +614,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             var cantMesU = Math.round(cantidad_ventas_presupuesto * porcentaje);
             var cantPromoU = Math.round(cantidad_promos_presupuesto * porcentaje);
             var cantGarantU = Math.round(cantidad_garantia_presupuesto * porcentaje);
-            var cantTotalU = Math.round(cantMesU + cantPromoU +cantGarantU);
+            var cantTotalU = Math.round(cantMesU + cantPromoU + cantGarantU);
             var presMesV = precioMeta * cantTotalU;
 
             $('#cantMesU' + id).val(cantMesU);
@@ -152,8 +657,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
         });
 
-        //BLOQUEAR
-        $('.bloquear').attr("readonly", true);
+
 
         $("#editar_presupuesto_mes").submit(function(event) {
             $('#actualizar_datos_mes').attr("disabled", true);
@@ -179,6 +683,4 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
 
     });
-
-
 </script>
