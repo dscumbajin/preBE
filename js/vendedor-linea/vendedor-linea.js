@@ -511,8 +511,6 @@ $("#guardar_pres_mes").submit(function(event) {
     $("#porNoviembre").attr("readonly", true);
     $("#porDiciembre").attr("readonly", true);
     var parametros = $(this).serialize();
-
-    console.log(parametros);
     $.ajax({
         type: "POST",
         url: "ajax/vendedor-linea/nuevo_presupuesto_mes.php",

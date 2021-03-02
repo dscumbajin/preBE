@@ -67,16 +67,12 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
     .red {
         color: red;
     }
-
-    .blue {
-        color: blue;
-    }
 </style>
 <script>
     //Porcentje asignado
-    function tituloPreAnio(enero) {
+    function tituloPreAnio(enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre) {
 
-        var totalTitulo = enero;
+        var totalTitulo = enero + febrero + marzo + abril + mayo + junio + julio + agosto + septiembre + octubre + noviembre + diciembre;
 
         totalTitulo = parseFloat(totalTitulo);
         totalTitulo = Math.round(totalTitulo);
@@ -103,12 +99,64 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         var input_fecha = new Date($("#tr0").find("input").eq(1).val());
 
         if (input_fecha > fecha_actual) {
-
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr0").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr0").find("input").eq(2).val();
-            valor = parseFloat(valor);
-            console.log(valor);
+
+            $("#tr0").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porEnero)) {
+                    var subPorcentajes = porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr0").find("input").eq(2).on("input", function() {
+                        var porEnero = $(this).val();
+                        porEnero = parseFloat(porEnero);
+                        if (porEnero <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+                    var valor = $("#tr0").find("input").eq(2).val();
+                }
+            });
         } else {
             $("#tr0").find("input").eq(2).addClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -126,7 +174,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
     });
 
-    //Bloquear tr
+    //Bloquear Febrero
     $('#tr1').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -135,22 +183,64 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr1").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr1").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr1").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porFebrero)) {
+                    var subPorcentajes = porEnero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr1").find("input").eq(2).on("input", function() {
+                        var porFebrero = $(this).val();
+                        porFebrero = parseFloat(porFebrero);
+                        if (porFebrero <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+                    var valor = $("#tr1").find("input").eq(2).val();
+                }
+            });
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).addClass("red");
@@ -168,7 +258,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
     });
 
-    //Bloquear tr
+    //Bloquear Marzo
     $('#tr2').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -177,23 +267,64 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr2").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
-
             $("#tr2").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr2").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr2").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porMarzo)) {
+                    var subPorcentajes = porEnero + porFebrero + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr2").find("input").eq(2).on("input", function() {
+                        var porMarzo = $(this).val();
+                        porMarzo = parseFloat(porMarzo);
+                        if (porMarzo <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+                    var valor = $("#tr2").find("input").eq(2).val();
+                }
+            });
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -210,7 +341,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         }
 
     });
-    //Bloquear tr
+    //Bloquear Abril
     $('#tr3').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -219,22 +350,69 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr3").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr3").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr3").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr3").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porAbril)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr3").find("input").eq(2).on("input", function() {
+
+                        var porAbril = $(this).val();
+                        porAbril = parseFloat(porAbril);
+                        if (porAbril <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+
+                    var valor = $("#tr3").find("input").eq(2).val();
+
+                }
+
+            });
+
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -252,7 +430,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
     });
 
-    //Bloquear tr
+    //Bloquear Mayo
     $('#tr4').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -261,22 +439,69 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr4").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr4").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr4").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr4").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porMayo)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr4").find("input").eq(2).on("input", function() {
+
+                        var porMayo = $(this).val();
+                        porMayo = parseFloat(porMayo);
+                        if (porMayo <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+
+                    var valor = $("#tr4").find("input").eq(2).val();
+
+                }
+
+            });
+
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -294,7 +519,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
     });
 
-    //Bloquear tr
+    //Bloquear Junio
     $('#tr5').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -303,22 +528,69 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr5").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr5").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr5").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr5").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porJunio)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr5").find("input").eq(2).on("input", function() {
+
+                        var porJunio = $(this).val();
+                        porJunio = parseFloat(porJunio);
+                        if (porJunio <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+
+                    var valor = $("#tr5").find("input").eq(2).val();
+
+                }
+
+            });
+
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -336,7 +608,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
     });
 
-    //Bloquear tr
+    //Bloquear Julio
     $('#tr6').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -345,22 +617,69 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr6").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr6").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr6").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr6").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porJulio)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porAgosto + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr6").find("input").eq(2).on("input", function() {
+
+                        var porJulio = $(this).val();
+                        porJulio = parseFloat(porJulio);
+                        if (porJulio <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+
+                    var valor = $("#tr6").find("input").eq(2).val();
+
+                }
+
+            });
+
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -377,7 +696,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         }
 
     });
-    //Bloquear tr
+    //Bloquear Agosto
     $('#tr7').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -386,22 +705,69 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr7").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr7").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr7").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr7").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porAgosto)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porSeptiembre + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr7").find("input").eq(2).on("input", function() {
+
+                        var porAgosto = $(this).val();
+                        porAgosto = parseFloat(porAgosto);
+                        if (porAgosto <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+
+                    var valor = $("#tr7").find("input").eq(2).val();
+
+                }
+
+            });
+
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -418,7 +784,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         }
 
     });
-    //Bloquear tr
+    //Bloquear Septiembre
     $('#tr8').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -427,22 +793,69 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr8").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr8").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr8").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr8").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porSeptiembre)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porOctubre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr8").find("input").eq(2).on("input", function() {
+
+                        var porSeptiembre = $(this).val();
+                        porSeptiembre = parseFloat(porSeptiembre);
+                        if (porSeptiembre <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+
+                    var valor = $("#tr8").find("input").eq(2).val();
+
+                }
+
+            });
+
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -459,7 +872,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         }
 
     });
-    //Bloquear tr
+    //Bloquear Octubre
     $('#tr9').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -468,22 +881,69 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr9").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr9").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr9").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr9").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porOctubre)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porNoviembre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr9").find("input").eq(2).on("input", function() {
+
+                        var porOctubre = $(this).val();
+                        porOctubre = parseFloat(porOctubre);
+                        if (porOctubre <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+
+                    var valor = $("#tr9").find("input").eq(2).val();
+
+                }
+
+            });
+
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -501,7 +961,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
     });
 
-    //Bloquear tr
+    //Bloquear Noviembre
     $('#tr10').on('click', function() {
         // Fecha actual del sistema
         var hoy = new Date();
@@ -510,22 +970,69 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr10").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr10").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr10").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr10").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porNoviembre)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porDiciembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr10").find("input").eq(2).on("input", function() {
+
+                        var porNoviembre = $(this).val();
+                        porNoviembre = parseFloat(porNoviembre);
+                        if (porNoviembre <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+
+                    var valor = $("#tr10").find("input").eq(2).val();
+
+                }
+
+            });
+
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -536,7 +1043,7 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             $("#tr6").find("input").eq(2).removeClass("red");
             $("#tr7").find("input").eq(2).removeClass("red");
             $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).romoveClass("red");
+            $("#tr9").find("input").eq(2).removeClass("red");
             $("#tr10").find("input").eq(2).addClass("red");
             $("#tr11").find("input").eq(2).removeClass("red");
         }
@@ -551,22 +1058,64 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         // Fecha del input
         var input_fecha = new Date($("#tr11").find("input").eq(1).val());
         if (input_fecha > fecha_actual) {
-            $("#tr0").find("input").eq(2).removeClass("red");
-            $("#tr1").find("input").eq(2).removeClass("red");
-            $("#tr2").find("input").eq(2).removeClass("red");
-            $("#tr3").find("input").eq(2).removeClass("red");
-            $("#tr4").find("input").eq(2).removeClass("red");
-            $("#tr5").find("input").eq(2).removeClass("red");
-            $("#tr6").find("input").eq(2).removeClass("red");
-            $("#tr7").find("input").eq(2).removeClass("red");
-            $("#tr8").find("input").eq(2).removeClass("red");
-            $("#tr9").find("input").eq(2).removeClass("red");
-            $("#tr10").find("input").eq(2).removeClass("red");
-            $("#tr11").find("input").eq(2).removeClass("red");
+            for (let i = 0; i < 12; i++) {
+                $("#tr" + i).find("input").eq(2).removeClass("red");
+            }
             //Habilitar input %
             $("#tr11").find("input").eq(2).attr("readonly", false);
-            var valor = $("#tr11").find("input").eq(2).val();
-            console.log(valor);
+
+            $("#tr11").find("input").eq(2).on('input', function() {
+                var porEnero = $("#tr0").find("input").eq(2).val();
+                porEnero = parseFloat(porEnero);
+                var porFebrero = $("#tr1").find("input").eq(2).val();
+                porFebrero = parseFloat(porFebrero);
+                var porMarzo = $("#tr2").find("input").eq(2).val();
+                porMarzo = parseFloat(porMarzo);
+                var porAbril = $("#tr3").find("input").eq(2).val();
+                porAbril = parseFloat(porAbril);
+                var porMayo = $("#tr4").find("input").eq(2).val();
+                porMayo = parseFloat(porMayo);
+                var porJunio = $("#tr5").find("input").eq(2).val();
+                porJunio = parseFloat(porJunio);
+                var porJulio = $("#tr6").find("input").eq(2).val();
+                porJulio = parseFloat(porJulio);
+                var porAgosto = $("#tr7").find("input").eq(2).val();
+                porAgosto = parseFloat(porAgosto);
+                var porSeptiembre = $("#tr8").find("input").eq(2).val();
+                porSeptiembre = parseFloat(porSeptiembre);
+                var porOctubre = $("#tr9").find("input").eq(2).val();
+                porOctubre = parseFloat(porOctubre);
+                var porNoviembre = $("#tr10").find("input").eq(2).val();
+                porNoviembre = parseFloat(porNoviembre);
+                var porDiciembre = $("#tr11").find("input").eq(2).val();
+                porDiciembre = parseFloat(porDiciembre);
+
+                if (isNaN(porDiciembre)) {
+                    var subPorcentajes = porEnero + porFebrero + porMarzo + porAbril + porMayo + porJunio + porJulio + porAgosto + porSeptiembre + porOctubre + porNoviembre;
+                    var comparacion = 100 - subPorcentajes;
+                    confirm(`Debes ingresar un valor menor o igual a: ${comparacion}`);
+                    $("#tr11").find("input").eq(2).on("input", function() {
+                        var porDiciembre = $(this).val();
+                        porDiciembre = parseFloat(porDiciembre);
+                        if (porDiciembre <= comparacion) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+
+                        }
+                        tituloPreAnio(porEnero, porFebrero, porMarzo, porAbril, porMayo, porJunio, porJulio, porAgosto, porSeptiembre, porOctubre, porNoviembre, porDiciembre);
+                        var tituloPor = $("#porAs").text();
+                        tituloPor = parseInt(tituloPor);
+                        if (tituloPor == 100) {
+                            $('#actualizar_datos_mes').attr("disabled", false);
+                        } else {
+                            $('#actualizar_datos_mes').attr("disabled", true);
+                        }
+                    });
+                } else {
+                    var valor = $("#tr11").find("input").eq(2).val();
+                }
+            });
         } else {
             $("#tr0").find("input").eq(2).removeClass("red");
             $("#tr1").find("input").eq(2).removeClass("red");
@@ -581,17 +1130,11 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             $("#tr10").find("input").eq(2).removeClass("red");
             $("#tr11").find("input").eq(2).addClass("red");
         }
-
     });
-
-
-
 
     function enter(id) {
         //desabilitar todo
         //cuando haga clic habilitar
-        console.log(id);
-
         $('#porcentaje' + id).on('input', function() {
 
             //VALORES DE PRESUPUESTO AÑO
@@ -626,9 +1169,6 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
         });
     }
 
-
-
-
     $(function() {
 
         /* $("#registros").DataTable({
@@ -657,13 +1197,9 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
         });
 
-
-
         $("#editar_presupuesto_mes").submit(function(event) {
             $('#actualizar_datos_mes').attr("disabled", true);
-
             var parametros = $(this).serialize();
-            console.log(parametros);
             $.ajax({
                 type: "POST",
                 url: "./ajax/presupuesto-anio/editar_presupuesto_mes.php",
@@ -679,8 +1215,6 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
             });
             event.preventDefault();
         })
-
-
 
     });
 </script>
