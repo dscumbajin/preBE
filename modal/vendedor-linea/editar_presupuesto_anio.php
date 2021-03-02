@@ -35,9 +35,10 @@
 								<input type="hidden" name="mod_precioMeta" id="mod_precioMeta">
 							</div>
 						</div>
-
 						<hr>
-						<span id="porAs">Porcentaje asignado</span>
+						<div class="col-sm-4">
+							Porcentaje asignado: <span id="porAs">100</span> %
+						</div>
 						<hr>
 						<section id="tabla_resultados">
 

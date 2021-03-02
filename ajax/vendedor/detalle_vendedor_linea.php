@@ -41,7 +41,7 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
             while ($detalle = $resultado->fetch_assoc()) { ?>
                 <tr class="trT">
                     <input type="hidden" id="numLineas" value="<?php echo $detalle['num'] ?>">
-                    <td style="text-transform: uppercase;" class="tdT"><?php setlocale(LC_TIME, "spanish");
+                    <td style="text-transform: uppercase; font-weight: bold;" class="tdT"><?php setlocale(LC_TIME, "spanish");
 							$date = new DateTime($detalle['mes']);
 							$fecha = strftime("%b", $date->getTimestamp());
 							echo $fecha;?></td>
