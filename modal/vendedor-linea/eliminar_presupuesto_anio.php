@@ -1,11 +1,11 @@
 	<?php
 	if (isset($con)) {
 	?>
-		<div class="modal fade" id="modPresupuestoAnio">
+		<div class="modal fade" id="deletePresupuestoAnio">
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title"> <span style="font-weight: bold;" id="vendedor-linea"></span></h4>
+						<h4 class="modal-title"> <span style="font-weight: bold;" id="tituloEliminacion"></span></h4>
 						<button type="button" id="close" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -13,7 +13,7 @@
 					<div class="modal-body">
 
 
-					<div class="card card-default">
+						<div class="card card-default">
 							<div class="card-header">
 								<h3 class="card-title">Datos Actuales</h3>
 
@@ -30,12 +30,12 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>Ventas</label>
-											<input type="text" class="form-control numero" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+											<input type="text" class="form-control numero" name="delete_ventas_presupuesto" id="delete_ventas_presupuesto"  required>
 										</div>
 										<!-- /.form-group -->
 										<div class="form-group">
 											<label>Promociones</label>
-											<input type="text" class="form-control numero" name="mod_promos_presupuesto" id="mod_promos_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+											<input type="text" class="form-control numero" name="delete_promos_presupuesto" id="delete_promos_presupuesto"  required>
 										</div>
 										<!-- /.form-group -->
 									</div>
@@ -43,29 +43,23 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>Garantias</label>
-											<input type="text" class="form-control numero" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+											<input type="text" class="form-control numero" name="delete_garantia_presupuesto" id="delete_garantia_presupuesto"  required>
 										</div>
 										<!-- /.form-group -->
 										<div class="form-group">
 											<label>TOTAL</label>
-											<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+											<input type="text" class="form-control numero" name="delete_total_presupuesto" id="delete_total_presupuesto"  required>
 										</div>
 										<!-- /.form-group -->
 									</div>
 									<!-- /.col -->
-									<input type="hidden" name="mod_precioMeta" id="mod_precioMeta">
 								</div>
 								<!-- /.row -->
 							</div>
 
 						</div>
-						
-						<hr>
-						<div class="col-sm-4">
-							Porcentaje asignado: <span id="porAs">100</span> %
-						</div>
-						<hr>
-						<section id="tabla_resultados">
+
+						<section id="tabla_resultados_delete">
 
 						</section>
 

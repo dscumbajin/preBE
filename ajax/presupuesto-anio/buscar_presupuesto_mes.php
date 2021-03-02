@@ -1168,53 +1168,28 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
 
         });
     }
-
-    $(function() {
-
-        /* $("#registros").DataTable({
-            "responsive": false,
-            "autoWidth": false,
-            "pageLength": 12,
-            "language": {
-                paginate: {
-                    next: 'Siguiente',
-                    previous: 'Anterior',
-                    last: 'Último',
-                    firts: 'Primero'
-                },
-                info: 'Mostrando _START_ a _END_ de _TOTAL_ resultados',
-                emptyTable: 'No hay registros',
-                infoEmpty: 'Mostrando 0 to 0 of 0 Entradas',
-                search: 'Buscar: ',
-                lengthMenu: "Mostrar _MENU_ Entradas ",
-                infoFiltered: " (Filtrado de un total de _MAX_  entradas)"
-            }
-
-        });
- */
-        // VALIDACIONES
-        $('.decimales').on('input', function() {
-            this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
-        });
-
-        $("#editar_presupuesto_mes").submit(function(event) {
-            $('#actualizar_datos_mes').attr("disabled", true);
-            var parametros = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                url: "./ajax/presupuesto-anio/editar_presupuesto_mes.php",
-                data: parametros,
-                beforeSend: function(objeto) {
-                    $("#resultados_ajax2").html("Mensaje: Cargando...");
-                },
-                success: function(datos) {
-                    $("#resultados_ajax2").html(datos);
-                    $('#actualizar_datos_mes').attr("disabled", false);
-                    load(1);
-                }
-            });
-            event.preventDefault();
-        })
-
+    // VALIDACIONES
+    $('.decimales').on('input', function() {
+        this.value = this.value.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
     });
+
+    $("#editar_presupuesto_mes").submit(function(event) {
+        $('#actualizar_datos_mes').attr("disabled", true);
+        var parametros = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            url: "./ajax/presupuesto-anio/editar_presupuesto_mes.php",
+            data: parametros,
+            beforeSend: function(objeto) {
+                $("#resultados_ajax2").html("Mensaje: Cargando...");
+            },
+            success: function(datos) {
+                $("#resultados_ajax2").html(datos);
+                $('#actualizar_datos_mes').attr("disabled", false);
+                load(1);
+            }
+        });
+        event.preventDefault();
+    })
+   
 </script>

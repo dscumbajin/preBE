@@ -18,27 +18,6 @@
 		    })
 		}
 
-		function eliminar(id) {
-		    var vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
-		    var linea_presupuesto = $("#linea_presupuesto" + id).val();
-		    var q = $("#q").val();
-		    if (confirm(`Realmente deseas eliminar el presupuesto del Vendedor: ${vendedor_presupuesto} con Linea de negocio: ${linea_presupuesto}`)) {
-		        $.ajax({
-		            type: "GET",
-		            url: "./ajax/usuario/buscar_usuarios.php",
-		            data: "id=" + id,
-		            "q": q,
-		            beforeSend: function(objeto) {
-		                $("#resultados").html("Mensaje: Cargando...");
-		            },
-		            success: function(datos) {
-		                $("#resultados").html(datos);
-		                load(1);
-		            }
-		        });
-		    }
-		}
-
 		function detalle_presupuesto(id, id_pre) {
 		    var vendedor_presupuesto = $("#vendedor_presupuesto" + id_pre).val();
 		    $('#titulo_detalle').text(vendedor_presupuesto);
@@ -55,11 +34,6 @@
 		    });
 
 		}
-
-		// VALIDACIONES
-		$('.numero').on('input', function() {
-		    this.value = this.value.replace(/[^0-9]/g, '');
-		});
 
 
 		function buscar_datos_mes(id) {
@@ -99,3 +73,54 @@
 		        }
 		    });
 		}
+
+		/* 	if (confirm(`Realmente deseas eliminar el presupuesto del Vendedor: ${vendedor_presupuesto} con Linea de negocio: ${linea_presupuesto}`)) {
+			$.ajax({
+				type: "GET",
+				url: "./ajax/presupuesto-anio/buscar_presupuesto.php",
+				data: "id=" + id,
+				"q": q,
+				beforeSend: function(objeto) {
+					$("#resultados").html("Mensaje: Cargando...");
+				},
+				success: function(datos) {
+					$("#resultados").html(datos);
+					load(1);
+				}
+			});
+		}
+ */
+
+		function eliminar(id) {
+		    var anio_presupuesto = $("#anio_presupuesto" + id).val();
+		    var vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
+		    var linea_presupuesto = $("#linea_presupuesto" + id).val();
+		    // Definir titulo del modal
+		    $("#tituloEliminacion").text(`PRESUPUESTO: ${anio_presupuesto} / VENDEDOR: ${vendedor_presupuesto} - LINEA: ${linea_presupuesto}`);
+
+		    // VALORES INFORMATIVOS PRESUPUESTO ANIO
+		    var cantidad_ventas_presupuesto = $("#cantidad_ventas_presupuesto" + id).val();
+		    var cantidad_promos_presupuesto = $("#cantidad_promos_presupuesto" + id).val();
+		    var cantidad_garantia_presupuesto = $("#cantidad_garantia_presupuesto" + id).val();
+		    var cantidad_total_presupuesto = $("#cantidad_total_presupuesto" + id).val();
+		    var precioMeta = $("#precioMeta" + id).val();
+		    $("#delete_ventas_presupuesto").val(cantidad_ventas_presupuesto);
+		    $("#delete_promos_presupuesto").val(cantidad_promos_presupuesto);
+		    $("#delete_garantia_presupuesto").val(cantidad_garantia_presupuesto);
+		    $("#delete_total_presupuesto").val(cantidad_total_presupuesto);
+		    $("#delete_precioMeta").val(precioMeta);
+		    //Bloqueo campo total
+		    $("#delete_ventas_presupuesto").attr("readonly", true);
+		    $("#delete_promos_presupuesto").attr("readonly", true);
+		    $("#delete_garantia_presupuesto").attr("readonly", true);
+		    $("#delete_total_presupuesto").attr("readonly", true);
+		    var q = $("#q").val();
+		    //AJAX
+
+
+		}
+
+		// VALIDACIONES
+		$('.numero').on('input', function() {
+		    this.value = this.value.replace(/[^0-9]/g, '');
+		});

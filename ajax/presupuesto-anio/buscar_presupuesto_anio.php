@@ -6,26 +6,6 @@ require_once("../../funciones/db.php"); //Contiene las variables de configuracio
 require_once("../../funciones/conexion.php"); //Contiene funcion que conecta a la base de datos
 
 $action = (isset($_REQUEST['action']) && $_REQUEST['action'] != NULL) ? $_REQUEST['action'] : '';
-if (isset($_GET['id'])) {
-	$id_presupuesto = $_GET['id'];
-
-	if ($delete1 = mysqli_query($con, "DELETE FROM presupuesto_mes WHERE idPresMes='" . $id_presupuesto . "'")) {
-?>
-		<div class="alert alert-success alert-dismissible" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<strong>Aviso!</strong> Datos eliminados exitosamente.
-		</div>
-	<?php
-	} else {
-	?>
-		<div class="alert alert-danger alert-dismissible" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<strong>Error!</strong> Lo siento algo ha salido mal intenta nuevamente.
-		</div>
-	<?php
-
-	}
-}
 
 if ($action == 'ajax') {
 	// escaping, additionally removing everything that could be (html/javascript-) code
@@ -63,7 +43,7 @@ if ($action == 'ajax') {
 	//loop through fetched data
 	if ($numrows > 0) {
 
-	?>
+?>
 		<div class="table-responsive">
 			<table id="registros" class="table table-bordered table-striped ">
 				<thead>
@@ -92,10 +72,10 @@ if ($action == 'ajax') {
 						$cantidad_garantia_presupuesto = $row['garantPresU'];
 						$cantidad_total_presupuesto = $row['totalPresU'];
 						$precioMeta = $row['precioMeta'];
-						
+
 
 					?>
-					
+
 						<input type="hidden" value="<?php echo $anio_presupuesto; ?>" id="anio_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $vendedor_presupuesto; ?>" id="vendedor_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $cantidad_ventas_presupuesto; ?>" id="cantidad_ventas_presupuesto<?php echo $id_presupuesto; ?>">
@@ -105,10 +85,10 @@ if ($action == 'ajax') {
 						<input type="hidden" value="<?php echo $linea_presupuesto; ?>" id="linea_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $precioMeta; ?>" id="precioMeta<?php echo $id_presupuesto; ?>">
 
-					
+
 						<tr>
 							<td><?php echo $anio_presupuesto; ?></td>
-							<td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>', '<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#detallePresupuesto"><?php echo $vendedor_presupuesto; ?> </a</td>
+							<td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>', '<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#detallePresupuesto"><?php echo $vendedor_presupuesto; ?> </a< /td>
 							<td><?php echo $linea_presupuesto; ?></td>
 							<td><?php echo $cantidad_ventas_presupuesto; ?></td>
 							<td><?php echo $cantidad_promos_presupuesto; ?></td>
@@ -117,7 +97,7 @@ if ($action == 'ajax') {
 							<td><span>
 									<a href="#" title='Editar presupuesto' onclick="buscar_datos_mes('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuestoAnio"><i class="fas fa-pen editar"></i></a>
 									<?php if ($_SESSION['user_nivel'] == 2) : ?>
-										<a href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"><i class="far fa-trash-alt eliminar"></i></a>
+										<a href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"data-toggle="modal" data-target="#deletePresupuestoAnio"><i class="far fa-trash-alt eliminar"></i></a>
 									<?php endif; ?>
 								</span>
 							</td>
