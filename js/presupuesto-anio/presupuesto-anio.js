@@ -92,6 +92,7 @@
  */
 
 		function eliminar(id) {
+		    var id_linea = $("#id_linea" + id).val();
 		    var anio_presupuesto = $("#anio_presupuesto" + id).val();
 		    var vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
 		    var linea_presupuesto = $("#linea_presupuesto" + id).val();
@@ -103,12 +104,12 @@
 		    var cantidad_promos_presupuesto = $("#cantidad_promos_presupuesto" + id).val();
 		    var cantidad_garantia_presupuesto = $("#cantidad_garantia_presupuesto" + id).val();
 		    var cantidad_total_presupuesto = $("#cantidad_total_presupuesto" + id).val();
-		    var precioMeta = $("#precioMeta" + id).val();
+
 		    $("#delete_ventas_presupuesto").val(cantidad_ventas_presupuesto);
 		    $("#delete_promos_presupuesto").val(cantidad_promos_presupuesto);
 		    $("#delete_garantia_presupuesto").val(cantidad_garantia_presupuesto);
 		    $("#delete_total_presupuesto").val(cantidad_total_presupuesto);
-		    $("#delete_precioMeta").val(precioMeta);
+		    $("#codLinea").val(id_linea);
 		    //Bloqueo campo total
 		    $("#delete_ventas_presupuesto").attr("readonly", true);
 		    $("#delete_promos_presupuesto").attr("readonly", true);

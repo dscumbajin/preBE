@@ -64,6 +64,7 @@ if ($action == 'ajax') {
 					while ($row = mysqli_fetch_array($query)) {
 						$id_presupuesto = $row['idPresAnio'];
 						$anio_presupuesto = $row['anio'];
+						$id_linea = $row['codLinea'];
 						$id_vendedor = $row['codVen'];
 						$vendedor_presupuesto = $row['nomVen'];
 						$linea_presupuesto = $row['nomLinea'];
@@ -72,8 +73,6 @@ if ($action == 'ajax') {
 						$cantidad_garantia_presupuesto = $row['garantPresU'];
 						$cantidad_total_presupuesto = $row['totalPresU'];
 						$precioMeta = $row['precioMeta'];
-
-
 					?>
 
 						<input type="hidden" value="<?php echo $anio_presupuesto; ?>" id="anio_presupuesto<?php echo $id_presupuesto; ?>">
@@ -84,7 +83,7 @@ if ($action == 'ajax') {
 						<input type="hidden" value="<?php echo $cantidad_total_presupuesto; ?>" id="cantidad_total_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $linea_presupuesto; ?>" id="linea_presupuesto<?php echo $id_presupuesto; ?>">
 						<input type="hidden" value="<?php echo $precioMeta; ?>" id="precioMeta<?php echo $id_presupuesto; ?>">
-
+						<input type="hidden" value="<?php echo $id_linea; ?>" id="id_linea<?php echo $id_presupuesto; ?>">
 
 						<tr>
 							<td><?php echo $anio_presupuesto; ?></td>

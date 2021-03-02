@@ -12,8 +12,7 @@
 					</div>
 					<div class="modal-body">
 
-
-						<div class="card card-default">
+						<div class="card card-dark">
 							<div class="card-header">
 								<h3 class="card-title">Datos Actuales</h3>
 
@@ -21,47 +20,70 @@
 									<button type="button" class="btn btn-tool" data-card-widget="collapse">
 										<i class="fas fa-minus"></i>
 									</button>
-									
+
 								</div>
 							</div>
 							<!-- /.card-header -->
 							<div class="card-body" style="display: block;">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label>Ventas</label>
-											<input type="text" class="form-control numero" name="delete_ventas_presupuesto" id="delete_ventas_presupuesto"  required>
-										</div>
-										<!-- /.form-group -->
-										<div class="form-group">
-											<label>Promociones</label>
-											<input type="text" class="form-control numero" name="delete_promos_presupuesto" id="delete_promos_presupuesto"  required>
-										</div>
-										<!-- /.form-group -->
+								<div class="row form-group">
+									<input type="hidden" name="codLinea" id="codLinea">
+									<div class="col-sm-3">
+										<label>Ventas</label>
+										<input type="text" class="form-control numero" name="delete_ventas_presupuesto" id="delete_ventas_presupuesto" required>
 									</div>
-									<!-- /.col -->
-									<div class="col-md-6">
-										<div class="form-group">
-											<label>Garantias</label>
-											<input type="text" class="form-control numero" name="delete_garantia_presupuesto" id="delete_garantia_presupuesto"  required>
-										</div>
-										<!-- /.form-group -->
-										<div class="form-group">
-											<label>TOTAL</label>
-											<input type="text" class="form-control numero" name="delete_total_presupuesto" id="delete_total_presupuesto"  required>
-										</div>
-										<!-- /.form-group -->
+									<!-- /.form-group -->
+									<div class="col-sm-3">
+										<label>Promociones</label>
+										<input type="text" class="form-control numero" name="delete_promos_presupuesto" id="delete_promos_presupuesto" required>
 									</div>
-									<!-- /.col -->
+									<div class="col-sm-3">
+										<label>Garantias</label>
+										<input type="text" class="form-control numero" name="delete_garantia_presupuesto" id="delete_garantia_presupuesto" required>
+									</div>
+									<!-- /.form-group -->
+									<div class="col-sm-3">
+										<label>TOTAL</label>
+										<input type="text" class="form-control numero" name="delete_total_presupuesto" id="delete_total_presupuesto" required>
+									</div>
+									<!-- /.form-group -->
 								</div>
 								<!-- /.row -->
 							</div>
-
 						</div>
 
-						<section id="tabla_resultados_delete">
+						<div class="card card-dark">
+							<div class="card-header">
 
-						</section>
+								<form class="form-horizontal row" role="form">
+									<label for="q" class="col-md-2 control-label">Vendedor</label>
+
+									<div class="col-md-5">
+										<input type="text" class="form-control" id="txt" placeholder="Nombre vendedor" onkeyup='loadEliminacion();'>
+									</div>
+									<div class="col-md-3 ">
+										<button type="button" class="btn btn-default" onclick='loadEliminacion();'>
+											<span><i class="fas fa-search"></i></span> Buscar</button>
+										<span id="loader"></span>
+									</div>
+
+								</form>
+
+								<!--Formulario de busqueda-->
+
+								<div class="card-tools">
+									<button type="button" class="btn btn-tool" data-card-widget="collapse">
+										<i class="fas fa-minus"></i>
+									</button>
+								</div>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body" style="display: block;">
+
+								<section id="tabla_resultados_delete">
+
+								</section>
+							</div>
+						</div>
 
 					</div>
 					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button -->

@@ -13,7 +13,7 @@
 					<div class="modal-body">
 
 
-					<div class="card card-default">
+						<div class="card card-success">
 							<div class="card-header">
 								<h3 class="card-title">Datos Actuales</h3>
 
@@ -21,7 +21,7 @@
 									<button type="button" class="btn btn-tool" data-card-widget="collapse">
 										<i class="fas fa-minus"></i>
 									</button>
-									
+
 								</div>
 							</div>
 							<!-- /.card-header -->
@@ -57,9 +57,9 @@
 								</div>
 								<!-- /.row -->
 							</div>
-
+							
 						</div>
-						
+
 						<hr>
 						<div class="col-sm-4">
 							Porcentaje asignado: <span id="porAs">100</span> %
