@@ -5,7 +5,7 @@ require_once("../../funciones/db.php"); //Contiene las variables de configuracio
 require_once("../../funciones/conexion.php"); //Contiene funcion que conecta a la base de datos
 
 $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_QUOTES)));
-
+$anio= mysqli_real_escape_string($con, (strip_tags($_REQUEST['anio'], ENT_QUOTES)));
 // Ejecutamos la consulta de busqueda
 ?>
 <style>
@@ -32,7 +32,9 @@ $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_Q
                 $sql .= " FROM presupuesto_mes, presupuesto_anio, vendedor ";
                 $sql .= " WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio";
                 $sql .= " AND presupuesto_anio.codVen = vendedor.codVen";
-                $sql .= " AND vendedor.codVen = '$codVen' GROUP BY codVen, mes";
+                $sql .= " AND vendedor.codVen = '$codVen' ";
+                $sql .= " AND presupuesto_anio.anio = '$anio' ";
+                $sql .= " GROUP BY codVen, mes";
                 $resultado = $con->query($sql);
             } catch (Exception $e) {
                 $error = $e->getMessage();

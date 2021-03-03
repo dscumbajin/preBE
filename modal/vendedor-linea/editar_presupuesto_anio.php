@@ -27,32 +27,29 @@
 							<!-- /.card-header -->
 							<div class="card-body" style="display: block;">
 								<div class="row">
-									<div class="col-md-6">
-										<div class="form-group">
-											<label>Ventas</label>
+								
+										<div class="col-sm-3">
+											<label>Presupuesto Ventas</label>
 											<input type="text" class="form-control numero" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
 										</div>
 										<!-- /.form-group -->
-										<div class="form-group">
+										<div class="col-sm-3">
 											<label>Promociones</label>
 											<input type="text" class="form-control numero" name="mod_promos_presupuesto" id="mod_promos_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
 										</div>
 										<!-- /.form-group -->
-									</div>
-									<!-- /.col -->
-									<div class="col-md-6">
-										<div class="form-group">
+
+										<div class="col-sm-3">
 											<label>Garantias</label>
 											<input type="text" class="form-control numero" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
 										</div>
 										<!-- /.form-group -->
-										<div class="form-group">
+										<div class="col-sm-3">
 											<label>TOTAL</label>
 											<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
 										</div>
 										<!-- /.form-group -->
-									</div>
-									<!-- /.col -->
+								
 									<input type="hidden" name="mod_precioMeta" id="mod_precioMeta">
 								</div>
 								<!-- /.row -->
@@ -62,7 +59,7 @@
 
 						<hr>
 						<div class="col-sm-4">
-							Porcentaje asignado: <span id="porAs">100</span> %
+							Porcentaje asignado: <span class="btn"  style="font-weight: bold;" id="porAs">100</span> %
 						</div>
 						<hr>
 						<section id="tabla_resultados">

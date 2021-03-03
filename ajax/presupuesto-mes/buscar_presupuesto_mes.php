@@ -35,11 +35,11 @@ if ($action == 'ajax') {
 	$sTable = "presupuesto_mes, presupuesto_anio, vendedor, listalinea, segmento";
 	$sWhere = " WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio AND 
 	presupuesto_anio.codVen = vendedor.codVen AND presupuesto_anio.codLinea = listalinea.codLinea
-	AND vendedor.codSeg = segmento.codSeg";
+	AND vendedor.estadoVen != 0 AND vendedor.codSeg = segmento.codSeg";
 	if ($_GET['q'] != "") {
 		$sWhere = "WHERE presupuesto_anio.idPresAnio = presupuesto_mes.idPresAnio AND 
 		presupuesto_anio.codVen = vendedor.codVen AND presupuesto_anio.codLinea = listalinea.codLinea
-		AND vendedor.codSeg = segmento.codSeg AND (";
+		AND vendedor.estadoVen != 0 AND vendedor.codSeg = segmento.codSeg AND (";
 		for ($i = 0; $i < count($aColumns); $i++) {
 			$sWhere .= $aColumns[$i] . " LIKE '%" . $q . "%' OR ";
 		}

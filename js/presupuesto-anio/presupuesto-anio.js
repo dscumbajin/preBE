@@ -21,13 +21,14 @@ function load(page) {
 
 function detalle_presupuesto(id, id_pre) {
     var vendedor_presupuesto = $("#vendedor_presupuesto" + id_pre).val();
+    var anio_presupuesto = $("#anio_presupuesto" + id_pre).val();
     $('#titulo_detalle').text(vendedor_presupuesto);
     //LLAMADO A AJAX
     var url = './ajax/vendedor/detalle_vendedor_linea.php';
     $.ajax({
         tyoe: 'POST',
         url: url,
-        data: 'codVen=' + id,
+        data: 'codVen=' + id + '&anio=' + anio_presupuesto,
         success: function(datos) {
             $('#tabla_resultados_detalle').html('');
             $('#tabla_resultados_detalle').html(datos);
@@ -101,32 +102,70 @@ function eliminar(id) {
     $("#delete_promos_presupuesto").attr("readonly", true);
     $("#delete_garantia_presupuesto").attr("readonly", true);
     $("#delete_total_presupuesto").attr("readonly", true);
-    //AJAX
 
 }
 
 
-$('#txtBusqueda').on('keyup', function() {
+$('#txtBusqueda').on('input', function() {
     var codLinea = $("#codLinea").val();
     var txtBusqueda = $('#txtBusqueda').val();
     var anio = $("#anio").val();
     var url = './ajax/presupuesto-anio/buscar_vendedor_presupuesto.php';
 
-    $.ajax({
-        tyoe: 'POST',
-        url: url,
-        data: 'codLinea=' + codLinea + '&anio=' + anio + '&txtBusqueda=' + txtBusqueda,
-        beforeSend: function(objeto) {
-            $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
-        },
-        success: function(datos) {
-            $('#tabla_resultados_delete').html('');
-            $('#tabla_resultados_delete').html(datos);
-            $('#loader').html('');
-        }
-    });
+    if (txtBusqueda !== 0) {
+        $.ajax({
+            tyoe: 'POST',
+            url: url,
+            data: 'codLinea=' + codLinea + '&anio=' + anio + '&txtBusqueda=' + txtBusqueda,
+            beforeSend: function(objeto) {
+                $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
+            },
+            success: function(datos) {
+                $('#tabla_resultados_delete').show();
+                $('#tabla_resultados_delete').html('');
+                $('#tabla_resultados_delete').html(datos);
+                $('#loader').html('');
+                //Bloqueo de Inputs
+                $("#delVentas").attr("readonly", true);
+                $("#delPres").attr("readonly", true);
+                $("#delGran").attr("readonly", true);
+                $("#delTotal").attr("readonly", true);
+                // Conversion Inputs int
+                var delete_ventas_presupuesto = $("#delete_ventas_presupuesto").val();
+                delete_ventas_presupuesto = parseInt(delete_ventas_presupuesto);
+                var delete_promos_presupuesto = $("#delete_promos_presupuesto").val();
+                delete_promos_presupuesto = parseInt(delete_promos_presupuesto);
+                var delete_garantia_presupuesto = $("#delete_garantia_presupuesto").val();
+                delete_garantia_presupuesto = parseInt(delete_garantia_presupuesto);
+                var delete_total_presupuesto = $("#delete_total_presupuesto").val();
+                delete_total_presupuesto = parseInt(delete_total_presupuesto);
+                //Calculos de nuevos valores
+
+                var delVentas = $("#delVentas").val();
+                delVentas = parseInt(delVentas);
+                var delProm = $("#delProm").val();
+                delProm = parseInt(delProm);
+                var delGran = $("#delGran").val();
+                delGran = parseInt(delGran);
+                var delTotal = $("#delTotal").val();
+                delTotal = parseInt(delTotal);
+
+                $("#delVentas").val(delete_ventas_presupuesto + delVentas);
+                $("#delProm").val(delete_promos_presupuesto + delProm);
+                $("#delGran").val(delete_garantia_presupuesto + delGran);
+                $("#delTotal").val(delete_total_presupuesto + delTotal);
+
+            }
+
+        });
+
+    }
+    $('#tabla_resultados_delete').hide();
+
 
 });
+
+//CLOSE
 
 // VALIDACIONES
 $('.numero').on('input', function() {

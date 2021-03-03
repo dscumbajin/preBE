@@ -6,7 +6,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title"> <span style="font-weight: bold;" id="tituloEliminacion"></span></h4>
-						<button type="button" id="close" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+						<button type="button" id="closeDelete" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -29,7 +29,7 @@
 									<input type="hidden" name="anio" id="anio">
 									<input type="hidden" name="codLinea" id="codLinea">
 									<div class="col-sm-3">
-										<label>Ventas</label>
+										<label>Presupuesto Ventas</label>
 										<input type="text" class="form-control numero" name="delete_ventas_presupuesto" id="delete_ventas_presupuesto" required>
 									</div>
 									<!-- /.form-group -->
@@ -66,7 +66,23 @@
 									<label for="txtBusqueda" class="col-md-2 control-label">Vendedor</label>
 
 									<div class="col-md-5">
-										<input type="text" class="form-control" id="txtBusqueda" placeholder="Nombre vendedor">
+
+										<select class="form-control seleccionar select2-primary" id="txtBusqueda" name="txtBusqueda" required>
+											<option value="0" selected>Seleccionar vendedor</option>
+											<?php
+											try {
+												$sql = " SELECT * FROM vendedor WHERE estadoVen = 1";
+
+												$resultado = $con->query($sql);
+												while ($vendedor = $resultado->fetch_assoc()) { ?>
+													<option value="<?php echo $vendedor['nomVen']; ?>">
+														<?php echo $vendedor['nomVen']; ?></option>
+											<?php }
+											} catch (Exception $e) {
+												echo "Error: " . $e->getMessage();
+											}
+											?>
+										</select>
 									</div>
 									<div class="col-md-1 ">
 										<span><i class="fas fa-search"></i></span></button>

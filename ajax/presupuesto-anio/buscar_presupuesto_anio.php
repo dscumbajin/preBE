@@ -14,9 +14,11 @@ if ($action == 'ajax') {
 	$aColumns = array('anio', 'nomVen', 'nomLinea'); //Columnas de busqueda
 	$sTable = "presupuesto_anio, vendedor, listalinea";
 	$sWhere = " WHERE presupuesto_anio.codVen = vendedor.codVen 
+	AND vendedor.estadoVen != 0 
 	AND presupuesto_anio.codLinea = listalinea.codLinea";
 	if ($_GET['q'] != "") {
 		$sWhere = "WHERE presupuesto_anio.codVen = vendedor.codVen 
+		AND vendedor.estadoVen != 0
 		AND presupuesto_anio.codLinea = listalinea.codLinea AND (";
 		for ($i = 0; $i < count($aColumns); $i++) {
 			$sWhere .= $aColumns[$i] . " LIKE '%" . $q . "%' OR ";
@@ -51,8 +53,8 @@ if ($action == 'ajax') {
 						<th>Año</th>
 						<th>Vendedor</th>
 						<th>Linea</th>
-						<th>Cantidad Año</th>
-						<th>Cantidad Promos</th>
+						<th>Presupuesto Ventas</th>
+						<th>Cantidad Promociones</th>
 						<th>Cantidad Garantía</th>
 						<th>Cantidad Total</th>
 						<th>Acciones</th>
@@ -96,7 +98,7 @@ if ($action == 'ajax') {
 							<td><span>
 									<a href="#" title='Editar presupuesto' onclick="buscar_datos_mes('<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#modPresupuestoAnio"><i class="fas fa-pen editar"></i></a>
 									<?php if ($_SESSION['user_nivel'] == 2) : ?>
-										<a href="#" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"data-toggle="modal" data-target="#deletePresupuestoAnio"><i class="far fa-trash-alt eliminar"></i></a>
+										<a href="#" id="crearCookie" title='Borrar presupuesto' onclick="eliminar('<?php echo $id_presupuesto; ?>')"data-toggle="modal" data-target="#deletePresupuestoAnio"><i class="far fa-trash-alt eliminar"></i></a>
 									<?php endif; ?>
 								</span>
 							</td>

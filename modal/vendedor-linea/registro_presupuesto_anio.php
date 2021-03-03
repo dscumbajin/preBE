@@ -86,7 +86,7 @@
 											<label for="precioMeta">PRECIO POR META</label>
 										</div>
 										<div class="col-sm-4">
-											Porcentaje asignado: <span id="tituloPor"></span> %
+											Porcentaje asignado: <span class ="btn" id="tituloPor"></span> %
 										</div>
 									</div>
 

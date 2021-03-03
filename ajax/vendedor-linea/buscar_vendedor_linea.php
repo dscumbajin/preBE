@@ -34,10 +34,10 @@ if ($action == 'ajax') {
 	$aColumns = array('historial_ventas.anio', 'vendedor.nomVen', 'historial_ventas.codVen', 'ventasU'); //Columnas de busqueda
 	$sTable = "historial_ventas, vendedor";
 	$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen AND historial_ventas.generado != 1
-	AND historial_ventas.codLinea = $codLinea ";
+	AND vendedor.estadoVen != 0 AND historial_ventas.codLinea = $codLinea ";
 	if ($_GET['q'] != "") {
 		$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen AND historial_ventas.generado != 1
-		AND historial_ventas.codLinea = $codLinea AND (";
+		AND vendedor.estadoVen != 0 AND historial_ventas.codLinea = $codLinea AND (";
 		for ($i = 0; $i < count($aColumns); $i++) {
 			$sWhere .= $aColumns[$i] . " LIKE '%" . $q . "%' OR ";
 		}

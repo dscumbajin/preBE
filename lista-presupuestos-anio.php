@@ -36,7 +36,7 @@ include_once('templates/navegacion.php');
           <div class="panel-body">
 
             <?php
-             
+
             include("modal/vendedor-linea/editar_presupuesto_anio.php");
             include("modal/vendedor-linea/eliminar_presupuesto_anio.php");
             include("modal/vendedor/detalle_vendedor.php");
@@ -57,6 +57,9 @@ include_once('templates/navegacion.php');
               </div>
 
             </form>
+
+          
+            </div>
             <div id="resultados"></div><!-- Carga los datos ajax -->
             <div class='outer_div'></div><!-- Carga los datos ajax -->
 
