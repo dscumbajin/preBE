@@ -106,7 +106,7 @@ function eliminar(id) {
 }
 
 
-$('#txtBusqueda').on('input', function() {
+$('#txtBusqueda').on('change', function() {
     var codLinea = $("#codLinea").val();
     var txtBusqueda = $('#txtBusqueda').val();
     var anio = $("#anio").val();
@@ -188,6 +188,10 @@ function guardarReasignacion(id) {
     });
 
 }
+
+$('#closeDelete').on('click', function() {
+    location.reload();
+});
 
 // VALIDACIONES
 $('.numero').on('input', function() {
