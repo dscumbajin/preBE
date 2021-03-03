@@ -26,6 +26,7 @@
 							<!-- /.card-header -->
 							<div class="card-body" style="display: block;">
 								<div class="row form-group">
+									<input type="hidden" name="anio" id="anio">
 									<input type="hidden" name="codLinea" id="codLinea">
 									<div class="col-sm-3">
 										<label>Ventas</label>
@@ -54,21 +55,25 @@
 						<div class="card card-dark">
 							<div class="card-header">
 
-								<form class="form-horizontal row" role="form">
-									<label for="q" class="col-md-2 control-label">Vendedor</label>
+								<div class="form-horizontal row">
+									<!--Formulario de busqueda-->
+									<div class="col-md-3" style="text-align: center;">
+										<samp style="font-weight: bold;">Reasignar presupuesto</samp>
+									</div>
+
+									<a class="linea"><span>|</span></a>
+
+									<label for="txtBusqueda" class="col-md-2 control-label">Vendedor</label>
 
 									<div class="col-md-5">
-										<input type="text" class="form-control" id="txt" placeholder="Nombre vendedor" onkeyup='loadEliminacion();'>
+										<input type="text" class="form-control" id="txtBusqueda" placeholder="Nombre vendedor">
 									</div>
-									<div class="col-md-3 ">
-										<button type="button" class="btn btn-default" onclick='loadEliminacion();'>
-											<span><i class="fas fa-search"></i></span> Buscar</button>
+									<div class="col-md-1 ">
+										<span><i class="fas fa-search"></i></span></button>
 										<span id="loader"></span>
+
 									</div>
-
-								</form>
-
-								<!--Formulario de busqueda-->
+								</div>
 
 								<div class="card-tools">
 									<button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -79,14 +84,12 @@
 							<!-- /.card-header -->
 							<div class="card-body" style="display: block;">
 
-								<section id="tabla_resultados_delete">
-
-								</section>
+								<section id="tabla_resultados_delete"></section>
 							</div>
 						</div>
 
 					</div>
-					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button -->
+					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
 				</div>
 				<!-- /.modal-content -->
 			</div>

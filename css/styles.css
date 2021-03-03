@@ -254,3 +254,8 @@ td {
     margin-right: auto;
     margin-left: auto;
 }
+
+.linea {
+    margin-left: 10px;
+    margin-right: 10px;
+}

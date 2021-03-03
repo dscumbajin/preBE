@@ -128,16 +128,3 @@ if ($action == 'ajax') {
 	}
 }
 ?>
-<script>
-	function crearCookie(nombre, valor, dias) {
-		var expira;
-		if (dias) {
-			var date = new Date();
-			date.setTime(date.getTime() + (dias * 24 * 60 * 60 * 1000));
-			expira = "; expires=" + date.toGMTString();
-		} else {
-			expira = "";
-		}
-		document.cookie = escape(nombre) + "=" + escape(valor) + expira + "; path=/";
-	}
-</script>
