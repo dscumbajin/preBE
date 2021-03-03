@@ -21,6 +21,8 @@ $buscarPresupuesto = $con->query($sql);
 
 if ($buscarPresupuesto->num_rows > 0) { ?>
 
+<div id="resultados_ajax3"></div>
+
     <div class="table-responsive">
 
         <table id="registros" class="table table-bordered table-striped ">
@@ -33,6 +35,7 @@ if ($buscarPresupuesto->num_rows > 0) { ?>
                     <th>Cantidad Promos</th>
                     <th>Cantidad Garantía</th>
                     <th>Cantidad Total</th>
+                    <th>Accion</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,19 +58,19 @@ if ($buscarPresupuesto->num_rows > 0) { ?>
                         <td><?php echo $anio_presupuesto; ?></td>
                         <td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>', '<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#detallePresupuesto"><?php echo $vendedor_presupuesto; ?> </a< /td>
                         <td><?php echo $linea_presupuesto; ?></td>
-                        <td><input type="text" name="" id="delVentas" value="<?php echo $cantidad_ventas_presupuesto;  ?>"></td>
-                        <td><input type="text" name="" id="delProm" value="<?php echo $cantidad_promos_presupuesto;  ?>"></td>
-                        <td><input type="text" name="" id="delGran" value="<?php echo $cantidad_garantia_presupuesto;?>"></td>
-                        <td><input type="text" name="" id="delTotal" value="<?php echo $cantidad_total_presupuesto;   ?>"></td>
-
+                        <td><input type="text" style="width: 100px; text-align: center;" id="delVentas" value="<?php echo $cantidad_ventas_presupuesto;  ?>"></td>
+                        <td><input type="text" style="width: 100px; text-align: center;" id="delProm" value="<?php echo $cantidad_promos_presupuesto;  ?>"></td>
+                        <td><input type="text" style="width: 100px; text-align: center;" id="delGran" value="<?php echo $cantidad_garantia_presupuesto; ?>"></td>
+                        <td><input type="text" style="width: 100px; text-align: center;" id="delTotal" value="<?php echo $cantidad_total_presupuesto;   ?>"></td>
+                        <td><span>
+                                <a id="guardar_asignacion" href="#" title='Guardar asignación' onclick="guardarReasignacion('<?php echo $id_presupuesto; ?>');"><i class="far fa-save save"></i></a>
+                            </span>
+                        </td>
                     </tr>
 
                 <?php } ?>
             </tbody>
         </table>
-        <div class="paginacion">
-            <button class="btn btn-outline-success">Guaradar</button>
-        </div>
     </div>
 <?php } else { ?>
 

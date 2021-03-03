@@ -22,7 +22,7 @@ function load(page) {
 function detalle_presupuesto(id, id_pre) {
     var vendedor_presupuesto = $("#vendedor_presupuesto" + id_pre).val();
     var anio_presupuesto = $("#anio_presupuesto" + id_pre).val();
-    $('#titulo_detalle').text(vendedor_presupuesto);
+    $('#titulo_detalle').text(`Año: ${anio_presupuesto} - Vendedor: ${vendedor_presupuesto}`);
     //LLAMADO A AJAX
     var url = './ajax/vendedor/detalle_vendedor_linea.php';
     $.ajax({
@@ -162,10 +162,32 @@ $('#txtBusqueda').on('input', function() {
     }
     $('#tabla_resultados_delete').hide();
 
-
 });
 
-//CLOSE
+function guardarReasignacion(id) {
+    $('#guardar_asignacion').attr("disabled", true);
+    var idPre = id;
+    var ventas = $("#delVentas").val();
+    var promos = $("#delProm").val();
+    var garant = $("#delGran").val();
+    var total = $("#delTotal").val();
+    console.log(idPre + ventas + promos + garant + total);
+
+    $.ajax({
+        type: "POST",
+        url: "./ajax/presupuesto-anio/eliminar_presupuesto_mes.php",
+        data: 'idPre=' + id + '&ventas=' + ventas + '&promos=' + promos + '&garant=' + garant + '&total=' + total,
+        beforeSend: function(objeto) {
+            $("#resultados_ajax3").html("Mensaje: Cargando...");
+        },
+        success: function(datos) {
+            $("#resultados_ajax3").html(datos);
+            $('#guardar_asignacion').attr("disabled", false);
+            load(1);
+        }
+    });
+
+}
 
 // VALIDACIONES
 $('.numero').on('input', function() {

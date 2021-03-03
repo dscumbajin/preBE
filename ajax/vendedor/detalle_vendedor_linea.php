@@ -34,6 +34,7 @@ $anio= mysqli_real_escape_string($con, (strip_tags($_REQUEST['anio'], ENT_QUOTES
                 $sql .= " AND presupuesto_anio.codVen = vendedor.codVen";
                 $sql .= " AND vendedor.codVen = '$codVen' ";
                 $sql .= " AND presupuesto_anio.anio = '$anio' ";
+                $sql .= " AND presupuesto_anio.activoAnio = 1 ";
                 $sql .= " GROUP BY codVen, mes";
                 $resultado = $con->query($sql);
             } catch (Exception $e) {

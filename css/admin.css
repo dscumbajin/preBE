@@ -24,6 +24,11 @@
     color: red;
 }
 
+.save {
+    font-size: 20px;
+    color: blue;
+}
+
 .ellipsis {
     line-height: 1.4;
     overflow: hidden;

@@ -25,33 +25,12 @@
 								<label for="mod_estado" class="col-sm-3 control-label">Estado</label>
 								<div class="col-sm-8">
 									<select class="form-control seleccionar select2-primary" id="mod_estado" name="mod_estado" required>
-										<option value="">-- Selecciona estado --</option>
-										<option value="1" selected>Activo</option>
+										<option value=""selected>-- Selecciona estado --</option>
+										<option value="1" >Activo</option>
 										<option value="0">Inactivo</option>
 									</select>
 								</div>
 							</div>
-
-							<!-- <div class="form-group">
-								<label for="mod_segmento" class="col-sm-3 control-label">Segmento</label>
-								<div class="col-sm-8">
-									<select class="form-control seleccionar select2-primary" id="mod_segmento" name="mod_segmento" required>
-										<?php
-										/* try {
-											$sql = " SELECT * FROM segmento";
-
-											$resultado = $con->query($sql);
-											while ($segmento = $resultado->fetch_assoc()) { ?>
-												<option value="<?php echo $segmento['codSeg']; ?>">
-													<?php echo $segmento['codSeg'] . " - " . $segmento['desSeg']; ?></option>
-										<?php }
-										} catch (Exception $e) {
-											echo "Error: " . $e->getMessage();
-										} */
-										?>
-									</select>
-								</div>
-							</div> -->
 
 					</div>
 					<div class="modal-footer">

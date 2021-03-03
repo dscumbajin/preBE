@@ -25,8 +25,8 @@
 								<label for="mod_estado" class="col-sm-3 control-label">Estado</label>
 								<div class="col-sm-8">
 									<select class="form-control seleccionar select2-primary" id="mod_estado" name="mod_estado" required>
-										<option value="">-- Selecciona estado --</option>
-										<option value="1" selected>Activo</option>
+										<option value=""selected>-- Selecciona estado --</option>
+										<option value="1">Activo</option>
 										<option value="0">Inactivo</option>
 									</select>
 								</div>

@@ -15,10 +15,12 @@ if ($action == 'ajax') {
 	$sTable = "presupuesto_anio, vendedor, listalinea";
 	$sWhere = " WHERE presupuesto_anio.codVen = vendedor.codVen 
 	AND vendedor.estadoVen != 0 
+	AND presupuesto_anio.activoAnio = 1 
 	AND presupuesto_anio.codLinea = listalinea.codLinea";
 	if ($_GET['q'] != "") {
 		$sWhere = "WHERE presupuesto_anio.codVen = vendedor.codVen 
 		AND vendedor.estadoVen != 0
+		AND presupuesto_anio.activoAnio = 1 
 		AND presupuesto_anio.codLinea = listalinea.codLinea AND (";
 		for ($i = 0; $i < count($aColumns); $i++) {
 			$sWhere .= $aColumns[$i] . " LIKE '%" . $q . "%' OR ";
