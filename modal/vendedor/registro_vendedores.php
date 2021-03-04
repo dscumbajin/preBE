@@ -6,31 +6,33 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Agregar vendedor</h4>
+						<h3 class="modal-title" style="font-weight: bold;">Agregar Vendedor</h4>
+							<button type="button" class="close btn-danger" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal" method="post" id="guardar_vendedor" name="guardar_vendedor">
 							<div id="resultados_ajax"></div>
 
 
-							<div class="form-group">
+							<div class="form-group row">
 								<label for="codigo" class="col-sm-3 control-label">Código</label>
-								<div class="col-sm-8">
+								<div class="col-sm-9">
 									<input type="text" class="form-control" id="codigo" name="codigo" required>
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group row">
 								<label for="nombre" class="col-sm-3 control-label">Nombre</label>
-								<div class="col-sm-8">
+								<div class="col-sm-9">
 									<input type="text" class="form-control" id="nombre" name="nombre" required>
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group row">
 								<label for="estado" class="col-sm-3 control-label">Estado</label>
-								<div class="col-sm-8">
+								<div class="col-sm-9">
 									<select class="form-control seleccionar select2-primary" id="estado" name="estado" required>
 										<option value="">-- Selecciona estado --</option>
 										<option value="1" selected>Activo</option>
@@ -39,9 +41,9 @@
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group row">
 								<label for="segmento" class="col-sm-3 control-label">Segmento</label>
-								<div class="col-sm-8">
+								<div class="col-sm-9">
 									<select class="form-control seleccionar select2-primary" id="segmento" name="segmento" required>
 										<?php
 										try {

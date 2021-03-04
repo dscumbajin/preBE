@@ -6,16 +6,18 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Agregar segmento</h4>
+						<h3 class="modal-title" style="font-weight: bold;">Agregar Segmento</h4>
+							<button type="button" class="close btn-danger" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal" method="post" id="guardar_segmento" name="guardar_segmento">
 							<div id="resultados_ajax"></div>
 
-							<div class="form-group">
+							<div class="form-group row">
 								<label for="segmento" class="col-sm-3 control-label">Segmento</label>
-								<div class="col-sm-8">
+								<div class="col-sm-9">
 									<input type="text" class="form-control" id="segmento" name="segmento" required>
 								</div>
 							</div>

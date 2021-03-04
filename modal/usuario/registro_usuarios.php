@@ -3,45 +3,46 @@
 		{
 	?>
 	<!-- Modal -->
-	<div class="modal fade" id="nuevoUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="nuevoUsuario" >
 	    <div class="modal-dialog" role="document">
 	        <div class="modal-content">
-	            <div class="modal-header" style="text-align:  justify;">
-	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-	                        aria-hidden="true">&times;</span></button>
-	                <h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Agregar usuario</h4>
-	            </div>
+			<div class="modal-header">
+              <h3 class="modal-title"style="font-weight: bold;" >Agregar Usuario</h4>
+              <button type="button" class="close btn-danger" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 	            <div class="modal-body">
 	                <form  class="form-horizontal" method="post" id="guardar_usuario" name="guardar_usuario">
 	                    <div id="resultados_ajax"></div>
 
-	                    <div class="form-group">
+	                    <div class="form-group row">
 	                        <label for="usuario" class="col-sm-3 control-label">Usuario</label>
-	                        <div class="col-sm-8">
+	                        <div class="col-sm-9">
 	                            <input type="text" class="form-control" id="usuario" name="usuario" required>
 	                        </div>
 	                    </div>
 
-	                    <div class="form-group">
+	                    <div class="form-group row">
 	                        <label for="nombre" class="col-sm-3 control-label">Nombre</label>
-	                        <div class="col-sm-8">
+	                        <div class="col-sm-9">
 	                            <input type="text" class="form-control" id="nombre" name="nombre" required>
 	                        </div>
 	                    </div>
 
 
-	                    <div class="form-group">
+	                    <div class="form-group row">
 	                        <label for="email" class="col-sm-3 control-label">Email</label>
-	                        <div class="col-sm-8">
+	                        <div class="col-sm-9">
 	                            <input type="email" class="form-control" id="email" name="email">
 
 	                        </div>
 	                    </div>
 
 
-	                    <div class="form-group">
+	                    <div class="form-group row">
 	                        <label for="perfil" class="col-sm-3 control-label">Perfil</label>
-	                        <div class="col-sm-8">
+	                        <div class="col-sm-9">
 	                            <select class="form-control seleccionar select2-primary" id="perfil" name="perfil" required>
 	                                <option value="">-- Selecciona estado --</option>
 	                                <option value="1" selected>User</option>
