@@ -29,6 +29,7 @@
 									<input type="hidden" id="idBorrar" name="idBorrar" />
 									<input type="hidden" name="anio" id="anio">
 									<input type="hidden" name="codLinea" id="codLinea">
+									<input type="hidden" name="nomVendedor" id="nomVendedor">
 									<div class="col-sm-3">
 										<label>Presupuesto Ventas</label>
 										<input type="text" class="form-control numero" name="delete_ventas_presupuesto" id="delete_ventas_presupuesto" required>
@@ -50,67 +51,26 @@
 									<!-- /.form-group -->
 								</div>
 								<!-- /.row -->
+								<div class="row float-right">
+									<button class="btn btn-outline-warning " id="next_panel" type="button">Next</button>
+								</div>
 							</div>
 						</div>
 
-						<div class="card card-dark">
-							<div class="card-header">
-
-								<div class="form-horizontal row">
-									<!--Formulario de busqueda-->
-									<div class="col-md-3" style="text-align: center;">
-										<samp style="font-weight: bold;">Reasignar presupuesto</samp>
-									</div>
-
-									<a class="linea"><span>|</span></a>
-
-									<label for="txtBusqueda" class="col-md-2 control-label">Vendedor</label>
-
-									<div class="col-md-5">
-
-										<select class="form-control seleccionar select2-primary" id="txtBusqueda" name="txtBusqueda" required>
-											<option value="" selected>--Seleccionar vendedor--</option>
-											<?php
-											try {
-												$sql = " SELECT * FROM vendedor WHERE estadoVen = 1";
-
-												$resultado = $con->query($sql);
-												while ($vendedor = $resultado->fetch_assoc()) { ?>
-													<option value="<?php echo $vendedor['nomVen']; ?>">
-														<?php echo $vendedor['nomVen']; ?></option>
-											<?php }
-											} catch (Exception $e) {
-												echo "Error: " . $e->getMessage();
-											}
-											?>
-										</select>
-									</div>
-									<div class="col-md-1 ">
-										<span><i class="fas fa-search"></i></span></button>
-										<span id="loader"></span>
-
-									</div>
-								</div>
-
-								<div class="card-tools">
-									<button type="button" class="btn btn-tool" data-card-widget="collapse">
-										<i class="fas fa-minus"></i>
-									</button>
-								</div>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body" style="display: block;">
-
-								<section id="tabla_resultados_delete"></section>
-							</div>
-						</div>
+						<section id = "select_resultados"></section>
 
 					</div>
-					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
+
+					<section id="tabla_resultados_delete"></section>
 				</div>
-				<!-- /.modal-content -->
 			</div>
-			<!-- /.modal-dialog -->
+
+		</div>
+		<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
+		</div>
+		<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal -->
 	<?php

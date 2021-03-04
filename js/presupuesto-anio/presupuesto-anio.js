@@ -37,13 +37,14 @@ function detalle_presupuesto(id, id_pre) {
 
 }
 
-
+//EDICION
 function buscar_datos_mes(id) {
 
     var anio_presupuesto = $("#anio_presupuesto" + id).val();
     var vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
     var linea_presupuesto = $("#linea_presupuesto" + id).val();
     // Definir titulo del modal
+
     $("#vendedor-linea").text(`PRESUPUESTO: ${anio_presupuesto} / VENDEDOR: ${vendedor_presupuesto} - LINEA: ${linea_presupuesto}`);
 
     // VALORES INFORMATIVOS PRESUPUESTO ANIO
@@ -76,7 +77,7 @@ function buscar_datos_mes(id) {
     });
 }
 
-
+// Eliminacion
 function eliminar(id) {
 
     var id_linea = $("#id_linea" + id).val();
@@ -84,6 +85,7 @@ function eliminar(id) {
     var vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
     var linea_presupuesto = $("#linea_presupuesto" + id).val();
     // Definir titulo del modal
+    $('#nomVendedor').val(vendedor_presupuesto);
     $("#tituloEliminacion").text(`PRESUPUESTO: ${anio_presupuesto} / VENDEDOR: ${vendedor_presupuesto} - LINEA: ${linea_presupuesto}`);
 
     // VALORES INFORMATIVOS PRESUPUESTO ANIO
@@ -107,63 +109,27 @@ function eliminar(id) {
 
 }
 
-$('#txtBusqueda').on('change', function() {
+$('#next_panel').on('click', function() {
     var codLinea = $("#codLinea").val();
-    var txtBusqueda = $('#txtBusqueda').val();
     var anio = $("#anio").val();
-    var url = './ajax/presupuesto-anio/buscar_vendedor_presupuesto.php';
-    console.log(`codLinea: ${codLinea} anio: ${anio} txtBusqueda: ${txtBusqueda}`);
-    if (txtBusqueda != "") {
-        $.ajax({
-            tyoe: 'POST',
-            url: url,
-            data: 'codLinea=' + codLinea + '&anio=' + anio + '&txtBusqueda=' + txtBusqueda,
-            beforeSend: function(objeto) {
-                $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
-            },
-            success: function(datos) {
-                $('#tabla_resultados_delete').show();
-                $('#tabla_resultados_delete').html('');
-                $('#tabla_resultados_delete').html(datos);
-                $('#loader').html('');
-                //Bloqueo de Inputs
-                $("#delVentas").attr("readonly", true);
-                $("#delPres").attr("readonly", true);
-                $("#delGran").attr("readonly", true);
-                $("#delTotal").attr("readonly", true);
-                // Conversion Inputs int
-                var delete_ventas_presupuesto = $("#delete_ventas_presupuesto").val();
-                delete_ventas_presupuesto = parseInt(delete_ventas_presupuesto);
-                var delete_promos_presupuesto = $("#delete_promos_presupuesto").val();
-                delete_promos_presupuesto = parseInt(delete_promos_presupuesto);
-                var delete_garantia_presupuesto = $("#delete_garantia_presupuesto").val();
-                delete_garantia_presupuesto = parseInt(delete_garantia_presupuesto);
-                var delete_total_presupuesto = $("#delete_total_presupuesto").val();
-                delete_total_presupuesto = parseInt(delete_total_presupuesto);
-                //Calculos de nuevos valores
+    var nomVen = $('#nomVendedor').val();
+    console.log(`codLinea: ${codLinea} anio: ${anio}`);
+    console.log('recoger los valres y enviar por ajax');
 
-                var delVentas = $("#delVentas").val();
-                delVentas = parseInt(delVentas);
-                var delProm = $("#delProm").val();
-                delProm = parseInt(delProm);
-                var delGran = $("#delGran").val();
-                delGran = parseInt(delGran);
-                var delTotal = $("#delTotal").val();
-                delTotal = parseInt(delTotal);
-
-                $("#delVentas").val(delete_ventas_presupuesto + delVentas);
-                $("#delProm").val(delete_promos_presupuesto + delProm);
-                $("#delGran").val(delete_garantia_presupuesto + delGran);
-                $("#delTotal").val(delete_total_presupuesto + delTotal);
-
-            }
-
-        });
-
-    }
-    $('#tabla_resultados_delete').hide();
-
+    //LLAMADO A AJAX
+    var url = './ajax/presupuesto-anio/select_presupuesto_anio.php';
+    $.ajax({
+        tyoe: 'POST',
+        url: url,
+        data: 'codLinea=' + codLinea + '&anio=' + anio + '&nomVen=' + nomVen,
+        success: function(datos) {
+            $('#select_resultados').html('');
+            $('#select_resultados').html(datos);
+        }
+    });
 });
+
+
 
 
 $("#eliminar_vendedor_presupuesto").submit(function(event) {
@@ -189,11 +155,11 @@ $("#eliminar_vendedor_presupuesto").submit(function(event) {
     event.preventDefault();
 })
 
-$('#closeDelete').on('click', function() {
-    location.reload();
-});
 
 // VALIDACIONES
 $('.numero').on('input', function() {
     this.value = this.value.replace(/[^0-9]/g, '');
+});
+$('#closeDelete').on('click', function() {
+    location.reload();
 });
