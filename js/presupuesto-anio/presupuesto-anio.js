@@ -107,14 +107,13 @@ function eliminar(id) {
 
 }
 
-
 $('#txtBusqueda').on('change', function() {
     var codLinea = $("#codLinea").val();
     var txtBusqueda = $('#txtBusqueda').val();
     var anio = $("#anio").val();
     var url = './ajax/presupuesto-anio/buscar_vendedor_presupuesto.php';
-
-    if (txtBusqueda !== 0) {
+    console.log(`codLinea: ${codLinea} anio: ${anio} txtBusqueda: ${txtBusqueda}`);
+    if (txtBusqueda != "") {
         $.ajax({
             tyoe: 'POST',
             url: url,

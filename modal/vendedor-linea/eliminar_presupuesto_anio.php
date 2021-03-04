@@ -69,7 +69,7 @@
 									<div class="col-md-5">
 
 										<select class="form-control seleccionar select2-primary" id="txtBusqueda" name="txtBusqueda" required>
-											<option value="0" selected>Seleccionar vendedor</option>
+											<option value="" selected>--Seleccionar vendedor--</option>
 											<?php
 											try {
 												$sql = " SELECT * FROM vendedor WHERE estadoVen = 1";

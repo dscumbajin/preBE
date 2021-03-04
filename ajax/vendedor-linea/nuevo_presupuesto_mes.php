@@ -74,15 +74,15 @@ if (empty($_POST['codVenAnio'])) {
 
 		// Check terminator
 		if ($item1 === false && $item2 === false && $item3 === false && $item4 === false && $item5 === false && $item6 === false && $item7 === false) break;
+	}
 
-		if ($sqlRes) {
-			$messages[] = "Presupuesto mensual ingresado satisfactoriamente.";
-			//Actualizar la meta en la tabla presupuesto_anio
-			$sql = "UPDATE presupuesto_anio SET precioMeta='" . $precioMeta . "' WHERE idPresAnio='" . $codigoPresAnio . "'";
-			$query_update = mysqli_query($con, $sql);
-		} else {
-			$errors[] = "Lo siento algo ha salido mal intenta nuevamente." . mysqli_error($con);
-		}
+	if ($sqlRes) {
+		$messages[] = "Presupuesto mensual ingresado satisfactoriamente.";
+		//Actualizar la meta en la tabla presupuesto_anio
+		$sql = "UPDATE presupuesto_anio SET precioMeta='" . $precioMeta . "' WHERE idPresAnio='" . $codigoPresAnio . "'";
+		$query_update = mysqli_query($con, $sql);
+	} else {
+		$errors[] = "Lo siento algo ha salido mal intenta nuevamente." . mysqli_error($con);
 	}
 } else {
 	$errors[] = "Error desconocido.";
