@@ -21,56 +21,59 @@ $buscarPresupuesto = $con->query($sql);
 
 if ($buscarPresupuesto->num_rows > 0) { ?>
 
-<div id="resultados_ajax3"></div>
+    <div id="resultados_ajax3"></div>
 
     <div class="table-responsive">
+        <form method="post" id="eliminar_vendedor_presupuesto" name="eliminar_vendedor_presupuesto">
 
-        <table id="registros" class="table table-bordered table-striped ">
-            <thead>
-                <tr class="info">
-                    <th>Año</th>
-                    <th>Vendedor</th>
-                    <th>Linea</th>
-                    <th>Cantidad Año</th>
-                    <th>Cantidad Promos</th>
-                    <th>Cantidad Garantía</th>
-                    <th>Cantidad Total</th>
-                    <th>Accion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                while ($row = $buscarPresupuesto->fetch_assoc()) {
-                    $id_presupuesto = $row['idPresAnio'];
-                    $anio_presupuesto = $row['anio'];
-                    $id_linea = $row['codLinea'];
-                    $id_vendedor = $row['codVen'];
-                    $vendedor_presupuesto = $row['nomVen'];
-                    $linea_presupuesto = $row['nomLinea'];
-                    $cantidad_ventas_presupuesto = $row['ventasPresU'];
-                    $cantidad_promos_presupuesto = $row['promoPresU'];
-                    $cantidad_garantia_presupuesto = $row['garantPresU'];
-                    $cantidad_total_presupuesto = $row['totalPresU'];
-                    $precioMeta = $row['precioMeta'];
-                ?>
-
-                    <tr>
-                        <td><?php echo $anio_presupuesto; ?></td>
-                        <td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>', '<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#detallePresupuesto"><?php echo $vendedor_presupuesto; ?> </a< /td>
-                        <td><?php echo $linea_presupuesto; ?></td>
-                        <td><input type="text" style="width: 100px; text-align: center;" id="delVentas" value="<?php echo $cantidad_ventas_presupuesto;  ?>"></td>
-                        <td><input type="text" style="width: 100px; text-align: center;" id="delProm" value="<?php echo $cantidad_promos_presupuesto;  ?>"></td>
-                        <td><input type="text" style="width: 100px; text-align: center;" id="delGran" value="<?php echo $cantidad_garantia_presupuesto; ?>"></td>
-                        <td><input type="text" style="width: 100px; text-align: center;" id="delTotal" value="<?php echo $cantidad_total_presupuesto;   ?>"></td>
-                        <td><span>
-                                <a id="guardar_asignacion" href="#" title='Guardar asignación' onclick="guardarReasignacion('<?php echo $id_presupuesto; ?>');"><i class="far fa-save save"></i></a>
-                            </span>
-                        </td>
+            <table id="registros" class="table table-bordered table-striped ">
+                <thead>
+                    <tr class="info">
+                        <th>Año</th>
+                        <th>Vendedor</th>
+                        <th>Linea</th>
+                        <th>Cantidad Año</th>
+                        <th>Cantidad Promos</th>
+                        <th>Cantidad Garantía</th>
+                        <th>Cantidad Total</th>
                     </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($row = $buscarPresupuesto->fetch_assoc()) {
+                        $id_presupuesto = $row['idPresAnio'];
+                        $anio_presupuesto = $row['anio'];
+                        $id_linea = $row['codLinea'];
+                        $id_vendedor = $row['codVen'];
+                        $vendedor_presupuesto = $row['nomVen'];
+                        $linea_presupuesto = $row['nomLinea'];
+                        $cantidad_ventas_presupuesto = $row['ventasPresU'];
+                        $cantidad_promos_presupuesto = $row['promoPresU'];
+                        $cantidad_garantia_presupuesto = $row['garantPresU'];
+                        $cantidad_total_presupuesto = $row['totalPresU'];
+                        $precioMeta = $row['precioMeta'];
+                    ?>
 
-                <?php } ?>
-            </tbody>
-        </table>
+                        <tr>
+                            <td hidden><input name="idEliminarAnterior" id="idEliminarAnterior" /></td>
+                            <td hidden><input name="delIdPres" value="<?php echo $id_presupuesto ?>" /></td>
+                            <td><?php echo $anio_presupuesto; ?></td>
+                            <td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>', '<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#detallePresupuesto"><?php echo $vendedor_presupuesto; ?> </a< /td>
+                            <td><?php echo $linea_presupuesto; ?></td>
+                            <td><input type="text" style="width: 100px; text-align: center;" id="delVentas" name="delVentas" value="<?php echo $cantidad_ventas_presupuesto;  ?>"></td>
+                            <td><input type="text" style="width: 100px; text-align: center;" id="delProm" name="delProm" value="<?php echo $cantidad_promos_presupuesto;  ?>"></td>
+                            <td><input type="text" style="width: 100px; text-align: center;" id="delGran" name="delGran" value="<?php echo $cantidad_garantia_presupuesto; ?>"></td>
+                            <td><input type="text" style="width: 100px; text-align: center;" id="delTotal" name="delTotal" value="<?php echo $cantidad_total_presupuesto;   ?>"></td>
+
+                        </tr>
+
+                    <?php } ?>
+                </tbody>
+            </table>
+            <div class="card-footer">
+                <button type="submit" title='Guardar asignación' class="btn btn-outline-danger float-right" id="eliminar_presupuesto"><i class="fas fa-minus-circle"></i> Eliminar</button>
+            </div>
+        </form>
     </div>
 <?php } else { ?>
 
@@ -78,3 +81,4 @@ if ($buscarPresupuesto->num_rows > 0) { ?>
         No existe presupuesto para el vendedor seleccionado
     </div>
 <?php } ?>
+<script type="text/javascript" src="js/presupuesto-anio/presupuesto-anio.js"></script>

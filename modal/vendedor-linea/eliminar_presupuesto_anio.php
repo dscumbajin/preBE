@@ -26,6 +26,7 @@
 							<!-- /.card-header -->
 							<div class="card-body" style="display: block;">
 								<div class="row form-group">
+									<input type="hidden" id="idBorrar" name="idBorrar" />
 									<input type="hidden" name="anio" id="anio">
 									<input type="hidden" name="codLinea" id="codLinea">
 									<div class="col-sm-3">

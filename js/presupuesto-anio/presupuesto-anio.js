@@ -78,6 +78,7 @@ function buscar_datos_mes(id) {
 
 
 function eliminar(id) {
+
     var id_linea = $("#id_linea" + id).val();
     var anio_presupuesto = $("#anio_presupuesto" + id).val();
     var vendedor_presupuesto = $("#vendedor_presupuesto" + id).val();
@@ -97,6 +98,7 @@ function eliminar(id) {
     $("#delete_total_presupuesto").val(cantidad_total_presupuesto);
     $("#codLinea").val(id_linea);
     $("#anio").val(anio_presupuesto);
+    $("#idBorrar").val(id);
     //Bloqueo campo total
     $("#delete_ventas_presupuesto").attr("readonly", true);
     $("#delete_promos_presupuesto").attr("readonly", true);
@@ -164,19 +166,17 @@ $('#txtBusqueda').on('change', function() {
 
 });
 
-function guardarReasignacion(id) {
-    $('#guardar_asignacion').attr("disabled", true);
-    var idPre = id;
-    var ventas = $("#delVentas").val();
-    var promos = $("#delProm").val();
-    var garant = $("#delGran").val();
-    var total = $("#delTotal").val();
-    console.log(idPre + ventas + promos + garant + total);
 
+$("#eliminar_vendedor_presupuesto").submit(function(event) {
+    $('#eliminar_presupuesto').attr("disabled", true);
+    var idBorrar = $("#idBorrar").val();
+    $("#idEliminarAnterior").val(idBorrar);
+    var parametros = $(this).serialize();
+    console.log(parametros);
     $.ajax({
         type: "POST",
         url: "./ajax/presupuesto-anio/eliminar_presupuesto_mes.php",
-        data: 'idPre=' + id + '&ventas=' + ventas + '&promos=' + promos + '&garant=' + garant + '&total=' + total,
+        data: parametros,
         beforeSend: function(objeto) {
             $("#resultados_ajax3").html("Mensaje: Cargando...");
         },
@@ -187,7 +187,8 @@ function guardarReasignacion(id) {
         }
     });
 
-}
+    event.preventDefault();
+})
 
 $('#closeDelete').on('click', function() {
     location.reload();
