@@ -7,26 +7,28 @@
 			<div class="modal-dialog modal-xl">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h4 class="modal-title"> <span id="vendedor"></span></h4>
+						<h4 class="modal-title"> <span style="font-weight: bold;" id="vendedor"></span></h4>
 						<button type="button" id="close" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
 
-						<form class="form-horizontal" method="post" id="guardar_pres_anio" name="guardar_pres_anio">
-							<div id="resultados_ajax"></div>
-							<div class="card-body">
+
+						<div class="card card-dark">
+							<div class="card-header">
+								
+								<div class="card-tools">
+									<button type="button" class="btn btn-tool" data-card-widget="collapse">
+										<i class="fas fa-minus"></i>
+									</button>
+
+								</div>
 								<div class="form-group row">
 									<label for="incremento_anio" class="col-sm-3 col-form-label">Porcentaje de incremento
 										año</label>
 									<div class="col-sm-6">
 										<input class="form-control decimales" id="incremento_anio" placeholder="Porcentaje" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
-										<!--Pra registro en la base de datos-->
-										<input type="hidden" name="anioHist" id="anioHist">
-										<input type="hidden" name="codVenHist" id="codVenHist">
-										<input type="hidden" name="codLineaHist" id="codLineaHist">
-
 										<!-- Para calculo del presupuesto del año siguiente-->
 										<input type="hidden" name="vendidas" id="vendidas">
 										<input type="hidden" name="promocion" id="promocion">
@@ -34,37 +36,49 @@
 										<input type="hidden" name="facturado" id="facturado">
 
 									</div>
-									<div class="col-sm-3">
+								<!-- 	<div class="col-sm-3">
 										<button type="button" class="btn btn-dark" id="calcularAnio">Calcular</button>
-									</div>
-								</div>
-								<hr>
-								<!-- Resultados del calculo de presupuestos por año-->
-								<div class="form-group row" id="total_anio">
-									<div class="col-sm-3">
-										<span>Ventas</span>
-										<input type="text" class="form-control" name="vendidasNuevo" id="vendidasNuevo" readonly="readonly">
-									</div>
-									<div class="col-sm-3">
-										<span>Promociones</span>
-										<input type="text" class="form-control" name="promocionNuevo" id="promocionNuevo" readonly="readonly">
-									</div>
-									<div class="col-sm-3">
-										<span>Garantias</span>
-										<input type="text" class="form-control" name="garantiaNuevo" id="garantiaNuevo" readonly="readonly">
-									</div>
-									<div class="col-sm-3">
-										<span>Presupuesto + Promos + Garantias</span>
-										<input type="text" class="form-control" name="totalAnio" id="totalAnio" readonly="readonly">
-									</div>
+									</div> -->
 								</div>
 							</div>
-							<!-- /.card-body -->
-							<div class="card-footer">
-								<button type="submit" class="btn btn-success float-right" id="guardar_datos">Guardar</button>
+							<div class="card-body" style="display: block;">
+								<form class="form-horizontal" method="post" id="guardar_pres_anio" name="guardar_pres_anio">
+									<div id="resultados_ajax"></div>
+									<div class="card-body">
+										<!--Pra registro en la base de datos-->
+										<input type="hidden" name="anioHist" id="anioHist">
+										<input type="hidden" name="codVenHist" id="codVenHist">
+										<input type="hidden" name="codLineaHist" id="codLineaHist">
+										<!-- Resultados del calculo de presupuestos por año-->
+										<div class="form-group row" id="total_anio">
+											<div class="col-sm-3">
+												<span>Ventas</span>
+												<input type="text" class="form-control" name="vendidasNuevo" id="vendidasNuevo" readonly="readonly">
+											</div>
+											<div class="col-sm-3">
+												<span>Promociones</span>
+												<input type="text" class="form-control" name="promocionNuevo" id="promocionNuevo" readonly="readonly">
+											</div>
+											<div class="col-sm-3">
+												<span>Garantias</span>
+												<input type="text" class="form-control" name="garantiaNuevo" id="garantiaNuevo" readonly="readonly">
+											</div>
+											<div class="col-sm-3">
+												<span>Presupuesto + Promos + Garantias</span>
+												<input type="text" class="form-control" name="totalAnio" id="totalAnio" readonly="readonly">
+											</div>
+										</div>
+									</div>
+									<!-- /.card-body -->
+									<div class="card-footer">
+										<button type="submit" class="btn btn-success float-right" id="guardar_datos">Guardar</button>
+									</div>
+									<!-- /.card-footer -->
+								</form>
 							</div>
-							<!-- /.card-footer -->
-						</form>
+
+						</div>
+
 
 						<hr>
 						<div id="formMes" class="card-body">
@@ -73,7 +87,7 @@
 								<div id="resultados_ajaxmes"></div>
 								<form class="form-horizontal" method="post" id="guardar_pres_mes" name="guardar_pres_mes">
 
-									<span>Presupuesto mensual</span>
+									<span style="font-weight: bold;">Presupuesto mensual</span>
 									<hr>
 									<input type="hidden" name="codVenAnio" id="codVenAnio">
 									<input type="hidden" name="codLineaAnio" id="codLineaAnio">
@@ -86,7 +100,7 @@
 											<label for="precioMeta">PRECIO POR META</label>
 										</div>
 										<div class="col-sm-4">
-											Porcentaje asignado: <span class ="btn" id="tituloPor"></span> %
+											Porcentaje asignado: <span class="btn" id="tituloPor"></span> %
 										</div>
 									</div>
 

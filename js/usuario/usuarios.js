@@ -58,7 +58,7 @@
 		})
 
 		$("#editar_usuario").submit(function(event) {
-		    $('#actualizar_datos').attr("disabled", true);
+		    $('#actualizar_datos').attr("disabled", false);
 
 		    var parametros = $(this).serialize();
 		    $.ajax({
@@ -70,7 +70,7 @@
 		        },
 		        success: function(datos) {
 		            $("#resultados_ajax2").html(datos);
-		            $('#actualizar_datos').attr("disabled", false);
+		            $('#actualizar_datos').attr("disabled", true);
 		            load(1);
 		        }
 		    });
@@ -82,11 +82,47 @@
 		    var nombre_usuario = $("#nombre_usuario" + id).val();
 		    var email_usuario = $("#email_usuario" + id).val();
 		    var perfil_usuario = $("#perfil_usuario" + id).val();
+		    /* var password_usuario = $("#password_usuario" + id).val(); */
 
 		    $("#mod_usuario").val(usuario_usuario);
 		    $("#mod_nombre").val(nombre_usuario);
 		    $("#mod_email").val(email_usuario);
 		    $("#mod_perfil").val(perfil_usuario);
+		    /* $("#mod_password").val(password_usuario); */
 		    $("#mod_id").val(id);
 
 		}
+
+		//Cambiar password
+		$('#cambio_pass').hide();
+
+		$('#closeEditUsuario').on('click', function() {
+		    $('#cambio_pass').hide();
+		    $('#mod_password').val('');
+		    $('#mod_password_very').val('');
+		    $('#btn_cambio_pass').attr("disabled", false);
+		    $('#actualizar_datos').attr("disabled", false);
+
+		});
+
+		$('#btn_cambio_pass').on('click', function() {
+		    $('#cambio_pass').show();
+		    $('#actualizar_datos').attr("disabled", true);
+
+		    $('#mod_password_very').on('input', function() {
+		        var password_nuevo = $('#mod_password').val();
+		        if ($(this).val() == password_nuevo) {
+		            $('#resultado_password').text('Passwords iguales');
+		            $('#resultado_password').parent('.form-group').addClass('has-success').removeClass('has-error');
+		            $('input#mod_password').parent('.form-group').addClass('has-success').removeClass('has-error');
+
+		            $('#actualizar_datos').attr("disabled", false);
+		        } else {
+		            $('#resultado_password').text('Los passwords no son iguales!');
+		            $('#resultado_password').parent('.form-group').addClass('has-error').removeClass('has-success');
+		            $('input#mod_password').parent('.form-group').addClass('has-error').removeClass('has-success');
+		            $('#actualizar_datos').attr("disabled", true);
+		        }
+		    });
+		    $('#btn_cambio_pass').attr("disabled", true);
+		});

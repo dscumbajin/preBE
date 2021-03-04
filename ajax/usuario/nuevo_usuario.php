@@ -10,14 +10,18 @@ if (empty($_POST['usuario'])) {
 	require_once("../../funciones/db.php"); //Contiene las variables de funcionesuracion para conectar a la base de datos
 	require_once("../../funciones/conexion.php"); //Contiene funcion que conecta a la base de datos
 	// escaping, additionally removing everything that could be (html/javascript-) code
-
-
+	$opciones = array(
+		'cost' => 12
+	);
+	
 	$usuario = mysqli_real_escape_string($con, (strip_tags($_POST["usuario"], ENT_QUOTES)));
+	$password = mysqli_real_escape_string($con, (strip_tags($_POST["password"], ENT_QUOTES)));
 	$nombre = mysqli_real_escape_string($con, (strip_tags($_POST["nombre"], ENT_QUOTES)));
 	$email = mysqli_real_escape_string($con, (strip_tags($_POST["email"], ENT_QUOTES)));
 	$perfil = intval($_POST['perfil']);
+	$password_hashed = password_hash($password,PASSWORD_BCRYPT, $opciones);
 
-	$sql = "INSERT INTO admins (usuario , nombreUsu , mail , idPerfil ) VALUES ('$usuario','$nombre','$email','$perfil')";
+	$sql = "INSERT INTO admins (usuario , password, nombreUsu , mail , idPerfil ) VALUES ('$usuario','$password_hashed','$nombre','$email','$perfil')";
 	$query_new_insert = mysqli_query($con, $sql);
 	if ($query_new_insert) {
 		$messages[] = "Usuario ha sido ingresado satisfactoriamente.";

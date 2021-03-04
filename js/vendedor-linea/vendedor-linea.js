@@ -646,6 +646,7 @@ function obtener_datos(id) {
     var facturado_historial = $("#facturado_historial" + id).val();
     var nombre_vendedor = $("#nombre_vendedor" + id).val();
     var nameLinea = $("#nameLinea").text();
+    var anio = (new Date).getFullYear();
 
     // Tasformar año a numero
     anio_historial = parseInt(anio_historial);
@@ -661,7 +662,7 @@ function obtener_datos(id) {
     $("#promocion").val(promocion_historial);
     $("#garantia").val(garantia_historial);
     $("#facturado").val(facturado_historial);
-    $("#vendedor").text('LINEA: ' + nameLinea + ' - ' + 'EJECUTIVO: ' + nombre_vendedor);
+    $("#vendedor").text(`PRESUPUESTO: ${anio} -  ( LINEA: ${nameLinea} - EJECUTIVO: ${nombre_vendedor} )`);
 
 
     $('#calcularAnio').hide(); // Oculto el boton

@@ -92,7 +92,8 @@
 
 		function detalle_presupuesto(id) {
 		    var nombre_vendedor = $("#nombre_vendedor" + id).val();
-		    $('#titulo_detalle').text(nombre_vendedor);
+		    var anio = (new Date).getFullYear();
+		    $('#titulo_detalle').text(`Vendedor: ${nombre_vendedor} - Presupuesto: ${anio}`);
 		    console.log(id);
 		    //LLAMADO A AJAX
 		    var url = './ajax/vendedor/detalle_vendedor_linea.php';

@@ -34,8 +34,6 @@ if (empty($_POST["idEliminarAnterior"])) {
     $delGran   = intval($_POST["delGran"]);
     $delTotal  = intval($_POST["delTotal"]);
     $activoAnio = 0;
-
-    echo "Actualizacion es curso";
     //Actualizar al nuevo vendedor
     $sql = "UPDATE presupuesto_anio SET ventasPresU='" . $delVentas . "', promoPresU='" . $delProm . "', garantPresU='" . $delGran . "', totalPresU='" . $delTotal . "' WHERE idPresAnio='" . $delIdPres . "'";
     $query_update = mysqli_query($con, $sql);

@@ -7,7 +7,7 @@ if (empty($_POST['mod_id'])) {
 	$errors[] = "Usuario vacío";
 } else if (empty($_POST['mod_nombre'])) {
 	$errors[] = "Nombre vacío";
-}  else if ($_POST['mod_perfil'] == "") {
+} else if ($_POST['mod_perfil'] == "") {
 	$errors[] = "Selecciona el perfil del Usuario";
 } else if (
 	!empty($_POST['mod_id']) &&
@@ -19,13 +19,24 @@ if (empty($_POST['mod_id'])) {
 	require_once("../../funciones/db.php"); //Contiene las variables de funcionesuracion para conectar a la base de datos
 	require_once("../../funciones/conexion.php"); //Contiene funcion que conecta a la base de datos
 	// escaping, additionally removing everything that could be (html/javascript-) code
+
+	$opciones = array(
+		'cost' => 12
+	);
+
 	$usuario = mysqli_real_escape_string($con, (strip_tags($_POST["mod_usuario"], ENT_QUOTES)));
 	$nombre = mysqli_real_escape_string($con, (strip_tags($_POST["mod_nombre"], ENT_QUOTES)));
+	$password = mysqli_real_escape_string($con, (strip_tags($_POST["mod_password"], ENT_QUOTES)));
 	$email = mysqli_real_escape_string($con, (strip_tags($_POST["mod_email"], ENT_QUOTES)));
 	$perfil = intval($_POST['mod_perfil']);
-
 	$id_usuario = intval($_POST['mod_id']);
-	$sql = "UPDATE admins SET usuario='" . $usuario . "', nombreUsu='" . $nombre . "', mail='" . $email . "', idPerfil='" . $perfil . "' WHERE idUsu='" . $id_usuario . "'";
+
+	if (empty($_POST['mod_password'])) {
+		$sql = "UPDATE admins SET usuario='" . $usuario . "', nombreUsu='" . $nombre . "', mail='" . $email . "', idPerfil='" . $perfil . "' WHERE idUsu='" . $id_usuario . "'";
+	} else {
+		$password_hashed = password_hash($password, PASSWORD_BCRYPT, $opciones);
+		$sql = "UPDATE admins SET usuario='" . $usuario . "', password='" . $password_hashed . "' , nombreUsu='" . $nombre . "', mail='" . $email . "', idPerfil='" . $perfil . "' WHERE idUsu='" . $id_usuario . "'";
+	}
 	$query_update = mysqli_query($con, $sql);
 	if ($query_update) {
 		$messages[] = "Usuario ha sido actualizado satisfactoriamente.";

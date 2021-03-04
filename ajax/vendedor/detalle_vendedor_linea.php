@@ -5,7 +5,13 @@ require_once("../../funciones/db.php"); //Contiene las variables de configuracio
 require_once("../../funciones/conexion.php"); //Contiene funcion que conecta a la base de datos
 
 $codVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codVen'], ENT_QUOTES)));
-$anio= mysqli_real_escape_string($con, (strip_tags($_REQUEST['anio'], ENT_QUOTES)));
+if (empty($_REQUEST['anio'])) {
+$anio = date("Y");
+}
+else{
+    $anio= mysqli_real_escape_string($con, (strip_tags($_REQUEST['anio'], ENT_QUOTES)));
+}
+
 // Ejecutamos la consulta de busqueda
 ?>
 <style>
@@ -57,31 +63,3 @@ $anio= mysqli_real_escape_string($con, (strip_tags($_REQUEST['anio'], ENT_QUOTES
     </table>
 
 </div>
-
-<!-- <script>
-    $(function() {
-
-        $("#registros").DataTable({
-            "responsive": false,
-            "autoWidth": false,
-            "pageLength": 12,
-            "language": {
-                paginate: {
-                    next: 'Siguiente',
-                    previous: 'Anterior',
-                    last: 'Último',
-                    firts: 'Primero'
-                },
-                zeroRecords: "No se encontraron registros coincidentes",
-                info: 'Mostrando _START_ a _END_ de _TOTAL_ resultados',
-                emptyTable: 'No hay registros',
-                infoEmpty: 'Mostrando 0 to 0 of 0 Entradas',
-                search: 'Buscar: ',
-                lengthMenu: "Mostrar _MENU_ Entradas ",
-                infoFiltered: " (Filtrado de un total de _MAX_  entradas)"
-            }
-
-        });
-
-    });
-</script> -->

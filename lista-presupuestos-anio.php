@@ -38,10 +38,11 @@ include_once('templates/navegacion.php');
             <?php
 
             include("modal/vendedor-linea/editar_presupuesto_anio.php");
-            include("modal/vendedor-linea/eliminar_presupuesto_anio.php");
+
             include("modal/vendedor/detalle_vendedor.php");
+            include("modal/vendedor-linea/eliminar_presupuesto_anio.php");
             ?>
-            <form class="form-horizontal" role="form" id="datos_cotizacion">
+            <form class="form-horizontal" role="form">
 
               <div class="form-group row">
                 <label for="q" class="col-md-2 control-label">Presupuesto Año</label>
@@ -57,11 +58,11 @@ include_once('templates/navegacion.php');
               </div>
 
             </form>
-
-          
-            </div>
             <div id="resultados"></div><!-- Carga los datos ajax -->
             <div class='outer_div'></div><!-- Carga los datos ajax -->
+
+
+
 
           </div>
         </div>

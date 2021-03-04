@@ -57,7 +57,7 @@
 							</div>
 						</div>
 
-						<section id = "select_resultados"></section>
+						<section id="select_resultados"></section>
 
 					</div>
 
@@ -66,13 +66,7 @@
 			</div>
 
 		</div>
-		<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> -->
-		</div>
-		<!-- /.modal-content -->
-		</div>
-		<!-- /.modal-dialog -->
-		</div>
-		<!-- /.modal -->
+	
 	<?php
 	}
 	?>

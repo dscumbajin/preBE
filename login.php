@@ -99,7 +99,7 @@ if ($login->isUserLoggedIn() == true) {
 
               <div class="col-12">
 
-                <button type="submit" class="btn btn-primary btn-block" name="login" id="submit">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-dark btn-block" name="login" id="submit">Iniciar Sesión</button>
               </div>
               <!-- /.col -->
             </div>

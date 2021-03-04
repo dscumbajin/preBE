@@ -77,6 +77,7 @@ if ($action == 'ajax') {
 				while ($row = mysqli_fetch_array($query)) {
 					// idUsu, usuario, nombreUsu, password, mail, idPerfil
 					$id_usuario = $row['idUsu'];
+					$password_usuario = $row['password'];
 					$usuario_usuario = $row['usuario'];
 					$nombre_usuario = $row['nombreUsu'];
 					$email_usuario = $row['mail'];
@@ -92,6 +93,7 @@ if ($action == 'ajax') {
 					<input type="hidden" value="<?php echo $nombre_usuario; ?>" id="nombre_usuario<?php echo $id_usuario; ?>">
 					<input type="hidden" value="<?php echo $email_usuario; ?>" id="email_usuario<?php echo $id_usuario; ?>">
 					<input type="hidden" value="<?php echo $perfil_usuario; ?>" id="perfil_usuario<?php echo $id_usuario; ?>">
+					<input type="hidden" value="<?php echo $password_usuario; ?>" id="password_usuario<?php echo $id_usuario; ?>">
 
 					<tr>
 						<td><?php echo $usuario_usuario; ?></td>

@@ -10,7 +10,11 @@ $nomVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['nomVen'], ENT_Q
 ?>
 <div class="card card-dark">
     <div class="card-header">
-
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
         <div class="form-horizontal row">
             <!--Formulario de busqueda-->
             <div class="col-md-3" style="text-align: center;">
@@ -52,11 +56,6 @@ $nomVen = mysqli_real_escape_string($con, (strip_tags($_REQUEST['nomVen'], ENT_Q
             </div>
         </div>
 
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-        </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body" style="display: block;">
