@@ -13,7 +13,7 @@
 					<div class="modal-body">
 
 
-						<div class="card card-success">
+						<div class="card card-dark">
 							<div class="card-header">
 								<h3 class="card-title">Datos Actuales</h3>
 
@@ -27,44 +27,56 @@
 							<!-- /.card-header -->
 							<div class="card-body" style="display: block;">
 								<div class="row">
-								
-										<div class="col-sm-3">
-											<label>Presupuesto Ventas</label>
-											<input type="text" class="form-control numero" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
-										</div>
-										<!-- /.form-group -->
-										<div class="col-sm-3">
-											<label>Promociones</label>
-											<input type="text" class="form-control numero" name="mod_promos_presupuesto" id="mod_promos_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
-										</div>
-										<!-- /.form-group -->
 
-										<div class="col-sm-3">
-											<label>Garantias</label>
-											<input type="text" class="form-control numero" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
-										</div>
-										<!-- /.form-group -->
-										<div class="col-sm-3">
-											<label>TOTAL</label>
-											<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
-										</div>
-										<!-- /.form-group -->
-								
+									<div class="col-sm-3">
+										<label>Presupuesto Ventas</label>
+										<input type="text" class="form-control numero" name="mod_ventas_presupuesto" id="mod_ventas_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+									</div>
+									<!-- /.form-group -->
+									<div class="col-sm-3">
+										<label>Promociones</label>
+										<input type="text" class="form-control numero" name="mod_promos_presupuesto" id="mod_promos_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+									</div>
+									<!-- /.form-group -->
+
+									<div class="col-sm-3">
+										<label>Garantias</label>
+										<input type="text" class="form-control numero" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+									</div>
+									<!-- /.form-group -->
+									<div class="col-sm-3">
+										<label>TOTAL</label>
+										<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
+									</div>
+									<!-- /.form-group -->
+
 									<input type="hidden" name="mod_precioMeta" id="mod_precioMeta">
 								</div>
 								<!-- /.row -->
 							</div>
-							
+
 						</div>
 
-						<hr>
-						<div class="col-sm-4">
-							Porcentaje asignado: <span class="btn"  style="font-weight: bold;" id="porAs">100</span> %
-						</div>
-						<hr>
-						<section id="tabla_resultados">
+						<div class="card card-dark">
+							<div class="card-header">
+								
 
-						</section>
+								<div class="card-tools">
+									<button type="button" class="btn btn-tool" data-card-widget="collapse">
+										<i class="fas fa-minus"></i>
+									</button>
+								</div>
+
+								<div class="col-sm-4">
+									Porcentaje asignado: <span class="btn" style="font-weight: bold; color: white;" id="porAs">100</span> %
+								</div>
+							</div>
+							<!-- /.card-header -->
+							<div class="card-body" style="display: block;">
+
+							<section id="tabla_resultados">	</section>
+							</div>
+						</div>
 
 					</div>
 					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button -->
