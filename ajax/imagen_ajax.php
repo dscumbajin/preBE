@@ -1,4 +1,9 @@
 	<?php
+	 /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
 	/* Connect To Database*/
 	require_once("../config/db.php");
 	require_once("../config/conexion.php");

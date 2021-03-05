@@ -1,4 +1,9 @@
 <?php
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
 
 if (isset($_POST['nombre'])){$nombre=$_POST['nombre'];}
 if (isset($_POST['contrasena'])){$c1=$_POST['contrasena'];}

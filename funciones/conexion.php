@@ -1,5 +1,9 @@
 <?php
-
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
     # conectare la base de datos
  
     $con=@mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);

@@ -1,5 +1,9 @@
 <?php
-
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
 if (isset($_POST['nombre'])){$nombre=$_POST['nombre'];}
 
 	/* Connect To Database*/

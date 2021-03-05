@@ -1,4 +1,9 @@
 <?php
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
 include('is_logged.php'); //Archivo verifica que el usario que intenta acceder a la URL esta logueado
 // checking for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {

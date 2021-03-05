@@ -1,4 +1,9 @@
 <?php
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
 function paginate($reload, $page, $tpages, $adjacents) {
 	$prevlabel = "&lsaquo; Prev";
 	$nextlabel = "Next &rsaquo;";

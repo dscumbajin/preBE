@@ -1,5 +1,9 @@
 <?php
-
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
 include('../is_logged.php'); //Archivo verifica que el usario que intenta acceder a la URL esta logueado
 /* Connect To Database*/
 require_once("../../funciones/db.php"); //Contiene las variables de configuracion para conectar a la base de datos

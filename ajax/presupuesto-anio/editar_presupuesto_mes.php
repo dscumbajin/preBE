@@ -1,4 +1,11 @@
 <?php
+
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
+
 include('../is_logged.php'); //Archivo verifica que el usario que intenta acceder a la URL esta logueado
 /*Inicia validacion del lado del servidor*/
 
@@ -6,7 +13,6 @@ include('../is_logged.php'); //Archivo verifica que el usario que intenta accede
 require_once("../../funciones/db.php"); //Contiene las variables de funcionesuracion para conectar a la base de datos
 require_once("../../funciones/conexion.php"); //Contiene funcion que conecta a la base de datos
 // escaping, additionally removing everything that could be (html/javascript-) code
-
 
 foreach ($_POST['idPresMes'] as $ids) {
     $porcentaje = floatval($_POST['porcentaje'][$ids]);

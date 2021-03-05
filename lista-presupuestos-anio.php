@@ -1,4 +1,11 @@
 <?php
+
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
+    
 include_once('funciones/db.php');
 include_once('funciones/conexion.php');
 include_once('templates/header.php');

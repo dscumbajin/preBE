@@ -1,4 +1,11 @@
 <?php
+
+ /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
+	
 include('../is_logged.php'); //Archivo verifica que el usario que intenta acceder a la URL esta logueado
 /*Inicia validacion del lado del servidor*/
 if (empty($_POST['mod_id'])) {

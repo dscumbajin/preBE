@@ -1,4 +1,9 @@
 	<?php
+	 /*-------------------------
+    Autor: Darwin Cumbajin N.
+    Web: www.dc-dev.com
+    E-Mail: cumbajindarwin@hotmail.com
+    ---------------------------*/
 	$codLinea = $_GET['codLinea'];
 	if (isset($con)) {
 	?>
@@ -113,7 +118,7 @@
 
 										<div class="col-sm-8 col-md-8 col-lg-12">
 											<div class="table-responsive ">
-												<table class="table-bordered  ">
+												<table class="table table-bordered  ">
 													<tr class="info">
 														<th>Mes</th>
 														<th>% </th>
