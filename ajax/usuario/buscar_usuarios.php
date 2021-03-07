@@ -1,5 +1,5 @@
 <?php
- /*-------------------------
+/*-------------------------
     Autor: Darwin Cumbajin N.
     Web: www.dc-dev.com
     E-Mail: cumbajindarwin@hotmail.com
@@ -106,7 +106,9 @@ if ($action == 'ajax') {
 						<td><?php echo $perfil; ?></td>
 						<td><span>
 								<a href="#" title='Editar usuario' onclick="obtener_datos('<?php echo $id_usuario; ?>');" data-toggle="modal" data-target="#modUsuario"><i class="fas fa-pen editar"></i></a>
-								<a href="#" title='Borrar usuario' onclick="eliminar('<?php echo $id_usuario; ?>')"> <i class="far fa-trash-alt eliminar"></i></a>
+								<?php if ($_SESSION['user_nivel'] == 2) : ?>
+									<a href="#" title='Borrar usuario' onclick="eliminar('<?php echo $id_usuario; ?>')"> <i class="far fa-trash-alt eliminar"></i></a>
+								<?php endif; ?>
 							</span>
 						</td>
 
