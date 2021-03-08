@@ -53,8 +53,8 @@ else{
                 echo $error;
             }
             while ($detalle = $resultado->fetch_assoc()) { ?>
+           <input type="hidden" id="numLineas" value="<?php echo $detalle['num'] ?>">
                 <tr class="trT">
-                    <input type="hidden" id="numLineas" value="<?php echo $detalle['num'] ?>">
                     <td style="text-transform: uppercase; font-weight: bold;" class="tdT"><?php setlocale(LC_TIME, "spanish");
 							$date = new DateTime($detalle['mes']);
 							$fecha = strftime("%b", $date->getTimestamp());
@@ -64,7 +64,15 @@ else{
                 </tr>
             <?php  } ?>
         
-
+            
     </table>
 
 </div>
+<script>
+var titulo = $('#titulo_detalle').text();
+var numLinea = $('#numLineas').val();
+if (isNaN(numLinea )) {
+numLinea = 0;
+}
+$('#titulo_detalle').text(`${titulo} | Lineas evaluadas: ${numLinea}`);
+</script>

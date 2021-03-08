@@ -50,7 +50,7 @@ if (empty($_POST["idEliminarAnterior"])) {
         } else {
             $errors[] = "Lo siento algo ha salido mal intenta nuevamente." . mysqli_error($con);
         }
-        $messages[] = "Reasignacion de presupuesto satisfactoria";
+        $messages[] = "Reasignación de presupuesto satisfactoria";
     } else {
         $errors[] = "Lo siento algo ha salido mal intenta nuevamente." . mysqli_error($con);
     }

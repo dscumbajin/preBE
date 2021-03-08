@@ -96,7 +96,7 @@ if ($action == 'ajax') {
 
 						<tr>
 							<td><?php echo $anio_presupuesto; ?></td>
-							<td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>', '<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#detallePresupuesto"><?php echo $vendedor_presupuesto; ?> </a< /td>
+							<td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>', '<?php echo $id_presupuesto; ?>');" data-toggle="modal" data-target="#detallePresupuesto"><?php echo $vendedor_presupuesto; ?> </a></td>
 							<td><?php echo $linea_presupuesto; ?></td>
 							<td><?php echo $cantidad_ventas_presupuesto; ?></td>
 							<td><?php echo $cantidad_promos_presupuesto; ?></td>

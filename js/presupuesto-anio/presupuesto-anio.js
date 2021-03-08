@@ -33,6 +33,7 @@ function detalle_presupuesto(id, id_pre) {
             $('#tabla_resultados_detalle').html('');
             $('#tabla_resultados_detalle').html(datos);
         }
+
     });
 
 }
