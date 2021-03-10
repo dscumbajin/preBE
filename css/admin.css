@@ -28,21 +28,3 @@
     font-size: 20px;
     color: blue;
 }
-
-.ellipsis {
-    line-height: 1.4;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin: auto;
-    width: 100px;
-    margin: 0 auto;
-    text-align: justify
-}
-
-.ellipsis:hover {
-    text-overflow: initial;
-    white-space: initial;
-    overflow: visible;
-    cursor: pointer;
-}
