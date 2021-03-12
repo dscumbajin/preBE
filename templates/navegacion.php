@@ -106,6 +106,12 @@
                                   <p>Administrar</p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                              <a href="lista-historial.php" class="nav-link">
+                                  <i class="nav-icon fas fa-list-ul"></i>
+                                  <p>Cargar Historial Ventas</p>
+                              </a>
+                          </li>
 
                           <?php
                             try {
