@@ -78,21 +78,87 @@ $("#guardar_pres_anio").submit(function(event) {
     $("#precioMeta").val(precioPomedio);
 
     // Inicialización porcentaje por mes
-    var totalPorsentaje = 100 / 12;
-    totalPorsentaje = totalPorsentaje.toFixed(4);
 
-    $("#porEnero").val(totalPorsentaje);
-    $("#porFebrero").val(totalPorsentaje);
-    $("#porMarzo").val(totalPorsentaje);
-    $("#porAbril").val(totalPorsentaje);
-    $("#porMayo").val(totalPorsentaje);
-    $("#porJunio").val(totalPorsentaje);
-    $("#porJulio").val(totalPorsentaje);
-    $("#porAgosto").val(totalPorsentaje);
-    $("#porSeptiembre").val(totalPorsentaje);
-    $("#porOctubre").val(totalPorsentaje);
-    $("#porNoviembre").val(totalPorsentaje);
-    $("#porDiciembre").val(totalPorsentaje);
+    var nombreLinea = $("#nameLinea").text();
+    console.log(nombreLinea);
+
+    if (nombreLinea == 'BATERIAS ECUADOR') {
+        $("#porEnero").val(8.38);
+        $("#porFebrero").val(8.34);
+        $("#porMarzo").val(8.81);
+        $("#porAbril").val(8.47);
+        $("#porMayo").val(9.01);
+        $("#porJunio").val(8.39);
+        $("#porJulio").val(8.53);
+        $("#porAgosto").val(8.11);
+        $("#porSeptiembre").val(7.90);
+        $("#porOctubre").val(8.05);
+        $("#porNoviembre").val(8.22);
+        $("#porDiciembre").val(7.81);
+
+
+    } else if (nombreLinea == 'BATERIAS HELLA') {
+        $("#porEnero").val(8.38);
+        $("#porFebrero").val(8.34);
+        $("#porMarzo").val(8.81);
+        $("#porAbril").val(8.47);
+        $("#porMayo").val(9.01);
+        $("#porJunio").val(8.39);
+        $("#porJulio").val(8.53);
+        $("#porAgosto").val(8.11);
+        $("#porSeptiembre").val(7.90);
+        $("#porOctubre").val(8.05);
+        $("#porNoviembre").val(8.22);
+        $("#porDiciembre").val(7.81);
+
+
+    } else if (nombreLinea == 'BATERIAS RUBIX') {
+        $("#porEnero").val(8.44);
+        $("#porFebrero").val(8.30);
+        $("#porMarzo").val(8.83);
+        $("#porAbril").val(8.41);
+        $("#porMayo").val(9.03);
+        $("#porJunio").val(8.34);
+        $("#porJulio").val(8.45);
+        $("#porAgosto").val(8.13);
+        $("#porSeptiembre").val(7.91);
+        $("#porOctubre").val(8.07);
+        $("#porNoviembre").val(8.23);
+        $("#porDiciembre").val(7.85);
+
+
+    } else if (nombreLinea == 'COMERCIAL BOSCH') {
+        $("#porEnero").val(8.38);
+        $("#porFebrero").val(8.34);
+        $("#porMarzo").val(8.81);
+        $("#porAbril").val(8.47);
+        $("#porMayo").val(9.01);
+        $("#porJunio").val(8.39);
+        $("#porJulio").val(8.53);
+        $("#porAgosto").val(8.11);
+        $("#porSeptiembre").val(7.90);
+        $("#porOctubre").val(8.05);
+        $("#porNoviembre").val(8.22);
+        $("#porDiciembre").val(7.81);
+    } else {
+        var totalPorsentaje = 100 / 12;
+        totalPorsentaje = totalPorsentaje.toFixed(4);
+
+        $("#porEnero").val(totalPorsentaje);
+        $("#porFebrero").val(totalPorsentaje);
+        $("#porMarzo").val(totalPorsentaje);
+        $("#porAbril").val(totalPorsentaje);
+        $("#porMayo").val(totalPorsentaje);
+        $("#porJunio").val(totalPorsentaje);
+        $("#porJulio").val(totalPorsentaje);
+        $("#porAgosto").val(totalPorsentaje);
+        $("#porSeptiembre").val(totalPorsentaje);
+        $("#porOctubre").val(totalPorsentaje);
+        $("#porNoviembre").val(totalPorsentaje);
+        $("#porDiciembre").val(totalPorsentaje);
+
+    }
+
 
     var precioMeta = $("#precioMeta").val();
     precioMeta = parseFloat(precioMeta);

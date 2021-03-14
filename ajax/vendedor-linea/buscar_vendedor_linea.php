@@ -36,11 +36,11 @@ if ($action == 'ajax') {
 	$q = mysqli_real_escape_string($con, (strip_tags($_REQUEST['q'], ENT_QUOTES)));
 	$codLinea = mysqli_real_escape_string($con, (strip_tags($_REQUEST['codLinea'], ENT_QUOTES)));
 	$aColumns = array('historial_ventas.anio', 'vendedor.nomVen', 'historial_ventas.codVen', 'ventasU'); //Columnas de busqueda
-	$sTable = "historial_ventas, vendedor";
-	$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen AND historial_ventas.generado != 1
+	$sTable = "historial_ventas, vendedor, listalinea";
+	$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen AND historial_ventas.codLinea = listalinea.codLinea AND historial_ventas.generado != 1
 	AND vendedor.estadoVen != 0 AND historial_ventas.codLinea = $codLinea ";
 	if ($_GET['q'] != "") {
-		$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen AND historial_ventas.generado != 1
+		$sWhere = "WHERE historial_ventas.codVen = vendedor.codVen AND historial_ventas.codLinea = listalinea.codLinea AND historial_ventas.generado != 1
 		AND vendedor.estadoVen != 0 AND historial_ventas.codLinea = $codLinea AND (";
 		for ($i = 0; $i < count($aColumns); $i++) {
 			$sWhere .= $aColumns[$i] . " LIKE '%" . $q . "%' OR ";

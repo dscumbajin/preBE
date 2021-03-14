@@ -103,17 +103,21 @@
 										<input type="hidden" id="precioPromedio">
 										<div class="form-group row col-sm-8 col-md-8 col-lg-12">
 
-											<div class="col-sm-4  ">
+											<div class="col-sm-3  ">
 												<label for="precioMeta">PRECIO POR META</label>
 											</div>
 
-											<div class="col-sm-4  ">
+											<div class="col-sm-3  ">
 												<input class="form-control decimales" name="precioMeta" id="precioMeta" placeholder="PRECIO POR META" type="text" pattern="^[0-9]+(.[0-9]+)?$" required>
 											</div>
 
-											<div class="col-sm-4  ">
+											<div class="col-sm-3  ">
 												Porcentaje asignado: <span class="btn" id="tituloPor"></span> %
 											</div>
+											<div class="col-sm-3 ">
+												<button type="submit" class="btn btn-success float-right" id="guardar_datos_mes">Guardar</button>
+											</div>
+
 										</div>
 
 										<div class="col-sm-8 col-md-8 col-lg-12">
@@ -326,9 +330,7 @@
 												</table>
 											</div>
 
-											<div class="card-footer">
-												<button type="submit" class="btn btn-success float-right" id="guardar_datos_mes">Guardar</button>
-											</div>
+											
 										</div>
 									</form>
 

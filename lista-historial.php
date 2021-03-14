@@ -1,5 +1,5 @@
 <?php
- /*-------------------------
+/*-------------------------
     Autor: Darwin Cumbajin N.
     Web: www.dc-dev.com
     E-Mail: cumbajindarwin@hotmail.com
@@ -26,9 +26,7 @@ include_once('templates/navegacion.php');
                 <div class="col-sm-10">
                     <h1>CARGAR HISTORIAL VENTAS</h1>
                 </div>
-                <div class="btn-group pull-right">
-                    <button type='button' class="btn btn-info" data-toggle="modal" data-target="#nuevaLinea"><span><i class="fas fa-plus"></i></span> Nueva Linea</button>
-                </div>
+
             </div>
         </div><!-- /.container-fluid -->
     </section>
@@ -44,8 +42,16 @@ include_once('templates/navegacion.php');
 
                     <div class="panel-body">
 
-                      
-                    
+                        <form action="files.php" method="post" enctype="multipart/form-data" id="filesForm">
+                            <div class="col-md-4 offset-md-4">
+                                <input class="form-control" type="file" name="fileContacts" id="fileHistorial">
+                                <br>
+                                <button type="button" id= "cargar_historial" onclick="uploadHistorial()" class="btn btn-primary form-control">Cargar</button>
+                                <br>
+                            </div>
+                        </form>
+                        <br>
+
                     </div>
                 </div>
 
@@ -65,3 +71,22 @@ include_once('templates/navegacion.php');
 
 include_once('templates/footer.php');
 ?>
+
+<script>
+    function uploadHistorial() {
+
+
+        var Form = new FormData($('#filesForm')[0]);
+        $.ajax({
+
+            url: "./ajax/importar.php",
+            type: "post",
+            data: Form,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                alert('Registros Agregados!');
+            }
+        });
+    }
+</script>
