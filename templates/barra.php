@@ -24,12 +24,12 @@
 
             <div class="dropdown-divider"></div>
 
-            <?php if ($_SESSION['user_nivel'] == 2) : ?>
+           <!--  <?php if ($_SESSION['user_nivel'] == 2) : ?>
             <a href="editar-admin.php?id=<?php echo $_SESSION['user_id'];?>" class="dropdown-item">
               <i class="fas fa-cogs"></i>
               <span class="float-right text-muted text-sm">Ajustes</span>
             </a>
-            <?php endif; ?>
+            <?php endif; ?> -->
             <div class="dropdown-divider"></div>
             <a href="login.php?logout" class="dropdown-item">
               <i class="fas fa-users mr-2"></i>
