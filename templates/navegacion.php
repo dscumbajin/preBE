@@ -106,12 +106,12 @@
                                   <p>Administrar</p>
                               </a>
                           </li>
-                         <!--  <li class="nav-item">
+                          <li class="nav-item">
                               <a href="lista-historial.php" class="nav-link">
                                   <i class="nav-icon fas fa-list-ul"></i>
                                   <p>Cargar Historial Ventas</p>
                               </a>
-                          </li> -->
+                          </li>
 
                           <?php
                             try {
@@ -168,7 +168,7 @@
                       </ul> -->
                   </li>
 
-                  <?php if ($_SESSION['user_nivel'] == 2) : ?>
+                  <?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") : ?>
                       <li class="nav-item has-treeview">
                           <a href="#" class="nav-link">
 

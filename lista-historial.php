@@ -42,51 +42,129 @@ include_once('templates/navegacion.php');
 
                     <div class="panel-body">
 
-                        <form action="files.php" method="post" enctype="multipart/form-data" id="filesForm">
-                            <div class="col-md-4 offset-md-4">
-                                <input class="form-control" type="file" name="fileContacts" id="fileHistorial">
-                                <br>
-                                <button type="button" id= "cargar_historial" onclick="uploadHistorial()" class="btn btn-primary form-control">Cargar</button>
-                                <br>
+                        <div class="card">
+                            <div class="card-header">
+                                Featured
                             </div>
-                        </form>
-                        <br>
-
+                            <div class="card-body">
+                                <form action="#" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <input type="file" id="txt_archivo" class="form-control" accept=".csv,.xlsx,.xls">
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <button type="button" class="btn btn-danger" onclick="CargarExcel()" style="width: 100%;"><i class="fas fa-spinner"></i> <i class="far fa-file-excel"></i></button>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <button type="button" disabled id="btn_registrar" class="btn btn-primary" onclick="Registrar_Excel()" style="width: 100%;"><i class="far fa-save"></i> <i class="far fa-file-excel"></i></button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-12" id="div_tabla"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
             <!-- /.card-header -->
-
         </div>
         <!-- /.card -->
-
     </section>
     <!-- /.content -->
-
 </div>
 <!-- /.content-wrapper -->
-
 <?php
 
 include_once('templates/footer.php');
 ?>
 
 <script>
-    function uploadHistorial() {
+    $('#input[type="file"]').on('change', function() {
+        var ext = $(this).val().split('.').pop();
+        if ($(this).val() != '') {
+            if (ext == "xls" || ext == 'csv' || ext == 'xlsx') {
 
-
-        var Form = new FormData($('#filesForm')[0]);
-        $.ajax({
-
-            url: "./ajax/importar.php",
-            type: "post",
-            data: Form,
-            processData: false,
-            contentType: false,
-            success: function(data) {
-                alert('Registros Agregados!');
+            } else {
+                $(this).val('');
+                Swal.fire("Mensaje de Error", "Extención no permitida: " + ext + "", "error");
             }
+        }
+    });
+
+    function CargarExcel() {
+        var excel = $('#txt_archivo').val();
+        if (excel === "") {
+            return Swal.fire("Mensaje de advertencia", "Seleccionar un archivo excel", "warning");
+        }
+        var formData = new FormData();
+        var files = $('#txt_archivo')[0].files[0];
+        formData.append('archivoexcel', files);
+        $.ajax({
+            url: 'importar_excel_ajax.php',
+            type: 'post',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(resp) {
+                $('#div_tabla').html(resp);
+                document.getElementById('btn_registrar').disabled = false;
+            }
+
         });
+        return false;
+    }
+
+    function Registrar_Excel() {
+        var contador = 0;
+        var arreglo_codVen = new Array();
+        var arreglo_codLinea = new Array();
+        var arreglo_anio = new Array();
+        var arreglo_ventasU = new Array();
+        var arreglo_promocionU = new Array();
+        var arreglo_garantiaU = new Array();
+        var arreglo_facturadoV = new Array();
+
+        $("#tabla_detalle tbody#tbody_tabla_detalle tr").each(function() {
+            arreglo_codVen.push($(this).find('td').eq(0).text());
+            arreglo_codLinea.push($(this).find('td').eq(1).text());
+            arreglo_anio.push($(this).find('td').eq(2).text());
+            arreglo_ventasU.push($(this).find('td').eq(3).text());
+            arreglo_promocionU.push($(this).find('td').eq(4).text());
+            arreglo_garantiaU.push($(this).find('td').eq(5).text());
+            arreglo_facturadoV.push($(this).find('td').eq(6).text());
+            contador++;
+        });
+        if (contador == 0) {
+            return Swal.fire("Mensaje de Adverntencia", "La tabla tiene que tener como minimo 1 dato", "warning");
+        }
+
+        var codVen = arreglo_codVen.toString();
+        var codLinea = arreglo_codLinea.toString();
+        var anio = arreglo_anio.toString();
+        var ventasU = arreglo_ventasU.toString();
+        var promocionU = arreglo_promocionU.toString();
+        var garantiaU = arreglo_garantiaU.toString();
+        var facturadoV = arreglo_facturadoV.toString();
+
+
+        $.ajax({
+            url: 'controlador_registro.php',
+            type: 'POST',
+            data: {
+                codVen: codVen,
+                codLinea: codLinea,
+                anio: anio,
+                ventasU: ventasU,
+                promocionU: promocionU,
+                garantiaU: garantiaU,
+                facturadoV: facturadoV,
+            },
+        }).done(function(resp){
+            alert(resp);
+        })
+       
     }
 </script>
