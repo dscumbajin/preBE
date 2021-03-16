@@ -20,7 +20,7 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
     echo "<div class='table-responsive'>
     <table id='tabla_detalle' class='table table-bordered table-striped'>
     <thead>    
-    <tr class='info'>
+    <tr bgcolor='black' style='color:#ffffff; font-weight: bold; text-transform: uppercase;' >
     <td> codVen</td>
     <td> codLinea</td>
     <td> año</td>
@@ -39,20 +39,25 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
         $promocionU = $hoja->getCell('E'. $row)->getValue();
         $garantiaU = $hoja->getCell('F'. $row)->getValue();
         $facturadoV = $hoja->getCell('G'. $row)->getValue();
-        if ($codVen=="") {
-            # code...
-        } else {
-            echo"<tr>";
-            echo "<td>".$codVen."</td>";
-            echo "<td>".$codLinea."</td>";
-            echo "<td>".$anio."</td>";
-            echo "<td>".$ventasU."</td>";
-            echo "<td>".$promocionU."</td>";
-            echo "<td>".$garantiaU."</td>";
-            echo "<td>".$facturadoV."</td>";
-            echo"</tr>";
-        }
-        
+        $query = "SELECT COUNT(*) AS contador FROM historial_ventas WHERE codVen='".$codVen."' AND codLinea='".$codLinea."' AND anio='".$anio."'";
+        $resultado = $con->query($query);
+        $respuesta = $resultado->fetch_assoc();
+
+        if($respuesta['contador']=='0'){
+            if ($codVen=="") {
+                # code...
+            } else {
+                echo"<tr>";
+                echo "<td>".$codVen."</td>";
+                echo "<td>".$codLinea."</td>";
+                echo "<td>".$anio."</td>";
+                echo "<td>".$ventasU."</td>";
+                echo "<td>".$promocionU."</td>";
+                echo "<td>".$garantiaU."</td>";
+                echo "<td>".$facturadoV."</td>";
+                echo"</tr>";
+            }
+        }     
        
     } echo "</tbody></table></div>";
 }
@@ -60,7 +65,7 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
 
 <script>
 
-$("#tabla_detalle").DataTable({
+/* $("#tabla_detalle").DataTable({
         "responsive": true,
         "autoWidth": false,
         "pageLength": 10,
@@ -80,5 +85,5 @@ $("#tabla_detalle").DataTable({
         },
         "buttons": ["excel"]
     }).buttons().container().appendTo('#registros_wrapper .col-md-6:eq(0)');
-
+ */
 </script>

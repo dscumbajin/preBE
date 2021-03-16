@@ -53,10 +53,10 @@ include_once('templates/navegacion.php');
                                             <input type="file" id="txt_archivo" class="form-control" accept=".csv,.xlsx,.xls">
                                         </div>
                                         <div class="col-lg-2">
-                                            <button type="button" class="btn btn-danger" onclick="CargarExcel()" style="width: 100%;"><i class="fas fa-spinner"></i> <i class="far fa-file-excel"></i></button>
+                                            <button type="button" title="Cargar Excel" class="btn btn-danger" onclick="CargarExcel()" style="width: 100%;"><i class="far fa-file-excel"></i> Cargar</button>
                                         </div>
                                         <div class="col-lg-2">
-                                            <button type="button" disabled id="btn_registrar" class="btn btn-primary" onclick="Registrar_Excel()" style="width: 100%;"><i class="far fa-save"></i> <i class="far fa-file-excel"></i></button>
+                                            <button type="button" title="Guardar Excel" disabled id="btn_registrar" class="btn btn-primary" onclick="Registrar_Excel()" style="width: 100%;"><i class="far fa-file-excel"></i> Guardar</button>
                                         </div>
                                     </div>
                                     <br>
@@ -138,7 +138,7 @@ include_once('templates/footer.php');
             contador++;
         });
         if (contador == 0) {
-            return Swal.fire("Mensaje de Adverntencia", "La tabla tiene que tener como minimo 1 dato", "warning");
+            return Swal.fire("Mensaje de Adverntencia", "La tabla tiene que tener como mínimo 1 dato", "warning");
         }
 
         var codVen = arreglo_codVen.toString();
@@ -163,7 +163,8 @@ include_once('templates/footer.php');
                 facturadoV: facturadoV,
             },
         }).done(function(resp){
-            alert(resp);
+            Swal.fire("Mensaje de confirmación","Datos registrados", "success");
+            $('#div_tabla').html("");
         })
        
     }
