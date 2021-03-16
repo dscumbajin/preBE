@@ -44,7 +44,7 @@ include_once('templates/navegacion.php');
 
                         <div class="card">
                             <div class="card-header">
-                                Featured
+                                ARCHIVO DE VENTAS 
                             </div>
                             <div class="card-body">
                                 <form action="#" enctype="multipart/form-data">
