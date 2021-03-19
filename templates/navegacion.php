@@ -12,7 +12,7 @@
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
               <div class="info" style="color: white;">
-                  
+
 
                   <?php
                     if ($_SESSION['user_nivel'] == 2) {
@@ -22,8 +22,8 @@
                         echo '<span class="badge badge-primary">User</span>';
                     }
                     ?>
-                    <a href="#" class="d-block">Usuario: <?php echo $_SESSION['user_name']; ?></a>
-                    <a href="#" class="d-block"><?php echo $_SESSION['user_email']; ?></a>
+                  <a href="#" class="d-block">Usuario: <?php echo $_SESSION['user_name']; ?></a>
+                  <a href="#" class="d-block"><?php echo $_SESSION['user_email']; ?></a>
               </div>
           </div>
 
@@ -36,7 +36,7 @@
                   <li class="nav-header">Menú de adminstración</li>
                   <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
-                          <i class="nav-icon fas fa-tachometer-alt"></i>
+                          <i class="nav-icon fas fa-tachometer-alt" style="color: #DA5C42;"></i>
                           <p>
                               Dashboard
                               <i class="right fas fa-angle-left"></i>
@@ -54,13 +54,13 @@
 
                   <li class="nav-item has-treeview">
                       <a href="lista-vendedor.php" class="nav-link">
-                          <i class="nav-icon fas fa-universal-access"></i>
+                          <i class="nav-icon fas fa-universal-access" style="color: #40719D;"></i>
 
                           <p>
                               Vendedores
                               <i class="fas fa-angle-left right"></i>
                           </p>
-                          
+
                       </a>
                       <!-- <ul class="nav nav-treeview">
                           <li class="nav-item">
@@ -74,22 +74,17 @@
 
                   <li class="nav-item has-treeview">
                       <a href="lista-segmento.php" class="nav-link">
-                          <i class=" nav-icon fas fa-building"></i>
+                          <i class=" nav-icon fas fa-building" style="color: #9D9040;"></i>
 
                           <p>
                               Segmentos
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
-                      <!-- <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="lista-segmento.php" class="nav-link">
-                                  <i class="nav-icon fas fa-list-ul"></i>
-                                  <p>Ver Todos</p>
-                              </a>
-                          </li>
-                      </ul> -->
+
                   </li>
+
+                
 
                   <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
@@ -106,12 +101,7 @@
                                   <p>Administrar</p>
                               </a>
                           </li>
-                          <li class="nav-item">
-                              <a href="lista-historial.php" class="nav-link">
-                                  <i class="nav-icon fas fa-list-ul"></i>
-                                  <p>Cargar Historial Ventas</p>
-                              </a>
-                          </li>
+
 
                           <?php
                             try {
@@ -134,13 +124,14 @@
 
                   <li class="nav-item has-treeview">
                       <a href="lista-presupuestos-anio.php" class="nav-link">
-                          <i class=" nav-icon fas fa-file-invoice-dollar"></i>
+                          <i class=" nav-icon fas fa-hand-holding-usd" style="color:  #10852E;"></i>
+
                           <p>
                               Presupuestos por año
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
-                     <!--  <ul class="nav nav-treeview">
+                      <!--  <ul class="nav nav-treeview">
                           <li class="nav-item">
                               <a href="lista-presupuestos-anio.php" class="nav-link">
                                   <i class="nav-icon fas fa-list-ul"></i>
@@ -152,7 +143,7 @@
 
                   <li class="nav-item has-treeview">
                       <a href="lista-presupuestos-mes.php" class="nav-link">
-                          <i class=" nav-icon fas fa-file-invoice-dollar"></i>
+                          <i class=" nav-icon fas fa-file-invoice-dollar" style="color:  #10852E;"></i>
                           <p>
                               Presupuestos por mes
                               <i class="fas fa-angle-left right"></i>
@@ -170,24 +161,28 @@
 
                   <?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") : ?>
                       <li class="nav-item has-treeview">
-                          <a href="#" class="nav-link">
+                          <a href="lista-admin.php" class="nav-link">
 
-                              <i class="nav-icon fas fa-users-cog"></i>
+                              <i class="nav-icon fas fa-users-cog" style="color: #9D9691 ;"></i>
                               <p>
                                   Adminstradores
                                   <i class="fas fa-angle-left right"></i>
                               </p>
                           </a>
-                          <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                  <a href="lista-admin.php" class="nav-link">
-                                      <i class="nav-icon fas fa-list-ul"></i>
-                                      <p>Ver Todos</p>
-                                  </a>
-                              </li>
-                          </ul>
+                        
                       </li>
                   <?php endif; ?>
+
+                  <li class="nav-item has-treeview">
+                      <a href="lista-historial.php" class="nav-link" >
+                          <i class="nav-icon far fa-file-excel" style="color: green;"></i>
+
+                          <p>
+                              Cargar Historial Ventas
+                              <i class="fas fa-angle-left right"></i>
+                          </p>
+                      </a>
+                  </li>
 
               </ul>
           </nav>

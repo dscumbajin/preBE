@@ -50,7 +50,7 @@ if ($action == 'ajax') {
 		$sWhere = substr_replace($sWhere, "", -3);
 		$sWhere .= ')';
 	}
-	$sWhere .= " ORDER BY  idPresMes DESC, mes DESC";
+	$sWhere .= " ORDER BY  idPresMes ";
 
 	// mes ASC , nomVen  ASC,
 	include '../pagination.php'; //include pagination file
