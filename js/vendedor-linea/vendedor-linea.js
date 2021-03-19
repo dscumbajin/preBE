@@ -779,7 +779,7 @@ function obtener_datos(id) {
         $("#totalAnio").val(presupuesto_total_anio);
 
         // Precio Pormedio
-        $("#precioPromedio").val(facturado / (presupuesto_total_anio));
+        $("#precioPromedio").val(facturado / (numeroVendidas + numeroPromocion + numeroGarantia));
 
         $("#total_anio").show();
 
