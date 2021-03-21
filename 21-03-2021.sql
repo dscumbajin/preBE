@@ -31,14 +31,14 @@ CREATE TABLE IF NOT EXISTS `admins` (
   UNIQUE KEY `usuario` (`usuario`),
   KEY `FK_admins_perfil` (`idPerfil`),
   CONSTRAINT `FK_admins_perfil` FOREIGN KEY (`idPerfil`) REFERENCES `perfil` (`idPerfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla presupuestos_ventas.admins: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
 INSERT INTO `admins` (`idUsu`, `usuario`, `nombreUsu`, `password`, `mail`, `idPerfil`) VALUES
 	(1, 'admin', 'Administrador', '$2y$12$lMYD8QGS6IoWip.1d3iYVeluoPAZssk2sMMRge/2eSnQXzgPFxcpq', 'sistemas2@bateriasecuador.com', 2),
-	(23, 'gjijon', 'Genesis Jijon ', '$2y$12$HYWpZCiZdEJ8SwYdGoENkO9Rv82sjtINPQOwIWB7TEG1IhKvT5HD.', 'gjijon@bateriasecuador.com', 2),
-	(24, 'agonzalez', 'AndrÃ©s Gonzalez ', '$2y$12$l5KRdbZvdvdhxE1CPMjAaOET6pTMwmFfplWYBTEvQxll79FrC70SC', 'agonzales@bateriasecuador.com', 2);
+	(2, 'gjijon', 'Genesis Jijon ', '$2y$12$HYWpZCiZdEJ8SwYdGoENkO9Rv82sjtINPQOwIWB7TEG1IhKvT5HD.', 'gjijon@bateriasecuador.com', 2),
+	(3, 'agonzalez', 'AndrÃ©s Gonzalez ', '$2y$12$l5KRdbZvdvdhxE1CPMjAaOET6pTMwmFfplWYBTEvQxll79FrC70SC', 'agonzales@bateriasecuador.com', 2);
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.familia
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `familia` (
   `desFam` varchar(50) DEFAULT NULL,
   `desFamilia` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`codFam`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=UTF8;
 
 -- Volcando datos para la tabla presupuestos_ventas.familia: 6 rows
 /*!40000 ALTER TABLE `familia` DISABLE KEYS */;
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `presupuesto_anio` (
   `codVen` varchar(50) DEFAULT NULL,
   `codLinea` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idPresAnio`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla presupuestos_ventas.presupuesto_anio: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `presupuesto_anio` DISABLE KEYS */;
