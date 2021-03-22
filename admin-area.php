@@ -19,7 +19,7 @@ include_once('templates/navegacion.php');
   <!-- Main content -->
   <section class="content">
     <div class="row">
-      <?php if ($_SESSION['user_nivel'] == 2) : ?>
+      <?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") :  ?>
         <div class="col-lg-3 col-6">
           <?php
           $sql = "SELECT COUNT(idUsu) AS admin FROM admins ";
