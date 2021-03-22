@@ -13,12 +13,10 @@
 
 
 -- Volcando estructura de base de datos para presupuestos_ventas
-DROP DATABASE IF EXISTS `presupuestos_ventas`;
 CREATE DATABASE IF NOT EXISTS `presupuestos_ventas` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `presupuestos_ventas`;
 
 -- Volcando estructura para tabla presupuestos_ventas.admins
-DROP TABLE IF EXISTS `admins`;
 CREATE TABLE IF NOT EXISTS `admins` (
   `idUsu` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` varchar(50) NOT NULL,
@@ -41,7 +39,6 @@ INSERT INTO `admins` (`idUsu`, `usuario`, `nombreUsu`, `password`, `mail`, `idPe
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.familia
-DROP TABLE IF EXISTS `familia`;
 CREATE TABLE IF NOT EXISTS `familia` (
   `codFam` varchar(50) NOT NULL,
   `desFam` varchar(50) DEFAULT NULL,
@@ -61,7 +58,6 @@ INSERT INTO `familia` (`codFam`, `desFam`, `desFamilia`) VALUES
 /*!40000 ALTER TABLE `familia` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.historial_ventas
-DROP TABLE IF EXISTS `historial_ventas`;
 CREATE TABLE IF NOT EXISTS `historial_ventas` (
   `idHisVen` int(11) NOT NULL AUTO_INCREMENT,
   `codVen` varchar(50) DEFAULT NULL,
@@ -84,7 +80,6 @@ CREATE TABLE IF NOT EXISTS `historial_ventas` (
 /*!40000 ALTER TABLE `historial_ventas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.listalinea
-DROP TABLE IF EXISTS `listalinea`;
 CREATE TABLE IF NOT EXISTS `listalinea` (
   `codLinea` varchar(50) NOT NULL DEFAULT '0',
   `nomLinea` varchar(50) NOT NULL,
@@ -116,7 +111,6 @@ INSERT INTO `listalinea` (`codLinea`, `nomLinea`, `estadoLinea`, `codFam`, `codM
 /*!40000 ALTER TABLE `listalinea` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.marca
-DROP TABLE IF EXISTS `marca`;
 CREATE TABLE IF NOT EXISTS `marca` (
   `codMarca` varchar(50) NOT NULL,
   `desMarca` varchar(50) DEFAULT NULL,
@@ -136,7 +130,6 @@ INSERT INTO `marca` (`codMarca`, `desMarca`) VALUES
 /*!40000 ALTER TABLE `marca` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.perfil
-DROP TABLE IF EXISTS `perfil`;
 CREATE TABLE IF NOT EXISTS `perfil` (
   `idPerfil` int(11) NOT NULL AUTO_INCREMENT,
   `perfil` varchar(50) DEFAULT NULL,
@@ -151,7 +144,6 @@ INSERT INTO `perfil` (`idPerfil`, `perfil`) VALUES
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.presupuesto_anio
-DROP TABLE IF EXISTS `presupuesto_anio`;
 CREATE TABLE IF NOT EXISTS `presupuesto_anio` (
   `idPresAnio` int(11) NOT NULL AUTO_INCREMENT,
   `anio` year(4) NOT NULL,
@@ -477,7 +469,6 @@ INSERT INTO `presupuesto_anio` (`idPresAnio`, `anio`, `ventasPresU`, `promoPresU
 /*!40000 ALTER TABLE `presupuesto_anio` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.presupuesto_mes
-DROP TABLE IF EXISTS `presupuesto_mes`;
 CREATE TABLE IF NOT EXISTS `presupuesto_mes` (
   `idPresMes` int(11) NOT NULL AUTO_INCREMENT,
   `idPresAnio` int(11) DEFAULT NULL,
@@ -491,9 +482,9 @@ CREATE TABLE IF NOT EXISTS `presupuesto_mes` (
   PRIMARY KEY (`idPresMes`),
   KEY `FK_presupuesto_mes_presupuesto_anio` (`idPresAnio`),
   CONSTRAINT `FK_presupuesto_mes_presupuesto_anio` FOREIGN KEY (`idPresAnio`) REFERENCES `presupuesto_anio` (`idPresAnio`)
-) ENGINE=InnoDB AUTO_INCREMENT=527 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3611 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla presupuestos_ventas.presupuesto_mes: ~526 rows (aproximadamente)
+-- Volcando datos para la tabla presupuestos_ventas.presupuesto_mes: ~3.610 rows (aproximadamente)
 /*!40000 ALTER TABLE `presupuesto_mes` DISABLE KEYS */;
 INSERT INTO `presupuesto_mes` (`idPresMes`, `idPresAnio`, `mes`, `cantMesU`, `cantPromoU`, `cantGarantU`, `cantTotalU`, `presMesV`, `porcentaje`) VALUES
 	(1, 1, '2019-01-01', 1021, 0, 0, 1021, 0, NULL),
@@ -4109,7 +4100,6 @@ INSERT INTO `presupuesto_mes` (`idPresMes`, `idPresAnio`, `mes`, `cantMesU`, `ca
 /*!40000 ALTER TABLE `presupuesto_mes` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.segmento
-DROP TABLE IF EXISTS `segmento`;
 CREATE TABLE IF NOT EXISTS `segmento` (
   `codSeg` int(11) NOT NULL AUTO_INCREMENT,
   `desSeg` varchar(50) DEFAULT NULL,
@@ -4139,7 +4129,6 @@ INSERT INTO `segmento` (`codSeg`, `desSeg`) VALUES
 /*!40000 ALTER TABLE `segmento` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.vendedor
-DROP TABLE IF EXISTS `vendedor`;
 CREATE TABLE IF NOT EXISTS `vendedor` (
   `codVen` varchar(50) NOT NULL DEFAULT '0',
   `nomVen` varchar(200) NOT NULL,
@@ -4209,7 +4198,6 @@ INSERT INTO `vendedor` (`codVen`, `nomVen`, `estadoVen`, `codSeg`) VALUES
 /*!40000 ALTER TABLE `vendedor` ENABLE KEYS */;
 
 -- Volcando estructura para procedimiento presupuestos_ventas.PA_REG
-DROP PROCEDURE IF EXISTS `PA_REG`;
 DELIMITER //
 CREATE PROCEDURE `PA_REG`(IN codVen VARCHAR(50), IN codLinea VARCHAR(50),
 IN anio YEAR, IN ventasU INT(11), IN promocionU INT(11) , IN garantiaU INT(11),
@@ -4219,7 +4207,6 @@ VALUES(codVen, codLinea, anio, ventasU, promocionU, garantiaU, facturadoV)//
 DELIMITER ;
 
 -- Volcando estructura para procedimiento presupuestos_ventas.PA_REG_PRES_ANIO
-DROP PROCEDURE IF EXISTS `PA_REG_PRES_ANIO`;
 DELIMITER //
 CREATE PROCEDURE `PA_REG_PRES_ANIO`(IN codVen VARCHAR(50), IN codLinea VARCHAR(50), IN anio YEAR, 
 IN ventasPresU INT(11), IN promoPresU INT(11), IN garantPresU INT(11), IN totalPresU INT(11))
@@ -4228,7 +4215,6 @@ VALUES(codVen, codLinea, anio, ventasPresU, promoPresU, garantPresU,totalPresU)/
 DELIMITER ;
 
 -- Volcando estructura para procedimiento presupuestos_ventas.PA_REG_PRES_MES
-DROP PROCEDURE IF EXISTS `PA_REG_PRES_MES`;
 DELIMITER //
 CREATE PROCEDURE `PA_REG_PRES_MES`(IN idPresAnio INT(11), IN mes DATE, IN cantMesU INT(11), 
 IN cantPromoU INT(11), IN cantGarantU INT(11), IN cantTotalU INT(11), IN presMesV FLOAT)
