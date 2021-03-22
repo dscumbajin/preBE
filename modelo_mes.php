@@ -7,9 +7,9 @@ class Modelo_mes{
         $this->conexion->conectar();
     }
 
-    function Registrar_Excel($idPresAnio, $mes, $cantMesU, $cantPromoU, $cantGarantU, $cantTotalU, $presMesV)
+    function Registrar_Excel($idPresAnio, $mes, $numMes,$nomMes, $anioMes, $cantMesU, $cantPromoU, $cantGarantU, $cantTotalU, $presMesV)
     {
-        $sql = "call PA_REG_PRES_MES('$idPresAnio','$mes','$cantMesU','$cantPromoU','$cantGarantU','$cantTotalU',' $presMesV')";
+        $sql = "call PA_REG_PRES_MES('$idPresAnio','$mes','$numMes','$nomMes','$anioMes','$cantMesU','$cantPromoU','$cantGarantU','$cantTotalU',' $presMesV')";
         if ($resultado = $this->conexion->conexion->query($sql)) {
             $id_retornado = mysqli_insert_id($this->conexion->conexion);
             return 1;

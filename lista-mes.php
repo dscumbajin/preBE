@@ -126,6 +126,9 @@ include_once('templates/footer.php');
         var arreglo_cantGarantU = new Array();
         var arreglo_cantTotalU = new Array();
         var arreglo_presMesV = new Array();
+        var arreglo_numMes = new Array();
+        var arreglo_nomMes = new Array();
+        var arreglo_anioMes = new Array();
 
         $("#tabla_detalle tbody#tbody_tabla_detalle tr").each(function() {
             arreglo_idPresAnio.push($(this).find('td').eq(0).text());
@@ -135,6 +138,9 @@ include_once('templates/footer.php');
             arreglo_cantGarantU.push($(this).find('td').eq(4).text());
             arreglo_cantTotalU.push($(this).find('td').eq(5).text());
             arreglo_presMesV.push($(this).find('td').eq(6).text());
+            arreglo_numMes.push($(this).find('td').eq(7).text());
+            arreglo_nomMes.push($(this).find('td').eq(8).text());
+            arreglo_anioMes.push($(this).find('td').eq(9).text());
             contador++;
         });
         if (contador == 0) {
@@ -148,6 +154,9 @@ include_once('templates/footer.php');
         var cantGarantU = arreglo_cantGarantU.toString();
         var cantTotalU = arreglo_cantTotalU.toString();
         var presMesV = arreglo_presMesV.toString();
+        var numMes = arreglo_numMes.toString();
+        var nomMes = arreglo_nomMes.toString();
+        var anioMes = arreglo_anioMes.toString();
 
         $.ajax({
             url: 'controlador_mes.php',
@@ -160,6 +169,9 @@ include_once('templates/footer.php');
                 cantGarantU: cantGarantU,
                 cantTotalU: cantTotalU,
                 presMesV: presMesV,
+                numMes: numMes,
+                nomMes: nomMes,
+                anioMes: anioMes,
             },
         }).done(function(resp){
             Swal.fire("Mensaje de confirmación","Datos registrados", "success");

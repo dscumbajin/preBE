@@ -28,6 +28,9 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
     <td> cantGarantU</td>
     <td> cantTotalU</td>
     <td> presMesV</td>
+    <td> numMes</td>
+    <td> nomMes</td>
+    <td> anioMes</td>
     </tr>
     </thead><tbody id='tbody_tabla_detalle'>
     ";
@@ -39,6 +42,9 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
         $cantGarantU = $hoja->getCell('E'. $row)->getValue();
         $cantTotalU = $hoja->getCell('F'. $row)->getValue();
         $presMesV = $hoja->getCell('G'. $row)->getValue();
+        $numMes = $hoja->getCell('H'. $row)->getValue();
+        $nomMes = $hoja->getCell('I'. $row)->getValue();
+        $anioMes = $hoja->getCell('J'. $row)->getValue();
         $query = "SELECT COUNT(*) AS contador FROM presupuesto_mes WHERE idPresAnio='".$idPresAnio."'";
         $resultado = $con->query($query);
         $respuesta = $resultado->fetch_assoc();
@@ -55,6 +61,9 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
                 echo "<td>".$cantGarantU."</td>";
                 echo "<td>".$cantTotalU."</td>";
                 echo "<td>".$presMesV."</td>";
+                echo "<td>".$numMes."</td>";
+                echo "<td>".$nomMes."</td>";
+                echo "<td>".$anioMes."</td>";
                 echo"</tr>";
             }
         }     

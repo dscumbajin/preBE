@@ -168,6 +168,8 @@ $("#guardar_pres_anio").submit(function(event) {
 
     if ($("#porEnero").val().length > 0) {
         $("#mesEnero").val($("#anioHist").val() + '-01' + '-01');
+        $("#numEnero").val(1);
+        $("#nomEnero").val('ene');
         var porEnero = $("#porEnero").val();
         porEnero = parseFloat(porEnero);
         var porcentajeEnero = porEnero / 100;
@@ -198,6 +200,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porFebrero").val().length > 0) {
         $("#mesFebrero").val($("#anioHist").val() + '-02' + '-01');
+        $("#numFebrero").val('2');
+        $("#nomFebrero").val('feb');
         var porFebrero = $("#porFebrero").val();
         porFebrero = parseFloat(porFebrero);
         var porcentajeFebrero = porFebrero / 100;
@@ -231,6 +235,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porMarzo").val().length > 0) {
         $("#mesMarzo").val($("#anioHist").val() + '-03' + '-01');
+        $("#numMarzo").val('3');
+        $("#nomMarzo").val('mar');
         var porMarzo = $("#porMarzo").val();
         porMarzo = parseFloat(porMarzo);
         var porcentajeMarzo = porMarzo / 100;
@@ -263,6 +269,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porAbril").val().length > 0) {
         $("#mesAbril").val($("#anioHist").val() + '-04' + '-01');
+        $("#numAbril").val('4');
+        $("#nomAbril").val('abr');
         var porAbril = $("#porAbril").val();
         porAbril = parseFloat(porAbril);
         var porcentajeAbril = porAbril / 100;
@@ -295,6 +303,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porMayo").val().length > 0) {
         $("#mesMayo").val($("#anioHist").val() + '-05' + '-01');
+        $("#numMayo").val('5');
+        $("#nomMayo").val('may');
         var porMayo = $("#porMayo").val();
         porMayo = parseFloat(porMayo);
         var porcentajeMayo = porMayo / 100;
@@ -326,6 +336,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porJunio").val().length > 0) {
         $("#mesJunio").val($("#anioHist").val() + '-06' + '-01');
+        $("#numJunio").val('6');
+        $("#nomJunio").val('jun');
         var porJunio = $("#porJunio").val();
         porJunio = parseFloat(porJunio);
         var porcentajeJunio = porJunio / 100;
@@ -359,6 +371,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porJulio").val().length > 0) {
         $("#mesJulio").val($("#anioHist").val() + '-07' + '-01');
+        $("#numJulio").val('7');
+        $("#nomJulio").val('jul');
         var porJulio = $("#porJulio").val();
         porJulio = parseFloat(porJulio);
         var porcentajeJulio = porJulio / 100;
@@ -391,6 +405,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porAgosto").val().length > 0) {
         $("#mesAgosto").val($("#anioHist").val() + '-08' + '-01');
+        $("#numAgosto").val('8');
+        $("#nomAgosto").val('ago');
         var porAgosto = $("#porAgosto").val();
         porAgosto = parseFloat(porAgosto);
         var porcentajeAgosto = porAgosto / 100;
@@ -423,6 +439,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porSeptiembre").val().length > 0) {
         $("#mesSeptiembre").val($("#anioHist").val() + '-09' + '-01');
+        $("#numSeptiembre").val('9');
+        $("#nomSeptiembre").val('sep');
         var porSeptiembre = $("#porSeptiembre").val();
         porSeptiembre = parseFloat(porSeptiembre);
         var porcentajeSeptiembre = porSeptiembre / 100;
@@ -457,6 +475,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porOctubre").val().length > 0) {
         $("#mesOctubre").val($("#anioHist").val() + '-10' + '-01');
+        $("#numOctubre").val('10');
+        $("#nomOctubre").val('oct');
         var porOctubre = $("#porOctubre").val();
         porOctubre = parseFloat(porOctubre);
         var porcentajeOctubre = porOctubre / 100;
@@ -491,6 +511,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porNoviembre").val().length > 0) {
         $("#mesNoviembre").val($("#anioHist").val() + '-11' + '-01');
+        $("#numNoviembre").val('11');
+        $("#nomNoviembre").val('nov');
         var porNoviembre = $("#porNoviembre").val();
         porNoviembre = parseFloat(porNoviembre);
         var porcentajeNoviembre = porNoviembre / 100;
@@ -523,6 +545,8 @@ $("#guardar_pres_anio").submit(function(event) {
     }
     if ($("#porDiciembre").val().length > 0) {
         $("#mesDiciembre").val($("#anioHist").val() + '-12' + '-01');
+        $("#numDiciembre").val('12');
+        $("#nomDiciembre").val('dic');
         var porDiciembre = $("#porDiciembre").val();
         porDiciembre = parseFloat(porDiciembre);
         var porcentajeDiciembre = porDiciembre / 100;
@@ -577,6 +601,7 @@ $("#guardar_pres_mes").submit(function(event) {
     $("#porNoviembre").attr("readonly", true);
     $("#porDiciembre").attr("readonly", true);
     var parametros = $(this).serialize();
+    console.log(parametros);
     $.ajax({
         type: "POST",
         url: "ajax/vendedor-linea/nuevo_presupuesto_mes.php",
@@ -808,6 +833,8 @@ function tituloPreAnio(enero, febrero, marzo, abril, mayo, junio, julio, agosto,
 $("#porEnero").on("input", function() {
     // Iicializacion de variables
     $("#mesEnero").val($("#anioHist").val() + '-01' + '-01');
+    $("#numEnero").val('1');
+    $("#nomEnero").val('ene');
     var porEnero = $("#porEnero").val();
     porEnero = parseFloat(porEnero);
     var porcentajeEnero = porEnero / 100;
@@ -928,6 +955,8 @@ $("#porEnero").on("input", function() {
 
 $("#porFebrero").on("input", function() {
     $("#mesFebrero").val($("#anioHist").val() + '-02' + '-01');
+    $("#numFebrero").val('2');
+    $("#nomFebrero").val('feb');
     var porFebrero = $("#porFebrero").val();
     porFebrero = parseFloat(porFebrero);
     var porcentajeFebrero = porFebrero / 100;
@@ -1044,6 +1073,8 @@ $("#porFebrero").on("input", function() {
 
 $("#porMarzo").on("input", function() {
     $("#mesMarzo").val($("#anioHist").val() + '-03' + '-01');
+    $("#numMarzo").val('3');
+    $("#nomMarzo").val('mar');
     var porMarzo = $("#porMarzo").val();
     porMarzo = parseFloat(porMarzo);
     var porcentajeMarzo = porMarzo / 100;
@@ -1158,6 +1189,8 @@ $("#porMarzo").on("input", function() {
 
 $("#porAbril").on("input", function() {
     $("#mesAbril").val($("#anioHist").val() + '-04' + '-01');
+    $("#numAbril").val('4');
+    $("#nomAbril").val('abr');
     var porAbril = $("#porAbril").val();
     porAbril = parseFloat(porAbril);
     var porcentajeAbril = porAbril / 100;
@@ -1276,6 +1309,8 @@ $("#porAbril").on("input", function() {
 
 $("#porMayo").on("input", function() {
     $("#mesMayo").val($("#anioHist").val() + '-05' + '-01');
+    $("#numMayo").val('5');
+    $("#nomMayo").val('may');
     var porMayo = $("#porMayo").val();
     porMayo = parseFloat(porMayo);
     var porcentajeMayo = porMayo / 100;
@@ -1395,6 +1430,8 @@ $("#porMayo").on("input", function() {
 
 $("#porJunio").on("input", function() {
     $("#mesJunio").val($("#anioHist").val() + '-06' + '-01');
+    $("#numJunio").val('6');
+    $("#nomJunio").val('jun');
     var porJunio = $("#porJunio").val();
     porJunio = parseFloat(porJunio);
     var porcentajeJunio = porJunio / 100;
@@ -1515,6 +1552,8 @@ $("#porJunio").on("input", function() {
 
 $("#porJulio").on("input", function() {
     $("#mesJulio").val($("#anioHist").val() + '-07' + '-01');
+    $("#numJulio").val('7');
+    $("#nomJulio").val('jul');
     var porJulio = $("#porJulio").val();
     porJulio = parseFloat(porJulio);
     var porcentajeJulio = porJulio / 100;
@@ -1632,6 +1671,8 @@ $("#porJulio").on("input", function() {
 
 $("#porAgosto").on("input", function() {
     $("#mesAgosto").val($("#anioHist").val() + '-08' + '-01');
+    $("#numAgosto").val('8');
+    $("#nomAgosto").val('ago');
     var porAgosto = $("#porAgosto").val();
     porAgosto = parseFloat(porAgosto);
     var porcentajeAgosto = porAgosto / 100;
@@ -1751,6 +1792,8 @@ $("#porAgosto").on("input", function() {
 
 $("#porSeptiembre").on("input", function() {
     $("#mesSeptiembre").val($("#anioHist").val() + '-09' + '-01');
+    $("#numSeptiembre").val('9');
+    $("#nomSeptiembre").val('sep');
     var porSeptiembre = $("#porSeptiembre").val();
     porSeptiembre = parseFloat(porSeptiembre);
     var porcentajeSeptiembre = porSeptiembre / 100;
@@ -1871,6 +1914,8 @@ $("#porSeptiembre").on("input", function() {
 
 $("#porOctubre").on("input", function() {
     $("#mesOctubre").val($("#anioHist").val() + '-10' + '-01');
+    $("#numOctubre").val('10');
+    $("#nomOctubre").val('oct');
     var porOctubre = $("#porOctubre").val();
     porOctubre = parseFloat(porOctubre);
     var porcentajeOctubre = porOctubre / 100;
@@ -1991,6 +2036,8 @@ $("#porOctubre").on("input", function() {
 
 $("#porNoviembre").on("input", function() {
     $("#mesNoviembre").val($("#anioHist").val() + '-11' + '-01');
+    $("#numEnero").val('11');
+    $("#nomEnero").val('nov');
     var porNoviembre = $("#porNoviembre").val();
     porNoviembre = parseFloat(porNoviembre);
     var porcentajeNoviembre = porNoviembre / 100;
@@ -2110,6 +2157,8 @@ $("#porNoviembre").on("input", function() {
 
 $("#porDiciembre").on("input", function() {
     $("#mesDiciembre").val($("#anioHist").val() + '-12' + '-01');
+    $("#numEnero").val('12');
+    $("#nomEnero").val('dic');
     var porDiciembre = $("#porDiciembre").val();
     porDiciembre = parseFloat(porDiciembre);
     var porcentajeDiciembre = porDiciembre / 100;

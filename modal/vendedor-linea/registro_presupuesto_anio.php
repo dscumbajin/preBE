@@ -138,6 +138,8 @@
 														<td><input id="porEnero" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesEnero" name="mes[]" />
+														<input type="hidden" id="numEnero" name="numMes[]" />
+														<input type="hidden" id="nomEnero" name="nomMes[]" />
 														<td><input id="venEnero" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proEnero" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -155,6 +157,8 @@
 														<td><input id="porFebrero" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesFebrero" name="mes[]" />
+														<input type="hidden" id="numFebrero" name="numMes[]" />
+														<input type="hidden" id="nomFebrero" name="nomMes[]" />
 														<td><input id="venFebrero" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proFebrero" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -172,6 +176,8 @@
 														<td><input id="porMarzo" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesMarzo" name="mes[]" />
+														<input type="hidden" id="numMarzo" name="numMes[]" />
+														<input type="hidden" id="nomMarzo" name="nomMes[]" />
 														<td><input id="venMarzo" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proMarzo" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -188,6 +194,8 @@
 														<td><input id="porAbril" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesAbril" name="mes[]" />
+														<input type="hidden" id="numAbril" name="numMes[]" />
+														<input type="hidden" id="nomAbril" name="nomMes[]" />
 														<td><input id="venAbril" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proAbril" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -204,6 +212,8 @@
 														<td><input id="porMayo" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesMayo" name="mes[]" />
+														<input type="hidden" id="numMayo" name="numMes[]" />
+														<input type="hidden" id="nomMayo" name="nomMes[]" />
 														<td><input id="venMayo" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proMayo" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -220,6 +230,8 @@
 														<td><input id="porJunio" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesJunio" name="mes[]" />
+														<input type="hidden" id="numJunio" name="numMes[]" />
+														<input type="hidden" id="nomJunio" name="nomMes[]" />
 														<td><input id="venJunio" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proJunio" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -236,6 +248,8 @@
 														<td><input id="porJulio" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesJulio" name="mes[]" />
+														<input type="hidden" id="numJulio" name="numMes[]" />
+														<input type="hidden" id="nomJulio" name="nomMes[]" />
 														<td><input id="venJulio" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proJulio" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -252,6 +266,8 @@
 														<td><input id="porAgosto" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesAgosto" name="mes[]" />
+														<input type="hidden" id="numAgosto" name="numMes[]" />
+														<input type="hidden" id="nomAgosto" name="nomMes[]" />
 														<td><input id="venAgosto" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proAgosto" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -268,6 +284,8 @@
 														<td><input id="porSeptiembre" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesSeptiembre" name="mes[]" />
+														<input type="hidden" id="numSeptiembre" name="numMes[]" />
+														<input type="hidden" id="nomSeptiembre" name="nomMes[]" />
 														<td><input id="venSeptiembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proSeptiembre" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -284,6 +302,8 @@
 														<td><input id="porOctubre" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesOctubre" name="mes[]" />
+														<input type="hidden" id="numOctubre" name="numMes[]" />
+														<input type="hidden" id="nomOctubre" name="nomMes[]" />
 														<td><input id="venOctubre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proOctubre" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -300,6 +320,8 @@
 														<td><input id="porNoviembre" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesNoviembre" name="mes[]" />
+														<input type="hidden" id="numNoviembre" name="numMes[]" />
+														<input type="hidden" id="nomNoviembre" name="nomMes[]" />
 														<td><input id="venNoviembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proNoviembre" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
@@ -316,6 +338,8 @@
 														<td><input id="porDiciembre" class="form-control decimales" required name="porcentaje[]" placeholder="%" type="text" pattern="^[0-9]+(.[0-9]+)?$" />
 														</td>
 														<input type="hidden" id="mesDiciembre" name="mes[]" />
+														<input type="hidden" id="numDiciembre" name="numMes[]" />
+														<input type="hidden" id="nomDiciembre" name="nomMes[]" />
 														<td><input id="venDiciembre" class="form-control" required name="ventasMes[]" placeholder="" readonly="readonly" />
 														</td>
 														<td><input id="proDiciembre" class="form-control" required name="promosMes[]" placeholder="" readonly="readonly" />
