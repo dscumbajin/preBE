@@ -1,5 +1,5 @@
 	<?php
-	 /*-------------------------
+	/*-------------------------
     Autor: Darwin Cumbajin N.
     Web: www.dc-dev.com
     E-Mail: cumbajindarwin@hotmail.com
@@ -10,16 +10,16 @@
 		<div class="modal fade" id="modLinea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
-				<div class="modal-header">
+					<div class="modal-header">
 						<h3 class="modal-title" style="font-weight: bold;">Editar Linea Negocior</h4>
-							<button type="button" class="close btn-danger" data-dismiss="modal" aria-label="Close">
+							<button type="button" id="closen" class="close btn-danger" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal" method="post" id="editar_linea" name="editar_linea">
 							<div id="resultados_ajax2"></div>
-						
+
 							<div class="form-group row">
 								<label for="mod_nombre" class="col-sm-3 control-label">Nombre</label>
 								<div class="col-sm-9">
@@ -32,7 +32,7 @@
 								<label for="mod_estado" class="col-sm-3 control-label">Estado</label>
 								<div class="col-sm-9">
 									<select class="form-control seleccionar select2-primary" id="mod_estado" name="mod_estado" required>
-										<option value=""selected>-- Selecciona estado --</option>
+										<option value="" selected>-- Selecciona estado --</option>
 										<option value="1">Activo</option>
 										<option value="0">Inactivo</option>
 									</select>
@@ -51,3 +51,11 @@
 	<?php
 	}
 	?>
+	<script>
+		$('#closen').on('click', function() {
+
+			$("#mod_nombre").val("");
+			$("#mod_estado").val("");
+			$("#mod_id").val(id);
+		});
+	</script>

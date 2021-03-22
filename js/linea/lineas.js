@@ -87,3 +87,10 @@
 		    $("#mod_id").val(id);
 
 		}
+
+		$('#closen').on('click', function() {
+
+		    $("#mod_nombre").val("");
+		    $("#mod_estado").val("");
+		    $("#mod_id").val(id);
+		});

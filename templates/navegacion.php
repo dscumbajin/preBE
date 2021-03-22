@@ -84,7 +84,7 @@
 
                   </li>
 
-                
+
 
                   <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
@@ -105,7 +105,7 @@
 
                           <?php
                             try {
-                                $sql = "SELECT * FROM listalinea WHERE estadoLinea = '1' ";
+                                $sql = "SELECT * FROM listalinea WHERE codLinea IN (SELECT codLinea FROM historial_ventas WHERE generado = 0) ";
                                 $resultado = $con->query($sql);
                             } catch (Exception $e) {
                                 $error = $e->getMessage();
@@ -131,14 +131,7 @@
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
-                      <!--  <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="lista-presupuestos-anio.php" class="nav-link">
-                                  <i class="nav-icon fas fa-list-ul"></i>
-                                  <p>Ver Todos</p>
-                              </a>
-                          </li>
-                      </ul> -->
+
                   </li>
 
                   <li class="nav-item has-treeview">
@@ -149,14 +142,7 @@
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
-                      <!-- <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="lista-presupuestos-mes.php" class="nav-link">
-                                  <i class="nav-icon fas fa-list-ul"></i>
-                                  <p>Ver Todos</p>
-                              </a>
-                          </li>
-                      </ul> -->
+
                   </li>
 
                   <?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") : ?>
@@ -169,12 +155,12 @@
                                   <i class="fas fa-angle-left right"></i>
                               </p>
                           </a>
-                        
+
                       </li>
                   <?php endif; ?>
 
                   <li class="nav-item has-treeview">
-                      <a href="lista-historial.php" class="nav-link" >
+                      <a href="lista-historial.php" class="nav-link">
                           <i class="nav-icon far fa-file-excel" style="color: green;"></i>
 
                           <p>

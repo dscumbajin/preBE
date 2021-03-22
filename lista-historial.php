@@ -44,7 +44,7 @@ include_once('templates/navegacion.php');
 
                         <div class="card">
                             <div class="card-header">
-                                ARCHIVO DE VENTAS 
+                                ARCHIVO DE VENTAS
                             </div>
                             <div class="card-body">
                                 <form action="#" enctype="multipart/form-data">
@@ -60,9 +60,11 @@ include_once('templates/navegacion.php');
                                         </div>
                                     </div>
                                     <br>
+                                    <span id="loader"></span>
                                     <div class="row">
                                         <div class="col-lg-12" id="div_tabla"></div>
                                     </div>
+
                                 </form>
                             </div>
                         </div>
@@ -162,10 +164,19 @@ include_once('templates/footer.php');
                 garantiaU: garantiaU,
                 facturadoV: facturadoV,
             },
-        }).done(function(resp){
-            Swal.fire("Mensaje de confirmación","Datos registrados", "success");
-            $('#div_tabla').html("");
+            beforeSend: function(objeto) {
+                $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
+            },
+            success: function(resp) {
+                Swal.fire("Mensaje de confirmación", "Datos registrados", "success");
+                $('#div_tabla').html("");
+                $('#loader').html("");
+            }
         })
-       
+        /* .done(function(resp) {
+                    Swal.fire("Mensaje de confirmación", "Datos registrados", "success");
+                    $('#div_tabla').html("");
+                })
+         */
     }
 </script>
