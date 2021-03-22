@@ -43,7 +43,7 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
         $resultado = $con->query($query);
         $respuesta = $resultado->fetch_assoc();
 
-        if($respuesta['contador']=='0'){
+        if(true){
             if ($idPresAnio=="") {
                 # code...
             } else {
