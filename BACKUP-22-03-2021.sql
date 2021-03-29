@@ -2,7 +2,7 @@
 -- Host:                         127.0.0.1
 -- Versión del servidor:         10.4.10-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             10.3.0.5771
+-- HeidiSQL Versión:             11.2.0.6213
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -10,6 +10,7 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- Volcando estructura de base de datos para presupuestos_ventas
@@ -42,19 +43,114 @@ INSERT INTO `admins` (`idUsu`, `usuario`, `nombreUsu`, `password`, `mail`, `idPe
 CREATE TABLE IF NOT EXISTS `familia` (
   `codFam` varchar(50) NOT NULL,
   `desFam` varchar(50) DEFAULT NULL,
-  `desFamilia` varchar(50) DEFAULT NULL,
+  `estadoFam` int(11) DEFAULT NULL,
   PRIMARY KEY (`codFam`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla presupuestos_ventas.familia: 6 rows
+-- Volcando datos para la tabla presupuestos_ventas.familia: 101 rows
 /*!40000 ALTER TABLE `familia` DISABLE KEYS */;
-INSERT INTO `familia` (`codFam`, `desFam`, `desFamilia`) VALUES
-	('AGUA', 'AGUAS DESMINERALIZADA', 'AGUAS DESMINERALIZADA'),
-	('ANTI', 'ANTISULFATENTES', 'ANTISULFATENTES'),
-	('BATE', 'BATERIAS AUTOMOTRICES', 'BATERIAS AUTOMOTRICES'),
-	('PLUM', 'PLUMAS', 'PLUMAS'),
-	('RECI', 'RECICLADOF', 'RECICLADOF'),
-	('TRIT', 'TRITURADO', 'TRITURADO');
+INSERT INTO `familia` (`codFam`, `desFam`, `estadoFam`) VALUES
+	('AGUA', 'AGUA DESMINERALIZADA', 1),
+	('ANTI', 'ANTISULFATANTES', 1),
+	('BATE', 'BATERIAS AUTOMOTRICES', 1),
+	('PLUM', 'PLUMAS', 1),
+	('RECI', 'RECICLADOF', 1),
+	('TRIT', 'TRITURADOF', 1),
+	('AC', 'ACCESORIOS', 0),
+	('ACCE', 'ACCESORIOSF', 1),
+	('IG', 'ACTIVOS', 0),
+	('AINT', 'ACTIVOS INTANGIBLES', 1),
+	('ATAN', 'ACTIVOS TANGIBLES', 1),
+	('ADAP', 'ADAPTADOR', 1),
+	('104', 'ANTISULFATANTE EN PROCESO', 1),
+	('ART. PROM.', 'ARTICULOS PROMOCIONALES', 0),
+	('APRO', 'ARTICULOS PROMOCIONALESF', 1),
+	('AUTO', 'AUTOMOTRIZ', 1),
+	('BM', 'BATERIAS DE MOTO', 0),
+	('BMOT', 'BATERIAS DE MOTOF', 1),
+	('BEJCI', 'BATERIAS ECUADOR JCI', 1),
+	('MC', 'BATERIAS EX', 0),
+	('BJCIM', 'BATERIAS JCI MERCADERIAS', 1),
+	('BJCIS', 'BATERIAS JCI SECAS', 1),
+	('BJCI', 'BATERIAS JCI TERM.', 0),
+	('BIEN', 'BIENES', 1),
+	('BORN', 'BORNES', 1),
+	('BC', 'BOSCH', 0),
+	('BOSC', 'BOSCHF', 1),
+	('CARG', 'CARGADORES', 1),
+	('COMP', 'COMPLEMENTARIOS', 1),
+	('DV', 'DIVERSOS VENTAS', 0),
+	('DURAC', 'DURACELL', 1),
+	('ELEC', 'ELECTRICO', 1),
+	('ELECT', 'ELECTROLITO', 1),
+	('ENSA', 'ENSAMBLAJE', 1),
+	('BEST', 'ESTACIONARIA', 1),
+	('ESTRAC.', 'ESTRACCION', 0),
+	('ETIQ', 'ETIQUETAS', 1),
+	('BETN', 'ETNA', 1),
+	('20', 'EXIWILL', 0),
+	('FCAR', 'FABRICADAS CARGA', 1),
+	('FSEC', 'FABRICADAS SECAS', 1),
+	('FTER', 'FABRICADAS TERMINADAS', 1),
+	('FERR', 'FERRETERIA', 1),
+	('GENE', 'GENERALES', 1),
+	('HERR', 'HERRAMIENTA', 1),
+	('IMPO', 'IMPORTADAS', 1),
+	('INV.09', 'INV.09XX', 0),
+	('IO', 'INVENTARIO OPERACION', 0),
+	('INV.OP', 'INVENTARIO OPERACION REPUESTOS', 0),
+	('BMC', 'MAC', 0),
+	('BMAC', 'MACF', 1),
+	('PRD. MERCADEO', 'MAMELUCOS', 0),
+	('MO', 'MANO DE OBRA DIRECTA', 0),
+	('MQ', 'MAQUINARIA', 0),
+	('MBIE', 'MARKETING BIENES', 1),
+	('MSER', 'MARKETING SERVICIOS', 1),
+	('MP', 'MATERIA PRIMA', 0),
+	('MP RECICLADOS', 'MATERIA PRIMA RECICLADOS', 0),
+	('MATE', 'MATERIAL', 1),
+	('MT', 'MATERIALES', 0),
+	('MECA', 'MECANICO', 1),
+	('MERC', 'MERCADEO', 1),
+	('MPBG', 'MP BAT CHATARRA GARANTIAS', 1),
+	('MPBNC', 'MP BAT CHATARRA NOTAS DE CREDITO', 1),
+	('MPFB', 'MP FABRICACION BATERIAS', 1),
+	('MPFC', 'MP FABRICACION COMPLEMENTARIOS', 1),
+	('MPNE', 'MP NEUTRALIZADO', 1),
+	('INV. MP OTROS PROD.', 'MP OTROS PRODUCTOS', 0),
+	('MPRE', 'MP RECICLADORA', 1),
+	('MP1', 'MP1XX', 0),
+	('NC', 'NOTA DE CREDITO', 0),
+	('ND', 'NOTA DE DEBITO', 0),
+	('OXID', 'OXIDOF', 1),
+	('PLAC', 'PLACAS', 1),
+	('PRD.REC.', 'PRD BATERIAS RECICLADAS', 0),
+	('PRD.MERC', 'PRD.MERCADEO', 0),
+	('PRDSMT', 'PRDSMTXX', 0),
+	('PREP', 'PREPARADOS', 1),
+	('PST', 'PRODUCTO BATERIAS SECAS', 0),
+	('PT', 'PRODUCTO TERMINADO', 0),
+	('PR', 'PRODUCTOS RECICLADOS', 0),
+	('PPREC', 'RECICLADO', 0),
+	('RECC', 'RECICLADORA', 1),
+	('RGM', 'RECUPERADAS GM', 1),
+	('REFI', 'REFINADOF', 1),
+	('PPREF', 'REFINADOS', 0),
+	('REJI', 'REJILLASF', 1),
+	('RINF', 'REPUESTOS INFORMATICOS', 1),
+	('SCRA', 'SCRAP', 1),
+	('SEGU', 'SEGURIDAD IND.', 1),
+	('SI', 'SEGURIDAD INDUSTRIAL', 0),
+	('SERV', 'SERVICIOS', 1),
+	('SRV', 'SERVICIOS XX', 0),
+	('SBAT', 'SET DE BATERIAS', 1),
+	('RP', 'SETS Y ACCESORIOS', 0),
+	('33', 'SMPROC', 0),
+	('SPT', 'SPTXX', 0),
+	('SUMC', 'SUM CONSUMIBLES', 1),
+	('TR', 'TRITURADO', 0),
+	('TRIS', 'TRITURADOS', 1),
+	('YESO', 'YESO', 1);
 /*!40000 ALTER TABLE `familia` ENABLE KEYS */;
 
 -- Volcando estructura para tabla presupuestos_ventas.historial_ventas
@@ -487,7 +583,7 @@ CREATE TABLE IF NOT EXISTS `presupuesto_mes` (
   CONSTRAINT `FK_presupuesto_mes_presupuesto_anio` FOREIGN KEY (`idPresAnio`) REFERENCES `presupuesto_anio` (`idPresAnio`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3614 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla presupuestos_ventas.presupuesto_mes: ~526 rows (aproximadamente)
+-- Volcando datos para la tabla presupuestos_ventas.presupuesto_mes: ~3.613 rows (aproximadamente)
 /*!40000 ALTER TABLE `presupuesto_mes` DISABLE KEYS */;
 INSERT INTO `presupuesto_mes` (`idPresMes`, `idPresAnio`, `mes`, `numMes`, `nomMes`, `anioMes`, `cantMesU`, `cantPromoU`, `cantGarantU`, `cantTotalU`, `presMesV`, `porcentaje`) VALUES
 	(1, 1, '2019-01-01', '1', 'ene', '2019', 1021, 0, 0, 1021, 0, NULL),
@@ -4139,10 +4235,8 @@ CREATE TABLE IF NOT EXISTS `vendedor` (
   `codVen` varchar(50) NOT NULL DEFAULT '0',
   `nomVen` varchar(200) NOT NULL,
   `estadoVen` binary(1) NOT NULL DEFAULT '1',
-  `codSeg` int(11) NOT NULL,
-  PRIMARY KEY (`codVen`),
-  KEY `FK_vendedor_segmento` (`codSeg`),
-  CONSTRAINT `FK_vendedor_segmento` FOREIGN KEY (`codSeg`) REFERENCES `segmento` (`codSeg`)
+  `codSeg` int(11) NOT NULL DEFAULT 17,
+  PRIMARY KEY (`codVen`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla presupuestos_ventas.vendedor: ~53 rows (aproximadamente)
@@ -4229,5 +4323,6 @@ VALUES(idPresAnio, mes,numMes, nomMes, anioMes, cantMesU, cantPromoU, cantGarant
 DELIMITER ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
