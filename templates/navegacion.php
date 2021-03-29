@@ -71,7 +71,7 @@
                           </li>
                       </ul> -->
                   </li>
-
+                  <?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") : ?>
                   <li class="nav-item has-treeview">
                       <a href="lista-segmento.php" class="nav-link">
                           <i class=" nav-icon fas fa-building" style="color: #9D9040;"></i>
@@ -84,7 +84,7 @@
 
                   </li>
 
-
+                  <?php endif; ?>
 
                   <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">

@@ -73,7 +73,9 @@ if ($action == 'ajax') {
 					<th>Código</th>
 					<th>Nombre</th>
 					<th>Estado</th>
+					<?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") : ?>
 					<th>Acciones</th>
+					<?php endif; ?>
 
 				</tr>
 				<?php
@@ -95,6 +97,7 @@ if ($action == 'ajax') {
 						<td><?php echo $id_linea; ?></td>
 						<td><?php echo $nombre_linea; ?></td>
 						<td><?php echo $estado; ?></td>
+						<?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") : ?>
 						<td><span>
 								<a href="#" title='Editar linea' onclick="obtener_datos('<?php echo $id_linea; ?>');" data-toggle="modal" data-target="#modLinea"><i class="fas fa-pen editar"></i></a>
 								<?php if ($_SESSION['user_nivel'] == 2) : ?>
@@ -102,6 +105,7 @@ if ($action == 'ajax') {
 								<?php endif; ?>
 							</span>
 						</td>
+						<?php endif; ?>
 					</tr>
 				<?php
 				}

@@ -74,7 +74,9 @@ if ($action == 'ajax') {
 					<th>Nombre</th>
 					<th>Estado</th>
 					<th>Segemento</th>
+					<?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") : ?>
 					<th>Acciones</th>
+					<?php endif; ?>
 
 				</tr>
 				<?php
@@ -83,6 +85,7 @@ if ($action == 'ajax') {
 					$id_vendedor = $row['codVen'];
 					$nombre_vendedor = $row['nomVen'];
 					$estado_vendedor = $row['estadoVen'];
+					$des_vendedor = $row['desVen'];
 					$segemento_vendedor = $row['desSeg'];
 					$codigo_segmento = $row['codSeg'];
 					if ($estado_vendedor == 1) {
@@ -99,7 +102,8 @@ if ($action == 'ajax') {
 						<td><?php echo $id_vendedor; ?></td>
 						<td><a href="#" title='Detalle' onclick="detalle_presupuesto('<?php echo $id_vendedor; ?>');" data-toggle="modal" data-target="#detallePresupuesto"> <?php echo $nombre_vendedor; ?></a></td>
 						<td><?php echo $estado; ?></td>
-						<td><?php echo $segemento_vendedor; ?></td>
+						<td><?php echo $des_vendedor; ?></td>
+						<?php if ($_SESSION['user_nivel'] == 2 && $_SESSION['user_usuario'] == "admin") : ?>
 						<td><span>
 								<a href="#" title='Editar vendedor' onclick="obtener_datos('<?php echo $id_vendedor; ?>');" data-toggle="modal" data-target="#modVendedor"><i class="fas fa-pen editar"></i></a>
 								<?php if ($_SESSION['user_nivel'] == 2) : ?>
@@ -107,7 +111,7 @@ if ($action == 'ajax') {
 								<?php endif; ?>
 							</span>
 						</td>
-
+						<?php endif; ?>
 					</tr>
 				<?php
 				}
