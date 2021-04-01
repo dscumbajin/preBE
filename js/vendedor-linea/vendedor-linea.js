@@ -82,7 +82,7 @@ $("#guardar_pres_anio").submit(function(event) {
     var nombreLinea = $("#nameLinea").text();
     console.log(nombreLinea);
 
-    if (nombreLinea == 'BATERIAS ECUADOR') {
+    if (nombreLinea == 'PT BATERIAS ECUADOR') {
         $("#porEnero").val(8.38);
         $("#porFebrero").val(8.34);
         $("#porMarzo").val(8.81);
@@ -97,7 +97,7 @@ $("#guardar_pres_anio").submit(function(event) {
         $("#porDiciembre").val(7.81);
 
 
-    } else if (nombreLinea == 'BATERIAS HELLA') {
+    } else if (nombreLinea == 'PT BATERIAS HELLA') {
         $("#porEnero").val(8.38);
         $("#porFebrero").val(8.34);
         $("#porMarzo").val(8.81);
@@ -112,7 +112,7 @@ $("#guardar_pres_anio").submit(function(event) {
         $("#porDiciembre").val(7.81);
 
 
-    } else if (nombreLinea == 'BATERIAS RUBIX') {
+    } else if (nombreLinea == 'PT BATERIAS RUBIX') {
         $("#porEnero").val(8.44);
         $("#porFebrero").val(8.30);
         $("#porMarzo").val(8.83);
