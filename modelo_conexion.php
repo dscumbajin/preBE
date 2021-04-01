@@ -5,6 +5,7 @@ class conexion{
     private $contrasena;
     private $basedatos;
     public $conexion;
+    public $port;
 
     public function __construct()
     {
@@ -12,11 +13,12 @@ class conexion{
         $this->usuario="root";
         $this->contrasena="";
         $this->basedatos="presupuestos_ventas";
+        $this->port = "3306";
 
     }
 
     function conectar(){
-        $this->conexion = new mysqli($this->servidor,$this->usuario, $this->contrasena, $this->basedatos);
+        $this->conexion = new mysqli($this->servidor,$this->usuario, $this->contrasena, $this->basedatos, $this->port);
         $this->conexion->set_charset("utf8");
     }
     function cerrar(){

@@ -39,6 +39,7 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
         $promocionU = $hoja->getCell('E'. $row)->getValue();
         $garantiaU = $hoja->getCell('F'. $row)->getValue();
         $facturadoV = $hoja->getCell('G'. $row)->getValue();
+        $facturadoV = round(doubleval($facturadoV), 2);
         $query = "SELECT COUNT(*) AS contador FROM historial_ventas WHERE codVen='".$codVen."' AND codLinea='".$codLinea."' AND anio='".$anio."'";
         $resultado = $con->query($query);
         $respuesta = $resultado->fetch_assoc();
@@ -62,28 +63,3 @@ if (is_array($_FILES['archivoexcel']) && count($_FILES['archivoexcel']) > 0) {
     } echo "</tbody></table></div>";
 }
 ?>
-
-<script>
-
-/* $("#tabla_detalle").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-        "pageLength": 10,
-        "language": {
-            paginate: {
-                next: 'Siguiente',
-                previous: 'Anterior',
-                last: 'Último',
-                firts: 'Primero'
-            },
-            info: 'Mostrando _START_ a _END_ de _TOTAL_ resultados',
-            emptyTable: 'No hay registros',
-            infoEmpty: 'Mostrando 0 to 0 of 0 Entradas',
-            search: 'Buscar: ',
-            lengthMenu: "Mostrar _MENU_ Entradas ",
-            infoFiltered: " (Filtrado de un total de _MAX_  entradas)"
-        },
-        "buttons": ["excel"]
-    }).buttons().container().appendTo('#registros_wrapper .col-md-6:eq(0)');
- */
-</script>
