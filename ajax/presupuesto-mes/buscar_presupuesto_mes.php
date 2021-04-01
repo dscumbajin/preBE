@@ -103,7 +103,7 @@ if ($action == 'ajax') {
 					$cantidad_total_presupuesto = $row['cantTotalU'];
 					$presupuesto_mes = $row['presMesV'];
 					$linea_presupuesto = $row['nomLinea'];
-					$segmento_presupuesto = $row['desSeg'];
+					$segmento_presupuesto = $row['desVen'];
 
 				?>
 
