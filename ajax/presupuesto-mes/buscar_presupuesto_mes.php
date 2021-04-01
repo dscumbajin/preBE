@@ -102,6 +102,7 @@ if ($action == 'ajax') {
 					$cantidad_garantia_presupuesto = $row['cantGarantU'];
 					$cantidad_total_presupuesto = $row['cantTotalU'];
 					$presupuesto_mes = $row['presMesV'];
+					$presupuesto_mes = round(doubleval($presupuesto_mes), 2);
 					$linea_presupuesto = $row['nomLinea'];
 					$segmento_presupuesto = $row['desVen'];
 

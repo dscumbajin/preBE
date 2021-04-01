@@ -171,6 +171,10 @@ include_once('templates/footer.php');
                 Swal.fire("Mensaje de confirmación", "Datos registrados", "success");
                 $('#div_tabla').html("");
                 $('#loader').html("");
+
+                setTimeout(() => {
+                    window.location.href = 'admin-area.php'
+                }, 3000);
             }
         })
         /* .done(function(resp) {
