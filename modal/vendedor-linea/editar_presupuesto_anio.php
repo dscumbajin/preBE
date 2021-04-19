@@ -49,14 +49,21 @@
 										<input type="text" class="form-control numero" name="mod_garantia_presupuesto" id="mod_garantia_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
 									</div>
 									<!-- /.form-group -->
-									<div class="col-sm-3">
+									<div class="col-sm-2">
 										<label>TOTAL</label>
 										<input type="text" class="form-control numero" name="mod_total_presupuesto" id="mod_total_presupuesto" pattern="^[0-9]+(.[0-9]+)?$" required>
 									</div>
 									<!-- /.form-group -->
 
+									<div class="col-sm-1">
+									
+									<a title="Actualizar cantidades" href="#" id="actualizar_cantidades"><i id="icono_bloc" class="fas fa-lock eliminar"></i></a>
+									</div>
+
 									<input type="hidden" name="mod_precioMeta" id="mod_precioMeta">
 								</div>
+								<br>
+								
 								<!-- /.row -->
 							</div>
 
@@ -94,3 +101,4 @@
 	<?php
 	}
 	?>
+	

@@ -1,8 +1,8 @@
 <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-        <b>Version</b> 1.0.0
+        <b>Version</b> 2.0.1
     </div>
-    <strong>Copyright &copy; <?php echo date('Y');?> <a href="">Baterias<span>Ecuador</span></a>.</strong> Todos los derechos reservados
+    <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="">Baterias<span>Ecuador</span></a>.</strong> Todos los derechos reservados
 </footer>
 </div>
 <!-- ./wrapper -->
