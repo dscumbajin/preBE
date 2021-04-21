@@ -1,5 +1,5 @@
 	<?php
-	 /*-------------------------
+	/*-------------------------
     Autor: Darwin Cumbajin N.
     Web: www.dc-dev.com
     E-Mail: cumbajindarwin@hotmail.com
@@ -56,13 +56,13 @@
 									<!-- /.form-group -->
 
 									<div class="col-sm-1">
-									
-									<a title="Actualizar cantidades" href="#" id="actualizar_cantidades"><i id="icono_bloc" class="fas fa-lock eliminar"></i></a>
+										<label id="actualizar_cantidades"><i id="icono_bloc" class="fas fa-lock eliminar"></i></label>
+										<!-- <a title="Actualizar cantidades" href="#" id="actualizar_cantidades"><i id="icono_bloc" class="fas fa-lock eliminar"></i></a> -->
+										<input type="text" class="form-control" id="incremento_edicion" >
 									</div>
 
 									<input type="hidden" name="mod_precioMeta" id="mod_precioMeta">
 								</div>
-								<br>
 								
 								<!-- /.row -->
 							</div>
@@ -71,7 +71,7 @@
 
 						<div class="card card-dark">
 							<div class="card-header">
-								
+
 
 								<div class="card-tools">
 									<button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -86,7 +86,7 @@
 							<!-- /.card-header -->
 							<div class="card-body" style="display: block;">
 
-							<section id="tabla_resultados">	</section>
+								<section id="tabla_resultados"> </section>
 							</div>
 						</div>
 
@@ -101,4 +101,3 @@
 	<?php
 	}
 	?>
-	
