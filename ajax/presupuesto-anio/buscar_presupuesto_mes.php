@@ -87,6 +87,8 @@ $idPresAnio = intval($_REQUEST['idPresAnio']);
     $("#close").on("click", function(){
         $("#incremento_edicion").hide();
         $("#incremento_edicion").val("");
+        $("#icono_bloc").removeClass("fas fa-lock-open editar");
+        $("#icono_bloc").addClass("fas fa-lock eliminar");
     });
     //Porcentje asignado
     function tituloPreAnio(enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre) {
